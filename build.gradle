@@ -48,6 +48,11 @@ test {
 		events "failed", "skipped"
 		exceptionFormat "full"
 	}
+	afterSuite { desc, result ->
+		if (desc.parent == null) {
+			println "Unit tests: ${result.testCount} run, ${result.failedTestCount} failed, ${result.skippedTestCount} skipped"
+		}
+	}
 }
 
 jar {

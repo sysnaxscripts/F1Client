@@ -4,6 +4,15 @@
 	"package": "dev.f1client.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"client": [
+		"CameraMixin",
+		"ClientPlayNetworkHandlerMixin",
+		"ClientPlayerInteractionManagerMixin",
+		"EntityMixin",
+		"GameOptionsMixin",
+		"GameRendererMixin",
+		"KeyboardInputMixin",
+		"WorldEventHandlerMixin",
+		"WorldRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
