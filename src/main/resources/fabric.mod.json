@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "f1client",
+	"version": "${version}",
+	"name": "F1Client",
+	"description": "Account-gated utility client for DonutSMP: Freecam, OreDetection and SoundDetection behind a themed ClickGUI.",
+	"authors": [
+		"F1Client"
+	],
+	"license": "All-Rights-Reserved",
+	"icon": "assets/f1client/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.f1client.F1Client"
+		]
+	},
+	"mixins": [
+		{
+			"config": "f1client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.17.0",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
