@@ -12,8 +12,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.debug.gizmo.DrawStyle;
-import net.minecraft.world.debug.gizmo.GizmoDrawing;
+import net.minecraft.gizmos.GizmoStyle;
+import net.minecraft.gizmos.Gizmos;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.lwjgl.glfw.GLFW;
@@ -45,8 +45,8 @@ public final class OreESP extends Module {
 			Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE,
 			Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE,
 			Blocks.LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE));
-	/** Highlight colour, RGB; drawn opaque. */
-	private static final int COLOR = 0x35E0D0;
+	/** Highlight colour, ARGB. */
+	private static final int COLOR = 0xFF35E0D0;
 	/** Outline width in pixels. */
 	private static final float LINE_WIDTH = 2.0f;
 	/** Render range in blocks from the eye position. */
@@ -156,7 +156,7 @@ public final class OreESP extends Module {
 		}
 		Vec3 eye = mc.player.getEyePosition();
 		double maxDistanceSq = (double) RANGE * RANGE;
-		DrawStyle style = DrawStyle.stroked(COLOR | 0xFF000000, LINE_WIDTH);
+		GizmoStyle style = GizmoStyle.stroke(COLOR, LINE_WIDTH);
 		for (BlockPos pos : found) {
 			if (pos.getY() < MIN_Y || pos.getY() > MAX_Y) {
 				continue;
@@ -167,8 +167,8 @@ public final class OreESP extends Module {
 			if (dx * dx + dy * dy + dz * dz > maxDistanceSq) {
 				continue;
 			}
-			// ignoreOcclusion is what draws this through terrain.
-			GizmoDrawing.box(new AABB(pos), style).ignoreOcclusion();
+			// setAlwaysOnTop is what draws this through terrain.
+			Gizmos.cuboid(new AABB(pos), style).setAlwaysOnTop();
 		}
 	}
 }

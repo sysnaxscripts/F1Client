@@ -77,7 +77,8 @@ tasks.register("probeApi") {
 	def listPattern = (project.findProperty("probePattern") ?: 'gizmo|debugrender|minecart|levelrenderer').toString()
 	// Dumping is limited to a narrow pattern: javap output for every rendering class would
 	// be megabytes.
-	def dumpPattern = (project.findProperty("probeDumpPattern") ?: 'gizmo|minecart.AbstractMinecart|client.Camera|LevelRenderer').toString()
+	def dumpPattern = (project.findProperty("probeDumpPattern")
+			?: 'client.Minecraft|WorldRenderContext|GizmoCollector|TemporaryCollection').toString()
 	outputs.upToDateWhen { false }
 	doLast {
 		def out = layout.buildDirectory.file("probe-api.txt").get().asFile

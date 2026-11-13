@@ -62,20 +62,24 @@ interesting lines of the Gradle log back to the branch as `build-report/README.m
 
 ## How the ESP sees through walls
 
-All 3D shapes go through the gizmo pass with **always-on-top** set:
+All 3D shapes go through the game's own gizmo pass, with always-on-top set **per shape**:
 
 ```java
-Gizmos.setAlwaysOnTop(true);
-Gizmos.cuboid(new AABB(pos), GizmoStyle.stroke(0xFF35E0D0));   // ARGB
-Gizmos.setAlwaysOnTop(false);
+// net.minecraft.gizmos, verified against the mapped 1.21.11 jar
+Gizmos.cuboid(new AABB(pos), GizmoStyle.stroke(0xFF35E0D0, 2.0f))   // ARGB, width
+      .setAlwaysOnTop();                                            // GizmoProperties
 ```
+
+`Gizmos.cuboid(...)` returns a `GizmoProperties`, whose three setters are
+`setAlwaysOnTop()`, `persistForMillis(int)` and `fadeOut()`. There is no global
+always-on-top flag to set and unset, so nothing can leak into whatever renders next.
 
 There is deliberately **no** `RenderSystem.disableDepthTest()` anywhere: on 1.21.9+ depth
 state lives in the render pipeline, so that call does nothing. There is also **no**
 raycast, `canSee()` or any other line-of-sight test in either ESP module — shapes are
-submitted regardless of what is between them and the camera, and the gizmo pass decides
-what is visible. Both modules reset always-on-top afterwards so the flag does not leak
-into whatever renders next.
+submitted regardless of what is between them and the camera, and `LevelRenderer` (which
+owns the `SimpleGizmoCollector` and finalises the collection once per frame) decides what
+is visible.
 
 ## OreESP (F7)
 
@@ -156,27 +160,55 @@ and check:
 | `Minecraft#isWindowActive()` | same file | `isWindowActive` / window-focus check |
 | `mc.options.keyUp/keyDown/keyLeft/keyRight/keyJump/keyShift/keySprint` | `net/minecraft/client/Options.java` | `keyW/keyS/keyA/keyD` style names |
 | `Options#getCameraType()/setCameraType`, `CameraType#isFirstPerson` | `Options.java`, `CameraType.java` | `getPerspective()` in Yarn |
-| `Camera#alignWithEntity`, `Camera#getMaxZoom`, arg `cameraDist`, field `detached` | `net/minecraft/client/Camera.java` | `setup(BlockGetter, Entity, boolean, boolean, float)` (Yarn `update`) |
-| `Camera#getPosition()` | same file | `getPos()` in Yarn |
+| `Camera#setup(Level, Entity, boolean, boolean, float)`, `getMaxZoom(F)F`, field `detached` | `net/minecraft/client/Camera.java` | verified for 1.21.11; older versions call it `alignWithEntity`, Yarn calls it `update` |
+| `Camera#position()` | same file | verified for 1.21.11; `getPosition()` in some Mojang-mapped versions, `getPos()` in Yarn |
 | `ClientLevel#playLocalSound` — both descriptors | `net/minecraft/client/multiplayer/ClientLevel.java` | check the `Holder` / `SoundEvent` overloads and the trailing `boolean` |
 | `SoundEvent#location()`, `ResourceLocation#toString()` | `net/minecraft/sounds/SoundEvent.java` | `getId()` in Yarn |
 | `Level#getMinY()/getMaxY()`, `Level#hasChunk(int,int)`, `Level#getChunk(int,int)` | `net/minecraft/world/level/Level.java` | — |
 | `Heightmap.Types.WORLD_SURFACE`, `Heightmap#getFirstAvailable(int,int)` | `net/minecraft/world/level/levelgen/Heightmap.java` | `get(int,int)` in Yarn |
 | `ClientLevel#entitiesForRendering()` | `ClientLevel.java` | `getEntities()` in Yarn |
 | `Entity#getDeltaMovement()`, `position()`, `getY()`, `setPos`, `resetFallDistance` | `net/minecraft/world/entity/Entity.java` | — |
-| `AbstractMinecart` | `net/minecraft/world/entity/vehicle/` | check whether it moved to a `minecart` subpackage |
-| `Gizmos`, `GizmoStyle` | not Minecraft: `net/fabricmc/fabric/api/client/rendering/v1/gizmo/` in the Fabric API sources jar | the vanilla gizmo pass, `net.minecraft.world.debug.gizmo.GizmoDrawing` with `DrawStyle` |
+| `AbstractMinecart` | `net/minecraft/world/entity/vehicle/minecart/` | verified for 1.21.11; it used to sit directly in `vehicle` |
+| `Gizmos`, `GizmoStyle`, `GizmoProperties` | `net/minecraft/gizmos/` | verified for 1.21.11. Fabric API has **no** gizmo package, and `net.minecraft.world.debug.gizmo` does not exist under Mojang mappings either |
 | `WorldRenderContext#tickDelta()` | `net/fabricmc/fabric/api/client/rendering/v1/world/WorldRenderContext.java` | a `DeltaTracker` accessor; take its game-time partial ticks |
+
+Verified against the mapped `minecraft-merged-*-1.21.11-*.jar` on
+`loom.mappings.1_21_11.layered+hash.2198-v2`, via the `probeApi` task described below:
+`net.minecraft.gizmos.{Gizmos,GizmoStyle,GizmoProperties}`,
+`net.minecraft.world.entity.vehicle.minecart.AbstractMinecart`,
+`Camera#setup(Level,Entity,boolean,boolean,float)`, `Camera#getMaxZoom(F)F`,
+`Camera#setPosition(DDD)`, `Camera#setPosition(Vec3)`, the `Camera#detached` field and
+`LevelRenderer#allChanged()`.
 
 Two things that are not names but will still break a build if they change:
 
-- **`@Local(argsOnly = true, name = "partialTicks")`** in `CameraMixin` needs MixinExtras
-  to see a parameter with that exact name. If the parameter is named differently, either
-  rename it in the `@Local` or drop the annotation and pass `1.0f` — the camera is then one
-  tick behind while flying, which is barely noticeable at 0.5 blocks per tick.
+- **`@Local(argsOnly = true, ordinal = 4)`** in `CameraMixin` captures the float parameter
+  of `setup` by position instead of by name, because parameter names need the local
+  variable table or `-parameters`. If capture fails, drop the annotation and pass `1.0f` —
+  the camera is then one tick behind while flying, which is barely noticeable at 0.5 blocks
+  per tick.
+- **Which `setPosition` overload `setup` calls** is an implementation detail, so both are
+  hooked with `require = 0`. If neither applies, Freecam enables but the camera does not
+  move; that is the symptom to look for.
 - **`defaultRequire: 1`** in `f1.mixins.json` means a mixin that does not apply crashes the
   game at startup instead of silently doing nothing. That is what you want while porting
   names; raise it to `0` per-injection only if you need the mod to survive a mapping drift.
+
+## Checking a name against the real jar
+
+`./gradlew probeApi` writes `build/probe-api.txt`: it walks the compile classpath — exactly
+what `javac` saw — lists every class matching `-PprobePattern`
+(default `gizmo|debugrender|minecart|levelrenderer`) together with the packages they live
+in, and prints `javap -p` output for the classes matching `-PprobeDumpPattern`
+(default `client.Minecraft|WorldRenderContext|GizmoCollector|TemporaryCollection`).
+
+```
+./gradlew probeApi -PprobePattern='gizmo' -PprobeDumpPattern='gizmos.Gizmos'
+```
+
+It does not depend on compiling, so it still reports when the build is broken — which is
+the moment it is useful. CI runs it after every build and folds the result into
+`build-report/README.md`.
 
 ## Unused lambda parameters
 

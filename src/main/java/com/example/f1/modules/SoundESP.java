@@ -6,8 +6,8 @@ import java.util.Locale;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.debug.gizmo.DrawStyle;
-import net.minecraft.world.debug.gizmo.GizmoDrawing;
+import net.minecraft.gizmos.GizmoStyle;
+import net.minecraft.gizmos.Gizmos;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.lwjgl.glfw.GLFW;
@@ -28,8 +28,8 @@ import org.lwjgl.glfw.GLFW;
  *
  * <p>Each marker is drawn as one stroked cuboid that grows from a quarter block to a full
  * block and fades out over {@value #LIFETIME_MS} ms, after which {@link #tick()} drops it.
- * Like the other ESP module it draws into the game's world-gizmo pass with occlusion
- * ignored, and performs no line-of-sight check of any kind.
+ * Like the other ESP module it draws into the game's gizmo pass with always-on-top set per
+ * shape, and performs no line-of-sight check of any kind.
  */
 public final class SoundESP extends Module {
 	/** Set by the constructor so {@code ClientLevelMixin} can reach the module. */
@@ -39,7 +39,7 @@ public final class SoundESP extends Module {
 	/** Sound ID substrings worth marking, matched against the lowercased ID. */
 	private static final List<String> SOUND_IDS = List.of("minecart", "rail", "piston", "chest", "door", "lever",
 			"button", "tnt", "anvil", "portal");
-	/** Marker colour before fading, RGB. */
+	/** Marker colour as RGB. The alpha channel is computed per marker from its age. */
 	private static final int COLOR = 0xFFDC00;
 	/** Outline width in pixels. */
 	private static final float LINE_WIDTH = 2.0f;
@@ -226,10 +226,10 @@ public final class SoundESP extends Module {
 			}
 			double grow = 0.25 + progress * 0.75;
 			int alpha = (int) ((1f - progress) * 255f);
-			DrawStyle style = DrawStyle.stroked((alpha << 24) | COLOR, LINE_WIDTH);
-			// ignoreOcclusion is what draws this through terrain.
-			GizmoDrawing.box(new AABB(marker.x - grow, marker.y - grow, marker.z - grow,
-					marker.x + grow, marker.y + grow, marker.z + grow), style).ignoreOcclusion();
+			GizmoStyle style = GizmoStyle.stroke((alpha << 24) | COLOR, LINE_WIDTH);
+			// setAlwaysOnTop is what draws this through terrain.
+			Gizmos.cuboid(new AABB(marker.x - grow, marker.y - grow, marker.z - grow,
+					marker.x + grow, marker.y + grow, marker.z + grow), style).setAlwaysOnTop();
 		}
 	}
 }
