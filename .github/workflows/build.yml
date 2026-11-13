@@ -56,7 +56,7 @@ jobs:
         run: |
           chmod +x ./gradlew
           set -o pipefail
-          xvfb-run -a -s "-screen 0 1280x720x24" ./gradlew runClientGameTest --stacktrace 2>&1 | tee /tmp/gametest.log
+          ./gradlew runClientGameTest --stacktrace 2>&1 | tee /tmp/gametest.log
       - name: Report log
         if: always()
         run: |

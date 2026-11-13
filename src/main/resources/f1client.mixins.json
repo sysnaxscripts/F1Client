@@ -10,6 +10,7 @@
 		"EntityMixin",
 		"GameOptionsMixin",
 		"GameRendererMixin",
+		"KeyboardMixin",
 		"KeyboardInputMixin",
 		"WorldEventHandlerMixin",
 		"WorldRendererMixin"

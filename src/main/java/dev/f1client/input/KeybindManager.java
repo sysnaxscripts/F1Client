@@ -7,6 +7,7 @@ import dev.f1client.module.Module;
 import dev.f1client.module.ModuleManager;
 import dev.f1client.setting.KeybindSetting;
 import dev.f1client.util.UiSounds;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 import net.minecraft.client.MinecraftClient;
@@ -19,10 +20,11 @@ import org.lwjgl.glfw.GLFW;
 /**
  * Dispatches the client key and per-module keybinds.
  *
- * <p>Keys are sampled once per client tick and acted on when they go down (or up, for
- * hold-binds). The client key is routed through {@link ClientGate}: it opens the auth
- * screen while the gate is closed and the ClickGUI once it is open. Module binds are
- * ignored entirely unless the gate is open, a world is loaded and no screen has focus.
+ * <p>Key presses and releases arrive as events from the keyboard handler, so even a tap
+ * shorter than a tick is seen. The client key is routed through {@link ClientGate}: it
+ * opens the auth screen while the gate is closed and the ClickGUI once it is open. Module
+ * binds are ignored entirely unless the gate is open, a world is loaded and no screen has
+ * focus.
  */
 public final class KeybindManager {
 	private final MinecraftClient client;
@@ -31,7 +33,7 @@ public final class KeybindManager {
 	private final KeybindSetting clientKey;
 	private final Runnable openAuthScreen;
 	private final Runnable openClickGui;
-	private final boolean[] down = new boolean[GLFW.GLFW_KEY_LAST + 1];
+	private final List<Module> held = new ArrayList<>();
 
 	/**
 	 * @param client         game instance
@@ -62,38 +64,66 @@ public final class KeybindManager {
 		}
 	}
 
-	/** Samples the keyboard; call once per client tick. */
-	public void tick() {
-		if (client.getWindow() == null) {
-			return;
+	/**
+	 * Handles one keyboard event.
+	 *
+	 * @param key    GLFW key code
+	 * @param action {@code GLFW_PRESS}, {@code GLFW_RELEASE} or {@code GLFW_REPEAT}
+	 * @return {@code true} when the event was consumed and must not reach the game
+	 */
+	public boolean onKey(int key, int action) {
+		if (key <= KeybindSetting.UNBOUND || action == GLFW.GLFW_REPEAT) {
+			return false;
 		}
-		boolean clientKeyPressed = pressed(clientKey.get());
-		if (clientKeyPressed && acceptsClientKey()) {
-			openClient();
+		if (key == clientKey.get()) {
+			if (action == GLFW.GLFW_PRESS && acceptsClientKey()) {
+				openClient();
+				return true;
+			}
+			return false;
 		}
-		boolean dispatch = ClientGate.allowsClientFeatures(authState.get())
-				&& client.world != null && client.player != null && client.currentScreen == null;
+		if (!ClientGate.allowsClientFeatures(authState.get()) || client.world == null || client.player == null) {
+			return false;
+		}
+		boolean pressed = action == GLFW.GLFW_PRESS;
+		if (pressed && client.currentScreen != null) {
+			return false;
+		}
 		List<Module> all = modules.all();
 		for (int i = 0; i < all.size(); i++) {
 			Module module = all.get(i);
-			int key = module.keybind().get();
-			if (key <= KeybindSetting.UNBOUND || key >= down.length) {
+			if (module.keybind().get() != key) {
 				continue;
 			}
-			boolean now = InputUtil.isKeyPressed(client.getWindow(), key);
-			boolean before = down[key];
-			if (dispatch && now != before && key != clientKey.get()) {
-				if (module.isHoldBind()) {
-					setEnabled(module, now);
-				} else if (now) {
-					setEnabled(module, !module.isEnabled());
+			if (module.isHoldBind()) {
+				setEnabled(module, pressed);
+				held.remove(module);
+				if (pressed && module.isEnabled()) {
+					held.add(module);
 				}
+			} else if (pressed) {
+				setEnabled(module, !module.isEnabled());
 			}
 		}
-		for (int i = 0; i < all.size(); i++) {
-			int key = all.get(i).keybind().get();
-			if (key > KeybindSetting.UNBOUND && key < down.length) {
-				down[key] = InputUtil.isKeyPressed(client.getWindow(), key);
+		return false;
+	}
+
+	/**
+	 * Safety net for hold-binds; call once per client tick. A release event can be lost
+	 * (for example when the window loses focus), so a module that is on only because its
+	 * key was held is switched off here once the key is no longer down.
+	 */
+	public void tick() {
+		if (held.isEmpty() || client.getWindow() == null) {
+			return;
+		}
+		for (int i = held.size() - 1; i >= 0; i--) {
+			Module module = held.get(i);
+			if (!module.isEnabled() || !module.isHoldBind() || !module.keybind().isBound()) {
+				held.remove(i);
+			} else if (!InputUtil.isKeyPressed(client.getWindow(), module.keybind().get())) {
+				held.remove(i);
+				setEnabled(module, false);
 			}
 		}
 	}
@@ -103,17 +133,6 @@ public final class KeybindManager {
 			module.setEnabled(enabled);
 			UiSounds.toggle(module.isEnabled());
 		}
-	}
-
-	/** @return {@code true} on the tick the key goes down. */
-	private boolean pressed(int key) {
-		if (key <= KeybindSetting.UNBOUND || key >= down.length) {
-			return false;
-		}
-		boolean now = InputUtil.isKeyPressed(client.getWindow(), key);
-		boolean before = down[key];
-		down[key] = now;
-		return now && !before;
 	}
 
 	/** The client key is ignored while typing and inside F1Client's own screens (they close on it themselves). */
