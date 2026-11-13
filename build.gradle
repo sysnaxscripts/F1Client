@@ -128,14 +128,12 @@ tasks.register("probeApi") {
 		def javap = org.gradle.internal.jvm.Jvm.current().getExecutable("javap").absolutePath
 		out.text += "\nsignatures of the first " + Math.min(toDump.size(), 30) + " dump matches:\n"
 		toDump.take(30).each { name ->
-			def stdout = new ByteArrayOutputStream()
-			def result = exec {
-				commandLine javap, "-p", "-classpath", jar.absolutePath, name
-				standardOutput = stdout
-				errorOutput = stdout
-				ignoreExitValue = true
-			}
-			out.text += "\n=== " + name + " (exit " + result.exitValue + ") ===\n" + stdout.toString("UTF-8")
+			// ProcessBuilder rather than Project#exec, which Gradle 9 removed.
+			def process = new ProcessBuilder(javap, "-p", "-classpath", jar.absolutePath, name)
+					.redirectErrorStream(true).start()
+			def text = process.inputStream.getText("UTF-8")
+			def exit = process.waitFor()
+			out.text += "\n=== " + name + " (exit " + exit + ") ===\n" + text
 		}
 		println "Wrote " + out + " (" + out.length() + " bytes; " + listed.size() + " classes listed)"
 	}
