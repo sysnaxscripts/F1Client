@@ -1,8 +1,8 @@
 # Last build
 
-Run: https://github.com/sysnaxscripts/F1Client/actions/runs/43485266924
-Commit under test: fa2d5f362917a974d317bb74a5494d11bae45908
-Generated on: 2026-11-13T18:43:49Z
+Run: https://github.com/sysnaxscripts/F1Client/actions/runs/43485937702
+Commit under test: 1d2a9b578c3f8b48562602539384f67c9f1a9a57
+Generated on: 2026-11-13T18:47:42Z
 
 ## build/libs
 
@@ -132,328 +132,484 @@ matching classes (91):
   net.minecraft.world.phys.shapes.MinecartCollisionContext   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
   net.minecraft.world.phys.shapes.MinecartCollisionContext$1   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
 
-signatures of the first 23 dump matches:
+signatures of the first 11 dump matches:
 
-=== net.fabricmc.fabric.mixin.client.rendering.LevelRendererMixin   [fabric-rendering-v1-4abd26ae-16.2.10+0290ad933e.jar] ===
-Compiled from "LevelRendererMixin.java"
-public abstract class net.fabricmc.fabric.mixin.client.rendering.LevelRendererMixin {
-  private net.minecraft.client.Minecraft minecraft;
-  private net.minecraft.client.renderer.RenderBuffers renderBuffers;
-  private net.minecraft.client.renderer.state.LevelRenderState levelRenderState;
-  private net.minecraft.client.multiplayer.ClientLevel level;
-  private net.minecraft.client.renderer.SubmitNodeStorage submitNodeStorage;
-  private final net.fabricmc.fabric.impl.client.rendering.world.WorldRenderContextImpl renderContext;
-  private final net.fabricmc.fabric.impl.client.rendering.world.WorldExtractionContextImpl extractionContext;
-  public net.fabricmc.fabric.mixin.client.rendering.LevelRendererMixin();
-  private void beforeRender(com.mojang.blaze3d.resource.GraphicsResourceAllocator, net.minecraft.client.DeltaTracker, boolean, net.minecraft.client.Camera, org.joml.Matrix4f, org.joml.Matrix4f, org.joml.Matrix4f, com.mojang.blaze3d.buffers.GpuBufferSlice, org.joml.Vector4f, boolean, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
-  private net.minecraft.client.renderer.culling.Frustum onSetupFrustum(net.minecraft.client.renderer.culling.Frustum);
-  private void afterBlockOutlineExtraction(net.minecraft.client.Camera, net.minecraft.client.renderer.state.LevelRenderState, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
-  private void onWorldBorderExtraction(net.minecraft.client.renderer.WorldBorderRenderer, net.minecraft.world.level.border.WorldBorder, float, net.minecraft.world.phys.Vec3, double, net.minecraft.client.renderer.state.WorldBorderRenderState, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Void>);
-  private net.minecraft.client.renderer.chunk.ChunkSectionsToRender onRenderBlockLayers(net.minecraft.client.renderer.chunk.ChunkSectionsToRender);
-  private void beforeTerrainRender(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
-  private com.mojang.blaze3d.vertex.PoseStack onCreateMatrixStack(com.mojang.blaze3d.vertex.PoseStack);
-  private void beforeEntitySubmission(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
-  private void afterEntityRender(net.minecraft.client.renderer.OutlineBufferSource, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Void>);
-  private void beforeDebugRender(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
-  private void beforeTranslucentRender(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
-  private void beforeDrawBlockOutline(net.minecraft.client.renderer.MultiBufferSource$BufferSource, com.mojang.blaze3d.vertex.PoseStack, boolean, net.minecraft.client.renderer.state.LevelRenderState, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
-  private void endMainRender(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
-  private void onReload(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
-}
-
-=== net.minecraft.client.Camera   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "Camera.java"
-public class net.minecraft.client.Camera implements net.minecraft.world.waypoints.TrackedWaypoint$Camera {
-  private static final float DEFAULT_CAMERA_DISTANCE;
-  private static final org.joml.Vector3f FORWARDS;
-  private static final org.joml.Vector3f UP;
-  private static final org.joml.Vector3f LEFT;
-  private boolean initialized;
-  private net.minecraft.world.level.Level level;
-  private net.minecraft.world.entity.Entity entity;
-  private net.minecraft.world.phys.Vec3 position;
-  private final net.minecraft.core.BlockPos$MutableBlockPos blockPosition;
-  private final org.joml.Vector3f forwards;
-  private final org.joml.Vector3f up;
-  private final org.joml.Vector3f left;
-  private float xRot;
-  private float yRot;
-  private final org.joml.Quaternionf rotation;
-  private boolean detached;
-  private float eyeHeight;
-  private float eyeHeightOld;
-  private float partialTickTime;
-  private final net.minecraft.world.attribute.EnvironmentAttributeProbe attributeProbe;
-  public net.minecraft.client.Camera();
-  public void setup(net.minecraft.world.level.Level, net.minecraft.world.entity.Entity, boolean, boolean, float);
-  public void tick();
-  private float getMaxZoom(float);
-  protected void move(float, float, float);
-  protected void setRotation(float, float);
-  protected void setPosition(double, double, double);
-  protected void setPosition(net.minecraft.world.phys.Vec3);
-  public net.minecraft.world.phys.Vec3 position();
-  public net.minecraft.core.BlockPos blockPosition();
-  public float xRot();
-  public float yRot();
-  public float yaw();
-  public org.joml.Quaternionf rotation();
-  public net.minecraft.world.entity.Entity entity();
-  public boolean isInitialized();
-  public boolean isDetached();
-  public net.minecraft.world.attribute.EnvironmentAttributeProbe attributeProbe();
-  public net.minecraft.client.Camera$NearPlane getNearPlane();
-  public net.minecraft.world.level.material.FogType getFluidInCamera();
-  public org.joml.Vector3fc forwardVector();
-  public org.joml.Vector3fc upVector();
-  public org.joml.Vector3fc leftVector();
-  public void reset();
-  public float getPartialTickTime();
+=== com.mojang.authlib.minecraft.client.MinecraftClient   [authlib-7.0.61.jar] ===
+Compiled from "MinecraftClient.java"
+public class com.mojang.authlib.minecraft.client.MinecraftClient {
+  private static final org.slf4j.Logger LOGGER;
+  public static final int CONNECT_TIMEOUT_MS;
+  public static final int READ_TIMEOUT_MS;
+  private final java.lang.String accessToken;
+  private final java.net.Proxy proxy;
+  private final com.mojang.authlib.minecraft.client.ObjectMapper objectMapper;
+  public com.mojang.authlib.minecraft.client.MinecraftClient(java.lang.String, java.net.Proxy);
+  public static com.mojang.authlib.minecraft.client.MinecraftClient unauthenticated(java.net.Proxy);
+  public <T> T get(java.net.URL, java.lang.Class<T>);
+  public <T> T post(java.net.URL, java.lang.Class<T>);
+  public <T> T post(java.net.URL, java.lang.Object, java.lang.Class<T>);
+  private <T> T readInputStream(java.net.URL, java.lang.Class<T>, java.net.HttpURLConnection);
+  private java.net.HttpURLConnection postInternal(java.net.URL, byte[]);
+  private java.net.HttpURLConnection createUrlConnection(java.net.URL);
   static {};
 }
 
-=== net.minecraft.client.CameraType   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "CameraType.java"
-public final class net.minecraft.client.CameraType extends java.lang.Enum<net.minecraft.client.CameraType> {
-  public static final net.minecraft.client.CameraType FIRST_PERSON;
-  public static final net.minecraft.client.CameraType THIRD_PERSON_BACK;
-  public static final net.minecraft.client.CameraType THIRD_PERSON_FRONT;
-  private static final net.minecraft.client.CameraType[] VALUES;
-  private final boolean firstPerson;
-  private final boolean mirrored;
-  private static final net.minecraft.client.CameraType[] $VALUES;
-  public static net.minecraft.client.CameraType[] values();
-  public static net.minecraft.client.CameraType valueOf(java.lang.String);
-  private net.minecraft.client.CameraType(boolean, boolean);
-  public boolean isFirstPerson();
-  public boolean isMirrored();
-  public net.minecraft.client.CameraType cycle();
-  private static net.minecraft.client.CameraType[] $values();
-  static {};
+=== net.fabricmc.fabric.api.client.rendering.v1.world.AbstractWorldRenderContext   [fabric-rendering-v1-4abd26ae-16.2.10+0290ad933e.jar] ===
+Compiled from "AbstractWorldRenderContext.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.world.AbstractWorldRenderContext {
+  public abstract net.minecraft.client.renderer.GameRenderer gameRenderer();
+  public abstract net.minecraft.client.renderer.LevelRenderer worldRenderer();
+  public abstract net.minecraft.client.renderer.state.LevelRenderState worldState();
 }
 
-=== net.minecraft.client.renderer.LevelRenderer   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "LevelRenderer.java"
-public class net.minecraft.client.renderer.LevelRenderer implements net.minecraft.server.packs.resources.ResourceManagerReloadListener,java.lang.AutoCloseable {
-  private static final net.minecraft.resources.Identifier TRANSPARENCY_POST_CHAIN_ID;
-  private static final net.minecraft.resources.Identifier ENTITY_OUTLINE_POST_CHAIN_ID;
-  public static final int SECTION_SIZE;
-  public static final int HALF_SECTION_SIZE;
-  public static final int NEARBY_SECTION_DISTANCE_IN_BLOCKS;
-  private static final int MINIMUM_TRANSPARENT_SORT_COUNT;
-  private static final float CHUNK_VISIBILITY_THRESHOLD;
-  private final net.minecraft.client.Minecraft minecraft;
-  private final net.minecraft.client.renderer.entity.EntityRenderDispatcher entityRenderDispatcher;
-  private final net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher blockEntityRenderDispatcher;
+=== net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderContext   [fabric-rendering-v1-4abd26ae-16.2.10+0290ad933e.jar] ===
+Compiled from "WorldRenderContext.java"
+public interface net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderContext extends net.fabricmc.fabric.api.client.rendering.v1.world.WorldTerrainRenderContext {
+  public abstract net.minecraft.client.renderer.SubmitNodeCollector commandQueue();
+  public abstract com.mojang.blaze3d.vertex.PoseStack matrices();
+  public abstract net.minecraft.client.renderer.MultiBufferSource consumers();
+}
+
+=== net.fabricmc.fabric.impl.client.rendering.world.WorldRenderContextImpl   [fabric-rendering-v1-4abd26ae-16.2.10+0290ad933e.jar] ===
+Compiled from "WorldRenderContextImpl.java"
+public final class net.fabricmc.fabric.impl.client.rendering.world.WorldRenderContextImpl implements net.fabricmc.fabric.api.client.rendering.v1.world.AbstractWorldRenderContext,net.fabricmc.fabric.api.client.rendering.v1.world.WorldTerrainRenderContext,net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderContext {
+  private net.minecraft.client.renderer.GameRenderer gameRenderer;
+  private net.minecraft.client.renderer.LevelRenderer worldRenderer;
+  private net.minecraft.client.renderer.state.LevelRenderState worldRenderState;
+  private net.minecraft.client.renderer.chunk.ChunkSectionsToRender sectionRenderState;
+  private net.minecraft.client.renderer.SubmitNodeCollector commandQueue;
+  private com.mojang.blaze3d.vertex.PoseStack matrixStack;
+  private net.minecraft.client.renderer.MultiBufferSource consumers;
+  public net.fabricmc.fabric.impl.client.rendering.world.WorldRenderContextImpl();
+  public void prepare(net.minecraft.client.renderer.GameRenderer, net.minecraft.client.renderer.LevelRenderer, net.minecraft.client.renderer.state.LevelRenderState, net.minecraft.client.renderer.chunk.ChunkSectionsToRender, net.minecraft.client.renderer.SubmitNodeCollector, net.minecraft.client.renderer.MultiBufferSource);
+  public void setMatrixStack(com.mojang.blaze3d.vertex.PoseStack);
+  public net.minecraft.client.renderer.GameRenderer gameRenderer();
+  public net.minecraft.client.renderer.LevelRenderer worldRenderer();
+  public net.minecraft.client.renderer.state.LevelRenderState worldState();
+  public net.minecraft.client.renderer.chunk.ChunkSectionsToRender sectionState();
+  public net.minecraft.client.renderer.SubmitNodeCollector commandQueue();
+  public com.mojang.blaze3d.vertex.PoseStack matrices();
+  public net.minecraft.client.renderer.MultiBufferSource consumers();
+}
+
+=== net.fabricmc.fabric.mixin.datagen.client.MinecraftMixin   [fabric-data-generation-api-v1-4abd26ae-23.5.0+88d7da613e.jar] ===
+Compiled from "MinecraftMixin.java"
+public class net.fabricmc.fabric.mixin.datagen.client.MinecraftMixin {
+  public net.fabricmc.fabric.mixin.datagen.client.MinecraftMixin();
+  private void main(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+}
+
+=== net.fabricmc.fabric.mixin.event.interaction.client.MinecraftMixin   [fabric-events-interaction-v0-4abd26ae-4.1.1+3b89ecf63e.jar] ===
+Compiled from "MinecraftMixin.java"
+public abstract class net.fabricmc.fabric.mixin.event.interaction.client.MinecraftMixin {
+  private boolean attackCancelled;
+  private net.minecraft.client.player.LocalPlayer player;
+  public net.minecraft.client.Options options;
+  public net.minecraft.client.multiplayer.MultiPlayerGameMode gameMode;
+  public net.minecraft.client.multiplayer.ClientLevel level;
+  public net.fabricmc.fabric.mixin.event.interaction.client.MinecraftMixin();
+  public abstract net.minecraft.client.multiplayer.ClientPacketListener getConnection();
+  private void injectUseEntityCallback(org.spongepowered.asm.mixin.injection.callback.CallbackInfo, net.minecraft.world.InteractionHand, net.minecraft.world.phys.EntityHitResult, net.minecraft.world.entity.Entity);
+  private void injectHandleInputEventsForPreAttackCallback(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+  private void injectDoAttackForCancelling(org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+  private void injectHandleBlockBreakingForCancelling(boolean, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+}
+
+=== net.fabricmc.fabric.mixin.event.lifecycle.client.MinecraftMixin   [fabric-lifecycle-events-v1-4abd26ae-2.6.15+4ebb5c083e.jar] ===
+Compiled from "MinecraftMixin.java"
+public abstract class net.fabricmc.fabric.mixin.event.lifecycle.client.MinecraftMixin {
+  public net.fabricmc.fabric.mixin.event.lifecycle.client.MinecraftMixin();
+  private void onStartTick(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+  private void onEndTick(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+  private void onStopping(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+  private void onStart(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+  private void afterClientWorldChange(net.minecraft.client.multiplayer.ClientLevel, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+}
+
+=== net.fabricmc.fabric.mixin.registry.sync.client.MinecraftMixin   [fabric-registry-sync-v0-4abd26ae-6.2.6+1718722b3e.jar] ===
+Compiled from "MinecraftMixin.java"
+public class net.fabricmc.fabric.mixin.registry.sync.client.MinecraftMixin {
+  private static org.slf4j.Logger LOGGER;
+  public net.fabricmc.fabric.mixin.registry.sync.client.MinecraftMixin();
+  public void disconnectAfter(net.minecraft.client.gui.screens.Screen, boolean, boolean, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+  private void afterModInit(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+  private static void unmap() throws net.fabricmc.fabric.impl.registry.sync.RemapException;
+}
+
+=== net.minecraft.client.Minecraft   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "Minecraft.java"
+public class net.minecraft.client.Minecraft extends net.minecraft.util.thread.ReentrantBlockableEventLoop<java.lang.Runnable> implements com.mojang.blaze3d.platform.WindowEventHandler {
+  static net.minecraft.client.Minecraft instance;
+  private static final org.slf4j.Logger LOGGER;
+  private static final int MAX_TICKS_PER_UPDATE;
+  public static final net.minecraft.resources.Identifier DEFAULT_FONT;
+  public static final net.minecraft.resources.Identifier UNIFORM_FONT;
+  public static final net.minecraft.resources.Identifier ALT_FONT;
+  private static final net.minecraft.resources.Identifier REGIONAL_COMPLIANCIES;
+  private static final java.util.concurrent.CompletableFuture<net.minecraft.util.Unit> RESOURCE_RELOAD_INITIAL_TASK;
+  private static final net.minecraft.network.chat.Component SOCIAL_INTERACTIONS_NOT_AVAILABLE;
+  private static final net.minecraft.network.chat.Component SAVING_LEVEL;
+  public static final java.lang.String UPDATE_DRIVERS_ADVICE;
+  private final long canary;
+  private final java.nio.file.Path resourcePackDirectory;
+  private final java.util.concurrent.CompletableFuture<com.mojang.authlib.yggdrasil.ProfileResult> profileFuture;
+  private final net.minecraft.client.renderer.texture.TextureManager textureManager;
+  private final net.minecraft.client.renderer.ShaderManager shaderManager;
+  private final com.mojang.datafixers.DataFixer fixerUpper;
+  private final net.minecraft.client.renderer.VirtualScreen virtualScreen;
+  private final com.mojang.blaze3d.platform.Window window;
+  private final net.minecraft.client.DeltaTracker$Timer deltaTracker;
   private final net.minecraft.client.renderer.RenderBuffers renderBuffers;
-  private net.minecraft.client.renderer.SkyRenderer skyRenderer;
-  private final net.minecraft.client.renderer.CloudRenderer cloudRenderer;
-  private final net.minecraft.client.renderer.WorldBorderRenderer worldBorderRenderer;
-  private final net.minecraft.client.renderer.WeatherEffectRenderer weatherEffectRenderer;
-  private final net.minecraft.client.renderer.state.ParticlesRenderState particlesRenderState;
-  public final net.minecraft.client.renderer.debug.DebugRenderer debugRenderer;
-  public final net.minecraft.client.renderer.debug.GameTestBlockHighlightRenderer gameTestBlockHighlightRenderer;
-  private net.minecraft.client.multiplayer.ClientLevel level;
-  private final net.minecraft.client.renderer.SectionOcclusionGraph sectionOcclusionGraph;
-  private final it.unimi.dsi.fastutil.objects.ObjectArrayList<net.minecraft.client.renderer.chunk.SectionRenderDispatcher$RenderSection> visibleSections;
-  private final it.unimi.dsi.fastutil.objects.ObjectArrayList<net.minecraft.client.renderer.chunk.SectionRenderDispatcher$RenderSection> nearbyVisibleSections;
-  private net.minecraft.client.renderer.ViewArea viewArea;
-  private int ticks;
-  private final it.unimi.dsi.fastutil.ints.Int2ObjectMap<net.minecraft.server.level.BlockDestructionProgress> destroyingBlocks;
-  private final it.unimi.dsi.fastutil.longs.Long2ObjectMap<java.util.SortedSet<net.minecraft.server.level.BlockDestructionProgress>> destructionProgress;
-  private com.mojang.blaze3d.pipeline.RenderTarget entityOutlineTarget;
-  private final net.minecraft.client.renderer.LevelTargetBundle targets;
-  private int lastCameraSectionX;
-  private int lastCameraSectionY;
-  private int lastCameraSectionZ;
-  private double prevCamX;
-  private double prevCamY;
-  private double prevCamZ;
-  private double prevCamRotX;
-  private double prevCamRotY;
-  private net.minecraft.client.renderer.chunk.SectionRenderDispatcher sectionRenderDispatcher;
-  private int lastViewDistance;
-  private boolean captureFrustum;
-  private net.minecraft.client.renderer.culling.Frustum capturedFrustum;
-  private net.minecraft.core.BlockPos lastTranslucentSortBlockPos;
-  private int translucencyResortIterationIndex;
-  private final net.minecraft.client.renderer.state.LevelRenderState levelRenderState;
-  private final net.minecraft.client.renderer.SubmitNodeStorage submitNodeStorage;
-  private final net.minecraft.client.renderer.feature.FeatureRenderDispatcher featureRenderDispatcher;
-  private com.mojang.blaze3d.textures.GpuSampler chunkLayerSampler;
-  private final net.minecraft.gizmos.SimpleGizmoCollector collectedGizmos;
-  private net.minecraft.client.renderer.LevelRenderer$FinalizedGizmos finalizedGizmos;
-  public net.minecraft.client.renderer.LevelRenderer(net.minecraft.client.Minecraft, net.minecraft.client.renderer.entity.EntityRenderDispatcher, net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher, net.minecraft.client.renderer.RenderBuffers, net.minecraft.client.renderer.state.LevelRenderState, net.minecraft.client.renderer.feature.FeatureRenderDispatcher);
+  public final net.minecraft.client.renderer.LevelRenderer levelRenderer;
+  private final net.minecraft.client.renderer.entity.EntityRenderDispatcher entityRenderDispatcher;
+  private final net.minecraft.client.renderer.item.ItemModelResolver itemModelResolver;
+  private final net.minecraft.client.renderer.entity.ItemRenderer itemRenderer;
+  private final net.minecraft.client.renderer.MapRenderer mapRenderer;
+  public final net.minecraft.client.particle.ParticleEngine particleEngine;
+  private final net.minecraft.client.particle.ParticleResources particleResources;
+  private final net.minecraft.client.User user;
+  public final net.minecraft.client.gui.Font font;
+  public final net.minecraft.client.gui.Font fontFilterFishy;
+  public final net.minecraft.client.renderer.GameRenderer gameRenderer;
+  public final net.minecraft.client.gui.Gui gui;
+  public final net.minecraft.client.Options options;
+  public final net.minecraft.client.gui.components.debug.DebugScreenEntryList debugEntries;
+  private final net.minecraft.client.HotbarManager hotbarManager;
+  public final net.minecraft.client.MouseHandler mouseHandler;
+  public final net.minecraft.client.KeyboardHandler keyboardHandler;
+  private net.minecraft.client.InputType lastInputType;
+  public final java.io.File gameDirectory;
+  private final java.lang.String launchedVersion;
+  private final java.lang.String versionType;
+  private final java.net.Proxy proxy;
+  private final boolean offlineDeveloperMode;
+  private final net.minecraft.world.level.storage.LevelStorageSource levelSource;
+  private final boolean demo;
+  private final boolean allowsMultiplayer;
+  private final boolean allowsChat;
+  private final net.minecraft.server.packs.resources.ReloadableResourceManager resourceManager;
+  private final net.minecraft.server.packs.VanillaPackResources vanillaPackResources;
+  private final net.minecraft.client.resources.server.DownloadedPackSource downloadedPackSource;
+  private final net.minecraft.server.packs.repository.PackRepository resourcePackRepository;
+  private final net.minecraft.client.resources.language.LanguageManager languageManager;
+  private final net.minecraft.client.color.block.BlockColors blockColors;
+  private final com.mojang.blaze3d.pipeline.RenderTarget mainRenderTarget;
+  private final com.mojang.blaze3d.TracyFrameCapture tracyFrameCapture;
+  private final net.minecraft.client.sounds.SoundManager soundManager;
+  private final net.minecraft.client.sounds.MusicManager musicManager;
+  private final net.minecraft.client.gui.font.FontManager fontManager;
+  private final net.minecraft.client.resources.SplashManager splashManager;
+  private final net.minecraft.client.renderer.GpuWarnlistManager gpuWarnlistManager;
+  private final net.minecraft.client.PeriodicNotificationManager regionalCompliancies;
+  private final com.mojang.authlib.minecraft.UserApiService userApiService;
+  private final java.util.concurrent.CompletableFuture<com.mojang.authlib.minecraft.UserApiService$UserProperties> userPropertiesFuture;
+  private final net.minecraft.client.resources.SkinManager skinManager;
+  private final net.minecraft.client.resources.model.AtlasManager atlasManager;
+  private final net.minecraft.client.resources.model.ModelManager modelManager;
+  private final net.minecraft.client.renderer.block.BlockRenderDispatcher blockRenderer;
+  private final net.minecraft.client.resources.MapTextureManager mapTextureManager;
+  private final net.minecraft.client.resources.WaypointStyleManager waypointStyles;
+  private final net.minecraft.client.gui.components.toasts.ToastManager toastManager;
+  private final net.minecraft.client.tutorial.Tutorial tutorial;
+  private final net.minecraft.client.gui.screens.social.PlayerSocialManager playerSocialManager;
+  private final net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher blockEntityRenderDispatcher;
+  private final net.minecraft.client.telemetry.ClientTelemetryManager telemetryManager;
+  private final net.minecraft.client.multiplayer.ProfileKeyPairManager profileKeyPairManager;
+  private final com.mojang.realmsclient.gui.RealmsDataFetcher realmsDataFetcher;
+  private final net.minecraft.client.quickplay.QuickPlayLog quickPlayLog;
+  private final net.minecraft.server.Services services;
+  private final net.minecraft.client.renderer.PlayerSkinRenderCache playerSkinRenderCache;
+  public net.minecraft.client.multiplayer.MultiPlayerGameMode gameMode;
+  public net.minecraft.client.multiplayer.ClientLevel level;
+  public net.minecraft.client.player.LocalPlayer player;
+  private net.minecraft.client.server.IntegratedServer singleplayerServer;
+  private net.minecraft.network.Connection pendingConnection;
+  private boolean isLocalServer;
+  private net.minecraft.world.entity.Entity cameraEntity;
+  public net.minecraft.world.entity.Entity crosshairPickEntity;
+  public net.minecraft.world.phys.HitResult hitResult;
+  private int rightClickDelay;
+  public int missTime;
+  private volatile boolean pause;
+  private long lastNanoTime;
+  private long lastTime;
+  private int frames;
+  public boolean noRender;
+  public net.minecraft.client.gui.screens.Screen screen;
+  private net.minecraft.client.gui.screens.Overlay overlay;
+  private boolean clientLevelTeardownInProgress;
+  java.lang.Thread gameThread;
+  private volatile boolean running;
+  private java.util.function.Supplier<net.minecraft.CrashReport> delayedCrash;
+  private static int fps;
+  private long frameTimeNs;
+  private final com.mojang.blaze3d.platform.FramerateLimitTracker framerateLimitTracker;
+  public boolean wireframe;
+  public boolean smartCull;
+  private boolean windowActive;
+  private java.util.concurrent.CompletableFuture<java.lang.Void> pendingReload;
+  private net.minecraft.client.gui.components.toasts.TutorialToast socialInteractionsToast;
+  private int fpsPieRenderTicks;
+  private final net.minecraft.util.profiling.ContinuousProfiler fpsPieProfiler;
+  private net.minecraft.util.profiling.metrics.profiling.MetricsRecorder metricsRecorder;
+  private final net.minecraft.client.ResourceLoadStateTracker reloadStateTracker;
+  private long savedCpuDuration;
+  private double gpuUtilization;
+  private com.mojang.blaze3d.systems.TimerQuery$FrameProfile currentFrameProfile;
+  private final net.minecraft.client.GameNarrator narrator;
+  private final net.minecraft.client.multiplayer.chat.ChatListener chatListener;
+  private net.minecraft.client.multiplayer.chat.report.ReportingContext reportingContext;
+  private final net.minecraft.client.CommandHistory commandHistory;
+  private final net.minecraft.world.level.validation.DirectoryValidator directoryValidator;
+  private boolean gameLoadFinished;
+  private final long clientStartTimeMs;
+  private long clientTickCount;
+  private final net.minecraft.network.PacketProcessor packetProcessor;
+  private final net.minecraft.gizmos.SimpleGizmoCollector perTickGizmos;
+  private java.util.List<net.minecraft.gizmos.SimpleGizmoCollector$GizmoInstance> drainedLatestTickGizmos;
+  public net.minecraft.client.Minecraft(net.minecraft.client.main.GameConfig);
+  public boolean hasShiftDown();
+  public boolean hasControlDown();
+  public boolean hasAltDown();
+  private void onResourceLoadFinished(net.minecraft.client.Minecraft$GameLoadCookie);
+  private void onGameLoadFinished(net.minecraft.client.Minecraft$GameLoadCookie);
+  public boolean isGameLoadFinished();
+  private java.lang.Runnable buildInitialScreens(net.minecraft.client.Minecraft$GameLoadCookie);
+  private boolean addInitialScreens(java.util.List<java.util.function.Function<java.lang.Runnable, net.minecraft.client.gui.screens.Screen>>);
+  private static boolean countryEqualsISO3(java.lang.Object);
+  public void updateTitle();
+  private java.lang.String createTitle();
+  private com.mojang.authlib.minecraft.UserApiService createUserApiService(com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService, net.minecraft.client.main.GameConfig);
+  public boolean isOfflineDeveloperMode();
+  public static net.minecraft.util.ModCheck checkModStatus();
+  private void rollbackResourcePacks(java.lang.Throwable, net.minecraft.client.Minecraft$GameLoadCookie);
+  public void clearResourcePacksOnError(java.lang.Throwable, net.minecraft.network.chat.Component, net.minecraft.client.Minecraft$GameLoadCookie);
+  private void abortResourcePackRecovery();
+  private void addResourcePackLoadFailToast(net.minecraft.network.chat.Component);
+  public void triggerResourcePackRecovery(java.lang.Exception);
+  public void run();
+  void updateFontOptions();
+  private void onFullscreenError(int, long);
+  public com.mojang.blaze3d.pipeline.RenderTarget getMainRenderTarget();
+  public java.lang.String getLaunchedVersion();
+  public java.lang.String getVersionType();
+  public void delayCrash(net.minecraft.CrashReport);
+  public void delayCrashRaw(net.minecraft.CrashReport);
+  private void handleDelayedCrash();
+  public void emergencySaveAndCrash(net.minecraft.CrashReport);
+  public static int saveReport(java.io.File, net.minecraft.CrashReport);
+  public static void crash(net.minecraft.client.Minecraft, java.io.File, net.minecraft.CrashReport);
+  public boolean isEnforceUnicode();
+  public java.util.concurrent.CompletableFuture<java.lang.Void> reloadResourcePacks();
+  private java.util.concurrent.CompletableFuture<java.lang.Void> reloadResourcePacks(boolean, net.minecraft.client.Minecraft$GameLoadCookie);
+  private void selfTest();
+  public net.minecraft.world.level.storage.LevelStorageSource getLevelSource();
+  public void openChatScreen(net.minecraft.client.gui.components.ChatComponent$ChatMethod);
+  public void setScreen(net.minecraft.client.gui.screens.Screen);
+  public void setOverlay(net.minecraft.client.gui.screens.Overlay);
+  public void destroy();
   public void close();
-  public void onResourceManagerReload(net.minecraft.server.packs.resources.ResourceManager);
-  public void initOutline();
-  private net.minecraft.client.renderer.PostChain getTransparencyChain();
-  public void doEntityOutline();
-  protected boolean shouldShowEntityOutlines();
+  private void runTick(boolean);
+  private net.minecraft.util.profiling.ProfilerFiller constructProfiler(boolean, net.minecraft.util.profiling.SingleTickProfiler);
+  private void finishProfilers(boolean, net.minecraft.util.profiling.SingleTickProfiler);
+  public void resizeDisplay();
+  public void cursorEntered();
+  public int getFps();
+  public long getFrameTimeNs();
+  private void emergencySave();
+  public boolean debugClientMetricsStart(java.util.function.Consumer<net.minecraft.network.chat.Component>);
+  private void debugClientMetricsStop();
+  private void debugClientMetricsCancel();
+  private java.nio.file.Path archiveProfilingReport(net.minecraft.SystemReport, java.util.List<java.nio.file.Path>);
+  public void stop();
+  public boolean isRunning();
+  public void pauseGame(boolean);
+  private void continueAttack(boolean);
+  private boolean startAttack();
+  private void startUseItem();
+  public net.minecraft.client.sounds.MusicManager getMusicManager();
+  public void tick();
+  private boolean isLevelRunningNormally();
+  private boolean isMultiplayerServer();
+  private void handleKeybinds();
+  private java.util.Optional<net.minecraft.core.Holder<net.minecraft.server.dialog.Dialog>> getQuickActionsDialog();
+  public net.minecraft.client.telemetry.ClientTelemetryManager getTelemetryManager();
+  public double getGpuUtilization();
+  public net.minecraft.client.multiplayer.ProfileKeyPairManager getProfileKeyPairManager();
+  public net.minecraft.client.gui.screens.worldselection.WorldOpenFlows createWorldOpenFlows();
+  public void doWorldLoad(net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess, net.minecraft.server.packs.repository.PackRepository, net.minecraft.server.WorldStem, boolean);
   public void setLevel(net.minecraft.client.multiplayer.ClientLevel);
-  private void clearVisibleSections();
-  public void allChanged();
-  public void resize(int, int);
-  public java.lang.String getSectionStatistics();
-  public net.minecraft.client.renderer.chunk.SectionRenderDispatcher getSectionRenderDispatcher();
-  public double getTotalSections();
-  public double getLastViewDistance();
-  public int countRenderedSections();
-  public void resetSampler();
-  public java.lang.String getEntityStatistics();
-  private void cullTerrain(net.minecraft.client.Camera, net.minecraft.client.renderer.culling.Frustum, boolean);
-  public static net.minecraft.client.renderer.culling.Frustum offsetFrustum(net.minecraft.client.renderer.culling.Frustum);
-  private void applyFrustum(net.minecraft.client.renderer.culling.Frustum);
-  public void addRecentlyCompiledSection(net.minecraft.client.renderer.chunk.SectionRenderDispatcher$RenderSection);
-  private net.minecraft.client.renderer.culling.Frustum prepareCullFrustum(org.joml.Matrix4f, org.joml.Matrix4f, net.minecraft.world.phys.Vec3);
-  public void renderLevel(com.mojang.blaze3d.resource.GraphicsResourceAllocator, net.minecraft.client.DeltaTracker, boolean, net.minecraft.client.Camera, org.joml.Matrix4f, org.joml.Matrix4f, org.joml.Matrix4f, com.mojang.blaze3d.buffers.GpuBufferSlice, org.joml.Vector4f, boolean);
-  private void addMainPass(com.mojang.blaze3d.framegraph.FrameGraphBuilder, net.minecraft.client.renderer.culling.Frustum, org.joml.Matrix4f, com.mojang.blaze3d.buffers.GpuBufferSlice, boolean, net.minecraft.client.renderer.state.LevelRenderState, net.minecraft.client.DeltaTracker, net.minecraft.util.profiling.ProfilerFiller);
-  private void addParticlesPass(com.mojang.blaze3d.framegraph.FrameGraphBuilder, com.mojang.blaze3d.buffers.GpuBufferSlice);
-  private void addCloudsPass(com.mojang.blaze3d.framegraph.FrameGraphBuilder, net.minecraft.client.CloudStatus, net.minecraft.world.phys.Vec3, long, float, int, float);
-  private void addWeatherPass(com.mojang.blaze3d.framegraph.FrameGraphBuilder, com.mojang.blaze3d.buffers.GpuBufferSlice);
-  private void addLateDebugPass(com.mojang.blaze3d.framegraph.FrameGraphBuilder, net.minecraft.client.renderer.state.CameraRenderState, com.mojang.blaze3d.buffers.GpuBufferSlice, org.joml.Matrix4f);
-  private void extractVisibleEntities(net.minecraft.client.Camera, net.minecraft.client.renderer.culling.Frustum, net.minecraft.client.DeltaTracker, net.minecraft.client.renderer.state.LevelRenderState);
-  private void submitEntities(com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.state.LevelRenderState, net.minecraft.client.renderer.SubmitNodeCollector);
-  private void extractVisibleBlockEntities(net.minecraft.client.Camera, float, net.minecraft.client.renderer.state.LevelRenderState);
-  private void submitBlockEntities(com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.state.LevelRenderState, net.minecraft.client.renderer.SubmitNodeStorage);
-  private void extractBlockDestroyAnimation(net.minecraft.client.Camera, net.minecraft.client.renderer.state.LevelRenderState);
-  private void renderBlockDestroyAnimation(com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.MultiBufferSource$BufferSource, net.minecraft.client.renderer.state.LevelRenderState);
-  private void extractBlockOutline(net.minecraft.client.Camera, net.minecraft.client.renderer.state.LevelRenderState);
-  private void renderBlockOutline(net.minecraft.client.renderer.MultiBufferSource$BufferSource, com.mojang.blaze3d.vertex.PoseStack, boolean, net.minecraft.client.renderer.state.LevelRenderState);
-  private void checkPoseStack(com.mojang.blaze3d.vertex.PoseStack);
-  private net.minecraft.client.renderer.entity.state.EntityRenderState extractEntity(net.minecraft.world.entity.Entity, float);
-  private void scheduleTranslucentSectionResort(net.minecraft.world.phys.Vec3);
-  private void scheduleResort(net.minecraft.client.renderer.chunk.SectionRenderDispatcher$RenderSection, net.minecraft.client.renderer.chunk.TranslucencyPointOfView, net.minecraft.world.phys.Vec3, boolean, boolean);
-  private net.minecraft.client.renderer.chunk.ChunkSectionsToRender prepareChunkRenders(org.joml.Matrix4fc, double, double, double);
-  public void endFrame();
-  public void captureFrustum();
-  public void killFrustum();
-  public void tick(net.minecraft.client.Camera);
-  private void removeBlockBreakingProgress();
-  private void removeProgress(net.minecraft.server.level.BlockDestructionProgress);
-  private void addSkyPass(com.mojang.blaze3d.framegraph.FrameGraphBuilder, net.minecraft.client.Camera, com.mojang.blaze3d.buffers.GpuBufferSlice);
-  private boolean doesMobEffectBlockSky(net.minecraft.client.Camera);
-  private void compileSections(net.minecraft.client.Camera);
-  private void renderHitOutline(com.mojang.blaze3d.vertex.PoseStack, com.mojang.blaze3d.vertex.VertexConsumer, double, double, double, net.minecraft.client.renderer.state.BlockOutlineRenderState, int, float);
-  public void blockChanged(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState, int);
-  private void setBlockDirty(net.minecraft.core.BlockPos, boolean);
-  public void setBlocksDirty(int, int, int, int, int, int);
-  public void setBlockDirty(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState);
-  public void setSectionDirtyWithNeighbors(int, int, int);
-  public void setSectionRangeDirty(int, int, int, int, int, int);
-  public void setSectionDirty(int, int, int);
-  private void setSectionDirty(int, int, int, boolean);
-  public void onSectionBecomingNonEmpty(long);
-  public void destroyBlockProgress(int, net.minecraft.core.BlockPos, int);
-  public boolean hasRenderedAllSections();
-  public void onChunkReadyToRender(net.minecraft.world.level.ChunkPos);
-  public void needsUpdate();
-  public static int getLightColor(net.minecraft.world.level.BlockAndTintGetter, net.minecraft.core.BlockPos);
-  public static int getLightColor(net.minecraft.client.renderer.LevelRenderer$BrightnessGetter, net.minecraft.world.level.BlockAndTintGetter, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos);
-  public boolean isSectionCompiledAndVisible(net.minecraft.core.BlockPos);
-  public com.mojang.blaze3d.pipeline.RenderTarget entityOutlineTarget();
-  public com.mojang.blaze3d.pipeline.RenderTarget getTranslucentTarget();
-  public com.mojang.blaze3d.pipeline.RenderTarget getItemEntityTarget();
-  public com.mojang.blaze3d.pipeline.RenderTarget getParticlesTarget();
-  public com.mojang.blaze3d.pipeline.RenderTarget getWeatherTarget();
-  public com.mojang.blaze3d.pipeline.RenderTarget getCloudsTarget();
-  public it.unimi.dsi.fastutil.objects.ObjectArrayList<net.minecraft.client.renderer.chunk.SectionRenderDispatcher$RenderSection> getVisibleSections();
-  public net.minecraft.client.renderer.SectionOcclusionGraph getSectionOcclusionGraph();
-  public net.minecraft.client.renderer.culling.Frustum getCapturedFrustum();
-  public net.minecraft.client.renderer.CloudRenderer getCloudRenderer();
-  public net.minecraft.gizmos.Gizmos$TemporaryCollection collectPerFrameGizmos();
-  private void finalizeGizmoCollection();
-  private static java.util.SortedSet method_22988(long);
-  private static void method_62215(com.mojang.blaze3d.buffers.GpuBufferSlice, net.minecraft.client.renderer.state.SkyRenderState, net.minecraft.client.renderer.SkyRenderer);
-  private static void method_72156(int, com.mojang.blaze3d.buffers.GpuBufferSlice[], com.mojang.blaze3d.systems.RenderPass$UniformUploader);
-  private void method_75413(com.mojang.blaze3d.buffers.GpuBufferSlice, com.mojang.blaze3d.resource.ResourceHandle, net.minecraft.client.renderer.state.CameraRenderState, org.joml.Matrix4f);
-  private void method_62216(com.mojang.blaze3d.buffers.GpuBufferSlice, int, float);
-  private void method_62205(int, net.minecraft.client.CloudStatus, float, net.minecraft.world.phys.Vec3, long, float);
-  private void method_62213(com.mojang.blaze3d.buffers.GpuBufferSlice, com.mojang.blaze3d.resource.ResourceHandle, com.mojang.blaze3d.resource.ResourceHandle);
-  private void method_62214(com.mojang.blaze3d.buffers.GpuBufferSlice, net.minecraft.client.renderer.state.LevelRenderState, net.minecraft.util.profiling.ProfilerFiller, org.joml.Matrix4f, com.mojang.blaze3d.resource.ResourceHandle, com.mojang.blaze3d.resource.ResourceHandle, boolean, com.mojang.blaze3d.resource.ResourceHandle, com.mojang.blaze3d.resource.ResourceHandle);
-  private void method_62218(org.joml.Vector4f);
+  public void disconnectFromWorld(net.minecraft.network.chat.Component);
+  public void disconnectWithSavingScreen();
+  public void disconnectWithProgressScreen();
+  public void disconnectWithProgressScreen(boolean);
+  public void disconnect(net.minecraft.client.gui.screens.Screen, boolean);
+  public void disconnect(net.minecraft.client.gui.screens.Screen, boolean, boolean);
+  public void clearDownloadedResourcePacks();
+  public void clearClientLevel(net.minecraft.client.gui.screens.Screen);
+  public void setScreenAndShow(net.minecraft.client.gui.screens.Screen);
+  private void updateLevelInEngines(net.minecraft.client.multiplayer.ClientLevel);
+  private void updateLevelInEngines(net.minecraft.client.multiplayer.ClientLevel, boolean);
+  private com.mojang.authlib.minecraft.UserApiService$UserProperties userProperties();
+  public boolean telemetryOptInExtra();
+  public boolean extraTelemetryAvailable();
+  public boolean allowsTelemetry();
+  public boolean allowsMultiplayer();
+  public boolean allowsRealms();
+  public com.mojang.authlib.minecraft.BanDetails multiplayerBan();
+  public boolean isNameBanned();
+  public boolean isBlocked(java.util.UUID);
+  public net.minecraft.client.Minecraft$ChatStatus getChatStatus();
+  public final boolean isDemo();
+  public final boolean canSwitchGameMode();
+  public net.minecraft.client.multiplayer.ClientPacketListener getConnection();
+  public static boolean renderNames();
+  public static boolean useShaderTransparency();
+  public static boolean useAmbientOcclusion();
+  private void pickBlock();
+  public net.minecraft.CrashReport fillReport(net.minecraft.CrashReport);
+  public static void fillReport(net.minecraft.client.Minecraft, net.minecraft.client.resources.language.LanguageManager, java.lang.String, net.minecraft.client.Options, net.minecraft.CrashReport);
+  private static java.lang.String formatSeconds(double);
+  private void fillUptime(net.minecraft.CrashReportCategory);
+  private static net.minecraft.SystemReport fillSystemReport(net.minecraft.SystemReport, net.minecraft.client.Minecraft, net.minecraft.client.resources.language.LanguageManager, java.lang.String, net.minecraft.client.Options);
+  public static net.minecraft.client.Minecraft getInstance();
+  public java.util.concurrent.CompletableFuture<java.lang.Void> delayTextureReload();
+  public void updateReportEnvironment(net.minecraft.client.multiplayer.chat.report.ReportEnvironment);
+  public net.minecraft.client.multiplayer.ServerData getCurrentServer();
+  public boolean isLocalServer();
+  public boolean hasSingleplayerServer();
+  public net.minecraft.client.server.IntegratedServer getSingleplayerServer();
+  public boolean isSingleplayer();
+  public boolean isLocalPlayer(java.util.UUID);
+  public net.minecraft.client.User getUser();
+  public com.mojang.authlib.GameProfile getGameProfile();
+  public java.net.Proxy getProxy();
+  public net.minecraft.client.renderer.texture.TextureManager getTextureManager();
+  public net.minecraft.client.renderer.ShaderManager getShaderManager();
+  public net.minecraft.server.packs.resources.ResourceManager getResourceManager();
+  public net.minecraft.server.packs.repository.PackRepository getResourcePackRepository();
+  public net.minecraft.server.packs.VanillaPackResources getVanillaPackResources();
+  public net.minecraft.client.resources.server.DownloadedPackSource getDownloadedPackSource();
+  public java.nio.file.Path getResourcePackDirectory();
+  public net.minecraft.client.resources.language.LanguageManager getLanguageManager();
+  public boolean isPaused();
+  public net.minecraft.client.renderer.GpuWarnlistManager getGpuWarnlistManager();
+  public net.minecraft.client.sounds.SoundManager getSoundManager();
+  public net.minecraft.sounds.Music getSituationalMusic();
+  public float getMusicVolume();
+  public net.minecraft.server.Services services();
+  public net.minecraft.client.resources.SkinManager getSkinManager();
+  public net.minecraft.world.entity.Entity getCameraEntity();
+  public void setCameraEntity(net.minecraft.world.entity.Entity);
+  public boolean shouldEntityAppearGlowing(net.minecraft.world.entity.Entity);
+  protected java.lang.Thread getRunningThread();
+  public java.lang.Runnable wrapRunnable(java.lang.Runnable);
+  protected boolean shouldRun(java.lang.Runnable);
+  public net.minecraft.client.renderer.block.BlockRenderDispatcher getBlockRenderer();
+  public net.minecraft.client.renderer.entity.EntityRenderDispatcher getEntityRenderDispatcher();
+  public net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher getBlockEntityRenderDispatcher();
+  public net.minecraft.client.renderer.entity.ItemRenderer getItemRenderer();
+  public net.minecraft.client.renderer.MapRenderer getMapRenderer();
+  public com.mojang.datafixers.DataFixer getFixerUpper();
+  public net.minecraft.client.DeltaTracker getDeltaTracker();
+  public net.minecraft.client.color.block.BlockColors getBlockColors();
+  public boolean showOnlyReducedInfo();
+  public net.minecraft.client.gui.components.toasts.ToastManager getToastManager();
+  public net.minecraft.client.tutorial.Tutorial getTutorial();
+  public boolean isWindowActive();
+  public net.minecraft.client.HotbarManager getHotbarManager();
+  public net.minecraft.client.resources.model.ModelManager getModelManager();
+  public net.minecraft.client.resources.model.AtlasManager getAtlasManager();
+  public net.minecraft.client.resources.MapTextureManager getMapTextureManager();
+  public net.minecraft.client.resources.WaypointStyleManager getWaypointStyles();
+  public void setWindowActive(boolean);
+  public net.minecraft.network.chat.Component grabPanoramixScreenshot(java.io.File);
+  public net.minecraft.client.resources.SplashManager getSplashManager();
+  public net.minecraft.client.gui.screens.Overlay getOverlay();
+  public net.minecraft.client.gui.screens.social.PlayerSocialManager getPlayerSocialManager();
+  public com.mojang.blaze3d.platform.Window getWindow();
+  public com.mojang.blaze3d.platform.FramerateLimitTracker getFramerateLimitTracker();
+  public net.minecraft.client.gui.components.DebugScreenOverlay getDebugOverlay();
+  public net.minecraft.client.renderer.RenderBuffers renderBuffers();
+  public void updateMaxMipLevel(int);
+  public net.minecraft.client.model.geom.EntityModelSet getEntityModels();
+  public boolean isTextFilteringEnabled();
+  public void prepareForMultiplayer();
+  public net.minecraft.client.InputType getLastInputType();
+  public void setLastInputType(net.minecraft.client.InputType);
+  public net.minecraft.client.GameNarrator getNarrator();
+  public net.minecraft.client.multiplayer.chat.ChatListener getChatListener();
+  public net.minecraft.client.multiplayer.chat.report.ReportingContext getReportingContext();
+  public com.mojang.realmsclient.gui.RealmsDataFetcher realmsDataFetcher();
+  public net.minecraft.client.quickplay.QuickPlayLog quickPlayLog();
+  public net.minecraft.client.CommandHistory commandHistory();
+  public net.minecraft.world.level.validation.DirectoryValidator directoryValidator();
+  public net.minecraft.client.renderer.PlayerSkinRenderCache playerSkinRenderCache();
+  private float getTickTargetMillis(float);
+  public net.minecraft.client.renderer.item.ItemModelResolver getItemModelResolver();
+  public boolean canInterruptScreen();
+  public static java.lang.String getLauncherBrand();
+  public net.minecraft.network.PacketProcessor packetProcessor();
+  public net.minecraft.gizmos.Gizmos$TemporaryCollection collectPerTickGizmos();
+  public java.util.Collection<net.minecraft.gizmos.SimpleGizmoCollector$GizmoInstance> getPerTickGizmos();
+  private static net.minecraft.network.chat.Style method_35704(java.io.File, net.minecraft.network.chat.Style);
+  private static void method_35701(net.minecraft.network.chat.Component);
+  private static java.util.concurrent.CompletionStage method_18507(java.util.concurrent.CompletableFuture);
+  private static java.lang.String method_60864();
+  private static java.lang.String method_37288();
+  private static java.lang.String method_37280(net.minecraft.client.resources.language.LanguageManager);
+  private static java.lang.String method_37279(net.minecraft.client.Minecraft);
+  private static java.lang.String method_53905(net.minecraft.client.Minecraft);
+  private static java.lang.String method_37287();
+  private static java.lang.String method_37289();
+  private static java.lang.String method_68671();
+  private static java.lang.String method_37278(net.minecraft.client.Minecraft);
+  private static java.lang.String method_37292(java.lang.String);
+  private java.lang.String method_54118() throws java.lang.Exception;
+  private static java.lang.String method_54119() throws java.lang.Exception;
+  private java.lang.String method_54120() throws java.lang.Exception;
+  private static java.lang.String method_54121() throws java.lang.Exception;
+  private static void method_1510(net.minecraft.network.chat.Component);
+  private static boolean method_72702(long);
+  private static java.lang.String method_41732(net.minecraft.server.WorldStem) throws java.lang.Exception;
+  private net.minecraft.client.server.IntegratedServer method_29603(net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess, net.minecraft.server.packs.repository.PackRepository, net.minecraft.server.WorldStem, net.minecraft.server.level.progress.LevelLoadListener, java.lang.Thread);
+  private static java.util.Optional method_72097(net.minecraft.core.Registry, net.minecraft.core.HolderSet$Named);
+  private void method_72096(net.minecraft.core.Holder);
+  private static boolean method_1491();
+  private void method_34746(java.util.function.Consumer, net.minecraft.util.profiling.ProfileResults);
+  private static void method_37277(net.minecraft.util.profiling.ProfileResults);
+  private static void method_37284(java.util.function.Consumer, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture);
+  private static void method_37283(java.util.function.Consumer, java.nio.file.Path);
+  private void method_37276(net.minecraft.SystemReport, java.util.function.Consumer, java.util.List);
+  private void method_37291(java.util.function.Consumer, java.nio.file.Path);
+  private static void method_37285(java.util.function.Consumer, net.minecraft.network.chat.Component);
+  private static net.minecraft.network.chat.Style method_37281(java.nio.file.Path, net.minecraft.network.chat.Style);
+  private void method_37290(java.util.function.Consumer, net.minecraft.util.profiling.ProfileResults);
+  private static void method_37282(java.util.function.Consumer, double, int);
+  private static void method_18508(java.util.concurrent.CompletableFuture);
+  private void method_44352(boolean);
+  private static void method_64035(net.minecraft.core.Holder$Reference);
+  private void method_24228(boolean, net.minecraft.client.Minecraft$GameLoadCookie, java.util.concurrent.CompletableFuture, java.util.Optional);
+  private void method_29339(java.util.concurrent.CompletableFuture, net.minecraft.client.Minecraft$GameLoadCookie);
+  private void method_49293(boolean, net.minecraft.client.Minecraft$GameLoadCookie, java.lang.Throwable);
+  private static net.minecraft.CrashReport method_43588(net.minecraft.CrashReport);
+  private net.minecraft.CrashReport method_43589(net.minecraft.CrashReport);
+  private void method_24229(net.minecraft.network.chat.Component);
+  private static net.minecraft.client.gui.screens.Screen method_53519(com.mojang.authlib.GameProfile, java.lang.Runnable);
+  private static net.minecraft.client.gui.screens.Screen method_53520(com.mojang.authlib.minecraft.BanDetails, java.lang.Runnable);
+  private static void method_53524(java.lang.Runnable, boolean);
+  private net.minecraft.client.gui.screens.Screen method_53523(java.lang.Runnable);
+  private void method_53529(net.minecraft.client.gui.screens.Screen);
+  private void method_53528(net.minecraft.client.Minecraft$GameLoadCookie, boolean);
+  private int method_16010();
+  private void method_53522(net.minecraft.client.Minecraft$GameLoadCookie, java.util.Optional);
+  private void method_29338(net.minecraft.client.Minecraft$GameLoadCookie);
+  private void method_53521(net.minecraft.client.Minecraft$GameLoadCookie, java.lang.Throwable);
+  private void method_60320(net.minecraft.client.resources.language.ClientLanguage);
+  private java.lang.String method_68467(net.minecraft.resources.Identifier, com.mojang.blaze3d.shaders.ShaderType);
+  private com.mojang.authlib.minecraft.UserApiService$UserProperties method_55608();
+  private com.mojang.authlib.yggdrasil.ProfileResult method_53464();
   static {};
-}
-
-=== net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "DrawableGizmoPrimitives.java"
-public class net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives implements net.minecraft.gizmos.GizmoPrimitives {
-  private final net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives$Group opaque;
-  private final net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives$Group translucent;
-  private boolean isEmpty;
-  public net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives();
-  private net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives$Group getGroup(int);
-  public void addPoint(net.minecraft.world.phys.Vec3, int, float);
-  public void addLine(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, int, float);
-  public void addTriangleFan(net.minecraft.world.phys.Vec3[], int);
-  public void addQuad(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, int);
-  public void addText(net.minecraft.world.phys.Vec3, java.lang.String, net.minecraft.gizmos.TextGizmo$Style);
-  public void render(com.mojang.blaze3d.vertex.PoseStack, net.minecraft.client.renderer.MultiBufferSource, net.minecraft.client.renderer.state.CameraRenderState, org.joml.Matrix4f);
-  public boolean isEmpty();
-}
-
-=== net.minecraft.client.renderer.gizmos.package-info   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "package-info.java"
-interface net.minecraft.client.renderer.gizmos.package-info {
-}
-
-=== net.minecraft.gizmos.ArrowGizmo   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "ArrowGizmo.java"
-public final class net.minecraft.gizmos.ArrowGizmo extends java.lang.Record implements net.minecraft.gizmos.Gizmo {
-  private final net.minecraft.world.phys.Vec3 start;
-  private final net.minecraft.world.phys.Vec3 end;
-  private final int color;
-  private final float width;
-  public static final float DEFAULT_WIDTH;
-  public net.minecraft.gizmos.ArrowGizmo(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, int, float);
-  public void emit(net.minecraft.gizmos.GizmoPrimitives, float);
-  public final java.lang.String toString();
-  public final int hashCode();
-  public final boolean equals(java.lang.Object);
-  public net.minecraft.world.phys.Vec3 start();
-  public net.minecraft.world.phys.Vec3 end();
-  public int color();
-  public float width();
-}
-
-=== net.minecraft.gizmos.CircleGizmo   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "CircleGizmo.java"
-public final class net.minecraft.gizmos.CircleGizmo extends java.lang.Record implements net.minecraft.gizmos.Gizmo {
-  private final net.minecraft.world.phys.Vec3 pos;
-  private final float radius;
-  private final net.minecraft.gizmos.GizmoStyle style;
-  private static final int CIRCLE_VERTICES;
-  private static final float SEGMENT_SIZE_RADIANS;
-  public net.minecraft.gizmos.CircleGizmo(net.minecraft.world.phys.Vec3, float, net.minecraft.gizmos.GizmoStyle);
-  public void emit(net.minecraft.gizmos.GizmoPrimitives, float);
-  public final java.lang.String toString();
-  public final int hashCode();
-  public final boolean equals(java.lang.Object);
-  public net.minecraft.world.phys.Vec3 pos();
-  public float radius();
-  public net.minecraft.gizmos.GizmoStyle style();
-}
-
-=== net.minecraft.gizmos.CuboidGizmo   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "CuboidGizmo.java"
-public final class net.minecraft.gizmos.CuboidGizmo extends java.lang.Record implements net.minecraft.gizmos.Gizmo {
-  private final net.minecraft.world.phys.AABB aabb;
-  private final net.minecraft.gizmos.GizmoStyle style;
-  private final boolean coloredCornerStroke;
-  public net.minecraft.gizmos.CuboidGizmo(net.minecraft.world.phys.AABB, net.minecraft.gizmos.GizmoStyle, boolean);
-  public void emit(net.minecraft.gizmos.GizmoPrimitives, float);
-  public final java.lang.String toString();
-  public final int hashCode();
-  public final boolean equals(java.lang.Object);
-  public net.minecraft.world.phys.AABB aabb();
-  public net.minecraft.gizmos.GizmoStyle style();
-  public boolean coloredCornerStroke();
-}
-
-=== net.minecraft.gizmos.Gizmo   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "Gizmo.java"
-public interface net.minecraft.gizmos.Gizmo {
-  public abstract void emit(net.minecraft.gizmos.GizmoPrimitives, float);
 }
 
 === net.minecraft.gizmos.GizmoCollector   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
@@ -464,129 +620,6 @@ public interface net.minecraft.gizmos.GizmoCollector {
   public abstract net.minecraft.gizmos.GizmoProperties add(net.minecraft.gizmos.Gizmo);
   private static net.minecraft.gizmos.GizmoProperties method_76038(net.minecraft.gizmos.Gizmo);
   static {};
-}
-
-=== net.minecraft.gizmos.GizmoPrimitives   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "GizmoPrimitives.java"
-public interface net.minecraft.gizmos.GizmoPrimitives {
-  public abstract void addPoint(net.minecraft.world.phys.Vec3, int, float);
-  public abstract void addLine(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, int, float);
-  public abstract void addTriangleFan(net.minecraft.world.phys.Vec3[], int);
-  public abstract void addQuad(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, int);
-  public abstract void addText(net.minecraft.world.phys.Vec3, java.lang.String, net.minecraft.gizmos.TextGizmo$Style);
-}
-
-=== net.minecraft.gizmos.GizmoProperties   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "GizmoProperties.java"
-public interface net.minecraft.gizmos.GizmoProperties {
-  public abstract net.minecraft.gizmos.GizmoProperties setAlwaysOnTop();
-  public abstract net.minecraft.gizmos.GizmoProperties persistForMillis(int);
-  public abstract net.minecraft.gizmos.GizmoProperties fadeOut();
-}
-
-=== net.minecraft.gizmos.GizmoStyle   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "GizmoStyle.java"
-public final class net.minecraft.gizmos.GizmoStyle extends java.lang.Record {
-  private final int stroke;
-  private final float strokeWidth;
-  private final int fill;
-  private static final float DEFAULT_WIDTH;
-  public net.minecraft.gizmos.GizmoStyle(int, float, int);
-  public static net.minecraft.gizmos.GizmoStyle stroke(int);
-  public static net.minecraft.gizmos.GizmoStyle stroke(int, float);
-  public static net.minecraft.gizmos.GizmoStyle fill(int);
-  public static net.minecraft.gizmos.GizmoStyle strokeAndFill(int, float, int);
-  public boolean hasFill();
-  public boolean hasStroke();
-  public int multipliedStroke(float);
-  public int multipliedFill(float);
-  public final java.lang.String toString();
-  public final int hashCode();
-  public final boolean equals(java.lang.Object);
-  public int stroke();
-  public float strokeWidth();
-  public int fill();
-}
-
-=== net.minecraft.gizmos.Gizmos   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "Gizmos.java"
-public class net.minecraft.gizmos.Gizmos {
-  static final java.lang.ThreadLocal<net.minecraft.gizmos.GizmoCollector> collector;
-  private net.minecraft.gizmos.Gizmos();
-  public static net.minecraft.gizmos.Gizmos$TemporaryCollection withCollector(net.minecraft.gizmos.GizmoCollector);
-  public static net.minecraft.gizmos.GizmoProperties addGizmo(net.minecraft.gizmos.Gizmo);
-  public static net.minecraft.gizmos.GizmoProperties cuboid(net.minecraft.world.phys.AABB, net.minecraft.gizmos.GizmoStyle);
-  public static net.minecraft.gizmos.GizmoProperties cuboid(net.minecraft.world.phys.AABB, net.minecraft.gizmos.GizmoStyle, boolean);
-  public static net.minecraft.gizmos.GizmoProperties cuboid(net.minecraft.core.BlockPos, net.minecraft.gizmos.GizmoStyle);
-  public static net.minecraft.gizmos.GizmoProperties cuboid(net.minecraft.core.BlockPos, float, net.minecraft.gizmos.GizmoStyle);
-  public static net.minecraft.gizmos.GizmoProperties circle(net.minecraft.world.phys.Vec3, float, net.minecraft.gizmos.GizmoStyle);
-  public static net.minecraft.gizmos.GizmoProperties line(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, int);
-  public static net.minecraft.gizmos.GizmoProperties line(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, int, float);
-  public static net.minecraft.gizmos.GizmoProperties arrow(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, int);
-  public static net.minecraft.gizmos.GizmoProperties arrow(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, int, float);
-  public static net.minecraft.gizmos.GizmoProperties rect(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, net.minecraft.core.Direction, net.minecraft.gizmos.GizmoStyle);
-  public static net.minecraft.gizmos.GizmoProperties rect(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, net.minecraft.gizmos.GizmoStyle);
-  public static net.minecraft.gizmos.GizmoProperties point(net.minecraft.world.phys.Vec3, int, float);
-  public static net.minecraft.gizmos.GizmoProperties billboardTextOverBlock(java.lang.String, net.minecraft.core.BlockPos, int, int, float);
-  public static net.minecraft.gizmos.GizmoProperties billboardTextOverMob(net.minecraft.world.entity.Entity, int, java.lang.String, int, float);
-  public static net.minecraft.gizmos.GizmoProperties billboardText(java.lang.String, net.minecraft.world.phys.Vec3, net.minecraft.gizmos.TextGizmo$Style);
-  static {};
-}
-
-=== net.minecraft.gizmos.LineGizmo   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "LineGizmo.java"
-public final class net.minecraft.gizmos.LineGizmo extends java.lang.Record implements net.minecraft.gizmos.Gizmo {
-  private final net.minecraft.world.phys.Vec3 start;
-  private final net.minecraft.world.phys.Vec3 end;
-  private final int color;
-  private final float width;
-  public static final float DEFAULT_WIDTH;
-  public net.minecraft.gizmos.LineGizmo(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, int, float);
-  public void emit(net.minecraft.gizmos.GizmoPrimitives, float);
-  public final java.lang.String toString();
-  public final int hashCode();
-  public final boolean equals(java.lang.Object);
-  public net.minecraft.world.phys.Vec3 start();
-  public net.minecraft.world.phys.Vec3 end();
-  public int color();
-  public float width();
-}
-
-=== net.minecraft.gizmos.PointGizmo   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "PointGizmo.java"
-public final class net.minecraft.gizmos.PointGizmo extends java.lang.Record implements net.minecraft.gizmos.Gizmo {
-  private final net.minecraft.world.phys.Vec3 pos;
-  private final int color;
-  private final float size;
-  public net.minecraft.gizmos.PointGizmo(net.minecraft.world.phys.Vec3, int, float);
-  public void emit(net.minecraft.gizmos.GizmoPrimitives, float);
-  public final java.lang.String toString();
-  public final int hashCode();
-  public final boolean equals(java.lang.Object);
-  public net.minecraft.world.phys.Vec3 pos();
-  public int color();
-  public float size();
-}
-
-=== net.minecraft.gizmos.RectGizmo   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "RectGizmo.java"
-public final class net.minecraft.gizmos.RectGizmo extends java.lang.Record implements net.minecraft.gizmos.Gizmo {
-  private final net.minecraft.world.phys.Vec3 a;
-  private final net.minecraft.world.phys.Vec3 b;
-  private final net.minecraft.world.phys.Vec3 c;
-  private final net.minecraft.world.phys.Vec3 d;
-  private final net.minecraft.gizmos.GizmoStyle style;
-  public net.minecraft.gizmos.RectGizmo(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, net.minecraft.gizmos.GizmoStyle);
-  public static net.minecraft.gizmos.RectGizmo fromCuboidFace(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3, net.minecraft.core.Direction, net.minecraft.gizmos.GizmoStyle);
-  public void emit(net.minecraft.gizmos.GizmoPrimitives, float);
-  public final java.lang.String toString();
-  public final int hashCode();
-  public final boolean equals(java.lang.Object);
-  public net.minecraft.world.phys.Vec3 a();
-  public net.minecraft.world.phys.Vec3 b();
-  public net.minecraft.world.phys.Vec3 c();
-  public net.minecraft.world.phys.Vec3 d();
-  public net.minecraft.gizmos.GizmoStyle style();
 }
 
 === net.minecraft.gizmos.SimpleGizmoCollector   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
@@ -601,137 +634,6 @@ public class net.minecraft.gizmos.SimpleGizmoCollector implements net.minecraft.
   public void addTemporaryGizmos(java.util.Collection<net.minecraft.gizmos.SimpleGizmoCollector$GizmoInstance>);
   private static boolean method_75855(long, net.minecraft.gizmos.SimpleGizmoCollector$GizmoInstance);
 }
-
-=== net.minecraft.gizmos.TextGizmo   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "TextGizmo.java"
-public final class net.minecraft.gizmos.TextGizmo extends java.lang.Record implements net.minecraft.gizmos.Gizmo {
-  private final net.minecraft.world.phys.Vec3 pos;
-  private final java.lang.String text;
-  private final net.minecraft.gizmos.TextGizmo$Style style;
-  public net.minecraft.gizmos.TextGizmo(net.minecraft.world.phys.Vec3, java.lang.String, net.minecraft.gizmos.TextGizmo$Style);
-  public void emit(net.minecraft.gizmos.GizmoPrimitives, float);
-  public final java.lang.String toString();
-  public final int hashCode();
-  public final boolean equals(java.lang.Object);
-  public net.minecraft.world.phys.Vec3 pos();
-  public java.lang.String text();
-  public net.minecraft.gizmos.TextGizmo$Style style();
-}
-
-=== net.minecraft.gizmos.package-info   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "package-info.java"
-interface net.minecraft.gizmos.package-info {
-}
-
-=== net.minecraft.world.entity.vehicle.minecart.AbstractMinecart   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "AbstractMinecart.java"
-public abstract class net.minecraft.world.entity.vehicle.minecart.AbstractMinecart extends net.minecraft.world.entity.vehicle.VehicleEntity {
-  private static final net.minecraft.world.phys.Vec3 LOWERED_PASSENGER_ATTACHMENT;
-  private static final net.minecraft.network.syncher.EntityDataAccessor<java.util.Optional<net.minecraft.world.level.block.state.BlockState>> DATA_ID_CUSTOM_DISPLAY_BLOCK;
-  private static final net.minecraft.network.syncher.EntityDataAccessor<java.lang.Integer> DATA_ID_DISPLAY_OFFSET;
-  private static final com.google.common.collect.ImmutableMap<net.minecraft.world.entity.Pose, com.google.common.collect.ImmutableList<java.lang.Integer>> POSE_DISMOUNT_HEIGHTS;
-  protected static final float WATER_SLOWDOWN_FACTOR;
-  private static final boolean DEFAULT_FLIPPED_ROTATION;
-  private boolean onRails;
-  private boolean flipped;
-  private final net.minecraft.world.entity.vehicle.minecart.MinecartBehavior behavior;
-  private static final java.util.Map<net.minecraft.world.level.block.state.properties.RailShape, com.mojang.datafixers.util.Pair<net.minecraft.core.Vec3i, net.minecraft.core.Vec3i>> EXITS;
-  protected net.minecraft.world.entity.vehicle.minecart.AbstractMinecart(net.minecraft.world.entity.EntityType<?>, net.minecraft.world.level.Level);
-  protected net.minecraft.world.entity.vehicle.minecart.AbstractMinecart(net.minecraft.world.entity.EntityType<?>, net.minecraft.world.level.Level, double, double, double);
-  public void setInitialPos(double, double, double);
-  public static <T extends net.minecraft.world.entity.vehicle.minecart.AbstractMinecart> T createMinecart(net.minecraft.world.level.Level, double, double, double, net.minecraft.world.entity.EntityType<T>, net.minecraft.world.entity.EntitySpawnReason, net.minecraft.world.item.ItemStack, net.minecraft.world.entity.player.Player);
-  public net.minecraft.world.entity.vehicle.minecart.MinecartBehavior getBehavior();
-  protected net.minecraft.world.entity.Entity$MovementEmission getMovementEmission();
-  protected void defineSynchedData(net.minecraft.network.syncher.SynchedEntityData$Builder);
-  public boolean canCollideWith(net.minecraft.world.entity.Entity);
-  public boolean isPushable();
-  public net.minecraft.world.phys.Vec3 getRelativePortalPosition(net.minecraft.core.Direction$Axis, net.minecraft.util.BlockUtil$FoundRectangle);
-  protected net.minecraft.world.phys.Vec3 getPassengerAttachmentPoint(net.minecraft.world.entity.Entity, net.minecraft.world.entity.EntityDimensions, float);
-  public net.minecraft.world.phys.Vec3 getDismountLocationForPassenger(net.minecraft.world.entity.LivingEntity);
-  protected float getBlockSpeedFactor();
-  public void animateHurt(float);
-  public boolean isPickable();
-  public static com.mojang.datafixers.util.Pair<net.minecraft.core.Vec3i, net.minecraft.core.Vec3i> exits(net.minecraft.world.level.block.state.properties.RailShape);
-  public net.minecraft.core.Direction getMotionDirection();
-  protected double getDefaultGravity();
-  public void tick();
-  public boolean isFirstTick();
-  public net.minecraft.core.BlockPos getCurrentBlockPosOrRailBelow();
-  protected double getMaxSpeed(net.minecraft.server.level.ServerLevel);
-  public void activateMinecart(net.minecraft.server.level.ServerLevel, int, int, int, boolean);
-  public void lerpPositionAndRotationStep(int, double, double, double, double, double);
-  public void applyGravity();
-  public void reapplyPosition();
-  public boolean updateInWaterStateAndDoFluidPushing();
-  public net.minecraft.world.phys.Vec3 getKnownMovement();
-  public net.minecraft.world.entity.InterpolationHandler getInterpolation();
-  public void recreateFromPacket(net.minecraft.network.protocol.game.ClientboundAddEntityPacket);
-  public void lerpMotion(net.minecraft.world.phys.Vec3);
-  protected void moveAlongTrack(net.minecraft.server.level.ServerLevel);
-  protected void comeOffTrack(net.minecraft.server.level.ServerLevel);
-  protected double makeStepAlongTrack(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.properties.RailShape, double);
-  public void move(net.minecraft.world.entity.MoverType, net.minecraft.world.phys.Vec3);
-  public void applyEffectsFromBlocks();
-  public boolean isOnRails();
-  public void setOnRails(boolean);
-  public boolean isFlipped();
-  public void setFlipped(boolean);
-  public net.minecraft.world.phys.Vec3 getRedstoneDirection(net.minecraft.core.BlockPos);
-  public boolean isRedstoneConductor(net.minecraft.core.BlockPos);
-  protected net.minecraft.world.phys.Vec3 applyNaturalSlowdown(net.minecraft.world.phys.Vec3);
-  protected void readAdditionalSaveData(net.minecraft.world.level.storage.ValueInput);
-  protected void addAdditionalSaveData(net.minecraft.world.level.storage.ValueOutput);
-  public void push(net.minecraft.world.entity.Entity);
-  private void pushOtherMinecart(net.minecraft.world.entity.vehicle.minecart.AbstractMinecart, double, double);
-  public net.minecraft.world.level.block.state.BlockState getDisplayBlockState();
-  private java.util.Optional<net.minecraft.world.level.block.state.BlockState> getCustomDisplayBlockState();
-  public net.minecraft.world.level.block.state.BlockState getDefaultDisplayBlockState();
-  public int getDisplayOffset();
-  public int getDefaultDisplayOffset();
-  public void setCustomDisplayBlockState(java.util.Optional<net.minecraft.world.level.block.state.BlockState>);
-  public void setDisplayOffset(int);
-  public static boolean useExperimentalMovement(net.minecraft.world.level.Level);
-  public abstract net.minecraft.world.item.ItemStack getPickResult();
-  public boolean isRideable();
-  public boolean isFurnace();
-  private static void method_67673(net.minecraft.world.level.storage.ValueOutput, net.minecraft.world.level.block.state.BlockState);
-  private static com.google.common.collect.ImmutableMap method_66327();
-  private net.minecraft.world.phys.shapes.VoxelShape method_30340(net.minecraft.core.BlockPos);
-  private net.minecraft.world.phys.shapes.VoxelShape method_30339(net.minecraft.core.BlockPos$MutableBlockPos);
-  static {};
-}
-
-=== net.minecraft.world.entity.vehicle.minecart.AbstractMinecartContainer   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "AbstractMinecartContainer.java"
-public abstract class net.minecraft.world.entity.vehicle.minecart.AbstractMinecartContainer extends net.minecraft.world.entity.vehicle.minecart.AbstractMinecart implements net.minecraft.world.entity.vehicle.ContainerEntity {
-  private net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> itemStacks;
-  private net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable> lootTable;
-  private long lootTableSeed;
-  protected net.minecraft.world.entity.vehicle.minecart.AbstractMinecartContainer(net.minecraft.world.entity.EntityType<?>, net.minecraft.world.level.Level);
-  public void destroy(net.minecraft.server.level.ServerLevel, net.minecraft.world.damagesource.DamageSource);
-  public net.minecraft.world.item.ItemStack getItem(int);
-  public net.minecraft.world.item.ItemStack removeItem(int, int);
-  public net.minecraft.world.item.ItemStack removeItemNoUpdate(int);
-  public void setItem(int, net.minecraft.world.item.ItemStack);
-  public net.minecraft.world.entity.SlotAccess getSlot(int);
-  public void setChanged();
-  public boolean stillValid(net.minecraft.world.entity.player.Player);
-  public void remove(net.minecraft.world.entity.Entity$RemovalReason);
-  protected void addAdditionalSaveData(net.minecraft.world.level.storage.ValueOutput);
-  protected void readAdditionalSaveData(net.minecraft.world.level.storage.ValueInput);
-  public net.minecraft.world.InteractionResult interact(net.minecraft.world.entity.player.Player, net.minecraft.world.InteractionHand);
-  protected net.minecraft.world.phys.Vec3 applyNaturalSlowdown(net.minecraft.world.phys.Vec3);
-  public void clearContent();
-  public void setLootTable(net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable>, long);
-  public net.minecraft.world.inventory.AbstractContainerMenu createMenu(int, net.minecraft.world.entity.player.Inventory, net.minecraft.world.entity.player.Player);
-  protected abstract net.minecraft.world.inventory.AbstractContainerMenu createMenu(int, net.minecraft.world.entity.player.Inventory);
-  public net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable> getContainerLootTable();
-  public void setContainerLootTable(net.minecraft.resources.ResourceKey<net.minecraft.world.level.storage.loot.LootTable>);
-  public long getContainerLootTableSeed();
-  public void setContainerLootTableSeed(long);
-  public net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack> getItemStacks();
-  public void clearItemStacks();
-}
 ```
 
 ## Probe task log
@@ -742,8 +644,8 @@ public abstract class net.minecraft.world.entity.vehicle.minecart.AbstractMineca
 Fabric Loom: 1.14.10
 
 > Task :probeApi
-Wrote /home/runner/work/F1Client/F1Client/build/probe-api.txt (58059 bytes; 91 classes matched)
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1794595414609.json
+Wrote /home/runner/work/F1Client/F1Client/build/probe-api.txt (49172 bytes; 91 classes matched)
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1794595659124.json
 
 [Incubating] Problems report is available at: file:///home/runner/work/F1Client/F1Client/build/reports/problems/problems-report.html
 
@@ -753,7 +655,7 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 15s
+BUILD SUCCESSFUL in 4s
 1 actionable task: 1 executed
 Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.2.1/userguide/configuration_cache_enabling.html
 ```
@@ -761,178 +663,176 @@ Consider enabling configuration cache to speed up this build: https://docs.gradl
 ## Gradle output (filtered)
 
 ```
-14:> Task :compileJava FAILED
-15:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:15: error: package net.minecraft.world.debug.gizmo does not exist
-18:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:16: error: package net.minecraft.world.debug.gizmo does not exist
-21:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:9: error: package net.minecraft.world.debug.gizmo does not exist
-24:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:10: error: package net.minecraft.world.debug.gizmo does not exist
-32:FAILURE: Build failed with an exception.
-34:* What went wrong:
-35:Execution failed for task ':compileJava'.
-37:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:15: error: package net.minecraft.world.debug.gizmo does not exist
-40:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:16: error: package net.minecraft.world.debug.gizmo does not exist
-43:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:9: error: package net.minecraft.world.debug.gizmo does not exist
-46:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:10: error: package net.minecraft.world.debug.gizmo does not exist
-56:org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compileJava'.
-57:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:135)
-58:	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:288)
-59:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:133)
-60:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:121)
-61:	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
-62:	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
-63:	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
-64:	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
-65:	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
-66:	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
-67:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
-68:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
-69:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
-70:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-71:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-72:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-73:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-74:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-75:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-76:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-77:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
-78:	at org.gradle.execution.plan.DefaultNodeExecutor.executeLocalTaskNode(DefaultNodeExecutor.java:55)
-79:	at org.gradle.execution.plan.DefaultNodeExecutor.execute(DefaultNodeExecutor.java:34)
-80:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:355)
-81:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:343)
-82:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:339)
-83:	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
-84:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:339)
-85:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:328)
-86:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
-87:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
-88:	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-89:	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
-90:Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-91:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:15: error: package net.minecraft.world.debug.gizmo does not exist
-94:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:16: error: package net.minecraft.world.debug.gizmo does not exist
-97:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:9: error: package net.minecraft.world.debug.gizmo does not exist
-100:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:10: error: package net.minecraft.world.debug.gizmo does not exist
-104:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
-105:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
-106:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
-107:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
-108:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
-109:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
-110:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
-111:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
-112:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
-113:	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
-114:	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:206)
-115:	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
-116:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:55)
-117:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
-118:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
-119:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
-120:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
-121:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
-122:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
-123:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-124:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-125:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-126:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-127:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-128:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-129:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-130:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
-131:	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:224)
-132:	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
-133:	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:150)
-134:	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
-135:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
-136:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
-137:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
-138:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
-139:	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
-140:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
-141:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
-142:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-143:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-144:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-145:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-146:	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
-147:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:237)
-148:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:220)
-149:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:203)
-150:	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:170)
-151:	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
-152:	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
-153:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
-154:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
-155:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-156:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-157:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-158:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-159:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-160:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-161:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-162:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
-163:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
-164:	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
-165:	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
-166:	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
-167:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
-168:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
-169:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:68)
-170:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:38)
-171:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
-172:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
-173:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
-174:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
-175:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:39)
-176:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:28)
-177:	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
-178:	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
-179:	at org.gradle.internal.Either$Right.fold(Either.java:176)
-180:	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
-181:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
-182:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
-183:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
-184:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
-185:	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
-186:	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
-187:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
-188:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
-189:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
-190:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
-191:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
-192:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
-193:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
-194:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
-195:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:64)
-196:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:35)
-197:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:62)
-198:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:40)
-199:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:76)
-200:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:45)
-201:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:136)
-202:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:66)
-203:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:38)
-204:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
-205:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
-206:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
-207:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
-208:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
-209:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
-210:	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:297)
-211:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
-212:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
-213:	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
-214:	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
-215:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
-216:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
-217:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
-218:	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
-219:	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
-220:	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
-221:	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:31)
-222:	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
-223:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:132)
-233:BUILD FAILED in 37s
+14:> Task :compileJava
+15:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/Freecam.java:60: error: cannot find symbol
+20:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/Modules.java:106: error: cannot find symbol
+25:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/F1Client.java:42: error: cannot find symbol
+32:> Task :compileJava FAILED
+37:FAILURE: Build failed with an exception.
+39:* What went wrong:
+40:Execution failed for task ':compileJava'.
+42:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/Freecam.java:60: error: cannot find symbol
+47:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/Modules.java:106: error: cannot find symbol
+52:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/F1Client.java:42: error: cannot find symbol
+64:org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compileJava'.
+65:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:135)
+66:	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:288)
+67:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:133)
+68:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:121)
+69:	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+70:	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+71:	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+72:	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+73:	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+74:	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+75:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+76:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+77:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+78:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+79:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+80:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+81:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+82:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+83:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+84:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+85:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+86:	at org.gradle.execution.plan.DefaultNodeExecutor.executeLocalTaskNode(DefaultNodeExecutor.java:55)
+87:	at org.gradle.execution.plan.DefaultNodeExecutor.execute(DefaultNodeExecutor.java:34)
+88:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:355)
+89:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:343)
+90:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:339)
+91:	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
+92:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:339)
+93:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:328)
+94:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+95:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+96:	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+97:	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+98:Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
+99:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/Freecam.java:60: error: cannot find symbol
+104:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/Modules.java:106: error: cannot find symbol
+109:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/F1Client.java:42: error: cannot find symbol
+115:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
+116:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
+117:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
+118:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
+119:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
+120:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
+121:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
+122:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
+123:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
+124:	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
+125:	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:206)
+126:	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
+127:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:55)
+128:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
+129:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
+130:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
+131:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
+132:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
+133:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
+134:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+135:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+136:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+137:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+138:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+139:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+140:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+141:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
+142:	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:224)
+143:	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
+144:	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:150)
+145:	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+146:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
+147:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+148:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
+149:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+150:	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
+151:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+152:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+153:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+154:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+155:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+156:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+157:	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+158:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:237)
+159:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:220)
+160:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:203)
+161:	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:170)
+162:	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+163:	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+164:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+165:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+166:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+167:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+168:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+169:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+170:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+171:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+172:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+173:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+174:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+175:	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+176:	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+177:	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+178:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+179:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+180:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:68)
+181:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:38)
+182:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+183:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+184:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+185:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+186:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:39)
+187:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:28)
+188:	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+189:	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
+190:	at org.gradle.internal.Either$Right.fold(Either.java:176)
+191:	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+192:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+193:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+194:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+195:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+196:	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+197:	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+198:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+199:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+200:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+201:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+202:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+203:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+204:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+205:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+206:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:64)
+207:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:35)
+208:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:62)
+209:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:40)
+210:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:76)
+211:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:45)
+212:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:136)
+213:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:66)
+214:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:38)
+215:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+216:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+217:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+218:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+219:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+220:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+221:	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:297)
+222:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+223:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+224:	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+225:	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+226:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+227:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+228:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+229:	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+230:	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+231:	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
+232:	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:31)
+233:	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
+234:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:132)
+244:BUILD FAILED in 28s
 ```
 
 ## Gradle output (tail)
@@ -1056,6 +956,6 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 37s
+BUILD FAILED in 28s
 1 actionable task: 1 executed
 ```
