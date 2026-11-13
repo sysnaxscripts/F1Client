@@ -8,10 +8,17 @@ import dev.f1client.module.Module;
 import dev.f1client.module.impl.Freecam;
 import dev.f1client.ore.OreType;
 import dev.f1client.sound.OreAlert;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import net.fabricmc.fabric.api.client.gametest.v1.FabricClientGameTest;
 import net.fabricmc.fabric.api.client.gametest.v1.context.ClientGameTestContext;
 import net.fabricmc.fabric.api.client.gametest.v1.context.TestSingleplayerContext;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.util.ScreenshotRecorder;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import org.lwjgl.glfw.GLFW;
@@ -26,6 +33,8 @@ import org.spongepowered.asm.mixin.MixinEnvironment;
 public final class F1ClientSmokeTest implements FabricClientGameTest {
 	private static final String USER = "Tester_1";
 	private static final String PASSWORD = "correct-horse-battery";
+
+	private int shots;
 
 	@Override
 	public void runTest(ClientGameTestContext context) {
@@ -43,7 +52,7 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 		context.getInput().pressKey(GLFW.GLFW_KEY_RIGHT_SHIFT);
 		context.waitForScreen(AuthScreen.class);
 		context.waitTicks(10);
-		context.takeScreenshot("auth-register-empty");
+		shot(context, "auth-register-empty");
 
 		// --- register by typing
 		context.getInput().typeChars(USER);
@@ -52,7 +61,7 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 		context.getInput().pressKey(GLFW.GLFW_KEY_TAB);
 		context.getInput().typeChars("mismatch");
 		context.waitTicks(5);
-		context.takeScreenshot("auth-register-mismatch");
+		shot(context, "auth-register-mismatch");
 		context.getInput().pressKey(GLFW.GLFW_KEY_ENTER);
 		context.waitTicks(5);
 		check(!mod.auth().isUnlocked(), "mismatching confirmation must not register");
@@ -61,20 +70,20 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 		}
 		context.getInput().typeChars(PASSWORD);
 		context.waitTicks(3);
-		context.takeScreenshot("auth-register-filled");
+		shot(context, "auth-register-filled");
 		context.getInput().pressKey(GLFW.GLFW_KEY_ENTER);
 		context.waitFor(client -> mod.auth().isUnlocked());
 		context.waitForScreen(ClickGuiScreen.class);
 		check(USER.equals(mod.auth().username()), "signed in as " + mod.auth().username());
 		check(mod.config().isLoaded(), "config loads after sign-in");
 		context.waitTicks(10);
-		context.takeScreenshot("clickgui-title");
+		shot(context, "clickgui-title");
 
 		// --- keyboard navigation: Tab highlights, Enter opens settings, Space toggles (only in a world)
 		context.getInput().pressKey(GLFW.GLFW_KEY_TAB);
 		context.getInput().pressKey(GLFW.GLFW_KEY_ENTER);
 		context.waitTicks(10);
-		context.takeScreenshot("clickgui-settings-panel");
+		shot(context, "clickgui-settings-panel");
 		context.getInput().pressKey(GLFW.GLFW_KEY_ESCAPE);
 		context.getInput().pressKey(GLFW.GLFW_KEY_ESCAPE);
 		context.waitFor(client -> !(client.currentScreen instanceof ClickGuiScreen));
@@ -91,10 +100,6 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 			world.getClientWorld().waitForChunksRender();
 			context.getInput().resizeWindow(1280, 720);
 			context.waitTicks(5);
-			// The game opens the world renderer's gizmo scope around every regular frame. The
-			// framework renders screenshot frames outside of it, where gizmos are discarded,
-			// so leave that scope open on the render thread to make screenshots show the ESP.
-			context.runOnClient(client -> client.worldRenderer.startDrawingGizmos());
 			BlockPos origin = context.computeOnClient(client -> client.player.getBlockPos());
 			int x = origin.getX();
 			int y = origin.getY();
@@ -121,7 +126,7 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 			context.waitTicks(30);
 			check(mod.oreDetection().countInRange(OreType.EMERALD) == emeralds + 1, "block update adds an ore incrementally");
 			check(mod.oreDetection().submittedLastFrame() >= 6, "ore boxes reach the renderer: " + mod.oreDetection().submittedLastFrame());
-			context.takeScreenshot("world-ore-esp");
+			shot(context, "world-ore-esp");
 
 			// --- SoundDetection: block-break world event, then a positional sound packet
 			world.getServer().runCommand("setblock " + (x + 3) + " " + (y + 1) + " " + z + " minecraft:air destroy");
@@ -139,7 +144,7 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 					+ (z + 1.5) + " 1 0.8");
 			context.waitTicks(10);
 			check(alerts.size() == 2, "non-ore sounds are ignored");
-			context.takeScreenshot("world-sound-alerts");
+			shot(context, "world-sound-alerts");
 
 			// --- Freecam: the camera moves, the player does not
 			Vec3d before = context.computeOnClient(client -> client.player.getEntityPos());
@@ -156,7 +161,7 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 			check(before.squaredDistanceTo(after) < 1.0e-6, "player must not move in Freecam: " + before + " -> " + after);
 			check(yawBefore == yawAfter, "player must not turn in Freecam");
 			check(camera.squaredDistanceTo(after) > 4.0, "camera must have left the player: " + camera);
-			context.takeScreenshot("world-freecam");
+			shot(context, "world-freecam");
 			context.runOnClient(client -> mod.freecam().setEnabled(false));
 			context.waitTicks(5);
 			Vec3d restored = context.computeOnClient(client -> client.gameRenderer.getCamera().getCameraPos());
@@ -167,11 +172,11 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 			context.getInput().pressKey(GLFW.GLFW_KEY_RIGHT_SHIFT);
 			context.waitForScreen(ClickGuiScreen.class);
 			context.waitTicks(10);
-			context.takeScreenshot("clickgui-world");
+			shot(context, "clickgui-world");
 			context.getInput().pressKey(GLFW.GLFW_KEY_TAB);
 			context.getInput().pressKey(GLFW.GLFW_KEY_ENTER);
 			context.waitTicks(10);
-			context.takeScreenshot("clickgui-world-settings");
+			shot(context, "clickgui-world-settings");
 			context.getInput().pressKey(GLFW.GLFW_KEY_ESCAPE);
 			context.getInput().pressKey(GLFW.GLFW_KEY_ESCAPE);
 			context.waitForScreen(null);
@@ -189,7 +194,7 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 			context.getInput().pressKey(GLFW.GLFW_KEY_RIGHT_SHIFT);
 			context.waitForScreen(AuthScreen.class);
 			context.waitTicks(10);
-			context.takeScreenshot("auth-login-world");
+			shot(context, "auth-login-world");
 
 			// --- sign back in: the profile (enabled modules) is restored
 			context.getInput().typeChars(PASSWORD);
@@ -200,6 +205,29 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 			check(!mod.freecam().isEnabled(), "Freecam never restores as enabled");
 			context.setScreen(() -> null);
 		}
+	}
+
+	/**
+	 * Saves the frame the game presented last. The framework's own screenshot call renders
+	 * an extra frame from inside a client task, where world gizmos (the ESP boxes) are
+	 * collected for a later frame and therefore missing from the picture.
+	 */
+	private void shot(ClientGameTestContext context, String name) {
+		Path file = FabricLoader.getInstance().getGameDir().resolve("screenshots")
+				.resolve(String.format("%04d_%s.png", shots++, name));
+		AtomicBoolean done = new AtomicBoolean();
+		context.waitTicks(2);
+		context.runOnClient(client -> ScreenshotRecorder.takeScreenshot(client.getFramebuffer(), image -> {
+			try (image) {
+				Files.createDirectories(file.getParent());
+				image.writeTo(file);
+			} catch (IOException e) {
+				throw new UncheckedIOException(e);
+			} finally {
+				done.set(true);
+			}
+		}));
+		context.waitFor(client -> done.get());
 	}
 
 	private static void check(boolean condition, String what) {
