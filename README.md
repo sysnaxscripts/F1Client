@@ -167,10 +167,13 @@ part has its own switch.
 ```
 
 The client game test (`src/gametest`) registers an account by typing into the form,
-checks the gate, opens the ClickGUI, places ores and checks the ESP index, breaks an ore
-and plays ore sounds and checks the alerts, flies Freecam and checks the player did not
-move, audits every mixin, signs out and back in. It saves screenshots to
-`build/run/clientGameTest/screenshots`. Both run in GitHub Actions on every push.
+checks that nothing works while locked, opens the ClickGUI, places ores and checks the
+ESP, breaks an ore and plays ore sounds and checks the alerts, flies Freecam and checks
+that the player did not move, audits every mixin, signs out and back in. It saves
+screenshots of each step to `build/run/clientGameTest/screenshots`.
+
+GitHub Actions runs both on every push and uploads the mod jar and the screenshots as
+artifacts.
 
 ## License
 
