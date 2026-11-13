@@ -60,7 +60,7 @@ jobs:
       - name: Report log
         if: always()
         run: |
-          grep -vE "^\s+at |World loading finished|Created: |^\s+- |libflite|ALSA lib" /tmp/gametest.log | cut -c1-400 | tail -c 150000 > /tmp/gametest.tail.log || true
+          grep -vE "^\s+at |World loading finished|Created: |^\s+- |libflite|ALSA lib" /tmp/gametest.log | cut -c1-900 | grep -v "Preparing spawn area" | tail -c 150000 > /tmp/gametest.tail.log || true
           python3 .github/scripts/emit.py gametest /tmp/gametest.tail.log 28
       - name: Upload screenshots
         if: always()

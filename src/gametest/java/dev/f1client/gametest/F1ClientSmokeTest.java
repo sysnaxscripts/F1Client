@@ -83,7 +83,46 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 		// a tick, so the world is created in a small window (software rendering on CI).
 		context.getInput().resizeWindow(854, 480);
 		context.waitTicks(2);
+		long t0 = System.nanoTime();
+		context.waitTicks(100);
+		System.out.println("F1DIAG 100 ticks at title, 854x480, signed in: " + (System.nanoTime() - t0) / 1_000_000 + " ms");
+		Thread sampler = new Thread(() -> {
+			java.util.Map<String, Integer> hits = new java.util.HashMap<>();
+			int samples = 0;
+			try {
+				while (!Thread.currentThread().isInterrupted() && samples < 3000) {
+					for (java.util.Map.Entry<Thread, StackTraceElement[]> e : Thread.getAllStackTraces().entrySet()) {
+						String name = e.getKey().getName();
+						if (!name.equals("Render thread") && !name.equals("Server thread")) {
+							continue;
+						}
+						StackTraceElement[] st = e.getValue();
+						StringBuilder sb = new StringBuilder(name).append(" |");
+						for (int i = 0; i < Math.min(st.length, 9); i++) {
+							sb.append(' ').append(st[i].getClassName().replaceAll("^.*\\.", "")).append('.').append(st[i].getMethodName());
+						}
+						hits.merge(sb.toString(), 1, Integer::sum);
+					}
+					samples++;
+					Thread.sleep(20);
+				}
+			} catch (InterruptedException ignored) {
+			}
+			final int total = samples;
+			hits.entrySet().stream().sorted((a, b) -> b.getValue() - a.getValue()).limit(24)
+					.forEach(e -> System.out.println("F1DIAG " + e.getValue() + "/" + total + " " + e.getKey()));
+		}, "F1Diag");
+		sampler.setDaemon(true);
+		sampler.start();
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+			sampler.interrupt();
+			try {
+				sampler.join(3000);
+			} catch (InterruptedException ignored) {
+			}
+		}));
 		try (TestSingleplayerContext world = context.worldBuilder().create()) {
+			sampler.interrupt();
 			world.getClientWorld().waitForChunksRender();
 			context.getInput().resizeWindow(1280, 720);
 			context.waitTicks(5);
