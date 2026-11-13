@@ -93,7 +93,8 @@ Settings → Client: client key, accent colour, interface sounds.
 
 Draws boxes and optional tracers on ores through walls: diamond, deepslate diamond,
 ancient debris, emerald, deepslate emerald, gold, deepslate gold, iron, redstone, lapis,
-nether gold, nether quartz, copper. Each ore has its own switch, colour and range.
+nether gold, nether quartz, copper, coal, deepslate coal. Each ore has its own switch,
+colour and range.
 
 Settings: outline, filled, tracers, line width, fill alpha, max distance, min/max Y,
 only exposed ores, skip ores in the view frustum, max boxes.
@@ -162,7 +163,7 @@ part has its own switch.
 ## Tests
 
 ```
-./gradlew test               # 79 unit tests: auth, session store, settings, modules, config, sound pipeline
+./gradlew test               # 80 unit tests: auth, session store, settings, modules, config, sound pipeline
 ./gradlew runClientGameTest  # starts a real client and drives it (needs a display; Loom uses xvfb on CI)
 ```
 

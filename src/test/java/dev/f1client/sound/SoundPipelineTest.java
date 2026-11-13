@@ -107,6 +107,15 @@ public class SoundPipelineTest {
 	}
 
 	@Test
+	public void deepslateCoalSoundResolvesToCoal() {
+		SoundPipeline.Result result = pipeline.process(sample("minecraft:block.deepslate.break", 0.8f, 5.5, 0),
+				0, 10, 0, oreAt(OreType.DEEPSLATE_COAL, 5, 10, 0), true);
+		assertEquals(SoundPipeline.Status.ALERT, result.status());
+		assertEquals(OreType.DEEPSLATE_COAL, result.alert().ore());
+		assertTrue(result.alert().resolved());
+	}
+
+	@Test
 	public void unresolvedSampleIsPendingUntilLastChance() {
 		SoundSample s = sample("minecraft:block.stone.break", 0.8f, 5.5, 0);
 		assertEquals(SoundPipeline.Status.PENDING, pipeline.process(s, 0, 10, 0, NOTHING, false).status());

@@ -108,6 +108,7 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 			// --- OreDetection
 			world.getServer().runCommand("setblock " + (x + 3) + " " + (y + 1) + " " + z + " minecraft:diamond_ore");
 			world.getServer().runCommand("setblock " + (x + 3) + " " + (y + 2) + " " + (z + 2) + " minecraft:deepslate_diamond_ore");
+			world.getServer().runCommand("setblock " + (x + 3) + " " + (y + 2) + " " + (z + 3) + " minecraft:deepslate_coal_ore");
 			world.getServer().runCommand("setblock " + (x + 4) + " " + (y + 1) + " " + (z - 2) + " minecraft:ancient_debris");
 			world.getServer().runCommand("setblock " + (x + 2) + " " + y + " " + (z - 1) + " minecraft:emerald_ore");
 			world.getServer().runCommand("setblock " + (x + 2) + " " + (y + 3) + " " + (z + 1) + " minecraft:nether_gold_ore");
@@ -121,6 +122,9 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 			context.waitTicks(30);
 			check(mod.oreDetection().countInRange(OreType.DIAMOND) >= 1, "diamond ore found by the chunk scan");
 			check(mod.oreDetection().countInRange(OreType.ANCIENT_DEBRIS) >= 1, "ancient debris found by the chunk scan");
+			check(mod.oreDetection().countInRange(OreType.DEEPSLATE_COAL) >= 1,
+					"deepslate coal found by the chunk scan or the block update: "
+							+ mod.oreDetection().countInRange(OreType.DEEPSLATE_COAL));
 			int emeralds = mod.oreDetection().countInRange(OreType.EMERALD);
 			world.getServer().runCommand("setblock " + (x + 1) + " " + (y + 2) + " " + (z + 2) + " minecraft:emerald_ore");
 			context.waitTicks(30);

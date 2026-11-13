@@ -7,5 +7,7 @@
 - ClickGUI: sidebar, search, favourites, module cards, settings panel, keyboard
   navigation, theme accents.
 - Modules: OreDetection, SoundDetection, Freecam, HUD.
+- Ore table covers coal and deepslate coal: OreDetection highlights both, and both are
+  candidates for the shared `block.stone.*` / `block.deepslate.*` sounds in SoundDetection.
 - Per-account config profiles with debounced saving.
 - Unit tests and an in-client game test, both run in CI.

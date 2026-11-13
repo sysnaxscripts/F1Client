@@ -9,7 +9,12 @@ import java.util.Map;
  *
  * <p>Each ore lists the exact block registry IDs it covers; nothing is matched by
  * substring. Iron, redstone, lapis and copper include their deepslate variants, while
- * diamond, emerald and gold keep stone and deepslate apart as separate entries.
+ * diamond, emerald, gold and coal keep stone and deepslate apart as separate entries.
+ *
+ * <p>Constants are append-only: {@link #ordinal()} is stored as a byte in the ore cache and
+ * in the sound resolver's removal history, and settings are persisted by
+ * {@link #label()}, so inserting a constant in the middle would re-colour existing
+ * profiles.
  */
 public enum OreType {
 	DIAMOND("diamond", "Diamond", "Diamonds", 0xFF4AEDD9, "minecraft:diamond_ore"),
@@ -27,7 +32,9 @@ public enum OreType {
 	LAPIS("lapis", "Lapis", "Lapis", 0xFF3F6BFF, "minecraft:lapis_ore", "minecraft:deepslate_lapis_ore"),
 	NETHER_GOLD("nether_gold", "Nether Gold", "Nether Gold", 0xFFFFB02E, "minecraft:nether_gold_ore"),
 	NETHER_QUARTZ("nether_quartz", "Nether Quartz", "Nether Quartz", 0xFFEDE6DA, "minecraft:nether_quartz_ore"),
-	COPPER("copper", "Copper", "Copper", 0xFFE77C56, "minecraft:copper_ore", "minecraft:deepslate_copper_ore");
+	COPPER("copper", "Copper", "Copper", 0xFFE77C56, "minecraft:copper_ore", "minecraft:deepslate_copper_ore"),
+	COAL("coal", "Coal", "Coal", 0xFF54585E, "minecraft:coal_ore"),
+	DEEPSLATE_COAL("deepslate_coal", "Deepslate Coal", "Deepslate Coal", 0xFF383B42, "minecraft:deepslate_coal_ore");
 
 	private static final OreType[] VALUES = values();
 	private static final Map<String, OreType> BY_BLOCK = new HashMap<>();

@@ -21,7 +21,8 @@
             "minecraft:iron_ore",
             "minecraft:redstone_ore",
             "minecraft:lapis_ore",
-            "minecraft:copper_ore"
+            "minecraft:copper_ore",
+            "minecraft:coal_ore"
           ]
         }
       ]
@@ -39,7 +40,8 @@
             "minecraft:iron_ore",
             "minecraft:redstone_ore",
             "minecraft:lapis_ore",
-            "minecraft:copper_ore"
+            "minecraft:copper_ore",
+            "minecraft:coal_ore"
           ]
         }
       ]
@@ -57,7 +59,8 @@
             "minecraft:iron_ore",
             "minecraft:redstone_ore",
             "minecraft:lapis_ore",
-            "minecraft:copper_ore"
+            "minecraft:copper_ore",
+            "minecraft:coal_ore"
           ]
         }
       ]
@@ -75,7 +78,8 @@
             "minecraft:iron_ore",
             "minecraft:redstone_ore",
             "minecraft:lapis_ore",
-            "minecraft:copper_ore"
+            "minecraft:copper_ore",
+            "minecraft:coal_ore"
           ]
         }
       ]
@@ -93,7 +97,8 @@
             "minecraft:deepslate_iron_ore",
             "minecraft:deepslate_redstone_ore",
             "minecraft:deepslate_lapis_ore",
-            "minecraft:deepslate_copper_ore"
+            "minecraft:deepslate_copper_ore",
+            "minecraft:deepslate_coal_ore"
           ]
         }
       ]
@@ -111,7 +116,8 @@
             "minecraft:deepslate_iron_ore",
             "minecraft:deepslate_redstone_ore",
             "minecraft:deepslate_lapis_ore",
-            "minecraft:deepslate_copper_ore"
+            "minecraft:deepslate_copper_ore",
+            "minecraft:deepslate_coal_ore"
           ]
         }
       ]
@@ -129,7 +135,8 @@
             "minecraft:deepslate_iron_ore",
             "minecraft:deepslate_redstone_ore",
             "minecraft:deepslate_lapis_ore",
-            "minecraft:deepslate_copper_ore"
+            "minecraft:deepslate_copper_ore",
+            "minecraft:deepslate_coal_ore"
           ]
         }
       ]
@@ -147,7 +154,8 @@
             "minecraft:deepslate_iron_ore",
             "minecraft:deepslate_redstone_ore",
             "minecraft:deepslate_lapis_ore",
-            "minecraft:deepslate_copper_ore"
+            "minecraft:deepslate_copper_ore",
+            "minecraft:deepslate_coal_ore"
           ]
         }
       ]
