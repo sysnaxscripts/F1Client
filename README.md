@@ -110,12 +110,20 @@ compacts the ring by age. Each marker is drawn as one stroked cuboid that grows 
 
 Two sources:
 
-1. `ClientLevelMixin` forwards both `ClientLevel#playLocalSound` overloads — the funnel
-   point where sound packets, level events and client-started sounds all meet, which is
-   what catches chests, pistons, doors, levers, buttons, TNT, anvils and portals.
+1. `ClientLevelMixin` forwards `ClientLevel#playLocalSound` — the funnel point for
+   everything the client starts itself: level events, and blocks and entities playing into
+   the level.
 2. `tick()` scans `mc.level.entitiesForRendering()` every 2 ticks for an
    `AbstractMinecart` with `getDeltaMovement().lengthSqr() > 0.001` inside 48 blocks,
    because a cart's rolling sound is started by the client and never arrives as a packet.
+
+**Limit worth knowing.** 1.21.11 has exactly one positional `playLocalSound` —
+`(double, double, double, SoundEvent, SoundSource, float, float, boolean)`; the
+`Holder<SoundEvent>` overload older versions had is gone. And server sound packets
+(`ClientboundSoundPacket`, `ClientboundSoundEntityPacket`) are handed straight to the sound
+engine by `ClientPacketListener`, bypassing `ClientLevel`, so a chest another player opens
+is not seen by hook 1. Covering those needs a second mixin on the packet handler; the
+filter list already matches their sound IDs, so only the hook is missing.
 
 Filters: sound ID (lowercased) must contain one of `minecart, rail, piston, chest, door,
 lever, button, tnt, anvil, portal`; Y must be inside `-64..320`; distance at most 48
@@ -166,10 +174,12 @@ and check:
 | `Camera#getMaxZoom(F)F` | verified | `private`, one float parameter — hooked by ordinal, not by name |
 | `Camera#setPosition(DDD)`, `setPosition(Vec3)`, field `detached` | verified | both overloads are hooked with `require = 0` |
 | `Camera#position()` | verified | `getPosition()` in some Mojang-mapped versions, `getPos()` in Yarn |
-| `GameRenderer#mainCamera()` | **unverified** | the one remaining guess; `probeApi` dumps `GameRenderer` so the report names it |
+| `GameRenderer#getMainCamera()` | verified | not `mainCamera()` in this version |
 | `net.minecraft.gizmos.{Gizmos,GizmoStyle,GizmoProperties}` | verified | Fabric API has no gizmo package, and `net.minecraft.world.debug.gizmo` does not exist under Mojang mappings |
 | `net.minecraft.world.entity.vehicle.minecart.AbstractMinecart` | verified | it used to sit directly in `vehicle` |
-| `ClientLevel#playLocalSound` — both descriptors | **unverified** | not referenced from compiled code, so only the mixin can fail; `defaultRequire: 1` makes that a startup crash rather than a silent no-op |
+| `ClientLevel#playLocalSound(DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFZ)V` | verified | the only positional overload; the `Holder` variant does not exist in 1.21.11 |
+| `ClientLevel#entitiesForRendering()` | verified | returns `Iterable<Entity>` |
+| `ClientPacketListener` sound-packet handlers | **not hooked yet** | see the SoundESP limit above; `probeApi` dumps the class so the handler names are on the record |
 | `Level#getMinY()/getMaxY()/hasChunk(int,int)/getChunk(int,int)`, `Heightmap.Types.WORLD_SURFACE`, `Heightmap#getFirstAvailable(int,int)`, `ClientLevel#entitiesForRendering()`, `Entity#getDeltaMovement()/position()/getY()/setPos/resetFallDistance`, `SoundEvent#location()`, `ResourceLocation#toString()` | compiled clean | javac resolved every one of them |
 | `WorldRenderContext` | verified | Fabric API 16.2.x: `gameRenderer()`, `worldRenderer()`, `worldState()`, `matrices()`, `consumers()`, `commandQueue()`, `sectionState()` — and no tick delta |
 
