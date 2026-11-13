@@ -61,6 +61,14 @@ public final class HudRenderer implements HudElement {
 			drawWatermark(context, client);
 			y += PILL_HEIGHT + 4;
 		}
+		Freecam freecam = mod.freecam();
+		if (hud.freecamInfo() && freecam.isEnabled()) {
+			String text = freecam.readout();
+			int pillWidth = Fonts.REGULAR.width(text) + 20;
+			pill(context, MARGIN, y, pillWidth, PILL_HEIGHT);
+			Fonts.REGULAR.drawMiddle(context, text, MARGIN + pillWidth / 2, y + PILL_HEIGHT / 2, Theme.TEXT);
+			y += PILL_HEIGHT + 4;
+		}
 		if (hud.oreCounts() && mod.oreDetection().isEnabled()) {
 			y = drawOreCounts(context, y);
 		}
@@ -69,14 +77,6 @@ public final class HudRenderer implements HudElement {
 		}
 		if (hud.moduleList()) {
 			drawModuleList(context, width);
-		}
-		Freecam freecam = mod.freecam();
-		if (hud.freecamInfo() && freecam.isEnabled()) {
-			String text = freecam.readout();
-			int pillWidth = Fonts.REGULAR.width(text) + 20;
-			int x = (width - pillWidth) / 2;
-			pill(context, x, MARGIN, pillWidth, PILL_HEIGHT);
-			Fonts.REGULAR.drawMiddle(context, text, x + pillWidth / 2, MARGIN + PILL_HEIGHT / 2, Theme.TEXT);
 		}
 	}
 

@@ -79,16 +79,19 @@ public final class AuthScreen extends UiScreen {
 	@Override
 	protected void draw(DrawContext context, int mouseX, int mouseY) {
 		busy = submitted || auth.state() == AuthState.AUTHENTICATING;
-		RoundedRenderer.shadow(context, 0, 0, WIDTH, HEIGHT, Theme.RADIUS_WINDOW, 18, Theme.SHADOW);
-		RoundedRenderer.panel(context, 0, 0, WIDTH, HEIGHT, Theme.RADIUS_WINDOW, Theme.WINDOW, Theme.OUTLINE);
+		// The sign-in form has one field less; the card shrinks around it and stays centred.
+		int cardHeight = registerMode ? HEIGHT : HEIGHT - (FIELD_HEIGHT + 8);
+		int top = (HEIGHT - cardHeight) / 2;
+		RoundedRenderer.shadow(context, 0, top, WIDTH, cardHeight, Theme.RADIUS_WINDOW, 18, Theme.SHADOW);
+		RoundedRenderer.panel(context, 0, top, WIDTH, cardHeight, Theme.RADIUS_WINDOW, Theme.WINDOW, Theme.OUTLINE);
 
-		Icons.LOGO.draw(context, WIDTH / 2 - 13, 22, 26, Theme.get().accentColor());
-		Fonts.TITLE.drawMiddle(context, registerMode ? "Create your account" : "Welcome back", WIDTH / 2, 64, Theme.TEXT);
+		Icons.LOGO.draw(context, WIDTH / 2 - 13, top + 22, 26, Theme.get().accentColor());
+		Fonts.TITLE.drawMiddle(context, registerMode ? "Create your account" : "Welcome back", WIDTH / 2, top + 64, Theme.TEXT);
 		Fonts.REGULAR.drawMiddle(context, registerMode ? "An account unlocks F1Client." : "Sign in to unlock F1Client.",
-				WIDTH / 2, 80, Theme.TEXT_MUTED);
+				WIDTH / 2, top + 80, Theme.TEXT_MUTED);
 
 		int fieldWidth = WIDTH - PAD * 2;
-		int y = 98;
+		int y = top + 98;
 		username.render(context, PAD, y, fieldWidth, FIELD_HEIGHT, !busy);
 		y += FIELD_HEIGHT + 8;
 		password.render(context, PAD, y, fieldWidth, FIELD_HEIGHT, !busy);
@@ -129,7 +132,7 @@ public final class AuthScreen extends UiScreen {
 		}
 
 		if (F1Client.get().usesMockBackend()) {
-			Fonts.SMALL.drawMiddle(context, "Local test accounts: no account server is configured", WIDTH / 2, HEIGHT - 16,
+			Fonts.SMALL.drawMiddle(context, "Local test accounts: no account server is configured", WIDTH / 2, top + cardHeight - 16,
 					Theme.TEXT_DISABLED);
 		}
 	}
