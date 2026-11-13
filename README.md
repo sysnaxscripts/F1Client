@@ -173,7 +173,8 @@ that the player did not move, audits every mixin, signs out and back in. It save
 screenshots of each step to `build/run/clientGameTest/screenshots`.
 
 GitHub Actions runs both on every push and uploads the mod jar and the screenshots as
-artifacts.
+artifacts. Publishing a GitHub release builds the tagged commit and attaches the mod jar
+and a source zip to it (`.github/workflows/release.yml`).
 
 ## License
 

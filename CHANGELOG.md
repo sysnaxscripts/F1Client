@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0
+## 0.01
 
 - Account gate: register / sign-in screen, encrypted device-bound session, silent
   refresh, offline grace period, mock backend until an API URL is configured.
