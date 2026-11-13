@@ -9,4 +9,4 @@ pluginManagement {
 	}
 }
 
-rootProject.name = 'f1client'
+rootProject.name = 'f1'

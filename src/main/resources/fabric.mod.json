@@ -1,23 +1,22 @@
 {
 	"schemaVersion": 1,
-	"id": "f1client",
+	"id": "f1",
 	"version": "${version}",
 	"name": "F1Client",
-	"description": "Account-gated utility client for DonutSMP: Freecam, OreDetection and SoundDetection behind a themed ClickGUI.",
+	"description": "Standalone client-side Fabric mod for Minecraft 1.21.11 (Mojang mappings): OreESP (F7), SoundESP (F8) and Freecam (F6). Reads only what the client already has; never touches a packet.",
 	"authors": [
 		"F1Client"
 	],
-	"license": "All-Rights-Reserved",
-	"icon": "assets/f1client/icon.png",
+	"license": "MIT",
 	"environment": "client",
 	"entrypoints": {
 		"client": [
-			"dev.f1client.F1Client"
+			"com.example.f1.F1Client"
 		]
 	},
 	"mixins": [
 		{
-			"config": "f1client.mixins.json",
+			"config": "f1.mixins.json",
 			"environment": "client"
 		}
 	],

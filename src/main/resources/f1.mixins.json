@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "com.example.f1.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"CameraMixin",
+		"ClientLevelMixin",
+		"MinecraftMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

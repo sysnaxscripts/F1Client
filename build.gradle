@@ -15,9 +15,20 @@ repositories {
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	// Mojang mappings. Unlike Yarn these are pulled from Mojang's and Fabric's own
+	// repositories (libraries.minecraft.net, maven.fabricmc.net), which Loom adds itself.
+	mappings loom.officialMojangMappings()
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// MixinExtras supplies @ModifyArgs' Args, @Local and the other sugar used by
+	// CameraMixin. compileOnly + annotationProcessor is enough to build against it; the
+	// `include` line is what the spec asks for and nests it in the jar. Fabric Loader
+	// 0.16+ already bundles MixinExtras, so if the game ever reports a duplicate or a
+	// conflicting MixinExtras at runtime, drop the `include` line and keep the other two.
+	compileOnly "io.github.llamalad7:mixinextras-common:${project.mixinextras_version}"
+	annotationProcessor "io.github.llamalad7:mixinextras-common:${project.mixinextras_version}"
+	include "io.github.llamalad7:mixinextras-common:${project.mixinextras_version}"
 
 	testImplementation "junit:junit:4.13.2"
 }
@@ -47,22 +58,6 @@ test {
 	testLogging {
 		events "failed", "skipped"
 		exceptionFormat "full"
-	}
-	afterSuite { desc, result ->
-		if (desc.parent == null) {
-			println "Unit tests: ${result.testCount} run, ${result.failedTestCount} failed, ${result.skippedTestCount} skipped"
-		}
-	}
-}
-
-// Client game tests: src/gametest runs inside a real client via `./gradlew runClientGameTest`.
-fabricApi {
-	configureTests {
-		createSourceSet = true
-		modId = "f1client-gametest"
-		enableGameTests = false
-		enableClientGameTests = true
-		eula = true
 	}
 }
 

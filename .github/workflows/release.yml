@@ -27,7 +27,7 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Build and run unit tests
+      - name: Build
         run: |
           chmod +x ./gradlew
           ./gradlew build --stacktrace
@@ -35,7 +35,7 @@ jobs:
       - name: Pack the source tree
         env:
           TAG: ${{ github.event.release.tag_name }}
-        run: git archive --format=zip --prefix="F1Client-${TAG}-source/" -o "F1Client-${TAG}-source.zip" HEAD
+        run: git archive --format=zip --prefix="f1-${TAG}-source/" -o "f1-${TAG}-source.zip" HEAD
 
       - name: Attach the jar and the source zip
         env:
@@ -43,4 +43,4 @@ jobs:
           TAG: ${{ github.event.release.tag_name }}
         run: |
           JAR=$(ls build/libs/*.jar | grep -v -- '-sources' | head -1)
-          gh release upload "$TAG" "$JAR" "F1Client-${TAG}-source.zip" --clobber
+          gh release upload "$TAG" "$JAR" "f1-${TAG}-source.zip" --clobber
