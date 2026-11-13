@@ -61,17 +61,9 @@ jobs:
       - name: Report jars
         if: always()
         run: python3 .github/scripts/emit.py jars /tmp/jars.txt 5
-      - name: Javap A
+      - name: Bytecode
         if: always()
         run: |
           JAR=$(find . ~/.gradle -name '*.jar' 2>/dev/null | grep -E 'minecraft-merged|minecraft-client' | grep -v sources | grep -i yarn | head -1)
-          echo "jar=$JAR" > /tmp/javap_a.txt
-          javap -p -cp "$JAR" $(sed -n '1,45p' .github/scripts/classes.txt | tr '\n' ' ') >> /tmp/javap_a.txt 2>&1 || true
-          python3 .github/scripts/emit.py javapA /tmp/javap_a.txt 30
-      - name: Javap B
-        if: always()
-        run: |
-          JAR=$(find . ~/.gradle -name '*.jar' 2>/dev/null | grep -E 'minecraft-merged|minecraft-client' | grep -v sources | grep -i yarn | head -1)
-          echo "jar=$JAR" > /tmp/javap_b.txt
-          javap -p -cp "$JAR" $(sed -n '46,200p' .github/scripts/classes.txt | tr '\n' ' ') >> /tmp/javap_b.txt 2>&1 || true
-          python3 .github/scripts/emit.py javapB /tmp/javap_b.txt 30
+          python3 .github/scripts/bytecode.py "$JAR" .github/scripts/methods.txt > /tmp/bytecode.txt 2>&1 || true
+          python3 .github/scripts/emit.py bytecode /tmp/bytecode.txt 40
