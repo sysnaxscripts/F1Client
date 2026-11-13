@@ -1,8 +1,0 @@
-net.minecraft.client.render.WorldRenderer . izmo
-net.minecraft.client.render.WorldRenderer$Gizmos .
-net.minecraft.client.render.gizmo.GizmoDrawerImpl .
-net.minecraft.world.debug.gizmo.GizmoCollectorImpl .
-net.minecraft.world.debug.gizmo.GizmoCollectorImpl$Entry .
-net.minecraft.world.debug.gizmo.GizmoDrawing ^(collect|box|using)$
-net.minecraft.world.debug.gizmo.BoxGizmo .
-net.minecraft.client.render.debug.DebugRenderer ^render$
