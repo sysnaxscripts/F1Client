@@ -6,7 +6,8 @@
 	"client": [
 		"CameraMixin",
 		"ClientLevelMixin",
-		"MinecraftMixin"
+		"MinecraftMixin",
+		"SoundManagerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

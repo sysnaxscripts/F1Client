@@ -15,16 +15,23 @@ import org.lwjgl.glfw.GLFW;
 /**
  * Sound ESP (default key F8): marks where interesting sounds come from, through terrain.
  *
- * <p>Markers are fed from two directions:
+ * <p>Markers are fed from three directions:
  *
  * <ol>
  * <li>{@code ClientLevelMixin} forwards every {@code ClientLevel#playLocalSound} call,
- * which is the funnel point where entity sounds, sound packets and level events all end
- * up, so chests, pistons, doors and levers are covered as well;</li>
+ * which is where the sounds the local client starts itself end up;</li>
+ * <li>{@code SoundManagerMixin} forwards every sound that reaches
+ * {@code SoundManager#play}, which is the real funnel: server sound packets go there
+ * without touching {@code ClientLevel}, so chests, pistons and doors operated by other
+ * players are covered too, and an entity-attached sound arrives with its position already
+ * resolved;</li>
  * <li>{@link #tick()} additionally scans the loaded entities for moving minecarts, because
  * a minecart's rolling sound is started by the client itself
  * ({@code AbstractMinecart} plays it into the level) and never arrives as a packet.</li>
  * </ol>
+ *
+ * <p>Local sounds reach both of the first two hooks, so {@link #add} drops a marker that
+ * duplicates one added moments earlier at the same spot.
  *
  * <p>Each marker is drawn as one stroked cuboid that grows from a quarter block to a full
  * block and fades out over {@value #LIFETIME_MS} ms, after which {@link #tick()} drops it.
@@ -56,6 +63,13 @@ public final class SoundESP extends Module {
 	private static final double MINECART_MIN_MOVEMENT_SQ = 0.001;
 	/** Ring buffer size: the oldest marker is overwritten once this is reached. */
 	private static final int MAX_MARKERS = 512;
+	/**
+	 * A sound younger than this window and within 0.35 blocks of an existing marker is the
+	 * same event seen twice: {@code ClientLevel#playLocalSound} and {@code SoundManager#play}
+	 * are on the same path for anything the client plays locally.
+	 */
+	private static final long DEDUPE_WINDOW_MS = 60;
+	private static final double DEDUPE_DISTANCE = 0.35;
 
 	/** One marked position and the moment it was marked. */
 	private static final class Marker {
@@ -107,8 +121,10 @@ public final class SoundESP extends Module {
 	}
 
 	/**
-	 * Called by {@code ClientLevelMixin} for every locally played sound. Runs on the render
-	 * thread, from the same call the sound engine uses, so no synchronisation is needed.
+	 * Called by {@code ClientLevelMixin} for every locally played sound and by
+	 * {@code SoundManagerMixin} for every sound that reaches the sound engine, which is what
+	 * covers the sounds other players cause. Both run on the client thread, from the same
+	 * call the sound engine uses, so no synchronisation is needed.
 	 *
 	 * @param soundId the sound's registry ID, e.g. {@code minecraft:block.chest.open}
 	 */
@@ -143,12 +159,31 @@ public final class SoundESP extends Module {
 	}
 
 	private void add(double x, double y, double z, long time) {
+		if (isDuplicate(x, y, z, time)) {
+			return;
+		}
 		// Ring buffer: once full, the slot about to be written holds the oldest marker.
 		markers[next] = new Marker(x, y, z, time);
 		next = (next + 1) % MAX_MARKERS;
 		if (count < MAX_MARKERS) {
 			count++;
 		}
+	}
+
+	private boolean isDuplicate(double x, double y, double z, long time) {
+		for (int i = 0; i < count; i++) {
+			Marker marker = markers[i];
+			if (marker == null || time - marker.time > DEDUPE_WINDOW_MS) {
+				continue;
+			}
+			double dx = marker.x - x;
+			double dy = marker.y - y;
+			double dz = marker.z - z;
+			if (dx * dx + dy * dy + dz * dz <= DEDUPE_DISTANCE * DEDUPE_DISTANCE) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override

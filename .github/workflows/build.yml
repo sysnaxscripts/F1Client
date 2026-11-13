@@ -42,11 +42,12 @@ jobs:
           ./gradlew probeApi --stacktrace > probe-log.txt 2>&1 || true
           tail -n 40 probe-log.txt
 
-      # Committed back to the branch, so the result can be read without access to the
-      # Actions log and artifact storage. Marked so the report commit does not retrigger
-      # this workflow.
-      - name: Report the build into the branch
-        if: github.event_name == 'push'
+      # Committed back to the branch on failure only, so a broken build can be diagnosed
+      # without access to the Actions log and artifact storage. The commit message is marked
+      # so it does not retrigger this workflow; a green build uploads artifacts instead and
+      # leaves the branch alone.
+      - name: Report the failed build into the branch
+        if: failure() && github.event_name == 'push'
         run: |
           mkdir -p build-report
           {

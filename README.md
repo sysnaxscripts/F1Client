@@ -42,11 +42,13 @@ src/main/java/com/example/f1/
   modules/SoundESP.java    F8
   modules/Freecam.java     F6
   mixin/MinecraftMixin.java    tail of Minecraft#tick -> Modules.tick()
-  mixin/ClientLevelMixin.java  both playLocalSound overloads -> SoundESP
+  mixin/ClientLevelMixin.java  playLocalSound -> SoundESP (local sounds)
+  mixin/SoundManagerMixin.java SoundManager#play -> SoundESP (server sound packets)
   mixin/CameraMixin.java       zoom clip, detached flag, camera position -> Freecam
 src/main/resources/
   fabric.mod.json          client entrypoint + mixin config + depends
-  f1.mixins.json           JAVA_21, client: [CameraMixin, ClientLevelMixin, MinecraftMixin]
+  f1.mixins.json           JAVA_21, client: [CameraMixin, ClientLevelMixin,
+                                             MinecraftMixin, SoundManagerMixin]
 ```
 
 `Modules.tick()` both polls the keys and ticks the modules, so one mixin drives the whole
@@ -56,9 +58,10 @@ than a tick still toggles, and why no `Keyboard` mixin is needed.
 There are no unit tests or in-client game tests in this revision; the previous Yarn-mapped
 client (which had both) is in git history at `645f13b` on `main`.
 
-`.github/workflows/build.yml` builds on every push and, when the build fails, commits the
-interesting lines of the Gradle log back to the branch as `build-report/README.md`
-(`[skip ci]`, so it does not retrigger itself). That directory is CI output, not source.
+`.github/workflows/build.yml` builds on every push and uploads the jar. When the build
+fails it also commits the filtered Gradle log and the API probe back to the branch as
+`build-report/README.md`, because the Actions log and artifact storage are not reachable
+from every environment that works on this repo.
 
 ## How the ESP sees through walls
 
@@ -108,22 +111,29 @@ Markers are a ring of 512 slots; the oldest is overwritten when it is full, and 
 compacts the ring by age. Each marker is drawn as one stroked cuboid that grows from
 `0.25` to `1.0` blocks and fades to alpha 0 over 1500 ms.
 
-Two sources:
+Three sources:
 
-1. `ClientLevelMixin` forwards `ClientLevel#playLocalSound` — the funnel point for
-   everything the client starts itself: level events, and blocks and entities playing into
-   the level.
-2. `tick()` scans `mc.level.entitiesForRendering()` every 2 ticks for an
+1. `ClientLevelMixin` forwards `ClientLevel#playLocalSound` — everything the client starts
+   itself: level events, and blocks and entities playing into the level.
+2. `SoundManagerMixin` forwards `SoundManager#play(SoundInstance)` and
+   `playDelayed(SoundInstance, int)` — the real funnel. Server sound packets
+   (`ClientboundSoundPacket`, `ClientboundSoundEntityPacket`) are turned into a
+   `SoundInstance` and handed to the sound engine without ever touching `ClientLevel`, so
+   this is what covers a chest, piston or door operated by *another* player. A
+   `SoundInstance` already carries `getIdentifier()` and `getX/getY/getZ()`, so an
+   entity-attached sound arrives with its position resolved.
+3. `tick()` scans `mc.level.entitiesForRendering()` every 2 ticks for an
    `AbstractMinecart` with `getDeltaMovement().lengthSqr() > 0.001` inside 48 blocks,
    because a cart's rolling sound is started by the client and never arrives as a packet.
 
-**Limit worth knowing.** 1.21.11 has exactly one positional `playLocalSound` —
-`(double, double, double, SoundEvent, SoundSource, float, float, boolean)`; the
-`Holder<SoundEvent>` overload older versions had is gone. And server sound packets
-(`ClientboundSoundPacket`, `ClientboundSoundEntityPacket`) are handed straight to the sound
-engine by `ClientPacketListener`, bypassing `ClientLevel`, so a chest another player opens
-is not seen by hook 1. Covering those needs a second mixin on the packet handler; the
-filter list already matches their sound IDs, so only the hook is missing.
+Hooks 1 and 2 are on the same path for a locally played sound, so `add()` drops a marker
+that duplicates one from the last 60 ms within 0.35 blocks.
+
+**Version note.** 1.21.11 has exactly one positional `playLocalSound` —
+`(double, double, double, SoundEvent, SoundSource, float, float, boolean)`. The
+`Holder<SoundEvent>` overload older versions had is gone, and a mixin naming it would not
+fail at compile time (descriptors are strings): under `defaultRequire: 1` it would crash the
+game at startup.
 
 Filters: sound ID (lowercased) must contain one of `minecart, rail, piston, chest, door,
 lever, button, tnt, anvil, portal`; Y must be inside `-64..320`; distance at most 48
@@ -179,7 +189,9 @@ and check:
 | `net.minecraft.world.entity.vehicle.minecart.AbstractMinecart` | verified | it used to sit directly in `vehicle` |
 | `ClientLevel#playLocalSound(DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFZ)V` | verified | the only positional overload; the `Holder` variant does not exist in 1.21.11 |
 | `ClientLevel#entitiesForRendering()` | verified | returns `Iterable<Entity>` |
-| `ClientPacketListener#handleSoundEvent(ClientboundSoundPacket)` and `#handleSoundEntityEvent(ClientboundSoundEntityPacket)` | verified, **not hooked yet** | see the SoundESP limit above; these are the two handlers a server-sound hook would inject into |
+| `SoundManager#play(SoundInstance)`, `#playDelayed(SoundInstance, int)` | verified | `play` returns `SoundEngine$PlayResult`; both are hooked by `SoundManagerMixin` |
+| `SoundInstance#getIdentifier()/getX()/getY()/getZ()` | verified | interface, so positions arrive already resolved |
+| `ClientPacketListener#handleSoundEvent(ClientboundSoundPacket)` and `#handleSoundEntityEvent(ClientboundSoundEntityPacket)` | verified, not hooked | `SoundManager#play` downstream of them already covers both, without an entity-id lookup |
 | `SoundEvent#location()` | verified | `SoundEvent` is a record of `(Identifier location, Optional<Float> fixedRange)` |
 | `Level#getMinY()/getMaxY()/hasChunk(int,int)/getChunk(int,int)`, `Heightmap.Types.WORLD_SURFACE`, `Heightmap#getFirstAvailable(int,int)`, `ClientLevel#entitiesForRendering()`, `Entity#getDeltaMovement()/position()/getY()/setPos/resetFallDistance`, `SoundEvent#location()`, `ResourceLocation#toString()` | compiled clean | javac resolved every one of them |
 | `WorldRenderContext` | verified | Fabric API 16.2.x: `gameRenderer()`, `worldRenderer()`, `worldState()`, `matrices()`, `consumers()`, `commandQueue()`, `sectionState()` — and no tick delta |
@@ -220,8 +232,10 @@ in, and prints `javap -p` output for the classes matching `-PprobeDumpPattern`
 ```
 
 It does not depend on compiling, so it still reports when the build is broken — which is
-the moment it is useful. CI runs it after every build and folds the result into
-`build-report/README.md`.
+the moment it is useful. CI runs it after every build, and a **failed** build commits the
+probe output plus the filtered Gradle log back to the branch as `build-report/README.md`
+(with the skip-ci mark, so that commit does not retrigger the workflow). A green build just
+uploads the jar. That directory is CI output, not source.
 
 ## Unused lambda parameters
 
