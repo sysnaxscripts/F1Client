@@ -74,11 +74,11 @@ jar {
 // README stay honest. It does not depend on compiling, so it still reports when the build
 // is broken.
 tasks.register("probeApi") {
-	def listPattern = (project.findProperty("probePattern") ?: 'gizmo|debugrender|minecart|levelrenderer').toString()
+	def listPattern = (project.findProperty("probePattern") ?: 'fabric.api.client.rendering|fabric.api.client.event|gizmos').toString()
 	// Dumping is limited to a narrow pattern: javap output for every rendering class would
 	// be megabytes.
 	def dumpPattern = (project.findProperty("probeDumpPattern")
-			?: 'ClientboundSound|sounds.SoundManager|client.sounds.SoundEngine|sounds.SoundInstance').toString()
+			?: 'gui.screens.Screen|gui.GuiGraphics|gui.Font|client.Minecraft|input.MouseHandler|input.KeyboardHandler|client.KeyMapping').toString()
 	outputs.upToDateWhen { false }
 	doLast {
 		def out = layout.buildDirectory.file("probe-api.txt").get().asFile
