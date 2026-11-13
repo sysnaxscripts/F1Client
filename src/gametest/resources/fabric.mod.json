@@ -1,0 +1,15 @@
+{
+	"schemaVersion": 1,
+	"id": "f1client-gametest",
+	"version": "1.0.0",
+	"name": "F1Client client game tests",
+	"environment": "client",
+	"entrypoints": {
+		"fabric-client-gametest": [
+			"dev.f1client.gametest.F1ClientSmokeTest"
+		]
+	},
+	"depends": {
+		"f1client": "*"
+	}
+}
