@@ -77,6 +77,13 @@ Gizmos.cuboid(new AABB(pos), GizmoStyle.stroke(0xFF35E0D0, 2.0f))   // ARGB, wid
 `setAlwaysOnTop()`, `persistForMillis(int)` and `fadeOut()`. There is no global
 always-on-top flag to set and unset, so nothing can leak into whatever renders next.
 
+`Gizmos.addGizmo` falls back to `GizmoCollector.NOOP` (returning `GizmoProperties.IGNORED`)
+when no collector is active, so submitting outside the level renderer's collection window
+drops the shape silently instead of throwing. Both modules render from
+`WorldRenderEvents.AFTER_ENTITIES`; if a shape ever fails to appear, that is the thing to
+check first — move the registration to `WorldRenderEvents.DEBUG_RENDER`, which is the
+event right next to `LevelRenderer#collectPerFrameGizmos()`.
+
 There is deliberately **no** `RenderSystem.disableDepthTest()` anywhere: on 1.21.9+ depth
 state lives in the render pipeline, so that call does nothing. There is also **no**
 raycast, `canSee()` or any other line-of-sight test in either ESP module — shapes are
