@@ -74,10 +74,10 @@ jar {
 // README stay honest. It deliberately does not depend on compiling, so it still reports
 // when the build is broken.
 tasks.register("probeApi") {
-	def listPattern = (project.findProperty("probePattern") ?: "gizmo|debug|minecart|render").toString()
+	def listPattern = (project.findProperty("probePattern") ?: 'gizmo|debug|minecart|render').toString()
 	// Dumping is limited to a narrow pattern: javap output for every rendering class would
 	// be megabytes.
-	def dumpPattern = (project.findProperty("probeDumpPattern") ?: "gizmo|minecart|client\\.Camera$|LevelRenderer$").toString()
+	def dumpPattern = (project.findProperty("probeDumpPattern") ?: 'gizmo|minecart|client.Camera|LevelRenderer').toString()
 	outputs.upToDateWhen { false }
 	doLast {
 		def out = layout.buildDirectory.file("probe-api.txt").get().asFile
