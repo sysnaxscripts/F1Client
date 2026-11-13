@@ -79,8 +79,14 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 		context.getInput().pressKey(GLFW.GLFW_KEY_ESCAPE);
 		context.waitFor(client -> !(client.currentScreen instanceof ClickGuiScreen));
 
+		// The integrated server only gets its task time when a client frame takes less than
+		// a tick, so the world is created in a small window (software rendering on CI).
+		context.getInput().resizeWindow(854, 480);
+		context.waitTicks(2);
 		try (TestSingleplayerContext world = context.worldBuilder().create()) {
 			world.getClientWorld().waitForChunksRender();
+			context.getInput().resizeWindow(1280, 720);
+			context.waitTicks(5);
 			BlockPos origin = context.computeOnClient(client -> client.player.getBlockPos());
 			int x = origin.getX();
 			int y = origin.getY();
