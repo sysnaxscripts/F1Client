@@ -56,6 +56,10 @@ than a tick still toggles, and why no `Keyboard` mixin is needed.
 There are no unit tests or in-client game tests in this revision; the previous Yarn-mapped
 client (which had both) is in git history at `645f13b` on `main`.
 
+`.github/workflows/build.yml` builds on every push and, when the build fails, commits the
+interesting lines of the Gradle log back to the branch as `build-report/README.md`
+(`[skip ci]`, so it does not retrigger itself). That directory is CI output, not source.
+
 ## How the ESP sees through walls
 
 All 3D shapes go through the gizmo pass with **always-on-top** set:
