@@ -36,18 +36,21 @@ public enum Fonts {
 	private record Line(OrderedText text, int width) {
 	}
 
-	/** Rasterisation densities shipped as font definitions ({@code <role>_<density*100>.json}). */
-	private static final float[] DENSITIES = {1f, 1.25f, 1.5f, 1.75f, 2f, 2.25f, 2.5f, 2.75f, 3f, 3.5f, 4f};
-	private static int density = 4;
+	/** Held in a nested class because enum constructors may not read the enum's own static fields. */
+	private static final class Density {
+		/** Rasterisation densities shipped as font definitions ({@code <role>_<density*100>.json}). */
+		static final float[] VALUES = {1f, 1.25f, 1.5f, 1.75f, 2f, 2.25f, 2.5f, 2.75f, 3f, 3.5f, 4f};
+		static int current = 4;
+	}
 
-	private final Style[] styles = new Style[DENSITIES.length];
+	private final Style[] styles = new Style[Density.VALUES.length];
 	private final float size;
 	@SuppressWarnings("unchecked")
-	private final Map<String, Line>[] caches = new Map[DENSITIES.length];
+	private final Map<String, Line>[] caches = new Map[Density.VALUES.length];
 
 	Fonts(String name, float size) {
-		for (int i = 0; i < DENSITIES.length; i++) {
-			Identifier id = Identifier.of("f1client", name + "_" + Math.round(DENSITIES[i] * 100));
+		for (int i = 0; i < Density.VALUES.length; i++) {
+			Identifier id = Identifier.of("f1client", name + "_" + Math.round(Density.VALUES[i] * 100));
 			styles[i] = Style.EMPTY.withFont(new StyleSpriteSource.Font(id));
 			caches[i] = new HashMap<>();
 		}
@@ -61,12 +64,12 @@ public enum Fonts {
 	 */
 	public static void setPixelsPerUnit(float pixelsPerUnit) {
 		int best = 0;
-		for (int i = 1; i < DENSITIES.length; i++) {
-			if (Math.abs(DENSITIES[i] - pixelsPerUnit) <= Math.abs(DENSITIES[best] - pixelsPerUnit)) {
+		for (int i = 1; i < Density.VALUES.length; i++) {
+			if (Math.abs(Density.VALUES[i] - pixelsPerUnit) <= Math.abs(Density.VALUES[best] - pixelsPerUnit)) {
 				best = i;
 			}
 		}
-		density = best;
+		Density.current = best;
 	}
 
 	/** @return width of the string in drawing units. */
@@ -119,13 +122,13 @@ public enum Fonts {
 	}
 
 	private Line line(String text) {
-		Map<String, Line> cache = caches[density];
+		Map<String, Line> cache = caches[Density.current];
 		Line line = cache.get(text);
 		if (line == null) {
 			if (cache.size() >= CACHE_LIMIT) {
 				cache.clear();
 			}
-			OrderedText ordered = Text.literal(text).setStyle(styles[density]).asOrderedText();
+			OrderedText ordered = Text.literal(text).setStyle(styles[Density.current]).asOrderedText();
 			line = new Line(ordered, renderer().getWidth(ordered));
 			cache.put(text, line);
 		}
