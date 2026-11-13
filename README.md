@@ -179,7 +179,8 @@ and check:
 | `net.minecraft.world.entity.vehicle.minecart.AbstractMinecart` | verified | it used to sit directly in `vehicle` |
 | `ClientLevel#playLocalSound(DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFZ)V` | verified | the only positional overload; the `Holder` variant does not exist in 1.21.11 |
 | `ClientLevel#entitiesForRendering()` | verified | returns `Iterable<Entity>` |
-| `ClientPacketListener` sound-packet handlers | **not hooked yet** | see the SoundESP limit above; `probeApi` dumps the class so the handler names are on the record |
+| `ClientPacketListener#handleSoundEvent(ClientboundSoundPacket)` and `#handleSoundEntityEvent(ClientboundSoundEntityPacket)` | verified, **not hooked yet** | see the SoundESP limit above; these are the two handlers a server-sound hook would inject into |
+| `SoundEvent#location()` | verified | `SoundEvent` is a record of `(Identifier location, Optional<Float> fixedRange)` |
 | `Level#getMinY()/getMaxY()/hasChunk(int,int)/getChunk(int,int)`, `Heightmap.Types.WORLD_SURFACE`, `Heightmap#getFirstAvailable(int,int)`, `ClientLevel#entitiesForRendering()`, `Entity#getDeltaMovement()/position()/getY()/setPos/resetFallDistance`, `SoundEvent#location()`, `ResourceLocation#toString()` | compiled clean | javac resolved every one of them |
 | `WorldRenderContext` | verified | Fabric API 16.2.x: `gameRenderer()`, `worldRenderer()`, `worldState()`, `matrices()`, `consumers()`, `commandQueue()`, `sectionState()` — and no tick delta |
 

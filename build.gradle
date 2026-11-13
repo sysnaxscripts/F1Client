@@ -78,7 +78,7 @@ tasks.register("probeApi") {
 	// Dumping is limited to a narrow pattern: javap output for every rendering class would
 	// be megabytes.
 	def dumpPattern = (project.findProperty("probeDumpPattern")
-			?: 'ClientPacketListener|sounds.SoundEvent').toString()
+			?: 'ClientboundSound|sounds.SoundManager|client.sounds.SoundEngine|sounds.SoundInstance').toString()
 	outputs.upToDateWhen { false }
 	doLast {
 		def out = layout.buildDirectory.file("probe-api.txt").get().asFile
