@@ -67,74 +67,76 @@ jar {
 	}
 }
 
-// Development aid: prints the signatures of the mapped Minecraft classes whose names this
-// mod depends on but cannot verify offline. Run `./gradlew probeApi`, optionally with
+// Development aid: prints the signatures of the mapped classes whose names this mod
+// depends on but cannot verify offline. Run `./gradlew probeApi`, optionally with
 // -PprobePattern='Gizmo' or -PprobeDumpPattern='Camera', and read build/probe-api.txt.
 // CI folds that file into build-report/README.md, which is how the mapping notes in the
-// README stay honest. It deliberately does not depend on compiling, so it still reports
-// when the build is broken.
+// README stay honest. It does not depend on compiling, so it still reports when the build
+// is broken.
 tasks.register("probeApi") {
-	def listPattern = (project.findProperty("probePattern") ?: 'gizmo|debug|minecart|render').toString()
+	def listPattern = (project.findProperty("probePattern") ?: 'gizmo|debugrender|minecart|levelrenderer').toString()
 	// Dumping is limited to a narrow pattern: javap output for every rendering class would
 	// be megabytes.
-	def dumpPattern = (project.findProperty("probeDumpPattern") ?: 'gizmo|minecart|client.Camera|LevelRenderer').toString()
+	def dumpPattern = (project.findProperty("probeDumpPattern") ?: 'gizmo|minecart.AbstractMinecart|client.Camera|LevelRenderer').toString()
 	outputs.upToDateWhen { false }
 	doLast {
 		def out = layout.buildDirectory.file("probe-api.txt").get().asFile
-		out.text = ""
-		def jars = []
-		try {
-			jars.addAll(files(loom.minecraftJarProvider.get()).files)
-		} catch (Exception e) {
-			out.text += "loom.minecraftJarProvider failed: " + e + "\n"
+		def text = new StringBuilder()
+		// The compile classpath is exactly what javac saw, so a class that is not listed
+		// here genuinely does not exist for this mod.
+		def cp = configurations.compileClasspath.files.toList()
+		text.append("compile classpath entries: " + cp.size() + "\n")
+		cp.findAll { it.name.toLowerCase().contains("minecraft") || it.length() > 5_000_000 }.each {
+			text.append("  big/minecraft: " + it.name + " (" + it.length() + " bytes)\n")
 		}
-		// Fallback: whatever merged jar Loom has already produced in its cache.
-		fileTree(dir: "${layout.buildDirectory.get()}/loom-cache", include: "**/*.jar").each { jars << it }
-		fileTree(dir: "${System.getProperty('user.home')}/.gradle/caches/fabric-loom", include: "**/*merged*.jar").each { jars << it }
-		jars = jars.unique { it.absolutePath }
-		out.text += "candidate jars:\n"
-		jars.each { out.text += "  " + it + " (" + it.length() + " bytes)\n" }
-		if (jars.isEmpty()) {
-			out.text += "no minecraft jar found; nothing to probe\n"
-			return
-		}
-		def jar = jars.find { it.length() > 1_000_000 } ?: jars[0]
-		out.text += "\nprobing " + jar + "\nlist pattern: " + listPattern + "\ndump pattern: " + dumpPattern + "\n"
 
 		def listRe = java.util.regex.Pattern.compile(listPattern, java.util.regex.Pattern.CASE_INSENSITIVE)
 		def dumpRe = java.util.regex.Pattern.compile(dumpPattern, java.util.regex.Pattern.CASE_INSENSITIVE)
-		def listed = []
-		def toDump = []
-		new java.util.zip.ZipFile(jar).withCloseable { zip ->
-			zip.entries().each { entry ->
-				def n = entry.name
-				if (!n.endsWith(".class") || n.contains('$')) {
-					return
+		// class name -> jar that contains it
+		def found = new java.util.TreeMap<String, File>()
+		def dumpTargets = new java.util.TreeMap<String, File>()
+		def packages = new java.util.TreeSet<String>()
+		cp.each { jar ->
+			if (!jar.name.endsWith(".jar") || !jar.exists()) {
+				return
+			}
+			try {
+				new java.util.zip.ZipFile(jar).withCloseable { zip ->
+					zip.entries().each { entry ->
+						def n = entry.name
+						if (!n.endsWith(".class")) {
+							return
+						}
+						def fqcn = n.substring(0, n.length() - 6).replace('/', '.')
+						if (listRe.matcher(fqcn).find()) {
+							found.putIfAbsent(fqcn, jar)
+							packages.add(fqcn.contains('.') ? fqcn.substring(0, fqcn.lastIndexOf('.')) : fqcn)
+						}
+						if (dumpRe.matcher(fqcn).find() && !fqcn.contains('$')) {
+							dumpTargets.putIfAbsent(fqcn, jar)
+						}
+					}
 				}
-				def fqcn = n.substring(0, n.length() - 6).replace('/', '.')
-				if (listRe.matcher(fqcn).find()) {
-					listed << fqcn
-				}
-				if (dumpRe.matcher(fqcn).find()) {
-					toDump << fqcn
-				}
+			} catch (Exception e) {
+				text.append("  unreadable " + jar.name + ": " + e + "\n")
 			}
 		}
-		listed.sort()
-		toDump.sort()
-		out.text += "\nmatching classes (" + listed.size() + "):\n"
-		listed.each { out.text += "  " + it + "\n" }
+		text.append("\npackages containing a match (" + packages.size() + "):\n")
+		packages.each { text.append("  " + it + "\n") }
+		text.append("\nmatching classes (" + found.size() + "):\n")
+		found.each { name, jar -> text.append("  " + name + "   [" + jar.name + "]\n") }
 
 		def javap = org.gradle.internal.jvm.Jvm.current().getExecutable("javap").absolutePath
-		out.text += "\nsignatures of the first " + Math.min(toDump.size(), 30) + " dump matches:\n"
-		toDump.take(30).each { name ->
+		text.append("\nsignatures of the first " + Math.min(dumpTargets.size(), 25) + " dump matches:\n")
+		dumpTargets.take(25).each { name, jar ->
 			// ProcessBuilder rather than Project#exec, which Gradle 9 removed.
 			def process = new ProcessBuilder(javap, "-p", "-classpath", jar.absolutePath, name)
 					.redirectErrorStream(true).start()
-			def text = process.inputStream.getText("UTF-8")
-			def exit = process.waitFor()
-			out.text += "\n=== " + name + " (exit " + exit + ") ===\n" + text
+			text.append("\n=== " + name + "   [" + jar.name + "] ===\n")
+			text.append(process.inputStream.getText("UTF-8"))
+			process.waitFor()
 		}
-		println "Wrote " + out + " (" + out.length() + " bytes; " + listed.size() + " classes listed)"
+		out.text = text.toString()
+		println "Wrote " + out + " (" + out.length() + " bytes; " + found.size() + " classes matched)"
 	}
 }
