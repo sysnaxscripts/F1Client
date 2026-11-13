@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.world.WorldEventHandler;
 import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -16,11 +17,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  */
 @Mixin(WorldEventHandler.class)
 public abstract class WorldEventHandlerMixin {
-	private static final int BLOCK_BROKEN = 2001;
+	@Unique
+	private static final int F1CLIENT_BLOCK_BROKEN = 2001;
 
 	@Inject(method = "processWorldEvent", at = @At("HEAD"))
 	private void f1client$onWorldEvent(int eventId, BlockPos pos, int data, CallbackInfo ci) {
-		if (eventId == BLOCK_BROKEN) {
+		if (eventId == F1CLIENT_BLOCK_BROKEN) {
 			F1Client.get().onBlockBreakEvent(pos, Block.getStateFromRawId(data));
 		}
 	}

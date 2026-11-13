@@ -55,6 +55,17 @@ test {
 	}
 }
 
+// Client game tests: src/gametest runs inside a real client via `./gradlew runClientGameTest`.
+fabricApi {
+	configureTests {
+		createSourceSet = true
+		modId = "f1client-gametest"
+		enableGameTests = false
+		enableClientGameTests = true
+		eula = true
+	}
+}
+
 jar {
 	from("LICENSE") {
 		rename { "${it}_${base.archivesName.get()}" }

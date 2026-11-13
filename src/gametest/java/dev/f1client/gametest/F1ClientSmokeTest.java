@@ -1,0 +1,195 @@
+package dev.f1client.gametest;
+
+import dev.f1client.F1Client;
+import dev.f1client.auth.AuthState;
+import dev.f1client.gui.AuthScreen;
+import dev.f1client.gui.ClickGuiScreen;
+import dev.f1client.module.Module;
+import dev.f1client.module.impl.Freecam;
+import dev.f1client.ore.OreType;
+import dev.f1client.sound.OreAlert;
+import java.util.List;
+import net.fabricmc.fabric.api.client.gametest.v1.FabricClientGameTest;
+import net.fabricmc.fabric.api.client.gametest.v1.context.ClientGameTestContext;
+import net.fabricmc.fabric.api.client.gametest.v1.context.TestSingleplayerContext;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import org.lwjgl.glfw.GLFW;
+import org.spongepowered.asm.mixin.MixinEnvironment;
+
+/**
+ * End-to-end smoke test that runs inside a real client: account gate, register flow by
+ * keyboard, ClickGUI, ore ESP, sound detection, Freecam, logout, and a mixin audit.
+ * Run with {@code ./gradlew runClientGameTest}; screenshots land in
+ * {@code build/run/clientGameTest/screenshots}.
+ */
+public final class F1ClientSmokeTest implements FabricClientGameTest {
+	private static final String USER = "Tester_1";
+	private static final String PASSWORD = "correct-horse-battery";
+
+	@Override
+	public void runTest(ClientGameTestContext context) {
+		F1Client mod = F1Client.get();
+		context.getInput().resizeWindow(1280, 720);
+		context.waitFor(client -> mod.auth().state() != AuthState.AUTHENTICATING);
+		context.waitTicks(20);
+
+		// --- gate closed: nothing can be enabled, the client key leads to the auth screen
+		check(!mod.auth().isUnlocked(), "client must start locked");
+		context.runOnClient(client -> mod.oreDetection().setEnabled(true));
+		check(!mod.oreDetection().isEnabled(), "modules must not enable while locked");
+		check(!mod.config().isLoaded(), "config must not load while locked");
+
+		context.getInput().pressKey(GLFW.GLFW_KEY_RIGHT_SHIFT);
+		context.waitForScreen(AuthScreen.class);
+		context.waitTicks(10);
+		context.takeScreenshot("auth-register-empty");
+
+		// --- register by typing
+		context.getInput().typeChars(USER);
+		context.getInput().pressKey(GLFW.GLFW_KEY_TAB);
+		context.getInput().typeChars(PASSWORD);
+		context.getInput().pressKey(GLFW.GLFW_KEY_TAB);
+		context.getInput().typeChars("mismatch");
+		context.waitTicks(5);
+		context.takeScreenshot("auth-register-mismatch");
+		context.getInput().pressKey(GLFW.GLFW_KEY_ENTER);
+		context.waitTicks(5);
+		check(!mod.auth().isUnlocked(), "mismatching confirmation must not register");
+		for (int i = 0; i < "mismatch".length(); i++) {
+			context.getInput().pressKey(GLFW.GLFW_KEY_BACKSPACE);
+		}
+		context.getInput().typeChars(PASSWORD);
+		context.waitTicks(3);
+		context.takeScreenshot("auth-register-filled");
+		context.getInput().pressKey(GLFW.GLFW_KEY_ENTER);
+		context.waitFor(client -> mod.auth().isUnlocked());
+		context.waitForScreen(ClickGuiScreen.class);
+		check(USER.equals(mod.auth().username()), "signed in as " + mod.auth().username());
+		check(mod.config().isLoaded(), "config loads after sign-in");
+		context.waitTicks(10);
+		context.takeScreenshot("clickgui-title");
+
+		// --- keyboard navigation: Tab highlights, Enter opens settings, Space toggles (only in a world)
+		context.getInput().pressKey(GLFW.GLFW_KEY_TAB);
+		context.getInput().pressKey(GLFW.GLFW_KEY_ENTER);
+		context.waitTicks(10);
+		context.takeScreenshot("clickgui-settings-panel");
+		context.getInput().pressKey(GLFW.GLFW_KEY_ESCAPE);
+		context.getInput().pressKey(GLFW.GLFW_KEY_ESCAPE);
+		context.waitForScreen(null);
+
+		try (TestSingleplayerContext world = context.worldBuilder().create()) {
+			world.getClientWorld().waitForChunksRender();
+			BlockPos origin = context.computeOnClient(client -> client.player.getBlockPos());
+			int x = origin.getX();
+			int y = origin.getY();
+			int z = origin.getZ();
+
+			// --- OreDetection
+			world.getServer().runCommand("setblock " + (x + 3) + " " + (y + 1) + " " + z + " minecraft:diamond_ore");
+			world.getServer().runCommand("setblock " + (x + 3) + " " + (y + 2) + " " + (z + 2) + " minecraft:deepslate_diamond_ore");
+			world.getServer().runCommand("setblock " + (x + 4) + " " + (y + 1) + " " + (z - 2) + " minecraft:ancient_debris");
+			world.getServer().runCommand("setblock " + (x + 2) + " " + y + " " + (z - 1) + " minecraft:emerald_ore");
+			world.getServer().runCommand("setblock " + (x + 2) + " " + (y + 3) + " " + (z + 1) + " minecraft:nether_gold_ore");
+			context.waitTicks(10);
+			context.runOnClient(client -> {
+				mod.oreDetection().setEnabled(true);
+				mod.soundDetection().setEnabled(true);
+			});
+			check(mod.oreDetection().isEnabled(), "OreDetection enables when unlocked");
+			context.waitFor(client -> mod.oreDetection().cache().pendingChunks() == 0, 600);
+			context.waitTicks(30);
+			check(mod.oreDetection().countInRange(OreType.DIAMOND) >= 1, "diamond ore found by the chunk scan");
+			check(mod.oreDetection().countInRange(OreType.ANCIENT_DEBRIS) >= 1, "ancient debris found by the chunk scan");
+			int emeralds = mod.oreDetection().countInRange(OreType.EMERALD);
+			world.getServer().runCommand("setblock " + (x + 1) + " " + (y + 2) + " " + (z + 2) + " minecraft:emerald_ore");
+			context.waitTicks(30);
+			check(mod.oreDetection().countInRange(OreType.EMERALD) == emeralds + 1, "block update adds an ore incrementally");
+			context.takeScreenshot("world-ore-esp");
+
+			// --- SoundDetection: block-break world event, then a positional sound packet
+			world.getServer().runCommand("setblock " + (x + 3) + " " + (y + 1) + " " + z + " minecraft:air destroy");
+			context.waitTicks(10);
+			List<OreAlert> alerts = mod.soundDetection().alerts();
+			check(!alerts.isEmpty(), "breaking an ore raises an alert");
+			OreAlert first = alerts.get(0);
+			check(first.ore() == OreType.DIAMOND && first.x() == x + 3 && first.y() == y + 1 && first.z() == z,
+					"alert names the broken block: " + first);
+			world.getServer().runCommand("playsound minecraft:block.nether_gold_ore.break block @a " + (x + 2.5) + " " + (y + 3.5) + " "
+					+ (z + 1.5) + " 1 0.8");
+			context.waitTicks(10);
+			check(alerts.size() >= 2 && alerts.get(0).ore() == OreType.NETHER_GOLD, "sound packet raises an alert: " + alerts);
+			world.getServer().runCommand("playsound minecraft:block.grass.break block @a " + (x + 2.5) + " " + (y + 3.5) + " "
+					+ (z + 1.5) + " 1 0.8");
+			context.waitTicks(10);
+			check(alerts.size() == 2, "non-ore sounds are ignored");
+			context.takeScreenshot("world-sound-alerts");
+
+			// --- Freecam: the camera moves, the player does not
+			Vec3d before = context.computeOnClient(client -> client.player.getEntityPos());
+			float yawBefore = context.computeOnClient(client -> client.player.getYaw());
+			context.runOnClient(client -> mod.freecam().setEnabled(true));
+			check(Freecam.active() != null, "Freecam active");
+			context.getInput().holdKeyFor(options -> options.backKey, 15);
+			context.getInput().holdKeyFor(options -> options.jumpKey, 8);
+			context.getInput().moveCursor(60, 40);
+			context.waitTicks(5);
+			Vec3d after = context.computeOnClient(client -> client.player.getEntityPos());
+			float yawAfter = context.computeOnClient(client -> client.player.getYaw());
+			Vec3d camera = context.computeOnClient(client -> client.gameRenderer.getCamera().getCameraPos());
+			check(before.squaredDistanceTo(after) < 1.0e-6, "player must not move in Freecam: " + before + " -> " + after);
+			check(yawBefore == yawAfter, "player must not turn in Freecam");
+			check(camera.squaredDistanceTo(after) > 4.0, "camera must have left the player: " + camera);
+			context.takeScreenshot("world-freecam");
+			context.runOnClient(client -> mod.freecam().setEnabled(false));
+			context.waitTicks(5);
+			Vec3d restored = context.computeOnClient(client -> client.gameRenderer.getCamera().getCameraPos());
+			Vec3d eye = context.computeOnClient(client -> client.player.getEyePos());
+			check(restored.squaredDistanceTo(eye) < 0.5, "camera returns to the player: " + restored + " vs " + eye);
+
+			// --- ClickGUI over the world, opened by the real key path
+			context.getInput().pressKey(GLFW.GLFW_KEY_RIGHT_SHIFT);
+			context.waitForScreen(ClickGuiScreen.class);
+			context.waitTicks(10);
+			context.takeScreenshot("clickgui-world");
+			context.getInput().pressKey(GLFW.GLFW_KEY_TAB);
+			context.getInput().pressKey(GLFW.GLFW_KEY_ENTER);
+			context.waitTicks(10);
+			context.takeScreenshot("clickgui-world-settings");
+			context.getInput().pressKey(GLFW.GLFW_KEY_ESCAPE);
+			context.getInput().pressKey(GLFW.GLFW_KEY_ESCAPE);
+			context.waitForScreen(null);
+
+			MixinEnvironment.getCurrentEnvironment().audit();
+
+			// --- logout closes the gate again
+			context.runOnClient(client -> mod.auth().logout());
+			context.waitTicks(5);
+			for (Module module : mod.modules().all()) {
+				check(!module.isEnabled(), module.name() + " must be off after logout");
+			}
+			context.runOnClient(client -> mod.oreDetection().setEnabled(true));
+			check(!mod.oreDetection().isEnabled(), "modules stay locked after logout");
+			context.getInput().pressKey(GLFW.GLFW_KEY_RIGHT_SHIFT);
+			context.waitForScreen(AuthScreen.class);
+			context.waitTicks(10);
+			context.takeScreenshot("auth-login-world");
+
+			// --- sign back in: the profile (enabled modules) is restored
+			context.getInput().typeChars(PASSWORD);
+			context.getInput().pressKey(GLFW.GLFW_KEY_ENTER);
+			context.waitFor(client -> mod.auth().isUnlocked());
+			context.waitTicks(5);
+			check(mod.oreDetection().isEnabled(), "OreDetection restored from the account profile");
+			check(!mod.freecam().isEnabled(), "Freecam never restores as enabled");
+			context.setScreen(() -> null);
+		}
+	}
+
+	private static void check(boolean condition, String what) {
+		if (!condition) {
+			throw new AssertionError("F1Client smoke test failed: " + what);
+		}
+	}
+}
