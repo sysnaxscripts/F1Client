@@ -42,10 +42,12 @@ public final class F1Client implements ClientModInitializer {
 	 * <p>{@code WorldRenderContext} on Fabric API 16.2.x exposes {@code gameRenderer()},
 	 * {@code worldRenderer()}, {@code worldState()}, {@code matrices()} and
 	 * {@code consumers()} but no tick delta, so the partial tick comes from the client's own
-	 * {@code DeltaTracker}. The context itself is unused here; modules draw into the gizmo
-	 * pass, which the level renderer collects on its own.
+	 * {@code DeltaTracker}: {@code getGameTimeDeltaPartialTick(false)} is the game-time
+	 * partial tick, ignoring the freeze that a paused game applies to rendering. The context
+	 * itself is unused here; modules draw into the gizmo pass, which the level renderer
+	 * collects on its own.
 	 */
 	private static void onWorldRender(WorldRenderContext context) {
-		Modules.render(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTicks(false));
+		Modules.render(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTick(false));
 	}
 }

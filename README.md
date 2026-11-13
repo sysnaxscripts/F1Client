@@ -153,27 +153,29 @@ used. Verify all of them at once with:
 then open `build/loom-cache/minecraft-merged-*-sources.jar` (or let your IDE attach it)
 and check:
 
-| Used here | Where to look in the generated sources | Fallback name |
+| Used here | Status for the mapped 1.21.11 jar | Notes |
 |---|---|---|
-| `Minecraft#tick()V` | `net/minecraft/client/Minecraft.java` | — (stable; `runTick` is the frame loop, not this) |
-| `Minecraft#levelRenderer` + `allChanged()` | same file, field list | `levelExtractor` in some mappings |
-| `Minecraft#isWindowActive()` | same file | `isWindowActive` / window-focus check |
-| `mc.options.keyUp/keyDown/keyLeft/keyRight/keyJump/keyShift/keySprint` | `net/minecraft/client/Options.java` | `keyW/keyS/keyA/keyD` style names |
-| `Options#getCameraType()/setCameraType`, `CameraType#isFirstPerson` | `Options.java`, `CameraType.java` | `getPerspective()` in Yarn |
-| `Camera#setup(Level, Entity, boolean, boolean, float)`, `getMaxZoom(F)F`, field `detached` | `net/minecraft/client/Camera.java` | verified for 1.21.11; older versions call it `alignWithEntity`, Yarn calls it `update` |
-| `Camera#position()` | same file | verified for 1.21.11; `getPosition()` in some Mojang-mapped versions, `getPos()` in Yarn |
-| `ClientLevel#playLocalSound` — both descriptors | `net/minecraft/client/multiplayer/ClientLevel.java` | check the `Holder` / `SoundEvent` overloads and the trailing `boolean` |
-| `SoundEvent#location()`, `ResourceLocation#toString()` | `net/minecraft/sounds/SoundEvent.java` | `getId()` in Yarn |
-| `Level#getMinY()/getMaxY()`, `Level#hasChunk(int,int)`, `Level#getChunk(int,int)` | `net/minecraft/world/level/Level.java` | — |
-| `Heightmap.Types.WORLD_SURFACE`, `Heightmap#getFirstAvailable(int,int)` | `net/minecraft/world/level/levelgen/Heightmap.java` | `get(int,int)` in Yarn |
-| `ClientLevel#entitiesForRendering()` | `ClientLevel.java` | `getEntities()` in Yarn |
-| `Entity#getDeltaMovement()`, `position()`, `getY()`, `setPos`, `resetFallDistance` | `net/minecraft/world/entity/Entity.java` | — |
-| `AbstractMinecart` | `net/minecraft/world/entity/vehicle/minecart/` | verified for 1.21.11; it used to sit directly in `vehicle` |
-| `Gizmos`, `GizmoStyle`, `GizmoProperties` | `net/minecraft/gizmos/` | verified for 1.21.11. Fabric API has **no** gizmo package, and `net.minecraft.world.debug.gizmo` does not exist under Mojang mappings either |
-| `WorldRenderContext#tickDelta()` | `net/fabricmc/fabric/api/client/rendering/v1/world/WorldRenderContext.java` | a `DeltaTracker` accessor; take its game-time partial ticks |
+| `Minecraft#tick()V` | verified | `MinecraftMixin` injects at its tail |
+| `Minecraft#levelRenderer` + `LevelRenderer#allChanged()` | verified | public field; the spec's `levelExtractor` name does not exist here |
+| `Minecraft#isWindowActive()`, `getWindow()`, `getDeltaTracker()`, `options`, `gameRenderer`, `level`, `player` | verified | — |
+| `Window#handle()` | verified | record-style accessor; older versions used `getWindow()` / `getHandle()` |
+| `DeltaTracker#getGameTimeDeltaPartialTick(boolean)` | verified | singular `Tick`; `getGameTimeDeltaTicks()` and `getRealtimeDeltaTicks()` are the other two |
+| `Options#keyUp/keyDown/keyLeft/keyRight/keyJump/keyShift/keySprint`, `getCameraType()`, `setCameraType(...)` | verified | all `KeyMapping` fields, so `isDown()` reads them |
+| `CameraType#FIRST_PERSON`, `isFirstPerson()` | verified | — |
+| `Camera#setup(Level, Entity, boolean, boolean, float)` | verified | no `alignWithEntity` in this version; Yarn calls it `update` |
+| `Camera#getMaxZoom(F)F` | verified | `private`, one float parameter — hooked by ordinal, not by name |
+| `Camera#setPosition(DDD)`, `setPosition(Vec3)`, field `detached` | verified | both overloads are hooked with `require = 0` |
+| `Camera#position()` | verified | `getPosition()` in some Mojang-mapped versions, `getPos()` in Yarn |
+| `GameRenderer#mainCamera()` | **unverified** | the one remaining guess; `probeApi` dumps `GameRenderer` so the report names it |
+| `net.minecraft.gizmos.{Gizmos,GizmoStyle,GizmoProperties}` | verified | Fabric API has no gizmo package, and `net.minecraft.world.debug.gizmo` does not exist under Mojang mappings |
+| `net.minecraft.world.entity.vehicle.minecart.AbstractMinecart` | verified | it used to sit directly in `vehicle` |
+| `ClientLevel#playLocalSound` — both descriptors | **unverified** | not referenced from compiled code, so only the mixin can fail; `defaultRequire: 1` makes that a startup crash rather than a silent no-op |
+| `Level#getMinY()/getMaxY()/hasChunk(int,int)/getChunk(int,int)`, `Heightmap.Types.WORLD_SURFACE`, `Heightmap#getFirstAvailable(int,int)`, `ClientLevel#entitiesForRendering()`, `Entity#getDeltaMovement()/position()/getY()/setPos/resetFallDistance`, `SoundEvent#location()`, `ResourceLocation#toString()` | compiled clean | javac resolved every one of them |
+| `WorldRenderContext` | verified | Fabric API 16.2.x: `gameRenderer()`, `worldRenderer()`, `worldState()`, `matrices()`, `consumers()`, `commandQueue()`, `sectionState()` — and no tick delta |
 
-Verified against the mapped `minecraft-merged-*-1.21.11-*.jar` on
-`loom.mappings.1_21_11.layered+hash.2198-v2`, via the `probeApi` task described below:
+The verified rows were read off `build/probe-api.txt` produced by the `probeApi` task
+described below against `minecraft-merged-*-1.21.11-*.jar` on
+`loom.mappings.1_21_11.layered+hash.2198-v2`:
 `net.minecraft.gizmos.{Gizmos,GizmoStyle,GizmoProperties}`,
 `net.minecraft.world.entity.vehicle.minecart.AbstractMinecart`,
 `Camera#setup(Level,Entity,boolean,boolean,float)`, `Camera#getMaxZoom(F)F`,
