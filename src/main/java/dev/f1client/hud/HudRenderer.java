@@ -54,6 +54,7 @@ public final class HudRenderer implements HudElement {
 			return;
 		}
 		RoundedRenderer.setPixelsPerUnit(client.getWindow().getScaleFactor());
+		Fonts.setPixelsPerUnit(client.getWindow().getScaleFactor());
 		int width = context.getScaledWindowWidth();
 		int y = MARGIN;
 		if (hud.watermark()) {

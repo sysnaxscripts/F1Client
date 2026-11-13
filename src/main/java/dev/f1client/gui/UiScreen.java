@@ -2,8 +2,10 @@ package dev.f1client.gui;
 
 import dev.f1client.F1Client;
 import dev.f1client.render.BlurRenderer;
+import dev.f1client.render.Fonts;
 import dev.f1client.render.RoundedRenderer;
 import net.minecraft.client.gui.Click;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.input.CharInput;
@@ -24,6 +26,7 @@ public abstract class UiScreen extends Screen {
 	private final int designWidth;
 	private final int designHeight;
 	private final Anim open = new Anim(0f);
+	private final Screen parent;
 	private boolean closing;
 	private float scale = 1f;
 	private int originX;
@@ -36,6 +39,8 @@ public abstract class UiScreen extends Screen {
 	 */
 	protected UiScreen(Text title, int designWidth, int designHeight) {
 		super(title);
+		Screen current = MinecraftClient.getInstance().currentScreen;
+		this.parent = current instanceof UiScreen ui ? ui.parent : current;
 		this.designWidth = designWidth;
 		this.designHeight = designHeight;
 	}
@@ -80,7 +85,7 @@ public abstract class UiScreen extends Screen {
 	protected void init() {
 		int guiScale = Math.max(1, client.getWindow().getScaleFactor());
 		float fitWidth = client.getWindow().getFramebufferWidth() * 0.94f / designWidth;
-		float fitHeight = client.getWindow().getFramebufferHeight() * 0.82f / designHeight;
+		float fitHeight = client.getWindow().getFramebufferHeight() * 0.90f / designHeight;
 		float device = Math.max(0.5f, (float) Math.floor(Math.min(fitWidth, fitHeight) * 4f) / 4f);
 		scale = device / guiScale;
 		originX = Math.round((width - designWidth * scale) / 2f);
@@ -102,7 +107,7 @@ public abstract class UiScreen extends Screen {
 	public final void render(DrawContext context, int mouseX, int mouseY, float deltaTicks) {
 		float progress = open.value();
 		if (closing && open.isDone()) {
-			client.setScreen(null);
+			client.setScreen(parent);
 			return;
 		}
 		float zoom = 0.94f + 0.06f * progress;
@@ -112,6 +117,7 @@ public abstract class UiScreen extends Screen {
 				originY + designHeight * scale * (1f - zoom) / 2f + (1f - progress) * 6f);
 		matrices.scale(scale * zoom, scale * zoom);
 		RoundedRenderer.setPixelsPerUnit(scale * zoom * client.getWindow().getScaleFactor());
+		Fonts.setPixelsPerUnit(scale * client.getWindow().getScaleFactor());
 		draw(context, toDesignX(mouseX), toDesignY(mouseY));
 		matrices.popMatrix();
 	}

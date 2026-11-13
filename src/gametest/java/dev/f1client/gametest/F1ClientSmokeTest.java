@@ -77,7 +77,7 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 		context.takeScreenshot("clickgui-settings-panel");
 		context.getInput().pressKey(GLFW.GLFW_KEY_ESCAPE);
 		context.getInput().pressKey(GLFW.GLFW_KEY_ESCAPE);
-		context.waitForScreen(null);
+		context.waitFor(client -> !(client.currentScreen instanceof ClickGuiScreen));
 
 		try (TestSingleplayerContext world = context.worldBuilder().create()) {
 			world.getClientWorld().waitForChunksRender();

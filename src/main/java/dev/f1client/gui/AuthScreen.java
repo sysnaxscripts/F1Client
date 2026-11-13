@@ -137,7 +137,7 @@ public final class AuthScreen extends UiScreen {
 	private String validationHint() {
 		if (username.isEmpty() && password.isEmpty()) {
 			return registerMode
-					? "Username: 3 to 20 letters, numbers or _.  Password: 8 or more characters."
+					? "3 to 20 letters, numbers or _  ·  password of 8 or more characters"
 					: "";
 		}
 		String problem = AuthValidator.username(username.text());

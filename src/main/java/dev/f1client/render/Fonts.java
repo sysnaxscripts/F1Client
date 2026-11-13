@@ -14,9 +14,12 @@ import net.minecraft.util.Identifier;
 /**
  * Text drawing with the bundled Inter typeface instead of the vanilla bitmap font.
  *
- * <p>The TTF files live in {@code assets/f1client/font/} and are exposed to the game as
- * four font definitions (regular, bold, small, title). Laid-out strings and their widths
- * are cached, so drawing a label that was drawn before allocates nothing.
+ * <p>The TTF files live in {@code assets/f1client/font/}. Each role (regular, bold, small,
+ * title) exists as several font definitions that differ only in rasterisation density.
+ * The game samples glyph textures without filtering, so glyphs must be rasterised at the
+ * size they appear on screen or thin strokes drop out; {@link #setPixelsPerUnit} picks the
+ * matching density for the current transform. Laid-out strings and their widths are
+ * cached, so drawing a label that was drawn before allocates nothing.
  */
 public enum Fonts {
 	REGULAR("regular", 9f),
@@ -33,13 +36,37 @@ public enum Fonts {
 	private record Line(OrderedText text, int width) {
 	}
 
-	private final Style style;
+	/** Rasterisation densities shipped as font definitions ({@code <role>_<density*100>.json}). */
+	private static final float[] DENSITIES = {1f, 1.25f, 1.5f, 1.75f, 2f, 2.25f, 2.5f, 2.75f, 3f, 3.5f, 4f};
+	private static int density = 4;
+
+	private final Style[] styles = new Style[DENSITIES.length];
 	private final float size;
-	private final Map<String, Line> cache = new HashMap<>();
+	@SuppressWarnings("unchecked")
+	private final Map<String, Line>[] caches = new Map[DENSITIES.length];
 
 	Fonts(String name, float size) {
-		this.style = Style.EMPTY.withFont(new StyleSpriteSource.Font(Identifier.of("f1client", name)));
+		for (int i = 0; i < DENSITIES.length; i++) {
+			Identifier id = Identifier.of("f1client", name + "_" + Math.round(DENSITIES[i] * 100));
+			styles[i] = Style.EMPTY.withFont(new StyleSpriteSource.Font(id));
+			caches[i] = new HashMap<>();
+		}
 		this.size = size;
+	}
+
+	/**
+	 * Selects the glyph density for subsequent text.
+	 *
+	 * @param pixelsPerUnit device pixels covered by one drawing unit under the current transform
+	 */
+	public static void setPixelsPerUnit(float pixelsPerUnit) {
+		int best = 0;
+		for (int i = 1; i < DENSITIES.length; i++) {
+			if (Math.abs(DENSITIES[i] - pixelsPerUnit) <= Math.abs(DENSITIES[best] - pixelsPerUnit)) {
+				best = i;
+			}
+		}
+		density = best;
 	}
 
 	/** @return width of the string in drawing units. */
@@ -92,12 +119,13 @@ public enum Fonts {
 	}
 
 	private Line line(String text) {
+		Map<String, Line> cache = caches[density];
 		Line line = cache.get(text);
 		if (line == null) {
 			if (cache.size() >= CACHE_LIMIT) {
 				cache.clear();
 			}
-			OrderedText ordered = Text.literal(text).setStyle(style).asOrderedText();
+			OrderedText ordered = Text.literal(text).setStyle(styles[density]).asOrderedText();
 			line = new Line(ordered, renderer().getWidth(ordered));
 			cache.put(text, line);
 		}

@@ -190,23 +190,29 @@ public final class ClickGuiScreen extends UiScreen {
 		}
 	}
 
+	/** Two columns, or one while the settings panel leaves too little room for two readable cards. */
+	private int columns() {
+		return gridWidth >= 440 ? 2 : 1;
+	}
+
 	private int cardWidth() {
-		return (gridWidth - GAP) / 2;
+		int columns = columns();
+		return (gridWidth - GAP * (columns - 1)) / columns;
 	}
 
 	private int cardX(int index) {
-		return gridLeft + (index % 2) * (cardWidth() + GAP);
+		return gridLeft + (index % columns()) * (cardWidth() + GAP);
 	}
 
 	private int cardY(int index) {
-		return gridTop + (index / 2) * (CARD_HEIGHT + GAP) - gridScroll.offset();
+		return gridTop + (index / columns()) * (CARD_HEIGHT + GAP) - gridScroll.offset();
 	}
 
 	private void drawGrid(DrawContext context, int mouseX, int mouseY) {
 		collectVisible();
 		gridTop = 8 + SEARCH_HEIGHT + 8;
 		gridHeight = HEIGHT - BOTTOM - 6 - gridTop;
-		int rows = (visible.size() + 1) / 2;
+		int rows = (visible.size() + columns() - 1) / columns();
 		int contentHeight = rows * (CARD_HEIGHT + GAP) - (rows > 0 ? GAP : 0);
 		gridScroll.update(contentHeight, gridHeight);
 
@@ -632,14 +638,16 @@ public final class ClickGuiScreen extends UiScreen {
 		}
 		if (input.isTab() || input.isDown() || input.isUp() || input.isLeft() || input.isRight()) {
 			if (!visible.isEmpty()) {
-				int step = input.isTab() ? (input.hasShift() ? -1 : 1) : input.isDown() ? 2 : input.isUp() ? -2 : input.isRight() ? 1 : -1;
+				int columns = columns();
+				int step = input.isTab() ? (input.hasShift() ? -1 : 1)
+						: input.isDown() ? columns : input.isUp() ? -columns : input.isRight() ? 1 : -1;
 				int next = highlighted < 0 ? 0 : highlighted + step;
 				if (input.isTab()) {
 					next = Math.floorMod(next, visible.size());
 				}
 				if (next >= 0 && next < visible.size()) {
 					highlighted = next;
-					int top = (highlighted / 2) * (CARD_HEIGHT + GAP);
+					int top = (highlighted / columns) * (CARD_HEIGHT + GAP);
 					gridScroll.reveal(top, top + CARD_HEIGHT, gridHeight);
 				}
 			}
