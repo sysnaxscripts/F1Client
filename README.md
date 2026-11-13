@@ -162,7 +162,7 @@ part has its own switch.
 ## Tests
 
 ```
-./gradlew test               # 68 unit tests: auth, session store, settings, config, sound pipeline
+./gradlew test               # 79 unit tests: auth, session store, settings, modules, config, sound pipeline
 ./gradlew runClientGameTest  # starts a real client and drives it (needs a display; Loom uses xvfb on CI)
 ```
 

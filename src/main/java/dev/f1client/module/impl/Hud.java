@@ -23,6 +23,11 @@ public final class Hud extends Module {
 		super("HUD", "On-screen overlay: watermark, module list, ore counts and alerts.", Category.VISUALS);
 	}
 
+	@Override
+	public boolean enabledByDefault() {
+		return true;
+	}
+
 	public boolean watermark() {
 		return watermark.get();
 	}

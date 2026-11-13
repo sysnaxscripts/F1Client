@@ -150,6 +150,11 @@ public abstract class Module {
 		return true;
 	}
 
+	/** @return whether a fresh profile (or "reset all") starts with this module switched on. */
+	public boolean enabledByDefault() {
+		return false;
+	}
+
 	/** @return whether the keybind acts as push-to-hold instead of a toggle. */
 	public boolean isHoldBind() {
 		return false;

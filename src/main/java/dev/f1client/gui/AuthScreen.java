@@ -28,7 +28,7 @@ import net.minecraft.text.Text;
  */
 public final class AuthScreen extends UiScreen {
 	private static final int WIDTH = 300;
-	private static final int HEIGHT = 318;
+	private static final int HEIGHT = 324;
 	private static final int PAD = 28;
 	private static final int FIELD_HEIGHT = 26;
 	private static final int ERROR_COLOR = 0xFFFF7A7A;
@@ -129,7 +129,7 @@ public final class AuthScreen extends UiScreen {
 		}
 
 		if (F1Client.get().usesMockBackend()) {
-			Fonts.SMALL.drawMiddle(context, "Local test accounts: no account server is configured", WIDTH / 2, HEIGHT - 12,
+			Fonts.SMALL.drawMiddle(context, "Local test accounts: no account server is configured", WIDTH / 2, HEIGHT - 16,
 					Theme.TEXT_DISABLED);
 		}
 	}

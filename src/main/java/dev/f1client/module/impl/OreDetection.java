@@ -73,6 +73,7 @@ public final class OreDetection extends Module {
 	private Vec3d[] centers = new Vec3d[0];
 	private byte[] boxOre = new byte[0];
 	private int boxCount;
+	private int submitted;
 
 	private final long[] highlightPos = new long[MAX_HIGHLIGHTS];
 	private final byte[] highlightOre = new byte[MAX_HIGHLIGHTS];
@@ -110,6 +111,11 @@ public final class OreDetection extends Module {
 	}
 
 	/** @return how many ores of this type are currently in range. */
+	/** @return how many ores were handed to the renderer in the most recent frame. */
+	public int submittedLastFrame() {
+		return submitted;
+	}
+
 	public int countInRange(OreType ore) {
 		return counts[ore.ordinal()];
 	}
@@ -200,6 +206,7 @@ public final class OreDetection extends Module {
 	protected void onDisable() {
 		cache.clear();
 		boxCount = 0;
+		submitted = 0;
 		Arrays.fill(counts, 0);
 	}
 
@@ -350,11 +357,13 @@ public final class OreDetection extends Module {
 			tanHorizontal = tanVertical * client.getWindow().getFramebufferWidth()
 					/ Math.max(1, client.getWindow().getFramebufferHeight());
 		}
+		int drawn = 0;
 		for (int i = 0; i < boxCount; i++) {
 			Vec3d center = centers[i];
 			if (skip && inFrustum(center, eye, forward, up, side, tanHorizontal, tanVertical)) {
 				continue;
 			}
+			drawn++;
 			int ore = boxOre[i];
 			if (boxesOn) {
 				GizmoDrawing.box(boxes[i], styles[ore]).ignoreOcclusion();
@@ -363,6 +372,7 @@ public final class OreDetection extends Module {
 				GizmoDrawing.line(tracerStart, center, oreColor[ore].get() | 0xFF000000, width).ignoreOcclusion();
 			}
 		}
+		submitted = drawn;
 		renderHighlights();
 	}
 

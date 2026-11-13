@@ -10,6 +10,7 @@ import net.minecraft.text.Style;
 import net.minecraft.text.StyleSpriteSource;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import org.joml.Matrix3x2fStack;
 
 /**
  * Text drawing with the bundled Inter typeface instead of the vanilla bitmap font.
@@ -87,7 +88,25 @@ public enum Fonts {
 		if (text.isEmpty() || (color >>> 24) == 0) {
 			return;
 		}
+		// Glyph textures are sampled unfiltered and are rasterised at screen density, so a
+		// line that starts between two device pixels loses or doubles rows. Snap the line
+		// origin (the baseline vertically) to whole device pixels under the current transform.
+		Matrix3x2fStack matrices = context.getMatrices();
+		float pixels = MinecraftClient.getInstance().getWindow().getScaleFactor();
+		float scaleX = matrices.m00() * pixels;
+		float scaleY = matrices.m11() * pixels;
+		float deviceX = matrices.m20() * pixels + x * scaleX;
+		float deviceY = matrices.m21() * pixels + (y + BASELINE) * scaleY;
+		float shiftX = scaleX > 0f ? (Math.round(deviceX) - deviceX) / scaleX : 0f;
+		float shiftY = scaleY > 0f ? (Math.round(deviceY) - deviceY) / scaleY : 0f;
+		if (shiftX == 0f && shiftY == 0f) {
+			context.drawText(renderer(), line(text).text(), x, y, color, false);
+			return;
+		}
+		matrices.pushMatrix();
+		matrices.translate(shiftX, shiftY);
 		context.drawText(renderer(), line(text).text(), x, y, color, false);
+		matrices.popMatrix();
 	}
 
 	/** Draws text so its capital letters are vertically centred on {@code centerY}. */

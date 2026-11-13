@@ -116,7 +116,10 @@ public final class ModuleManager implements Module.Host {
 		}
 	}
 
-	/** Restores all settings and keybinds to defaults and switches everything off. */
+	/**
+	 * Restores all settings, keybinds and enabled states to their defaults. Modules that
+	 * are on by default only come back on while the gate is open.
+	 */
 	public void resetAll() {
 		loading = true;
 		try {
@@ -124,6 +127,7 @@ public final class ModuleManager implements Module.Host {
 				module.setEnabled(false);
 				module.resetSettings();
 				module.keybind().reset();
+				module.setEnabled(module.enabledByDefault());
 			}
 		} finally {
 			loading = false;
@@ -151,6 +155,11 @@ public final class ModuleManager implements Module.Host {
 				JsonElement element = json.get(module.name());
 				if (element != null && element.isJsonObject()) {
 					module.fromJson(element.getAsJsonObject());
+				} else {
+					// A module the stored profile has never seen starts from its defaults.
+					module.resetSettings();
+					module.keybind().reset();
+					module.setEnabled(module.enabledByDefault());
 				}
 			}
 		} finally {

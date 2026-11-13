@@ -116,7 +116,21 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 			world.getServer().runCommand("setblock " + (x + 1) + " " + (y + 2) + " " + (z + 2) + " minecraft:emerald_ore");
 			context.waitTicks(30);
 			check(mod.oreDetection().countInRange(OreType.EMERALD) == emeralds + 1, "block update adds an ore incrementally");
+			check(mod.oreDetection().submittedLastFrame() >= 6, "ore boxes reach the renderer: " + mod.oreDetection().submittedLastFrame());
 			context.takeScreenshot("world-ore-esp");
+			context.runOnClient(client -> {
+				try (net.minecraft.world.debug.gizmo.GizmoDrawing.CollectorScope scope = client.newGizmoScope()) {
+					net.minecraft.world.debug.gizmo.GizmoDrawing.box(
+							new net.minecraft.util.math.Box(x - 1, y + 1, z + 3, x + 1, y + 3, z + 5),
+							net.minecraft.client.render.DrawStyle.filledAndStroked(0xFFFF0000, 4f, 0x80FF0000))
+							.ignoreOcclusion().withLifespan(60_000);
+					net.minecraft.world.debug.gizmo.GizmoDrawing.box(
+							new net.minecraft.util.math.Box(x + 2, y + 1, z + 3, x + 3, y + 2, z + 4),
+							net.minecraft.client.render.DrawStyle.stroked(0xFF00FF00, 4f)).withLifespan(60_000);
+				}
+			});
+			context.waitTicks(5);
+			context.takeScreenshot("probe-gizmo");
 
 			// --- SoundDetection: block-break world event, then a positional sound packet
 			world.getServer().runCommand("setblock " + (x + 3) + " " + (y + 1) + " " + z + " minecraft:air destroy");
