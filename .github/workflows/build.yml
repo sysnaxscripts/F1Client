@@ -11,5 +11,15 @@ jobs:
       - uses: actions/checkout@v4
       - name: Probe
         run: |
-          echo "hello from CI"
-          java -version
+          python3 - <<'PY' > /tmp/log.txt
+          for i in range(900):
+              print(f"line {i:04d} : some compile error text here to fill the space")
+          PY
+          python3 - <<'PY'
+          data = open('/tmp/log.txt').read()
+          chunk = 60000
+          parts = [data[i:i+chunk] for i in range(0, len(data), chunk)][:9]
+          for n, p in enumerate(parts):
+              enc = p.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+              print(f"::notice title=log-{n}::{enc}")
+          PY
