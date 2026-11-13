@@ -103,7 +103,9 @@ public final class Modules {
 	}
 
 	private static void pollKeys() {
-		long window = mc.getWindow() == null ? 0L : mc.getWindow().getWindow();
+		// The GLFW window handle. MAPPING NOTE: the blaze3d Window accessor is getHandle()
+		// in the mapped 1.21.11 jar; older versions called it getWindow().
+		long window = mc.getWindow() == null ? 0L : mc.getWindow().getHandle();
 		if (window == 0L) {
 			return;
 		}

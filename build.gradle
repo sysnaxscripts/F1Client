@@ -78,7 +78,7 @@ tasks.register("probeApi") {
 	// Dumping is limited to a narrow pattern: javap output for every rendering class would
 	// be megabytes.
 	def dumpPattern = (project.findProperty("probeDumpPattern")
-			?: 'client.Minecraft|WorldRenderContext|GizmoCollector|TemporaryCollection').toString()
+			?: 'client.Minecraft|WorldRenderContext|blaze3d.platform.Window|DeltaTracker|client.Options').toString()
 	outputs.upToDateWhen { false }
 	doLast {
 		def out = layout.buildDirectory.file("probe-api.txt").get().asFile

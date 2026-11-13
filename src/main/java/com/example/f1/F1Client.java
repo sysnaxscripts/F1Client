@@ -6,6 +6,7 @@ import com.example.f1.modules.SoundESP;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderContext;
 import net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderEvents;
+import net.minecraft.client.Minecraft;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,10 +36,16 @@ public final class F1Client implements ClientModInitializer {
 		LOGGER.info("{} initialised: {} modules", NAME, Modules.all().size());
 	}
 
+	/**
+	 * Draws every enabled module.
+	 *
+	 * <p>{@code WorldRenderContext} on Fabric API 16.2.x exposes {@code gameRenderer()},
+	 * {@code worldRenderer()}, {@code worldState()}, {@code matrices()} and
+	 * {@code consumers()} but no tick delta, so the partial tick comes from the client's own
+	 * {@code DeltaTracker}. The context itself is unused here; modules draw into the gizmo
+	 * pass, which the level renderer collects on its own.
+	 */
 	private static void onWorldRender(WorldRenderContext context) {
-		// MAPPING NOTE: tickDelta() is the float partial tick on this Fabric API version
-		// (the same value as Minecraft.getInstance().getFrameTime()). Where the context
-		// exposes a delta tracker instead, pass its game-time partial ticks here.
-		Modules.render(context.tickDelta());
+		Modules.render(Minecraft.getInstance().getDeltaTracker().getGameTimeDeltaPartialTicks(false));
 	}
 }

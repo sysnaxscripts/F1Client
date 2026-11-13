@@ -57,7 +57,7 @@ public final class Freecam extends Module {
 			return;
 		}
 		anchor = mc.player.position();
-		Vec3 camera = mc.gameRenderer.mainCamera().getPosition();
+		Vec3 camera = mc.gameRenderer.mainCamera().position();
 		pos.set(camera.x, camera.y, camera.z);
 		prev.set(pos);
 		previousCameraType = mc.options.getCameraType();
