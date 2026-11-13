@@ -4,8 +4,6 @@ import com.example.f1.Module;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import java.util.Set;
-import net.fabricmc.fabric.api.client.rendering.v1.gizmo.GizmoStyle;
-import net.fabricmc.fabric.api.client.rendering.v1.gizmo.Gizmos;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
@@ -14,6 +12,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.debug.gizmo.DrawStyle;
+import net.minecraft.world.debug.gizmo.GizmoDrawing;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.lwjgl.glfw.GLFW;
@@ -45,8 +45,10 @@ public final class OreESP extends Module {
 			Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE,
 			Blocks.REDSTONE_ORE, Blocks.DEEPSLATE_REDSTONE_ORE,
 			Blocks.LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE));
-	/** Highlight colour, ARGB. */
-	private static final int COLOR = 0xFF35E0D0;
+	/** Highlight colour, RGB; drawn opaque. */
+	private static final int COLOR = 0x35E0D0;
+	/** Outline width in pixels. */
+	private static final float LINE_WIDTH = 2.0f;
 	/** Render range in blocks from the eye position. */
 	private static final int RANGE = 64;
 	/** Inclusive Y window. -64 reaches bedrock in the Overworld, 320 covers the world height. */
@@ -154,9 +156,7 @@ public final class OreESP extends Module {
 		}
 		Vec3 eye = mc.player.getEyePosition();
 		double maxDistanceSq = (double) RANGE * RANGE;
-		GizmoStyle style = GizmoStyle.stroke(COLOR);
-		// Always-on-top is what draws these through terrain; the depth test is left alone.
-		Gizmos.setAlwaysOnTop(true);
+		DrawStyle style = DrawStyle.stroked(COLOR | 0xFF000000, LINE_WIDTH);
 		for (BlockPos pos : found) {
 			if (pos.getY() < MIN_Y || pos.getY() > MAX_Y) {
 				continue;
@@ -167,9 +167,8 @@ public final class OreESP extends Module {
 			if (dx * dx + dy * dy + dz * dz > maxDistanceSq) {
 				continue;
 			}
-			Gizmos.cuboid(new AABB(pos), style);
+			// ignoreOcclusion is what draws this through terrain.
+			GizmoDrawing.box(new AABB(pos), style).ignoreOcclusion();
 		}
-		// Do not leak the flag into whatever renders after us.
-		Gizmos.setAlwaysOnTop(false);
 	}
 }

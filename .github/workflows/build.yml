@@ -25,6 +25,13 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      # Dumps the signatures of the mapping-sensitive Minecraft classes before compiling,
+      # so a name that does not exist in this version can be looked up in the report.
+      - name: Probe the mapped API
+        run: |
+          chmod +x ./gradlew
+          ./gradlew probeApi --stacktrace > probe-log.txt 2>&1 || true
+
       # Loom resolves the Mojang mappings and the Minecraft jar from Mojang's and
       # Fabric's own repositories, so a first build downloads more than a Yarn build.
       - name: Build
@@ -50,6 +57,12 @@ jobs:
             echo
             echo '```'
             ls -l build/libs 2>&1 || echo "no build/libs directory"
+            echo '```'
+            echo
+            echo "## Mapped API probe"
+            echo
+            echo '```'
+            cat build/probe-api.txt 2>&1 || echo "no probe output"
             echo '```'
             echo
             echo "## Gradle output (filtered)"
