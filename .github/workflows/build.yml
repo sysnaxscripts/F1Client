@@ -32,29 +32,44 @@ jobs:
           chmod +x ./gradlew
           ./gradlew build --stacktrace 2>&1 | tee build-log.txt
 
-      # The interesting part of the log, committed back to the branch, so it can be read
-      # without access to the Actions log and artifact storage.
-      - name: Report failures into the branch
-        if: failure() && github.event_name == 'push'
+      # Committed back to the branch, so the result can be read without access to the
+      # Actions log and artifact storage. Marked so the report commit does not retrigger
+      # this workflow.
+      - name: Report the build into the branch
+        if: github.event_name == 'push'
         run: |
           mkdir -p build-report
-          grep -nE "error:|warning:|FAILURE|What went wrong|Caused by|Could not|Execution failed|Mixin apply|mixin|\.java:[0-9]+" build-log.txt \
-            | tail -n 400 > build-report/last-failure.txt || true
           {
-            echo "# Last failed build"
+            echo "# Last build"
             echo
             echo "Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
             echo "Commit under test: $GITHUB_SHA"
+            echo "Generated on: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo
+            echo "## build/libs"
             echo
             echo '```'
-            cat build-report/last-failure.txt
+            ls -l build/libs 2>&1 || echo "no build/libs directory"
+            echo '```'
+            echo
+            echo "## Gradle output (filtered)"
+            echo
+            echo '```'
+            grep -nE "error:|warning:|FAILURE|What went wrong|Caused by|Could not|Execution failed|Mixin|\.java:[0-9]+|^> Task|BUILD (SUCCESSFUL|FAILED)" build-log.txt \
+              | tail -n 300 || true
+            echo '```'
+            echo
+            echo "## Gradle output (tail)"
+            echo
+            echo '```'
+            tail -n 120 build-log.txt
             echo '```'
           } > build-report/README.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add build-report
           if ! git diff --cached --quiet; then
-            git commit -m "Report build failure [skip ci]"
+            git commit -m "Report build result (skip ci)"
             git push origin HEAD:"$GITHUB_REF_NAME"
           fi
 
