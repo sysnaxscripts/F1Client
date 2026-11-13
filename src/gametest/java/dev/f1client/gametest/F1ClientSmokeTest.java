@@ -88,13 +88,6 @@ public final class F1ClientSmokeTest implements FabricClientGameTest {
 		context.waitTicks(20);
 		try (TestSingleplayerContext world = context.worldBuilder().create()) {
 			context.runOnClient(client -> client.options.getMenuBackgroundBlurriness().setValue(blur));
-			try {
-				sampler.join(3000);
-			} catch (InterruptedException ignored) {
-			}
-		}));
-		try (TestSingleplayerContext world = context.worldBuilder().create()) {
-			sampler.interrupt();
 			world.getClientWorld().waitForChunksRender();
 			context.getInput().resizeWindow(1280, 720);
 			context.waitTicks(5);
