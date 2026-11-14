@@ -67,7 +67,7 @@ public enum Fonts {
 		for (int i = 0; i < Density.VALUES.length; i++) {
 			fontIds[i] = Identifier.fromNamespaceAndPath(com.example.f1.F1Client.ID,
 					name + "_" + Math.round(Density.VALUES[i] * 100));
-			styles[i] = Style.EMPTY.withFont(new FontDescription(fontIds[i], Optional.empty()));
+			styles[i] = Style.EMPTY.withFont(new FontDescription.Resource(fontIds[i], Optional.empty()));
 			caches[i] = new HashMap<>();
 		}
 		this.size = size;

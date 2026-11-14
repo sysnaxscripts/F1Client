@@ -13,9 +13,12 @@ final class StringControl extends SettingControl<StringSetting> {
 
 	StringControl(StringSetting setting) {
 		super(setting);
-		this.field = new TextBox(setting.getMaxLength()).placeholder("Empty")
-				.onChange(() -> setting.set(field.text()));
-		this.field.setText(setting.get());
+		// Built through a local first: the change listener reads the field, and a blank final
+		// may not be read from its own initialiser.
+		TextBox box = new TextBox(setting.getMaxLength()).placeholder("Empty");
+		this.field = box;
+		box.onChange(() -> setting.set(box.text()));
+		box.setText(setting.get());
 	}
 
 	@Override
