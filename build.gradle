@@ -79,7 +79,7 @@ tasks.register("probeApi") {
 	// Dumping is limited to a narrow pattern: javap output for every rendering class would
 	// be megabytes.
 	def dumpPattern = (project.findProperty("probeDumpPattern")
-			?: 'network\\.chat\\.FontDescription|network\\.chat\\.TextColor|network\\.chat\\.Style$').toString()
+			?: 'client\\.gui\\.(GuiGraphics|Font)$|client\\.gui\\.screens\\.Screen$|network\\.chat\\.FontDescription$').toString()
 	outputs.upToDateWhen { false }
 	doLast {
 		def out = layout.buildDirectory.file("probe-api.txt").get().asFile
