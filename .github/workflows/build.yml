@@ -75,6 +75,12 @@ jobs:
             tail -n 40 probe-log.txt 2>&1 || echo "no probe log"
             echo '```'
             echo
+            echo "## Compile errors, with the symbol and location lines javac prints under each"
+            echo
+            echo '```'
+            grep -nE -A4 "error:" build-log.txt | head -n 500 || echo "no compile errors"
+            echo '```'
+            echo
             echo "## Gradle output (filtered)"
             echo
             echo '```'

@@ -74,11 +74,12 @@ jar {
 // README stay honest. It does not depend on compiling, so it still reports when the build
 // is broken.
 tasks.register("probeApi") {
-	def listPattern = (project.findProperty("probePattern") ?: 'fabric.api.client.rendering|fabric.api.client.event|gizmos').toString()
+	def listPattern = (project.findProperty("probePattern")
+			?: 'client\\.gui\\.[A-Z][A-Za-z]*$|client\\.[A-Z][A-Za-z]*$|client\\.input|client\\.gui\\.screens\\.Screen|blaze3d\\.platform|renderer\\.texture\\.[A-Z]|renderer\\.RenderPipeline|resources\\.sounds|fabric\\.api\\.client').toString()
 	// Dumping is limited to a narrow pattern: javap output for every rendering class would
 	// be megabytes.
 	def dumpPattern = (project.findProperty("probeDumpPattern")
-			?: 'gui.screens.Screen|gui.GuiGraphics|gui.Font|client.Minecraft|input.MouseHandler|input.KeyboardHandler|client.KeyMapping').toString()
+			?: 'client\\.gui\\.GuiGraphics$|client\\.gui\\.Gui$|client\\.gui\\.screens\\.Screen$|client\\.gui\\.Font$|blaze3d\\.platform\\.NativeImage$|blaze3d\\.platform\\.Window$|renderer\\.texture\\.DynamicTexture$|renderer\\.RenderPipelines$|resources\\.sounds\\.SimpleSoundInstance$|client\\.Minecraft$|\\.Click$|\\.KeyInput$|\\.CharInput$').toString()
 	outputs.upToDateWhen { false }
 	doLast {
 		def out = layout.buildDirectory.file("probe-api.txt").get().asFile
@@ -128,8 +129,9 @@ tasks.register("probeApi") {
 		found.each { name, jar -> text.append("  " + name + "   [" + jar.name + "]\n") }
 
 		def javap = org.gradle.internal.jvm.Jvm.current().getExecutable("javap").absolutePath
-		text.append("\nsignatures of the first " + Math.min(dumpTargets.size(), 25) + " dump matches:\n")
-		dumpTargets.take(25).each { name, jar ->
+		def dumpLimit = (project.findProperty("probeDumpLimit") ?: '40').toString().toInteger()
+		text.append("\nsignatures of the first " + Math.min(dumpTargets.size(), dumpLimit) + " dump matches:\n")
+		dumpTargets.take(dumpLimit).each { name, jar ->
 			// ProcessBuilder rather than Project#exec, which Gradle 9 removed.
 			def process = new ProcessBuilder(javap, "-p", "-classpath", jar.absolutePath, name)
 					.redirectErrorStream(true).start()

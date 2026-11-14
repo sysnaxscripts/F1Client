@@ -2,11 +2,12 @@
 	"schemaVersion": 1,
 	"id": "f1",
 	"version": "${version}",
-	"name": "F1Client",
-	"description": "Standalone client-side Fabric mod for Minecraft 1.21.11 (Mojang mappings): OreESP (F7), SoundESP (F8) and Freecam (F6). Reads only what the client already has; never touches a packet.",
+	"name": "F1 Client",
+	"description": "Standalone client-side mod for Minecraft 1.21.11 (Mojang mappings): a ClickGUI, a glass HUD, per-profile configs and a settings system around OreESP (F7), SoundESP (F8), Freecam (F6) and the HUD (F5). Reads only what the client already has; never touches a packet.",
 	"authors": [
-		"F1Client"
+		"F1 Client"
 	],
+	"icon": "assets/f1/icon.png",
 	"license": "MIT",
 	"environment": "client",
 	"entrypoints": {

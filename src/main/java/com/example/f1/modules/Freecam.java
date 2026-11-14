@@ -1,7 +1,11 @@
 package com.example.f1.modules;
 
+import com.example.f1.Category;
 import com.example.f1.Module;
 import com.example.f1.Modules;
+import com.example.f1.setting.BoolSetting;
+import com.example.f1.setting.DoubleSetting;
+import java.util.Locale;
 import net.minecraft.client.CameraType;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3d;
@@ -25,12 +29,6 @@ import org.lwjgl.glfw.GLFW;
  * see it.
  */
 public final class Freecam extends Module {
-	// --- tunables (no settings GUI; change and rebuild) ---
-	/** Camera speed in blocks per tick. */
-	private static final double SPEED = 0.5;
-	/** Multiplier while the sprint key is held. */
-	private static final double SPRINT_MULTIPLIER = 3.0;
-
 	/** Current camera position, updated once per tick. */
 	private final Vector3d pos = new Vector3d();
 	/** Camera position at the previous tick, for interpolation. */
@@ -39,8 +37,26 @@ public final class Freecam extends Module {
 	private Vec3 anchor;
 	private CameraType previousCameraType;
 
+	private final DoubleSetting speed = add(new DoubleSetting("Speed", 0.5, 0.05, 5.0, 0.05)
+			.describe("Blocks per tick the camera moves."));
+	private final DoubleSetting sprint = add(new DoubleSetting("Sprint multiplier", 3.0, 1.0, 10.0, 0.5)
+			.describe("How much faster the camera flies while the sprint key is held."));
+	private final BoolSetting smooth = add(new BoolSetting("Smooth camera", true)
+			.describe("Interpolate between ticks. Turn off for a camera that steps once per tick."));
+
 	public Freecam() {
-		super("Freecam", GLFW.GLFW_KEY_F6);
+		super("Freecam", "Detaches the camera and flies it around while your body stays put.",
+				Category.PLAYER, GLFW.GLFW_KEY_F6);
+	}
+
+	/** @return one line for the HUD: the camera position and how far it is from the body. */
+	public String readout() {
+		if (anchor == null) {
+			return "Freecam";
+		}
+		double distance = Math.sqrt(anchor.distanceToSqr(new Vec3(pos.x, pos.y, pos.z)));
+		return String.format(Locale.ROOT, "Freecam  %.0f %.0f %.0f  \u00b7  %.1f m out", pos.x, pos.y, pos.z,
+				distance);
 	}
 
 	/** @return the module while it is enabled, otherwise {@code null}. Used by the mixins. */
@@ -52,9 +68,10 @@ public final class Freecam extends Module {
 	@Override
 	protected void onEnable() {
 		if (mc.player == null || mc.level == null || mc.gameRenderer == null) {
-			// No world: enabling is meaningless, and toggle() rolls the flag back.
-			toggle();
-			return;
+			// No world: enabling is meaningless. Throwing is how Module#toggle rolls the
+			// enabled flag back; calling toggle() from here would fight the state change the
+			// caller is in the middle of and leave the camera flying with no anchor.
+			throw new IllegalStateException("Freecam needs a loaded world");
 		}
 		anchor = mc.player.position();
 		Vec3 camera = mc.gameRenderer.getMainCamera().position();
@@ -99,7 +116,7 @@ public final class Freecam extends Module {
 		}
 		prev.set(pos);
 
-		double speed = SPEED * (mc.options.keySprint.isDown() ? SPRINT_MULTIPLIER : 1.0);
+		double step = speed.get() * (mc.options.keySprint.isDown() ? sprint.get() : 1.0);
 		// Flat directions only: up and down are bound to their own keys, and the vanilla
 		// yaw is what the camera rotation still uses.
 		Vec3 forward = Vec3.directionFromRotation(0, mc.player.getYRot());
@@ -108,26 +125,26 @@ public final class Freecam extends Module {
 		double dy = 0;
 		double dz = 0;
 		if (mc.options.keyUp.isDown()) {
-			dx += forward.x * speed;
-			dz += forward.z * speed;
+			dx += forward.x * step;
+			dz += forward.z * step;
 		}
 		if (mc.options.keyDown.isDown()) {
-			dx -= forward.x * speed;
-			dz -= forward.z * speed;
+			dx -= forward.x * step;
+			dz -= forward.z * step;
 		}
 		if (mc.options.keyRight.isDown()) {
-			dx += right.x * speed;
-			dz += right.z * speed;
+			dx += right.x * step;
+			dz += right.z * step;
 		}
 		if (mc.options.keyLeft.isDown()) {
-			dx -= right.x * speed;
-			dz -= right.z * speed;
+			dx -= right.x * step;
+			dz -= right.z * step;
 		}
 		if (mc.options.keyJump.isDown()) {
-			dy += speed;
+			dy += step;
 		}
 		if (mc.options.keyShift.isDown()) {
-			dy -= speed;
+			dy -= step;
 		}
 		pos.set(pos.x + dx, pos.y + dy, pos.z + dz);
 
@@ -139,17 +156,17 @@ public final class Freecam extends Module {
 
 	/** @return interpolated camera X for this frame. */
 	public double getX(float tickDelta) {
-		return lerp(prev.x, pos.x, tickDelta);
+		return smooth.get() ? lerp(prev.x, pos.x, tickDelta) : pos.x;
 	}
 
 	/** @return interpolated camera Y for this frame. */
 	public double getY(float tickDelta) {
-		return lerp(prev.y, pos.y, tickDelta);
+		return smooth.get() ? lerp(prev.y, pos.y, tickDelta) : pos.y;
 	}
 
 	/** @return interpolated camera Z for this frame. */
 	public double getZ(float tickDelta) {
-		return lerp(prev.z, pos.z, tickDelta);
+		return smooth.get() ? lerp(prev.z, pos.z, tickDelta) : pos.z;
 	}
 
 	private static double lerp(double from, double to, float tickDelta) {
