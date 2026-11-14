@@ -27,8 +27,12 @@ jobs:
 
       # Loom resolves the Mojang mappings and the Minecraft jar from Mojang's and
       # Fabric's own repositories, so a first build downloads more than a Yarn build.
+      # pipefail matters: without it the pipeline returns tee's status, a failed compile
+      # looks like a green build, the jar upload finds nothing and the report below is
+      # skipped because failure() is false.
       - name: Build
         run: |
+          set -o pipefail
           chmod +x ./gradlew
           ./gradlew build --stacktrace 2>&1 | tee build-log.txt
 
