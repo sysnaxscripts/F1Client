@@ -50,7 +50,9 @@ public final class Modules {
 		if (module.enabledByDefault()) {
 			module.setEnabled(true);
 		}
-		F1Client.LOGGER.info("Registered module {} (key {})", module.getName(), module.keybind().displayName());
+		// nameOf is native-free: this runs during client init, before GLFW is initialised,
+		// so it must not call displayName() (which would query GLFW and crash startup).
+		F1Client.LOGGER.info("Registered module {} (key {})", module.getName(), KeybindSetting.nameOf(module.getKey()));
 		return module;
 	}
 

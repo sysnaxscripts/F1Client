@@ -85,8 +85,10 @@ src/main/resources/
 client: GLFW is read once per tick with press-edge detection, which is why a tap shorter
 than a tick still toggles, and why no `Keyboard` mixin is needed.
 
-There are no unit tests or in-client game tests in this revision; the previous Yarn-mapped
-client (which had both) is in git history at `645f13b` on `main`.
+There are no in-client game tests in this revision; the previous Yarn-mapped client (which
+had both) is in git history at `645f13b` on `main`. `src/test/java` holds unit tests for the
+key-name fallback that caused the `GLFW error before init` startup crash; they run with
+GLFW deliberately uninitialised (`./gradlew test`).
 
 `.github/workflows/build.yml` builds on every push and uploads the jar. When the build
 fails it also commits the filtered Gradle log, the compile errors and the API probe back to
@@ -415,7 +417,7 @@ and check:
 | `Level#getMinY()/getMaxY()/hasChunk(int,int)/getChunk(int,int)`, `Heightmap.Types.WORLD_SURFACE`, `Heightmap#getFirstAvailable(int,int)`, `Entity#getDeltaMovement()/position()/getY()/setPos/resetFallDistance`, `BlockPos#equals`, `Vec3#distanceToSqr`, `Component#literal` | compiled clean | javac resolved every one of them |
 | `WorldRenderContext` | verified | Fabric API 16.2.x: `gameRenderer()`, `worldRenderer()`, `worldState()`, `matrices()`, `consumers()`, `commandQueue()`, `sectionState()` — and no tick delta |
 
-Three things that are not names but will still break a build or a startup if they change:
+Four things that are not names but will still break a build or a startup if they change:
 
 - **`@Local(argsOnly = true, ordinal = 4)`** in `CameraMixin` captures the float parameter
   of `setup` by position instead of by name, because parameter names need the local
@@ -428,6 +430,12 @@ Three things that are not names but will still break a build or a startup if the
 - **`defaultRequire: 1`** in `f1.mixins.json` means a mixin that does not apply crashes the
   game at startup instead of silently doing nothing. That is what you want while porting
   names; raise it to `0` per-injection only if you need the mod to survive a mapping drift.
+- **No GLFW query before the window exists.** Fabric runs `client` entrypoints before
+  `glfwInit`, so `glfwGetKeyName` / `glfwGetKeyScancode` / `glfwGetKey` during registration
+  queue `GLFW_NOT_INITIALIZED`, which vanilla's `Window.checkGlfwError` reports as
+  `GLFW error before init: [0x10001]` and crashes every launch. Startup logging uses the
+  native-free `KeybindSetting.nameOf`; `displayName` only queries GLFW once the window-ready
+  check installed by `F1Client` reports a live window handle.
 
 ## Checking a name against the real jar
 

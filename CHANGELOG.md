@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.03.1
+
+- **Fixed a startup crash** (`GLFW error before init: [0x10001] The GLFW library is not
+  initialized`). Fabric runs `client` entrypoints before the game window is created, and
+  module registration logged each key's *display* name, which queried GLFW
+  (`glfwGetKeyName` / `glfwGetKeyScancode`) before `glfwInit`. The queued
+  `GLFW_NOT_INITIALIZED` error then made vanilla's GLFW init throw on every launch.
+  Registration now logs the static, native-free `KeybindSetting.nameOf`, and the localized
+  `displayName` lookup is gated on the Minecraft window existing. Key pills in the ClickGUI
+  still show the player's localized layout name once the window is up. Added unit tests that
+  resolve key names with GLFW deliberately uninitialised.
+
 ## 0.03
 
 The interface layer of 0.01 is back, rebuilt on Mojang mappings for 1.21.11 and restyled:
