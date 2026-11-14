@@ -4,10 +4,12 @@ import com.example.f1.Modules;
 import com.example.f1.modules.SoundESP;
 import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.client.sounds.SoundManager;
+import net.minecraft.client.sounds.SoundEngine.PlayResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * The second sound hook for {@link SoundESP}, and the one that covers other players.
@@ -38,7 +40,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class SoundManagerMixin {
 	@Inject(method = "play(Lnet/minecraft/client/resources/sounds/SoundInstance;)Lnet/minecraft/client/sounds/SoundEngine$PlayResult;",
 			at = @At("HEAD"))
-	private void f1$onPlay(SoundInstance sound, CallbackInfo ci) {
+	private void f1$onPlay(SoundInstance sound, CallbackInfoReturnable<PlayResult> ci) {
 		f1$forward(sound);
 	}
 
