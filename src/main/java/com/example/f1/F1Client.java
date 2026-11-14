@@ -6,6 +6,7 @@ import com.example.f1.modules.Freecam;
 import com.example.f1.modules.Hud;
 import com.example.f1.modules.OreESP;
 import com.example.f1.modules.SoundESP;
+import com.example.f1.setting.KeybindSetting;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderContext;
@@ -60,6 +61,16 @@ public final class F1Client implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		instance = this;
+
+		// Fabric runs this entrypoint before the game window exists, so GLFW is not yet
+		// initialised. Tell KeybindSetting when it is safe to ask GLFW for a localized key
+		// name; until the window is created every caller gets the static fallback instead.
+		// Querying GLFW earlier queues GLFW_NOT_INITIALIZED, which vanilla turns into the
+		// "GLFW error before init: [0x10001]" startup crash.
+		KeybindSetting.setWindowReadyCheck(() -> {
+			Minecraft client = Minecraft.getInstance();
+			return client != null && client.getWindow() != null && client.getWindow().handle() != 0L;
+		});
 
 		Modules.register(new OreESP());     // F7
 		Modules.register(new SoundESP());   // F8
