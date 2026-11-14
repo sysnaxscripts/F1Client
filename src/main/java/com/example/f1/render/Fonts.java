@@ -8,7 +8,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.FormattedCharSequence;
 import org.joml.Matrix3x2fStack;
 
@@ -56,14 +56,14 @@ public enum Fonts {
 	}
 
 	private final Style[] styles = new Style[Density.VALUES.length];
-	private final ResourceLocation[] fontIds = new ResourceLocation[Density.VALUES.length];
+	private final Identifier[] fontIds = new Identifier[Density.VALUES.length];
 	private final float size;
 	@SuppressWarnings("unchecked")
 	private final Map<String, Line>[] caches = new Map[Density.VALUES.length];
 
 	Fonts(String name, float size) {
 		for (int i = 0; i < Density.VALUES.length; i++) {
-			fontIds[i] = ResourceLocation.fromNamespaceAndPath(com.example.f1.F1Client.ID,
+			fontIds[i] = Identifier.fromNamespaceAndPath(com.example.f1.F1Client.ID,
 					name + "_" + Math.round(Density.VALUES[i] * 100));
 			styles[i] = Style.EMPTY.withFont(fontIds[i]);
 			caches[i] = new HashMap<>();
@@ -93,7 +93,7 @@ public enum Fonts {
 	}
 
 	/** @return the font definition used for the current density. */
-	public ResourceLocation fontId() {
+	public Identifier fontId() {
 		return fontIds[Density.current];
 	}
 

@@ -10,8 +10,8 @@ import com.example.f1.setting.Setting;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.input.CharInput;
-import net.minecraft.client.input.KeyInput;
+import net.minecraft.client.input.CharacterEvent;
+import net.minecraft.client.input.KeyEvent;
 
 /**
  * The scrollable list of controls for one set of settings.
@@ -206,7 +206,7 @@ public final class SettingList {
 	 *
 	 * @return whether a control used it
 	 */
-	public boolean keyPressed(KeyInput input) {
+	public boolean keyPressed(KeyEvent input) {
 		for (int i = 0; i < controls.size(); i++) {
 			if (controls.get(i).capturesKeyboard() && controls.get(i).keyPressed(input)) {
 				return true;
@@ -225,7 +225,7 @@ public final class SettingList {
 	 *
 	 * @return whether a control used it
 	 */
-	public boolean charTyped(CharInput input) {
+	public boolean charTyped(CharacterEvent input) {
 		for (int i = 0; i < controls.size(); i++) {
 			if (controls.get(i).capturesKeyboard() && controls.get(i).charTyped(input)) {
 				return true;

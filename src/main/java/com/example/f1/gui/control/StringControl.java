@@ -3,8 +3,8 @@ package com.example.f1.gui.control;
 import com.example.f1.gui.widget.TextBox;
 import com.example.f1.setting.StringSetting;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.input.CharInput;
-import net.minecraft.client.input.KeyInput;
+import net.minecraft.client.input.CharacterEvent;
+import net.minecraft.client.input.KeyEvent;
 
 /** Label with a text field. */
 final class StringControl extends SettingControl<StringSetting> {
@@ -50,12 +50,12 @@ final class StringControl extends SettingControl<StringSetting> {
 	}
 
 	@Override
-	public boolean keyPressed(KeyInput input) {
+	public boolean keyPressed(KeyEvent input) {
 		return field.keyPressed(input);
 	}
 
 	@Override
-	public boolean charTyped(CharInput input) {
+	public boolean charTyped(CharacterEvent input) {
 		return field.charTyped(input);
 	}
 

@@ -2,7 +2,7 @@ package com.example.f1.render;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 /**
  * White line icons bundled under {@code assets/f1client/textures/gui/}, tinted when drawn.
@@ -61,14 +61,14 @@ public enum Icons {
 	/** Working. */
 	SPINNER("spinner");
 
-	private final ResourceLocation texture;
+	private final Identifier texture;
 
 	Icons(String file) {
-		this.texture = ResourceLocation.fromNamespaceAndPath(com.example.f1.F1Client.ID, "textures/gui/" + file + ".png");
+		this.texture = Identifier.fromNamespaceAndPath(com.example.f1.F1Client.ID, "textures/gui/" + file + ".png");
 	}
 
 	/** @return the texture id of this icon. */
-	public ResourceLocation texture() {
+	public Identifier texture() {
 		return texture;
 	}
 

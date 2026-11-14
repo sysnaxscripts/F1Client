@@ -3,7 +3,7 @@ package com.example.f1.util;
 import java.util.Optional;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 
 /**
@@ -65,6 +65,6 @@ public final class UiSounds {
 
 	/** @return a variable-range sound event for a vanilla id. */
 	private static SoundEvent event(String path) {
-		return new SoundEvent(ResourceLocation.withDefaultNamespace(path), Optional.empty());
+		return new SoundEvent(Identifier.withDefaultNamespace(path), Optional.empty());
 	}
 }

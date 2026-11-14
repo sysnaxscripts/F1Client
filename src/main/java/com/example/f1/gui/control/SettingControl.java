@@ -5,8 +5,8 @@ import com.example.f1.render.Fonts;
 import com.example.f1.render.Theme;
 import com.example.f1.setting.Setting;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.input.CharInput;
-import net.minecraft.client.input.KeyInput;
+import net.minecraft.client.input.CharacterEvent;
+import net.minecraft.client.input.KeyEvent;
 
 /**
  * UI control for one {@link Setting}: draws the row and turns mouse and keyboard input into
@@ -88,12 +88,12 @@ public abstract class SettingControl<S extends Setting<?>> {
 	}
 
 	/** @return whether the key was used. */
-	public boolean keyPressed(KeyInput input) {
+	public boolean keyPressed(KeyEvent input) {
 		return false;
 	}
 
 	/** @return whether the character was used. */
-	public boolean charTyped(CharInput input) {
+	public boolean charTyped(CharacterEvent input) {
 		return false;
 	}
 

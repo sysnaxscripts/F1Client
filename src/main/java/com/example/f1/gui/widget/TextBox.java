@@ -5,8 +5,8 @@ import com.example.f1.render.Icons;
 import com.example.f1.render.Theme;
 import java.util.function.IntPredicate;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.input.CharInput;
-import net.minecraft.client.input.KeyInput;
+import net.minecraft.client.input.CharacterEvent;
+import net.minecraft.client.input.KeyEvent;
 import org.lwjgl.glfw.GLFW;
 
 /**
@@ -147,7 +147,7 @@ public final class TextBox {
 	 *
 	 * @return whether the key was used
 	 */
-	public boolean keyPressed(KeyInput input) {
+	public boolean keyPressed(KeyEvent input) {
 		if (!focused) {
 			return false;
 		}
@@ -199,7 +199,7 @@ public final class TextBox {
 	 *
 	 * @return whether the character was used
 	 */
-	public boolean charTyped(CharInput input) {
+	public boolean charTyped(CharacterEvent input) {
 		if (!focused || !input.isValidChar()) {
 			return false;
 		}

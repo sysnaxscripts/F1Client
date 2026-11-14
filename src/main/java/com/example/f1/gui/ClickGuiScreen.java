@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.input.CharInput;
-import net.minecraft.client.input.KeyInput;
+import net.minecraft.client.input.CharacterEvent;
+import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.Component;
 
 /**
@@ -787,7 +787,7 @@ public final class ClickGuiScreen extends UiScreen {
 	}
 
 	@Override
-	protected boolean onKey(KeyInput input) {
+	protected boolean onKey(KeyEvent input) {
 		if (creatingProfile && profileName.isFocused()) {
 			if (input.isEscape()) {
 				creatingProfile = false;
@@ -813,7 +813,7 @@ public final class ClickGuiScreen extends UiScreen {
 	}
 
 	@Override
-	protected boolean onChar(CharInput input) {
+	protected boolean onChar(CharacterEvent input) {
 		if (creatingProfile && profileName.charTyped(input)) {
 			return true;
 		}

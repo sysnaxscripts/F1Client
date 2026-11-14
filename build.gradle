@@ -79,7 +79,7 @@ tasks.register("probeApi") {
 	// Dumping is limited to a narrow pattern: javap output for every rendering class would
 	// be megabytes.
 	def dumpPattern = (project.findProperty("probeDumpPattern")
-			?: 'client\\.gui\\.GuiGraphics$|client\\.gui\\.Gui$|client\\.gui\\.screens\\.Screen$|client\\.gui\\.Font$|blaze3d\\.platform\\.NativeImage$|blaze3d\\.platform\\.Window$|renderer\\.texture\\.DynamicTexture$|renderer\\.RenderPipelines$|resources\\.sounds\\.SimpleSoundInstance$|client\\.Minecraft$|\\.Click$|\\.KeyInput$|\\.CharInput$').toString()
+			?: 'resources\\.Identifier$|client\\.Options$|renderer\\.texture\\.TextureManager$|network\\.chat\\.Style$|network\\.chat\\.Component$|gui\\.components\\.events\\.GuiEventListener$|gui\\.components\\.ChatComponent$|client\\.input\\.KeyEvent$|client\\.input\\.CharacterEvent$|client\\.input\\.MouseButtonEvent$|client\\.input\\.MouseButtonInfo$|client\\.gui\\.Font$').toString()
 	outputs.upToDateWhen { false }
 	doLast {
 		def out = layout.buildDirectory.file("probe-api.txt").get().asFile

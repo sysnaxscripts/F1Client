@@ -1,25 +1,25 @@
 package com.example.f1.render;
 
-import com.example.f1.F1Client;
 import net.minecraft.client.gui.GuiGraphics;
 
 /**
  * Backdrop for F1 screens.
  *
- * <p>Uses the game's own framebuffer blur post-effect: everything rendered so far (the
- * world and the HUD) is blurred in place, then dimmed so the glass panels read clearly.
- * The pass may run only once per frame, so screens call this exactly once from their
- * background step. Blur strength follows the vanilla "Menu Background Blurriness" video
- * setting, and the client's own "Menu blur" switch turns the pass off entirely for players
- * who would rather keep the world sharp behind the glass; the dim stays either way. Both
- * are faded with the screen's own open animation.
+ * <p>Two parts, deliberately split: the blur pass belongs to the screen, because
+ * {@code GuiGraphics} has no blur call of its own in these mappings and the pass may run
+ * only once per frame. {@code UiScreen} therefore calls the game's own
+ * {@code Screen#renderBlurredBackground}, which blurs everything rendered so far (the world
+ * and the HUD) and follows the vanilla "Menu Background Blurriness" video setting, and then
+ * calls {@link #backdrop} to dim and tint what is left. The client's own "Menu blur" switch
+ * skips the pass entirely for players who would rather keep the world sharp behind the
+ * glass; the dim stays either way. Both fade with the screen's own open animation.
  */
 public final class BlurRenderer {
 	private BlurRenderer() {
 	}
 
 	/**
-	 * Blurs what is behind the screen and dims it.
+	 * Dims and tints what is behind the screen.
 	 *
 	 * @param context drawing context of the current frame
 	 * @param width   screen width in GUI units
@@ -29,10 +29,6 @@ public final class BlurRenderer {
 	public static void backdrop(GuiGraphics context, int width, int height, float opacity) {
 		if (opacity <= 0.01f) {
 			return;
-		}
-		F1Client client = F1Client.get();
-		if (client == null || client.settings().menuBlur()) {
-			context.applyBlur();
 		}
 		int dim = Theme.fade(Theme.BACKDROP_DIM, opacity);
 		if ((dim >>> 24) != 0) {

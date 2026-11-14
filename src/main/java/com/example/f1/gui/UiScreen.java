@@ -6,12 +6,11 @@ import com.example.f1.render.BlurRenderer;
 import com.example.f1.render.Fonts;
 import com.example.f1.render.RoundedRenderer;
 import com.mojang.blaze3d.platform.Window;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Click;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.CharInput;
-import net.minecraft.client.input.KeyInput;
+import net.minecraft.client.input.CharacterEvent;
+import net.minecraft.client.input.KeyEvent;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 import org.joml.Matrix3x2fStack;
 
@@ -24,9 +23,9 @@ import org.joml.Matrix3x2fStack;
  * mouse input into design units. It also draws the blurred backdrop once per frame and
  * runs the open and close transition.
  *
- * <p>Input arrives through the game's own input records ({@link Click}, {@link KeyInput},
- * {@link CharInput}); nothing here registers a keybind with the vanilla system, so a
- * screen never collides with a player's own bindings.
+ * <p>Input arrives through the game's own input events ({@link MouseButtonEvent},
+ * {@link KeyEvent}, {@link CharacterEvent}); nothing here registers a keybind with the
+ * vanilla system, so a screen never collides with a player's own bindings.
  */
 public abstract class UiScreen extends Screen {
 	private final int designWidth;
@@ -45,7 +44,7 @@ public abstract class UiScreen extends Screen {
 	 */
 	protected UiScreen(Component title, int designWidth, int designHeight) {
 		super(title);
-		Screen current = Minecraft.getInstance().screen;
+		Screen current = minecraft.screen;
 		// Opening an F1 screen from an F1 screen must not chain: closing returns to whatever
 		// was open before the first one.
 		this.parent = current instanceof UiScreen ui ? ui.parent : current;
@@ -71,11 +70,11 @@ public abstract class UiScreen extends Screen {
 	}
 
 	/** @return {@code true} when the key was used. */
-	protected boolean onKey(KeyInput input) {
+	protected boolean onKey(KeyEvent input) {
 		return false;
 	}
 
-	protected boolean onChar(CharInput input) {
+	protected boolean onChar(CharacterEvent input) {
 		return false;
 	}
 
@@ -102,7 +101,7 @@ public abstract class UiScreen extends Screen {
 	@Override
 	protected void init() {
 		float windowScale = Fonts.windowScale();
-		Window window = Minecraft.getInstance().getWindow();
+		Window window = minecraft.getWindow();
 		float fitWidth = window.getWidth() * 0.94f / designWidth;
 		float fitHeight = window.getHeight() * 0.90f / designHeight;
 		// Quantised to quarter units so the layout lands on device pixels.
@@ -117,9 +116,12 @@ public abstract class UiScreen extends Screen {
 
 	@Override
 	public void renderBackground(GuiGraphics context, int mouseX, int mouseY, float partialTick) {
-		if (Minecraft.getInstance().level == null) {
+		if (minecraft.level == null) {
 			// No world behind the screen: let vanilla draw its menu background.
 			super.renderBackground(context, mouseX, mouseY, partialTick);
+		} else if (F1Client.get().settings().menuBlur()) {
+			// The game's own blur pass, once per frame, before anything of ours is drawn.
+			renderBlurredBackground(context);
 		}
 		BlurRenderer.backdrop(context, width, height, open.value());
 	}
@@ -128,7 +130,7 @@ public abstract class UiScreen extends Screen {
 	public final void render(GuiGraphics context, int mouseX, int mouseY, float partialTick) {
 		float progress = open.value();
 		if (closing && open.isDone()) {
-			Minecraft.getInstance().setScreen(parent);
+			minecraft.setScreen(parent);
 			return;
 		}
 		float zoom = 0.94f + 0.06f * progress;
@@ -145,18 +147,18 @@ public abstract class UiScreen extends Screen {
 	}
 
 	@Override
-	public boolean mouseClicked(Click click, boolean doubled) {
+	public boolean mouseClicked(MouseButtonEvent click, boolean doubled) {
 		return !closing && onClick(toDesignX(click.x()), toDesignY(click.y()), click.button());
 	}
 
 	@Override
-	public boolean mouseReleased(Click click) {
+	public boolean mouseReleased(MouseButtonEvent click) {
 		onRelease(toDesignX(click.x()), toDesignY(click.y()), click.button());
 		return true;
 	}
 
 	@Override
-	public boolean mouseDragged(Click click, double deltaX, double deltaY) {
+	public boolean mouseDragged(MouseButtonEvent click, double deltaX, double deltaY) {
 		onDrag(toDesignX(click.x()), toDesignY(click.y()), click.button());
 		return true;
 	}
@@ -168,7 +170,7 @@ public abstract class UiScreen extends Screen {
 	}
 
 	@Override
-	public boolean keyPressed(KeyInput input) {
+	public boolean keyPressed(KeyEvent input) {
 		if (closing) {
 			return true;
 		}
@@ -182,7 +184,7 @@ public abstract class UiScreen extends Screen {
 	}
 
 	@Override
-	public boolean charTyped(CharInput input) {
+	public boolean charTyped(CharacterEvent input) {
 		return !closing && onChar(input);
 	}
 

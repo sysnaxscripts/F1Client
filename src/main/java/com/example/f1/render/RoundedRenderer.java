@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 /**
  * Rounded rectangles for the HUD and the ClickGUI.
@@ -32,7 +32,7 @@ public final class RoundedRenderer {
 	private static final int KIND_RING = 1;
 	private static final int KIND_SHADOW = 2;
 
-	private static final Int2ObjectOpenHashMap<ResourceLocation> CACHE = new Int2ObjectOpenHashMap<>();
+	private static final Int2ObjectOpenHashMap<Identifier> CACHE = new Int2ObjectOpenHashMap<>();
 	private static float pixelsPerUnit = 2f;
 
 	private RoundedRenderer() {
@@ -77,7 +77,7 @@ public final class RoundedRenderer {
 			context.fill(x, y, x + width, y + height, color);
 			return;
 		}
-		ResourceLocation id = texture(KIND_DISC, r, 0);
+		Identifier id = texture(KIND_DISC, r, 0);
 		int size = r * 2;
 		// Four corners.
 		quad(context, id, x, y, 0, 0, r, r, size, color);
@@ -107,7 +107,7 @@ public final class RoundedRenderer {
 			return;
 		}
 		int r = Math.max(1, Math.min(radius, Math.min(width, height) / 2));
-		ResourceLocation ring = texture(KIND_RING, r, 0);
+		Identifier ring = texture(KIND_RING, r, 0);
 		int size = r * 2;
 		quad(context, ring, x, y, 0, 0, r, r, size, color);
 		quad(context, ring, x + width - r, y, r, 0, r, r, size, color);
@@ -188,7 +188,7 @@ public final class RoundedRenderer {
 		int r = Math.max(1, Math.min(radius, Math.min(width, height) / 2));
 		int s = r + spread;
 		int size = s * 2;
-		ResourceLocation id = texture(KIND_SHADOW, r, spread);
+		Identifier id = texture(KIND_SHADOW, r, spread);
 		int left = x - spread;
 		int top = y - spread;
 		int right = x + width + spread;
@@ -213,15 +213,15 @@ public final class RoundedRenderer {
 	}
 
 	/** Draws one corner quadrant of a generated texture. */
-	private static void quad(GuiGraphics context, ResourceLocation id, int x, int y, int u, int v, int width,
+	private static void quad(GuiGraphics context, Identifier id, int x, int y, int u, int v, int width,
 			int height, int textureSize, int color) {
 		context.blit(RenderPipelines.GUI_TEXTURED, id, x, y, u, v, width, height, textureSize, textureSize, color);
 	}
 
 	/** Draws a one-unit-wide slice of a generated texture, stretched to {@code width}. */
-	private static void stretched(GuiGraphics context, ResourceLocation id, int x, int y, int width, int height,
+	private static void stretched(GuiGraphics context, Identifier id, int x, int y, int width, int height,
 			float u, float v, int regionWidth, int regionHeight, int textureSize, int color) {
-		context.blit(RenderPipelines.GUI_TEXTURED, id, x, y, width, height, u, v, regionWidth, regionHeight,
+		context.blit(RenderPipelines.GUI_TEXTURED, id, x, y, u, v, width, height, regionWidth, regionHeight,
 				textureSize, textureSize, color);
 	}
 
@@ -229,20 +229,23 @@ public final class RoundedRenderer {
 	 * Returns the cached texture for a kind and radius, generating and uploading it on first
 	 * use. The key packs kind, radius and spread in device pixels.
 	 */
-	private static ResourceLocation texture(int kind, int radiusUnits, int spreadUnits) {
+	private static Identifier texture(int kind, int radiusUnits, int spreadUnits) {
 		int radiusPx = Math.max(1, Math.min(MAX_RADIUS_PX, (int) Math.round(radiusUnits * pixelsPerUnit)));
 		int spreadPx = Math.max(0, Math.min(MAX_RADIUS_PX, (int) Math.round(spreadUnits * pixelsPerUnit)));
 		int key = (kind << 20) | (radiusPx << 10) | spreadPx;
-		ResourceLocation id = CACHE.get(key);
+		Identifier id = CACHE.get(key);
 		if (id == null) {
-			id = ResourceLocation.fromNamespaceAndPath(com.example.f1.F1Client.ID,
+			id = Identifier.fromNamespaceAndPath(com.example.f1.F1Client.ID,
 					"dynamic/rounded_" + kind + "_" + radiusPx + "_" + spreadPx);
 			NativeImage image = switch (kind) {
 			case KIND_RING -> ring(radiusPx, Math.max(1, (int) Math.round(pixelsPerUnit)));
 			case KIND_SHADOW -> shadowImage(radiusPx, spreadPx);
 			default -> disc(radiusPx);
 			};
-			DynamicTexture texture = new DynamicTexture(image);
+			// The only DynamicTexture constructor that takes an image also wants a name
+			// supplier, which the texture dump uses to label itself.
+			String label = id.toString();
+			DynamicTexture texture = new DynamicTexture(() -> label, image);
 			texture.upload();
 			Minecraft.getInstance().getTextureManager().register(id, texture);
 			CACHE.put(key, id);
@@ -306,14 +309,13 @@ public final class RoundedRenderer {
 	}
 
 	/**
-	 * Writes one pixel. {@link NativeImage} stores pixels as ABGR, so red and blue are
-	 * swapped on the way in.
+	 * Writes one pixel of the coverage mask.
+	 *
+	 * <p>{@code setPixel} takes the colour as ARGB and does the conversion to the native
+	 * layout itself. The masks here are white at varying alpha, so red, green and blue are
+	 * always equal and the ordering cannot be got wrong.
 	 */
 	private static void putPixel(NativeImage image, int x, int y, int argb) {
-		int alpha = (argb >>> 24) & 0xFF;
-		int red = (argb >> 16) & 0xFF;
-		int green = (argb >> 8) & 0xFF;
-		int blue = argb & 0xFF;
-		image.setPixelRGBA(x, y, (alpha << 24) | (blue << 16) | (green << 8) | red);
+		image.setPixel(x, y, argb);
 	}
 }

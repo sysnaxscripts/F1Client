@@ -111,7 +111,7 @@ public final class HudRenderer {
 	private static int drawWatermark(GuiGraphics context, Hud hud, int screenWidth, boolean left, int cursor,
 			boolean top) {
 		F1Client client = F1Client.get();
-		int fps = Minecraft.getFps();
+		int fps = Minecraft.getInstance().getFps();
 		String key = hud.showFps() ? fps + "|" + client.config().activeProfile() : client.config().activeProfile();
 		if (!key.equals(watermarkKey)) {
 			watermarkKey = key;

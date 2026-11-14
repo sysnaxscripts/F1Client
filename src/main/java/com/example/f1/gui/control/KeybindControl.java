@@ -5,7 +5,7 @@ import com.example.f1.render.Fonts;
 import com.example.f1.render.Theme;
 import com.example.f1.setting.KeybindSetting;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.input.KeyInput;
+import net.minecraft.client.input.KeyEvent;
 import org.lwjgl.glfw.GLFW;
 
 /**
@@ -51,7 +51,7 @@ public final class KeybindControl extends SettingControl<KeybindSetting> {
 	}
 
 	@Override
-	public boolean keyPressed(KeyInput input) {
+	public boolean keyPressed(KeyEvent input) {
 		if (!listening) {
 			return false;
 		}
