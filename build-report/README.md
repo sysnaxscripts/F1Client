@@ -1,8 +1,8 @@
 # Last build
 
-Run: https://github.com/sysnaxscripts/F1Client/actions/runs/43574287701
-Commit under test: 8f946510cd05e4a5540a0deef6ea1b524c6a31ed
-Generated on: 2026-11-14T08:08:16Z
+Run: https://github.com/sysnaxscripts/F1Client/actions/runs/43574905211
+Commit under test: b83c4055b99126ed71022247fd9d762e4cdcb648
+Generated on: 2026-11-14T08:16:05Z
 
 ## build/libs
 
@@ -583,521 +583,507 @@ matching classes (498):
   net.minecraft.client.resources.sounds.UnderwaterAmbientSoundInstances$UnderwaterAmbientSoundInstance   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
   net.minecraft.client.resources.sounds.package-info   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
 
-signatures of the first 10 dump matches:
+signatures of the first 12 dump matches:
 
-=== com.mojang.blaze3d.platform.NativeImage   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "NativeImage.java"
-public final class com.mojang.blaze3d.platform.NativeImage implements java.lang.AutoCloseable {
-  private static final org.slf4j.Logger LOGGER;
-  private static final com.mojang.jtracy.MemoryPool MEMORY_POOL;
-  private static final java.util.Set<java.nio.file.StandardOpenOption> OPEN_OPTIONS;
-  private final com.mojang.blaze3d.platform.NativeImage$Format format;
-  private final int width;
-  private final int height;
-  private final boolean useStbFree;
-  private long pixels;
-  private final long size;
-  public com.mojang.blaze3d.platform.NativeImage(int, int, boolean);
-  public com.mojang.blaze3d.platform.NativeImage(com.mojang.blaze3d.platform.NativeImage$Format, int, int, boolean);
-  public com.mojang.blaze3d.platform.NativeImage(com.mojang.blaze3d.platform.NativeImage$Format, int, int, boolean, long);
-  public java.lang.String toString();
-  private boolean isOutsideBounds(int, int);
-  public static com.mojang.blaze3d.platform.NativeImage read(java.io.InputStream) throws java.io.IOException;
-  public static com.mojang.blaze3d.platform.NativeImage read(com.mojang.blaze3d.platform.NativeImage$Format, java.io.InputStream) throws java.io.IOException;
-  public static com.mojang.blaze3d.platform.NativeImage read(java.nio.ByteBuffer) throws java.io.IOException;
-  public static com.mojang.blaze3d.platform.NativeImage read(byte[]) throws java.io.IOException;
-  private static com.mojang.blaze3d.platform.NativeImage putAndRead(java.nio.ByteBuffer, byte[]) throws java.io.IOException;
-  public static com.mojang.blaze3d.platform.NativeImage read(com.mojang.blaze3d.platform.NativeImage$Format, java.nio.ByteBuffer) throws java.io.IOException;
-  private void checkAllocated();
-  public void close();
-  public int getWidth();
-  public int getHeight();
-  public com.mojang.blaze3d.platform.NativeImage$Format format();
-  private int getPixelABGR(int, int);
-  public int getPixel(int, int);
-  public void setPixelABGR(int, int, int);
-  public void setPixel(int, int, int);
-  public com.mojang.blaze3d.platform.NativeImage mappedCopy(java.util.function.IntUnaryOperator);
-  public int[] getPixelsABGR();
-  public int[] getPixels();
-  public byte getLuminanceOrAlpha(int, int);
-  public int[] makePixelArray();
-  public void writeToFile(java.io.File) throws java.io.IOException;
-  public boolean copyFromFont(org.lwjgl.util.freetype.FT_Face, int);
-  public void writeToFile(java.nio.file.Path) throws java.io.IOException;
-  private boolean writeToChannel(java.nio.channels.WritableByteChannel) throws java.io.IOException;
-  public void copyFrom(com.mojang.blaze3d.platform.NativeImage);
-  public void fillRect(int, int, int, int, int);
-  public void copyRect(int, int, int, int, int, int, boolean, boolean);
-  public void copyRect(com.mojang.blaze3d.platform.NativeImage, int, int, int, int, int, int, boolean, boolean);
-  public void resizeSubRectTo(int, int, int, int, com.mojang.blaze3d.platform.NativeImage);
-  public void untrack();
-  public long getPointer();
-  static {};
-}
-
-=== com.mojang.blaze3d.platform.Window   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "Window.java"
-public final class com.mojang.blaze3d.platform.Window implements java.lang.AutoCloseable {
-  private static final org.slf4j.Logger LOGGER;
-  public static final int BASE_WIDTH;
-  public static final int BASE_HEIGHT;
-  private final org.lwjgl.glfw.GLFWErrorCallback defaultErrorCallback;
-  private final com.mojang.blaze3d.platform.WindowEventHandler eventHandler;
-  private final com.mojang.blaze3d.platform.ScreenManager screenManager;
-  private final long handle;
-  private int windowedX;
-  private int windowedY;
-  private int windowedWidth;
-  private int windowedHeight;
-  private java.util.Optional<com.mojang.blaze3d.platform.VideoMode> preferredFullscreenVideoMode;
-  private boolean fullscreen;
-  private boolean actuallyFullscreen;
-  private int x;
-  private int y;
-  private int width;
-  private int height;
-  private int framebufferWidth;
-  private int framebufferHeight;
-  private int guiScaledWidth;
-  private int guiScaledHeight;
-  private int guiScale;
-  private java.lang.String errorSection;
-  private boolean dirty;
-  private boolean vsync;
-  private boolean iconified;
-  private boolean minimized;
-  private boolean allowCursorChanges;
-  private com.mojang.blaze3d.platform.cursor.CursorType currentCursor;
-  public com.mojang.blaze3d.platform.Window(com.mojang.blaze3d.platform.WindowEventHandler, com.mojang.blaze3d.platform.ScreenManager, com.mojang.blaze3d.platform.DisplayData, java.lang.String, java.lang.String);
-  public static java.lang.String getPlatform();
-  public int getRefreshRate();
-  public boolean shouldClose();
-  public static void checkGlfwError(java.util.function.BiConsumer<java.lang.Integer, java.lang.String>);
-  public void setIcon(net.minecraft.server.packs.PackResources, com.mojang.blaze3d.platform.IconSet) throws java.io.IOException;
-  public void setErrorSection(java.lang.String);
-  private void setBootErrorCallback();
-  private static void bootCrash(int, long);
-  public void defaultErrorCallback(int, long);
-  public void setDefaultErrorCallback();
-  public void updateVsync(boolean);
-  public void close();
-  private void onMove(long, int, int);
-  private void onFramebufferResize(long, int, int);
-  private void refreshFramebufferSize();
-  private void onResize(long, int, int);
-  private void onFocus(long, boolean);
-  private void onEnter(long, boolean);
-  private void onIconify(long, boolean);
-  public void updateDisplay(com.mojang.blaze3d.TracyFrameCapture);
-  public java.util.Optional<com.mojang.blaze3d.platform.VideoMode> getPreferredFullscreenVideoMode();
-  public void setPreferredFullscreenVideoMode(java.util.Optional<com.mojang.blaze3d.platform.VideoMode>);
-  public void changeFullscreenVideoMode();
-  private void setMode();
-  public void toggleFullScreen();
-  public void setWindowed(int, int);
-  private void updateFullscreen(boolean, com.mojang.blaze3d.TracyFrameCapture);
-  public int calculateScale(int, boolean);
-  public void setGuiScale(int);
-  public void setTitle(java.lang.String);
-  public long handle();
-  public boolean isFullscreen();
-  public boolean isIconified();
-  public int getWidth();
-  public int getHeight();
-  public void setWidth(int);
-  public void setHeight(int);
-  public int getScreenWidth();
-  public int getScreenHeight();
-  public int getGuiScaledWidth();
-  public int getGuiScaledHeight();
-  public int getX();
-  public int getY();
-  public int getGuiScale();
-  public com.mojang.blaze3d.platform.Monitor findBestMonitor();
-  public void updateRawMouseInput(boolean);
-  public void setWindowCloseCallback(java.lang.Runnable);
-  public boolean isMinimized();
-  public void setAllowCursorChanges(boolean);
-  public void selectCursor(com.mojang.blaze3d.platform.cursor.CursorType);
-  public float getAppropriateLineWidth();
-  private static void method_61944(java.lang.Runnable, long);
-  static {};
-}
-
-=== net.minecraft.client.Minecraft   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "Minecraft.java"
-public class net.minecraft.client.Minecraft extends net.minecraft.util.thread.ReentrantBlockableEventLoop<java.lang.Runnable> implements com.mojang.blaze3d.platform.WindowEventHandler {
-  static net.minecraft.client.Minecraft instance;
-  private static final org.slf4j.Logger LOGGER;
-  private static final int MAX_TICKS_PER_UPDATE;
-  public static final net.minecraft.resources.Identifier DEFAULT_FONT;
-  public static final net.minecraft.resources.Identifier UNIFORM_FONT;
-  public static final net.minecraft.resources.Identifier ALT_FONT;
-  private static final net.minecraft.resources.Identifier REGIONAL_COMPLIANCIES;
-  private static final java.util.concurrent.CompletableFuture<net.minecraft.util.Unit> RESOURCE_RELOAD_INITIAL_TASK;
-  private static final net.minecraft.network.chat.Component SOCIAL_INTERACTIONS_NOT_AVAILABLE;
-  private static final net.minecraft.network.chat.Component SAVING_LEVEL;
-  public static final java.lang.String UPDATE_DRIVERS_ADVICE;
-  private final long canary;
-  private final java.nio.file.Path resourcePackDirectory;
-  private final java.util.concurrent.CompletableFuture<com.mojang.authlib.yggdrasil.ProfileResult> profileFuture;
-  private final net.minecraft.client.renderer.texture.TextureManager textureManager;
-  private final net.minecraft.client.renderer.ShaderManager shaderManager;
-  private final com.mojang.datafixers.DataFixer fixerUpper;
-  private final net.minecraft.client.renderer.VirtualScreen virtualScreen;
-  private final com.mojang.blaze3d.platform.Window window;
-  private final net.minecraft.client.DeltaTracker$Timer deltaTracker;
-  private final net.minecraft.client.renderer.RenderBuffers renderBuffers;
-  public final net.minecraft.client.renderer.LevelRenderer levelRenderer;
-  private final net.minecraft.client.renderer.entity.EntityRenderDispatcher entityRenderDispatcher;
-  private final net.minecraft.client.renderer.item.ItemModelResolver itemModelResolver;
-  private final net.minecraft.client.renderer.entity.ItemRenderer itemRenderer;
-  private final net.minecraft.client.renderer.MapRenderer mapRenderer;
-  public final net.minecraft.client.particle.ParticleEngine particleEngine;
-  private final net.minecraft.client.particle.ParticleResources particleResources;
-  private final net.minecraft.client.User user;
-  public final net.minecraft.client.gui.Font font;
-  public final net.minecraft.client.gui.Font fontFilterFishy;
-  public final net.minecraft.client.renderer.GameRenderer gameRenderer;
-  public final net.minecraft.client.gui.Gui gui;
-  public final net.minecraft.client.Options options;
-  public final net.minecraft.client.gui.components.debug.DebugScreenEntryList debugEntries;
-  private final net.minecraft.client.HotbarManager hotbarManager;
-  public final net.minecraft.client.MouseHandler mouseHandler;
-  public final net.minecraft.client.KeyboardHandler keyboardHandler;
-  private net.minecraft.client.InputType lastInputType;
-  public final java.io.File gameDirectory;
-  private final java.lang.String launchedVersion;
-  private final java.lang.String versionType;
-  private final java.net.Proxy proxy;
-  private final boolean offlineDeveloperMode;
-  private final net.minecraft.world.level.storage.LevelStorageSource levelSource;
-  private final boolean demo;
-  private final boolean allowsMultiplayer;
-  private final boolean allowsChat;
-  private final net.minecraft.server.packs.resources.ReloadableResourceManager resourceManager;
-  private final net.minecraft.server.packs.VanillaPackResources vanillaPackResources;
-  private final net.minecraft.client.resources.server.DownloadedPackSource downloadedPackSource;
-  private final net.minecraft.server.packs.repository.PackRepository resourcePackRepository;
-  private final net.minecraft.client.resources.language.LanguageManager languageManager;
-  private final net.minecraft.client.color.block.BlockColors blockColors;
-  private final com.mojang.blaze3d.pipeline.RenderTarget mainRenderTarget;
-  private final com.mojang.blaze3d.TracyFrameCapture tracyFrameCapture;
-  private final net.minecraft.client.sounds.SoundManager soundManager;
-  private final net.minecraft.client.sounds.MusicManager musicManager;
-  private final net.minecraft.client.gui.font.FontManager fontManager;
-  private final net.minecraft.client.resources.SplashManager splashManager;
-  private final net.minecraft.client.renderer.GpuWarnlistManager gpuWarnlistManager;
-  private final net.minecraft.client.PeriodicNotificationManager regionalCompliancies;
-  private final com.mojang.authlib.minecraft.UserApiService userApiService;
-  private final java.util.concurrent.CompletableFuture<com.mojang.authlib.minecraft.UserApiService$UserProperties> userPropertiesFuture;
-  private final net.minecraft.client.resources.SkinManager skinManager;
-  private final net.minecraft.client.resources.model.AtlasManager atlasManager;
-  private final net.minecraft.client.resources.model.ModelManager modelManager;
-  private final net.minecraft.client.renderer.block.BlockRenderDispatcher blockRenderer;
-  private final net.minecraft.client.resources.MapTextureManager mapTextureManager;
-  private final net.minecraft.client.resources.WaypointStyleManager waypointStyles;
-  private final net.minecraft.client.gui.components.toasts.ToastManager toastManager;
-  private final net.minecraft.client.tutorial.Tutorial tutorial;
-  private final net.minecraft.client.gui.screens.social.PlayerSocialManager playerSocialManager;
-  private final net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher blockEntityRenderDispatcher;
-  private final net.minecraft.client.telemetry.ClientTelemetryManager telemetryManager;
-  private final net.minecraft.client.multiplayer.ProfileKeyPairManager profileKeyPairManager;
-  private final com.mojang.realmsclient.gui.RealmsDataFetcher realmsDataFetcher;
-  private final net.minecraft.client.quickplay.QuickPlayLog quickPlayLog;
-  private final net.minecraft.server.Services services;
-  private final net.minecraft.client.renderer.PlayerSkinRenderCache playerSkinRenderCache;
-  public net.minecraft.client.multiplayer.MultiPlayerGameMode gameMode;
-  public net.minecraft.client.multiplayer.ClientLevel level;
-  public net.minecraft.client.player.LocalPlayer player;
-  private net.minecraft.client.server.IntegratedServer singleplayerServer;
-  private net.minecraft.network.Connection pendingConnection;
-  private boolean isLocalServer;
-  private net.minecraft.world.entity.Entity cameraEntity;
-  public net.minecraft.world.entity.Entity crosshairPickEntity;
-  public net.minecraft.world.phys.HitResult hitResult;
-  private int rightClickDelay;
-  public int missTime;
-  private volatile boolean pause;
-  private long lastNanoTime;
-  private long lastTime;
-  private int frames;
-  public boolean noRender;
-  public net.minecraft.client.gui.screens.Screen screen;
-  private net.minecraft.client.gui.screens.Overlay overlay;
-  private boolean clientLevelTeardownInProgress;
-  java.lang.Thread gameThread;
-  private volatile boolean running;
-  private java.util.function.Supplier<net.minecraft.CrashReport> delayedCrash;
-  private static int fps;
-  private long frameTimeNs;
-  private final com.mojang.blaze3d.platform.FramerateLimitTracker framerateLimitTracker;
-  public boolean wireframe;
-  public boolean smartCull;
-  private boolean windowActive;
-  private java.util.concurrent.CompletableFuture<java.lang.Void> pendingReload;
-  private net.minecraft.client.gui.components.toasts.TutorialToast socialInteractionsToast;
-  private int fpsPieRenderTicks;
-  private final net.minecraft.util.profiling.ContinuousProfiler fpsPieProfiler;
-  private net.minecraft.util.profiling.metrics.profiling.MetricsRecorder metricsRecorder;
-  private final net.minecraft.client.ResourceLoadStateTracker reloadStateTracker;
-  private long savedCpuDuration;
-  private double gpuUtilization;
-  private com.mojang.blaze3d.systems.TimerQuery$FrameProfile currentFrameProfile;
-  private final net.minecraft.client.GameNarrator narrator;
-  private final net.minecraft.client.multiplayer.chat.ChatListener chatListener;
-  private net.minecraft.client.multiplayer.chat.report.ReportingContext reportingContext;
-  private final net.minecraft.client.CommandHistory commandHistory;
-  private final net.minecraft.world.level.validation.DirectoryValidator directoryValidator;
-  private boolean gameLoadFinished;
-  private final long clientStartTimeMs;
-  private long clientTickCount;
-  private final net.minecraft.network.PacketProcessor packetProcessor;
-  private final net.minecraft.gizmos.SimpleGizmoCollector perTickGizmos;
-  private java.util.List<net.minecraft.gizmos.SimpleGizmoCollector$GizmoInstance> drainedLatestTickGizmos;
-  public net.minecraft.client.Minecraft(net.minecraft.client.main.GameConfig);
-  public boolean hasShiftDown();
-  public boolean hasControlDown();
-  public boolean hasAltDown();
-  private void onResourceLoadFinished(net.minecraft.client.Minecraft$GameLoadCookie);
-  private void onGameLoadFinished(net.minecraft.client.Minecraft$GameLoadCookie);
-  public boolean isGameLoadFinished();
-  private java.lang.Runnable buildInitialScreens(net.minecraft.client.Minecraft$GameLoadCookie);
-  private boolean addInitialScreens(java.util.List<java.util.function.Function<java.lang.Runnable, net.minecraft.client.gui.screens.Screen>>);
-  private static boolean countryEqualsISO3(java.lang.Object);
-  public void updateTitle();
-  private java.lang.String createTitle();
-  private com.mojang.authlib.minecraft.UserApiService createUserApiService(com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService, net.minecraft.client.main.GameConfig);
-  public boolean isOfflineDeveloperMode();
-  public static net.minecraft.util.ModCheck checkModStatus();
-  private void rollbackResourcePacks(java.lang.Throwable, net.minecraft.client.Minecraft$GameLoadCookie);
-  public void clearResourcePacksOnError(java.lang.Throwable, net.minecraft.network.chat.Component, net.minecraft.client.Minecraft$GameLoadCookie);
-  private void abortResourcePackRecovery();
-  private void addResourcePackLoadFailToast(net.minecraft.network.chat.Component);
-  public void triggerResourcePackRecovery(java.lang.Exception);
-  public void run();
-  void updateFontOptions();
-  private void onFullscreenError(int, long);
-  public com.mojang.blaze3d.pipeline.RenderTarget getMainRenderTarget();
-  public java.lang.String getLaunchedVersion();
-  public java.lang.String getVersionType();
-  public void delayCrash(net.minecraft.CrashReport);
-  public void delayCrashRaw(net.minecraft.CrashReport);
-  private void handleDelayedCrash();
-  public void emergencySaveAndCrash(net.minecraft.CrashReport);
-  public static int saveReport(java.io.File, net.minecraft.CrashReport);
-  public static void crash(net.minecraft.client.Minecraft, java.io.File, net.minecraft.CrashReport);
-  public boolean isEnforceUnicode();
-  public java.util.concurrent.CompletableFuture<java.lang.Void> reloadResourcePacks();
-  private java.util.concurrent.CompletableFuture<java.lang.Void> reloadResourcePacks(boolean, net.minecraft.client.Minecraft$GameLoadCookie);
-  private void selfTest();
-  public net.minecraft.world.level.storage.LevelStorageSource getLevelSource();
-  public void openChatScreen(net.minecraft.client.gui.components.ChatComponent$ChatMethod);
-  public void setScreen(net.minecraft.client.gui.screens.Screen);
-  public void setOverlay(net.minecraft.client.gui.screens.Overlay);
-  public void destroy();
-  public void close();
-  private void runTick(boolean);
-  private net.minecraft.util.profiling.ProfilerFiller constructProfiler(boolean, net.minecraft.util.profiling.SingleTickProfiler);
-  private void finishProfilers(boolean, net.minecraft.util.profiling.SingleTickProfiler);
-  public void resizeDisplay();
-  public void cursorEntered();
-  public int getFps();
-  public long getFrameTimeNs();
-  private void emergencySave();
-  public boolean debugClientMetricsStart(java.util.function.Consumer<net.minecraft.network.chat.Component>);
-  private void debugClientMetricsStop();
-  private void debugClientMetricsCancel();
-  private java.nio.file.Path archiveProfilingReport(net.minecraft.SystemReport, java.util.List<java.nio.file.Path>);
-  public void stop();
-  public boolean isRunning();
-  public void pauseGame(boolean);
-  private void continueAttack(boolean);
-  private boolean startAttack();
-  private void startUseItem();
-  public net.minecraft.client.sounds.MusicManager getMusicManager();
-  public void tick();
-  private boolean isLevelRunningNormally();
-  private boolean isMultiplayerServer();
-  private void handleKeybinds();
-  private java.util.Optional<net.minecraft.core.Holder<net.minecraft.server.dialog.Dialog>> getQuickActionsDialog();
-  public net.minecraft.client.telemetry.ClientTelemetryManager getTelemetryManager();
-  public double getGpuUtilization();
-  public net.minecraft.client.multiplayer.ProfileKeyPairManager getProfileKeyPairManager();
-  public net.minecraft.client.gui.screens.worldselection.WorldOpenFlows createWorldOpenFlows();
-  public void doWorldLoad(net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess, net.minecraft.server.packs.repository.PackRepository, net.minecraft.server.WorldStem, boolean);
-  public void setLevel(net.minecraft.client.multiplayer.ClientLevel);
-  public void disconnectFromWorld(net.minecraft.network.chat.Component);
-  public void disconnectWithSavingScreen();
-  public void disconnectWithProgressScreen();
-  public void disconnectWithProgressScreen(boolean);
-  public void disconnect(net.minecraft.client.gui.screens.Screen, boolean);
-  public void disconnect(net.minecraft.client.gui.screens.Screen, boolean, boolean);
-  public void clearDownloadedResourcePacks();
-  public void clearClientLevel(net.minecraft.client.gui.screens.Screen);
-  public void setScreenAndShow(net.minecraft.client.gui.screens.Screen);
-  private void updateLevelInEngines(net.minecraft.client.multiplayer.ClientLevel);
-  private void updateLevelInEngines(net.minecraft.client.multiplayer.ClientLevel, boolean);
-  private com.mojang.authlib.minecraft.UserApiService$UserProperties userProperties();
-  public boolean telemetryOptInExtra();
-  public boolean extraTelemetryAvailable();
-  public boolean allowsTelemetry();
-  public boolean allowsMultiplayer();
-  public boolean allowsRealms();
-  public com.mojang.authlib.minecraft.BanDetails multiplayerBan();
-  public boolean isNameBanned();
-  public boolean isBlocked(java.util.UUID);
-  public net.minecraft.client.Minecraft$ChatStatus getChatStatus();
-  public final boolean isDemo();
-  public final boolean canSwitchGameMode();
-  public net.minecraft.client.multiplayer.ClientPacketListener getConnection();
-  public static boolean renderNames();
-  public static boolean useShaderTransparency();
-  public static boolean useAmbientOcclusion();
-  private void pickBlock();
-  public net.minecraft.CrashReport fillReport(net.minecraft.CrashReport);
-  public static void fillReport(net.minecraft.client.Minecraft, net.minecraft.client.resources.language.LanguageManager, java.lang.String, net.minecraft.client.Options, net.minecraft.CrashReport);
-  private static java.lang.String formatSeconds(double);
-  private void fillUptime(net.minecraft.CrashReportCategory);
-  private static net.minecraft.SystemReport fillSystemReport(net.minecraft.SystemReport, net.minecraft.client.Minecraft, net.minecraft.client.resources.language.LanguageManager, java.lang.String, net.minecraft.client.Options);
-  public static net.minecraft.client.Minecraft getInstance();
-  public java.util.concurrent.CompletableFuture<java.lang.Void> delayTextureReload();
-  public void updateReportEnvironment(net.minecraft.client.multiplayer.chat.report.ReportEnvironment);
-  public net.minecraft.client.multiplayer.ServerData getCurrentServer();
-  public boolean isLocalServer();
-  public boolean hasSingleplayerServer();
-  public net.minecraft.client.server.IntegratedServer getSingleplayerServer();
-  public boolean isSingleplayer();
-  public boolean isLocalPlayer(java.util.UUID);
-  public net.minecraft.client.User getUser();
-  public com.mojang.authlib.GameProfile getGameProfile();
-  public java.net.Proxy getProxy();
-  public net.minecraft.client.renderer.texture.TextureManager getTextureManager();
-  public net.minecraft.client.renderer.ShaderManager getShaderManager();
-  public net.minecraft.server.packs.resources.ResourceManager getResourceManager();
-  public net.minecraft.server.packs.repository.PackRepository getResourcePackRepository();
-  public net.minecraft.server.packs.VanillaPackResources getVanillaPackResources();
-  public net.minecraft.client.resources.server.DownloadedPackSource getDownloadedPackSource();
-  public java.nio.file.Path getResourcePackDirectory();
-  public net.minecraft.client.resources.language.LanguageManager getLanguageManager();
-  public boolean isPaused();
-  public net.minecraft.client.renderer.GpuWarnlistManager getGpuWarnlistManager();
-  public net.minecraft.client.sounds.SoundManager getSoundManager();
-  public net.minecraft.sounds.Music getSituationalMusic();
-  public float getMusicVolume();
-  public net.minecraft.server.Services services();
-  public net.minecraft.client.resources.SkinManager getSkinManager();
-  public net.minecraft.world.entity.Entity getCameraEntity();
-  public void setCameraEntity(net.minecraft.world.entity.Entity);
-  public boolean shouldEntityAppearGlowing(net.minecraft.world.entity.Entity);
-  protected java.lang.Thread getRunningThread();
-  public java.lang.Runnable wrapRunnable(java.lang.Runnable);
-  protected boolean shouldRun(java.lang.Runnable);
-  public net.minecraft.client.renderer.block.BlockRenderDispatcher getBlockRenderer();
-  public net.minecraft.client.renderer.entity.EntityRenderDispatcher getEntityRenderDispatcher();
-  public net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher getBlockEntityRenderDispatcher();
-  public net.minecraft.client.renderer.entity.ItemRenderer getItemRenderer();
-  public net.minecraft.client.renderer.MapRenderer getMapRenderer();
-  public com.mojang.datafixers.DataFixer getFixerUpper();
-  public net.minecraft.client.DeltaTracker getDeltaTracker();
-  public net.minecraft.client.color.block.BlockColors getBlockColors();
-  public boolean showOnlyReducedInfo();
-  public net.minecraft.client.gui.components.toasts.ToastManager getToastManager();
-  public net.minecraft.client.tutorial.Tutorial getTutorial();
-  public boolean isWindowActive();
-  public net.minecraft.client.HotbarManager getHotbarManager();
-  public net.minecraft.client.resources.model.ModelManager getModelManager();
-  public net.minecraft.client.resources.model.AtlasManager getAtlasManager();
-  public net.minecraft.client.resources.MapTextureManager getMapTextureManager();
-  public net.minecraft.client.resources.WaypointStyleManager getWaypointStyles();
-  public void setWindowActive(boolean);
-  public net.minecraft.network.chat.Component grabPanoramixScreenshot(java.io.File);
-  public net.minecraft.client.resources.SplashManager getSplashManager();
-  public net.minecraft.client.gui.screens.Overlay getOverlay();
-  public net.minecraft.client.gui.screens.social.PlayerSocialManager getPlayerSocialManager();
-  public com.mojang.blaze3d.platform.Window getWindow();
-  public com.mojang.blaze3d.platform.FramerateLimitTracker getFramerateLimitTracker();
-  public net.minecraft.client.gui.components.DebugScreenOverlay getDebugOverlay();
-  public net.minecraft.client.renderer.RenderBuffers renderBuffers();
-  public void updateMaxMipLevel(int);
-  public net.minecraft.client.model.geom.EntityModelSet getEntityModels();
-  public boolean isTextFilteringEnabled();
-  public void prepareForMultiplayer();
-  public net.minecraft.client.InputType getLastInputType();
-  public void setLastInputType(net.minecraft.client.InputType);
-  public net.minecraft.client.GameNarrator getNarrator();
-  public net.minecraft.client.multiplayer.chat.ChatListener getChatListener();
-  public net.minecraft.client.multiplayer.chat.report.ReportingContext getReportingContext();
-  public com.mojang.realmsclient.gui.RealmsDataFetcher realmsDataFetcher();
-  public net.minecraft.client.quickplay.QuickPlayLog quickPlayLog();
-  public net.minecraft.client.CommandHistory commandHistory();
-  public net.minecraft.world.level.validation.DirectoryValidator directoryValidator();
-  public net.minecraft.client.renderer.PlayerSkinRenderCache playerSkinRenderCache();
-  private float getTickTargetMillis(float);
-  public net.minecraft.client.renderer.item.ItemModelResolver getItemModelResolver();
-  public boolean canInterruptScreen();
-  public static java.lang.String getLauncherBrand();
-  public net.minecraft.network.PacketProcessor packetProcessor();
-  public net.minecraft.gizmos.Gizmos$TemporaryCollection collectPerTickGizmos();
-  public java.util.Collection<net.minecraft.gizmos.SimpleGizmoCollector$GizmoInstance> getPerTickGizmos();
-  private static net.minecraft.network.chat.Style method_35704(java.io.File, net.minecraft.network.chat.Style);
-  private static void method_35701(net.minecraft.network.chat.Component);
-  private static java.util.concurrent.CompletionStage method_18507(java.util.concurrent.CompletableFuture);
-  private static java.lang.String method_60864();
-  private static java.lang.String method_37288();
-  private static java.lang.String method_37280(net.minecraft.client.resources.language.LanguageManager);
-  private static java.lang.String method_37279(net.minecraft.client.Minecraft);
-  private static java.lang.String method_53905(net.minecraft.client.Minecraft);
-  private static java.lang.String method_37287();
-  private static java.lang.String method_37289();
-  private static java.lang.String method_68671();
-  private static java.lang.String method_37278(net.minecraft.client.Minecraft);
-  private static java.lang.String method_37292(java.lang.String);
-  private java.lang.String method_54118() throws java.lang.Exception;
-  private static java.lang.String method_54119() throws java.lang.Exception;
-  private java.lang.String method_54120() throws java.lang.Exception;
-  private static java.lang.String method_54121() throws java.lang.Exception;
-  private static void method_1510(net.minecraft.network.chat.Component);
-  private static boolean method_72702(long);
-  private static java.lang.String method_41732(net.minecraft.server.WorldStem) throws java.lang.Exception;
-  private net.minecraft.client.server.IntegratedServer method_29603(net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess, net.minecraft.server.packs.repository.PackRepository, net.minecraft.server.WorldStem, net.minecraft.server.level.progress.LevelLoadListener, java.lang.Thread);
-  private static java.util.Optional method_72097(net.minecraft.core.Registry, net.minecraft.core.HolderSet$Named);
-  private void method_72096(net.minecraft.core.Holder);
-  private static boolean method_1491();
-  private void method_34746(java.util.function.Consumer, net.minecraft.util.profiling.ProfileResults);
-  private static void method_37277(net.minecraft.util.profiling.ProfileResults);
-  private static void method_37284(java.util.function.Consumer, java.util.concurrent.CompletableFuture, java.util.concurrent.CompletableFuture);
-  private static void method_37283(java.util.function.Consumer, java.nio.file.Path);
-  private void method_37276(net.minecraft.SystemReport, java.util.function.Consumer, java.util.List);
-  private void method_37291(java.util.function.Consumer, java.nio.file.Path);
-  private static void method_37285(java.util.function.Consumer, net.minecraft.network.chat.Component);
-  private static net.minecraft.network.chat.Style method_37281(java.nio.file.Path, net.minecraft.network.chat.Style);
-  private void method_37290(java.util.function.Consumer, net.minecraft.util.profiling.ProfileResults);
-  private static void method_37282(java.util.function.Consumer, double, int);
-  private static void method_18508(java.util.concurrent.CompletableFuture);
-  private void method_44352(boolean);
-  private static void method_64035(net.minecraft.core.Holder$Reference);
-  private void method_24228(boolean, net.minecraft.client.Minecraft$GameLoadCookie, java.util.concurrent.CompletableFuture, java.util.Optional);
-  private void method_29339(java.util.concurrent.CompletableFuture, net.minecraft.client.Minecraft$GameLoadCookie);
-  private void method_49293(boolean, net.minecraft.client.Minecraft$GameLoadCookie, java.lang.Throwable);
-  private static net.minecraft.CrashReport method_43588(net.minecraft.CrashReport);
-  private net.minecraft.CrashReport method_43589(net.minecraft.CrashReport);
-  private void method_24229(net.minecraft.network.chat.Component);
-  private static net.minecraft.client.gui.screens.Screen method_53519(com.mojang.authlib.GameProfile, java.lang.Runnable);
-  private static net.minecraft.client.gui.screens.Screen method_53520(com.mojang.authlib.minecraft.BanDetails, java.lang.Runnable);
-  private static void method_53524(java.lang.Runnable, boolean);
-  private net.minecraft.client.gui.screens.Screen method_53523(java.lang.Runnable);
-  private void method_53529(net.minecraft.client.gui.screens.Screen);
-  private void method_53528(net.minecraft.client.Minecraft$GameLoadCookie, boolean);
-  private int method_16010();
-  private void method_53522(net.minecraft.client.Minecraft$GameLoadCookie, java.util.Optional);
-  private void method_29338(net.minecraft.client.Minecraft$GameLoadCookie);
-  private void method_53521(net.minecraft.client.Minecraft$GameLoadCookie, java.lang.Throwable);
-  private void method_60320(net.minecraft.client.resources.language.ClientLanguage);
-  private java.lang.String method_68467(net.minecraft.resources.Identifier, com.mojang.blaze3d.shaders.ShaderType);
-  private com.mojang.authlib.minecraft.UserApiService$UserProperties method_55608();
-  private com.mojang.authlib.yggdrasil.ProfileResult method_53464();
+=== net.minecraft.client.Options   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "Options.java"
+public class net.minecraft.client.Options {
+  static final org.slf4j.Logger LOGGER;
+  static final com.google.gson.Gson GSON;
+  private static final com.google.gson.reflect.TypeToken<java.util.List<java.lang.String>> LIST_OF_STRINGS_TYPE;
+  public static final int RENDER_DISTANCE_SHORT;
+  public static final int RENDER_DISTANCE_FAR;
+  public static final int RENDER_DISTANCE_REALLY_FAR;
+  public static final int RENDER_DISTANCE_EXTREME;
+  private static final com.google.common.base.Splitter OPTION_SPLITTER;
+  public static final java.lang.String DEFAULT_SOUND_DEVICE;
+  private static final net.minecraft.network.chat.Component ACCESSIBILITY_TOOLTIP_DARK_MOJANG_BACKGROUND;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> darkMojangStudiosBackground;
+  private static final net.minecraft.network.chat.Component ACCESSIBILITY_TOOLTIP_HIDE_LIGHTNING_FLASHES;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> hideLightningFlash;
+  private static final net.minecraft.network.chat.Component ACCESSIBILITY_TOOLTIP_HIDE_SPLASH_TEXTS;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> hideSplashTexts;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> sensitivity;
+  private final net.minecraft.client.OptionInstance<java.lang.Integer> renderDistance;
+  private final net.minecraft.client.OptionInstance<java.lang.Integer> simulationDistance;
+  private int serverRenderDistance;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> entityDistanceScaling;
+  public static final int UNLIMITED_FRAMERATE_CUTOFF;
+  private final net.minecraft.client.OptionInstance<java.lang.Integer> framerateLimit;
+  private boolean isApplyingGraphicsPreset;
+  private final net.minecraft.client.OptionInstance<net.minecraft.client.GraphicsPreset> graphicsPreset;
+  private static final net.minecraft.network.chat.Component INACTIVITY_FPS_LIMIT_TOOLTIP_MINIMIZED;
+  private static final net.minecraft.network.chat.Component INACTIVITY_FPS_LIMIT_TOOLTIP_AFK;
+  private final net.minecraft.client.OptionInstance<net.minecraft.client.InactivityFpsLimit> inactivityFpsLimit;
+  private final net.minecraft.client.OptionInstance<net.minecraft.client.CloudStatus> cloudStatus;
+  private final net.minecraft.client.OptionInstance<java.lang.Integer> cloudRange;
+  private static final net.minecraft.network.chat.Component GRAPHICS_TOOLTIP_WEATHER_RADIUS;
+  private final net.minecraft.client.OptionInstance<java.lang.Integer> weatherRadius;
+  private static final net.minecraft.network.chat.Component GRAPHICS_TOOLTIP_CUTOUT_LEAVES;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> cutoutLeaves;
+  private static final net.minecraft.network.chat.Component GRAPHICS_TOOLTIP_VIGNETTE;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> vignette;
+  private static final net.minecraft.network.chat.Component GRAPHICS_TOOLTIP_IMPROVED_TRANSPARENCY;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> improvedTransparency;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> ambientOcclusion;
+  private static final net.minecraft.network.chat.Component GRAPHICS_TOOLTIP_CHUNK_FADE;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> chunkSectionFadeInTime;
+  private static final net.minecraft.network.chat.Component PRIORITIZE_CHUNK_TOOLTIP_NONE;
+  private static final net.minecraft.network.chat.Component PRIORITIZE_CHUNK_TOOLTIP_PLAYER_AFFECTED;
+  private static final net.minecraft.network.chat.Component PRIORITIZE_CHUNK_TOOLTIP_NEARBY;
+  private final net.minecraft.client.OptionInstance<net.minecraft.client.PrioritizeChunkUpdates> prioritizeChunkUpdates;
+  public java.util.List<java.lang.String> resourcePacks;
+  public java.util.List<java.lang.String> incompatibleResourcePacks;
+  private final net.minecraft.client.OptionInstance<net.minecraft.world.entity.player.ChatVisiblity> chatVisibility;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> chatOpacity;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> chatLineSpacing;
+  private static final net.minecraft.network.chat.Component MENU_BACKGROUND_BLURRINESS_TOOLTIP;
+  private static final int BLURRINESS_DEFAULT_VALUE;
+  private final net.minecraft.client.OptionInstance<java.lang.Integer> menuBackgroundBlurriness;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> textBackgroundOpacity;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> panoramaSpeed;
+  private static final net.minecraft.network.chat.Component ACCESSIBILITY_TOOLTIP_CONTRAST_MODE;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> highContrast;
+  private static final net.minecraft.network.chat.Component HIGH_CONTRAST_BLOCK_OUTLINE_TOOLTIP;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> highContrastBlockOutline;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> narratorHotkey;
+  public java.lang.String fullscreenVideoModeString;
+  public boolean hideServerAddress;
+  public boolean advancedItemTooltips;
+  public boolean pauseOnLostFocus;
+  private final java.util.Set<net.minecraft.world.entity.player.PlayerModelPart> modelParts;
+  private final net.minecraft.client.OptionInstance<net.minecraft.world.entity.HumanoidArm> mainHand;
+  public int overrideWidth;
+  public int overrideHeight;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> chatScale;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> chatWidth;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> chatHeightUnfocused;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> chatHeightFocused;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> chatDelay;
+  private static final net.minecraft.network.chat.Component ACCESSIBILITY_TOOLTIP_NOTIFICATION_DISPLAY_TIME;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> notificationDisplayTime;
+  private final net.minecraft.client.OptionInstance<java.lang.Integer> mipmapLevels;
+  private static final net.minecraft.network.chat.Component GRAPHICS_TOOLTIP_ANISOTROPIC_FILTERING;
+  private final net.minecraft.client.OptionInstance<java.lang.Integer> maxAnisotropyBit;
+  private static final net.minecraft.network.chat.Component FILTERING_NONE_TOOLTIP;
+  private static final net.minecraft.network.chat.Component FILTERING_RGSS_TOOLTIP;
+  private static final net.minecraft.network.chat.Component FILTERING_ANISOTROPIC_TOOLTIP;
+  private final net.minecraft.client.OptionInstance<net.minecraft.client.TextureFilteringMethod> textureFiltering;
+  private boolean useNativeTransport;
+  private final net.minecraft.client.OptionInstance<net.minecraft.client.AttackIndicatorStatus> attackIndicator;
+  public net.minecraft.client.tutorial.TutorialSteps tutorialStep;
+  public boolean joinedFirstServer;
+  private final net.minecraft.client.OptionInstance<java.lang.Integer> biomeBlendRadius;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> mouseWheelSensitivity;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> rawMouseInput;
+  private static final net.minecraft.network.chat.Component ALLOW_CURSOR_CHANGES_TOOLTIP;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> allowCursorChanges;
+  public int glDebugVerbosity;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> autoJump;
+  private static final net.minecraft.network.chat.Component ACCESSIBILITY_TOOLTIP_ROTATE_WITH_MINECART;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> rotateWithMinecart;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> operatorItemsTab;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> autoSuggestions;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> chatColors;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> chatLinks;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> chatLinksPrompt;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> enableVsync;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> entityShadows;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> forceUnicodeFont;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> japaneseGlyphVariants;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> invertXMouse;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> invertYMouse;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> discreteMouseScroll;
+  private static final net.minecraft.network.chat.Component REALMS_NOTIFICATIONS_TOOLTIP;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> realmsNotifications;
+  private static final net.minecraft.network.chat.Component ALLOW_SERVER_LISTING_TOOLTIP;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> allowServerListing;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> reducedDebugInfo;
+  private final java.util.Map<net.minecraft.sounds.SoundSource, net.minecraft.client.OptionInstance<java.lang.Double>> soundSourceVolumes;
+  private static final net.minecraft.network.chat.Component CLOSED_CAPTIONS_TOOLTIP;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> showSubtitles;
+  private static final net.minecraft.network.chat.Component DIRECTIONAL_AUDIO_TOOLTIP_ON;
+  private static final net.minecraft.network.chat.Component DIRECTIONAL_AUDIO_TOOLTIP_OFF;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> directionalAudio;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> backgroundForChatOnly;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> touchscreen;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> fullscreen;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> bobView;
+  private static final net.minecraft.network.chat.Component KEY_TOGGLE;
+  private static final net.minecraft.network.chat.Component KEY_HOLD;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> toggleCrouch;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> toggleSprint;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> toggleAttack;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> toggleUse;
+  private static final net.minecraft.network.chat.Component SPRINT_WINDOW_TOOLTIP;
+  private final net.minecraft.client.OptionInstance<java.lang.Integer> sprintWindow;
+  public boolean skipMultiplayerWarning;
+  private static final net.minecraft.network.chat.Component CHAT_TOOLTIP_HIDE_MATCHED_NAMES;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> hideMatchedNames;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> showAutosaveIndicator;
+  private static final net.minecraft.network.chat.Component CHAT_TOOLTIP_ONLY_SHOW_SECURE;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> onlyShowSecureChat;
+  private static final net.minecraft.network.chat.Component CHAT_TOOLTIP_SAVE_DRAFTS;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> saveChatDrafts;
+  public final net.minecraft.client.KeyMapping keyUp;
+  public final net.minecraft.client.KeyMapping keyLeft;
+  public final net.minecraft.client.KeyMapping keyDown;
+  public final net.minecraft.client.KeyMapping keyRight;
+  public final net.minecraft.client.KeyMapping keyJump;
+  public final net.minecraft.client.KeyMapping keyShift;
+  public final net.minecraft.client.KeyMapping keySprint;
+  public final net.minecraft.client.KeyMapping keyInventory;
+  public final net.minecraft.client.KeyMapping keySwapOffhand;
+  public final net.minecraft.client.KeyMapping keyDrop;
+  public final net.minecraft.client.KeyMapping keyUse;
+  public final net.minecraft.client.KeyMapping keyAttack;
+  public final net.minecraft.client.KeyMapping keyPickItem;
+  public final net.minecraft.client.KeyMapping keyChat;
+  public final net.minecraft.client.KeyMapping keyPlayerList;
+  public final net.minecraft.client.KeyMapping keyCommand;
+  public final net.minecraft.client.KeyMapping keySocialInteractions;
+  public final net.minecraft.client.KeyMapping keyScreenshot;
+  public final net.minecraft.client.KeyMapping keyTogglePerspective;
+  public final net.minecraft.client.KeyMapping keySmoothCamera;
+  public final net.minecraft.client.KeyMapping keyFullscreen;
+  public final net.minecraft.client.KeyMapping keyAdvancements;
+  public final net.minecraft.client.KeyMapping keyQuickActions;
+  public final net.minecraft.client.KeyMapping keyToggleGui;
+  public final net.minecraft.client.KeyMapping keyToggleSpectatorShaderEffects;
+  public final net.minecraft.client.KeyMapping[] keyHotbarSlots;
+  public final net.minecraft.client.KeyMapping keySaveHotbarActivator;
+  public final net.minecraft.client.KeyMapping keyLoadHotbarActivator;
+  public final net.minecraft.client.KeyMapping keySpectatorOutlines;
+  public final net.minecraft.client.KeyMapping keySpectatorHotbar;
+  public final net.minecraft.client.KeyMapping keyDebugOverlay;
+  public final net.minecraft.client.KeyMapping keyDebugModifier;
+  public final net.minecraft.client.KeyMapping keyDebugCrash;
+  public final net.minecraft.client.KeyMapping keyDebugReloadChunk;
+  public final net.minecraft.client.KeyMapping keyDebugShowHitboxes;
+  public final net.minecraft.client.KeyMapping keyDebugClearChat;
+  public final net.minecraft.client.KeyMapping keyDebugShowChunkBorders;
+  public final net.minecraft.client.KeyMapping keyDebugShowAdvancedTooltips;
+  public final net.minecraft.client.KeyMapping keyDebugCopyRecreateCommand;
+  public final net.minecraft.client.KeyMapping keyDebugSpectate;
+  public final net.minecraft.client.KeyMapping keyDebugSwitchGameMode;
+  public final net.minecraft.client.KeyMapping keyDebugDebugOptions;
+  public final net.minecraft.client.KeyMapping keyDebugFocusPause;
+  public final net.minecraft.client.KeyMapping keyDebugDumpDynamicTextures;
+  public final net.minecraft.client.KeyMapping keyDebugReloadResourcePacks;
+  public final net.minecraft.client.KeyMapping keyDebugProfiling;
+  public final net.minecraft.client.KeyMapping keyDebugCopyLocation;
+  public final net.minecraft.client.KeyMapping keyDebugDumpVersion;
+  public final net.minecraft.client.KeyMapping keyDebugPofilingChart;
+  public final net.minecraft.client.KeyMapping keyDebugFpsCharts;
+  public final net.minecraft.client.KeyMapping keyDebugNetworkCharts;
+  public final net.minecraft.client.KeyMapping[] debugKeys;
+  public final net.minecraft.client.KeyMapping[] keyMappings;
+  protected net.minecraft.client.Minecraft minecraft;
+  private final java.io.File optionsFile;
+  public boolean hideGui;
+  private net.minecraft.client.CameraType cameraType;
+  public java.lang.String lastMpIp;
+  public boolean smoothCamera;
+  private final net.minecraft.client.OptionInstance<java.lang.Integer> fov;
+  private static final net.minecraft.network.chat.Component TELEMETRY_TOOLTIP;
+  private final net.minecraft.client.OptionInstance<java.lang.Boolean> telemetryOptInExtra;
+  private static final net.minecraft.network.chat.Component ACCESSIBILITY_TOOLTIP_SCREEN_EFFECT;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> screenEffectScale;
+  private static final net.minecraft.network.chat.Component ACCESSIBILITY_TOOLTIP_FOV_EFFECT;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> fovEffectScale;
+  private static final net.minecraft.network.chat.Component ACCESSIBILITY_TOOLTIP_DARKNESS_EFFECT;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> darknessEffectScale;
+  private static final net.minecraft.network.chat.Component ACCESSIBILITY_TOOLTIP_GLINT_SPEED;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> glintSpeed;
+  private static final net.minecraft.network.chat.Component ACCESSIBILITY_TOOLTIP_GLINT_STRENGTH;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> glintStrength;
+  private static final net.minecraft.network.chat.Component ACCESSIBILITY_TOOLTIP_DAMAGE_TILT_STRENGTH;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> damageTiltStrength;
+  private final net.minecraft.client.OptionInstance<java.lang.Double> gamma;
+  public static final int AUTO_GUI_SCALE;
+  private static final int MAX_GUI_SCALE_INCLUSIVE;
+  private final net.minecraft.client.OptionInstance<java.lang.Integer> guiScale;
+  private final net.minecraft.client.OptionInstance<net.minecraft.server.level.ParticleStatus> particles;
+  private final net.minecraft.client.OptionInstance<net.minecraft.client.NarratorStatus> narrator;
+  public java.lang.String languageCode;
+  private final net.minecraft.client.OptionInstance<java.lang.String> soundDevice;
+  public boolean onboardAccessibility;
+  private static final net.minecraft.network.chat.Component MUSIC_FREQUENCY_TOOLTIP;
+  private final net.minecraft.client.OptionInstance<net.minecraft.client.sounds.MusicManager$MusicFrequency> musicFrequency;
+  private final net.minecraft.client.OptionInstance<net.minecraft.client.MusicToastDisplayState> musicToast;
+  public boolean syncWrites;
+  public boolean startedCleanly;
+  private static void operateOnLevelRenderer(java.util.function.Consumer<net.minecraft.client.renderer.LevelRenderer>);
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> darkMojangStudiosBackground();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> hideLightningFlash();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> hideSplashTexts();
+  public net.minecraft.client.OptionInstance<java.lang.Double> sensitivity();
+  public net.minecraft.client.OptionInstance<java.lang.Integer> renderDistance();
+  public net.minecraft.client.OptionInstance<java.lang.Integer> simulationDistance();
+  public net.minecraft.client.OptionInstance<java.lang.Double> entityDistanceScaling();
+  public net.minecraft.client.OptionInstance<java.lang.Integer> framerateLimit();
+  public void applyGraphicsPreset(net.minecraft.client.GraphicsPreset);
+  public net.minecraft.client.OptionInstance<net.minecraft.client.GraphicsPreset> graphicsPreset();
+  public net.minecraft.client.OptionInstance<net.minecraft.client.InactivityFpsLimit> inactivityFpsLimit();
+  public net.minecraft.client.OptionInstance<net.minecraft.client.CloudStatus> cloudStatus();
+  public net.minecraft.client.OptionInstance<java.lang.Integer> cloudRange();
+  public net.minecraft.client.OptionInstance<java.lang.Integer> weatherRadius();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> cutoutLeaves();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> vignette();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> improvedTransparency();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> ambientOcclusion();
+  public net.minecraft.client.OptionInstance<java.lang.Double> chunkSectionFadeInTime();
+  public net.minecraft.client.OptionInstance<net.minecraft.client.PrioritizeChunkUpdates> prioritizeChunkUpdates();
+  public void updateResourcePacks(net.minecraft.server.packs.repository.PackRepository);
+  public net.minecraft.client.OptionInstance<net.minecraft.world.entity.player.ChatVisiblity> chatVisibility();
+  public net.minecraft.client.OptionInstance<java.lang.Double> chatOpacity();
+  public net.minecraft.client.OptionInstance<java.lang.Double> chatLineSpacing();
+  public net.minecraft.client.OptionInstance<java.lang.Integer> menuBackgroundBlurriness();
+  public int getMenuBackgroundBlurriness();
+  public net.minecraft.client.OptionInstance<java.lang.Double> textBackgroundOpacity();
+  public net.minecraft.client.OptionInstance<java.lang.Double> panoramaSpeed();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> highContrast();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> highContrastBlockOutline();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> narratorHotkey();
+  public net.minecraft.client.OptionInstance<net.minecraft.world.entity.HumanoidArm> mainHand();
+  public net.minecraft.client.OptionInstance<java.lang.Double> chatScale();
+  public net.minecraft.client.OptionInstance<java.lang.Double> chatWidth();
+  public net.minecraft.client.OptionInstance<java.lang.Double> chatHeightUnfocused();
+  public net.minecraft.client.OptionInstance<java.lang.Double> chatHeightFocused();
+  public net.minecraft.client.OptionInstance<java.lang.Double> chatDelay();
+  public net.minecraft.client.OptionInstance<java.lang.Double> notificationDisplayTime();
+  public net.minecraft.client.OptionInstance<java.lang.Integer> mipmapLevels();
+  public net.minecraft.client.OptionInstance<java.lang.Integer> maxAnisotropyBit();
+  public int maxAnisotropyValue();
+  public net.minecraft.client.OptionInstance<net.minecraft.client.TextureFilteringMethod> textureFiltering();
+  public net.minecraft.client.OptionInstance<net.minecraft.client.AttackIndicatorStatus> attackIndicator();
+  public net.minecraft.client.OptionInstance<java.lang.Integer> biomeBlendRadius();
+  private static double logMouse(int);
+  private static int unlogMouse(double);
+  public net.minecraft.client.OptionInstance<java.lang.Double> mouseWheelSensitivity();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> rawMouseInput();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> allowCursorChanges();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> autoJump();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> rotateWithMinecart();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> operatorItemsTab();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> autoSuggestions();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> chatColors();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> chatLinks();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> chatLinksPrompt();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> enableVsync();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> entityShadows();
+  private static void updateFontOptions();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> forceUnicodeFont();
+  private static boolean japaneseGlyphVariantsDefault();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> japaneseGlyphVariants();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> invertMouseX();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> invertMouseY();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> discreteMouseScroll();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> realmsNotifications();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> allowServerListing();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> reducedDebugInfo();
+  public final float getFinalSoundSourceVolume(net.minecraft.sounds.SoundSource);
+  public final float getSoundSourceVolume(net.minecraft.sounds.SoundSource);
+  public final net.minecraft.client.OptionInstance<java.lang.Double> getSoundSourceOptionInstance(net.minecraft.sounds.SoundSource);
+  private net.minecraft.client.OptionInstance<java.lang.Double> createSoundSliderOptionInstance(java.lang.String, net.minecraft.sounds.SoundSource);
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> showSubtitles();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> directionalAudio();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> backgroundForChatOnly();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> touchscreen();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> fullscreen();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> bobView();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> toggleCrouch();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> toggleSprint();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> toggleAttack();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> toggleUse();
+  public net.minecraft.client.OptionInstance<java.lang.Integer> sprintWindow();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> hideMatchedNames();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> showAutosaveIndicator();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> onlyShowSecureChat();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> saveChatDrafts();
+  private void setGraphicsPresetToCustom();
+  public net.minecraft.client.OptionInstance<java.lang.Integer> fov();
+  public net.minecraft.client.OptionInstance<java.lang.Boolean> telemetryOptInExtra();
+  public net.minecraft.client.OptionInstance<java.lang.Double> screenEffectScale();
+  public net.minecraft.client.OptionInstance<java.lang.Double> fovEffectScale();
+  public net.minecraft.client.OptionInstance<java.lang.Double> darknessEffectScale();
+  public net.minecraft.client.OptionInstance<java.lang.Double> glintSpeed();
+  public net.minecraft.client.OptionInstance<java.lang.Double> glintStrength();
+  public net.minecraft.client.OptionInstance<java.lang.Double> damageTiltStrength();
+  public net.minecraft.client.OptionInstance<java.lang.Double> gamma();
+  public net.minecraft.client.OptionInstance<java.lang.Integer> guiScale();
+  public net.minecraft.client.OptionInstance<net.minecraft.server.level.ParticleStatus> particles();
+  public net.minecraft.client.OptionInstance<net.minecraft.client.NarratorStatus> narrator();
+  public net.minecraft.client.OptionInstance<java.lang.String> soundDevice();
+  public void onboardingAccessibilityFinished();
+  public net.minecraft.client.OptionInstance<net.minecraft.client.sounds.MusicManager$MusicFrequency> musicFrequency();
+  public net.minecraft.client.OptionInstance<net.minecraft.client.MusicToastDisplayState> musicToast();
+  public net.minecraft.client.Options(net.minecraft.client.Minecraft, java.io.File);
+  public float getBackgroundOpacity(float);
+  public int getBackgroundColor(float);
+  public int getBackgroundColor(int);
+  private void processDumpedOptions(net.minecraft.client.Options$OptionAccess);
+  private void processOptions(net.minecraft.client.Options$FieldAccess);
+  public void load();
+  static boolean isTrue(java.lang.String);
+  static boolean isFalse(java.lang.String);
+  private net.minecraft.nbt.CompoundTag dataFix(net.minecraft.nbt.CompoundTag);
+  public void save();
+  private java.lang.String getFullscreenVideoModeString();
+  public net.minecraft.server.level.ClientInformation buildPlayerInformation();
+  public void broadcastOptions();
+  public void setModelPart(net.minecraft.world.entity.player.PlayerModelPart, boolean);
+  public boolean isModelPartEnabled(net.minecraft.world.entity.player.PlayerModelPart);
+  public net.minecraft.client.CloudStatus getCloudsType();
+  public boolean useNativeTransport();
+  public void loadSelectedResourcePacks(net.minecraft.server.packs.repository.PackRepository);
+  public net.minecraft.client.CameraType getCameraType();
+  public void setCameraType(net.minecraft.client.CameraType);
+  private static java.util.List<java.lang.String> readListOfStrings(java.lang.String);
+  public java.io.File getFile();
+  public java.lang.String dumpOptionsForReport();
+  public void setServerRenderDistance(int);
+  public int getEffectiveRenderDistance();
+  private static net.minecraft.network.chat.Component pixelValueLabel(net.minecraft.network.chat.Component, int);
+  private static net.minecraft.network.chat.Component percentValueLabel(net.minecraft.network.chat.Component, double);
+  public static net.minecraft.network.chat.Component genericValueLabel(net.minecraft.network.chat.Component, net.minecraft.network.chat.Component);
+  public static net.minecraft.network.chat.Component genericValueLabel(net.minecraft.network.chat.Component, int);
+  public static net.minecraft.network.chat.Component genericValueOrOffLabel(net.minecraft.network.chat.Component, int);
+  private static net.minecraft.network.chat.Component percentValueOrOffLabel(net.minecraft.network.chat.Component, double);
+  private static java.lang.String method_37293(com.mojang.datafixers.util.Pair);
+  private void method_68468(java.lang.String);
+  private static void method_24230(net.minecraft.nbt.CompoundTag, java.lang.String);
+  private void method_75319(java.lang.Integer);
+  private static net.minecraft.network.chat.Component method_42493(net.minecraft.network.chat.Component, java.lang.Integer);
+  private void method_76780(java.lang.Integer);
+  private static net.minecraft.network.chat.Component method_42508(net.minecraft.network.chat.Component, java.lang.Integer);
+  private void method_76609(net.minecraft.client.MusicToastDisplayState);
+  private static net.minecraft.network.chat.Component method_76610(net.minecraft.network.chat.Component, net.minecraft.client.MusicToastDisplayState);
+  private static net.minecraft.client.gui.components.Tooltip method_76612(net.minecraft.client.MusicToastDisplayState);
+  private static void method_71785(net.minecraft.client.sounds.MusicManager$MusicFrequency);
+  private static net.minecraft.network.chat.Component method_76534(net.minecraft.network.chat.Component, net.minecraft.client.sounds.MusicManager$MusicFrequency);
+  private static void method_42509(java.lang.String);
+  private static java.util.Optional method_42516(java.lang.String);
+  private static java.util.List method_42478();
+  private static net.minecraft.network.chat.Component method_42523(net.minecraft.network.chat.Component, java.lang.String);
+  private void method_42463(net.minecraft.client.NarratorStatus);
+  private net.minecraft.network.chat.Component method_42489(net.minecraft.network.chat.Component, net.minecraft.client.NarratorStatus);
+  private void method_75315(net.minecraft.server.level.ParticleStatus);
+  private static net.minecraft.network.chat.Component method_76527(net.minecraft.network.chat.Component, net.minecraft.server.level.ParticleStatus);
+  private void method_42515(java.lang.Integer);
+  private static int method_42479();
+  private static net.minecraft.network.chat.Component method_42522(net.minecraft.network.chat.Component, java.lang.Integer);
+  private static void method_42467(java.lang.Double);
+  private static net.minecraft.network.chat.Component method_42492(net.minecraft.network.chat.Component, java.lang.Double);
+  private static void method_75322(java.lang.Double);
+  private static void method_71043(java.lang.Double);
+  private static void method_48582(java.lang.Double);
+  private static void method_42501(java.lang.Double);
+  private static void method_42514(java.lang.Double);
+  private static void method_42526(java.lang.Double);
+  private static void method_47607(java.lang.Boolean);
+  private static net.minecraft.network.chat.Component method_47608(net.minecraft.network.chat.Component, java.lang.Boolean);
+  private static void method_76781(java.lang.Integer);
+  private static java.lang.Double method_42532(java.lang.Integer);
+  private static java.lang.Integer method_42536(java.lang.Double);
+  private static net.minecraft.network.chat.Component method_41789(net.minecraft.network.chat.Component, java.lang.Integer);
+  private static net.minecraft.client.KeyMapping[] method_75324(int);
+  private static void method_75325(java.lang.Integer);
+  private static net.minecraft.network.chat.Component method_72715(net.minecraft.network.chat.Component, java.lang.Integer);
+  private static void method_72711(java.lang.Boolean);
+  private static net.minecraft.network.chat.Component method_72710(net.minecraft.network.chat.Component, java.lang.Boolean);
+  private static void method_72713(java.lang.Boolean);
+  private static net.minecraft.network.chat.Component method_72712(net.minecraft.network.chat.Component, java.lang.Boolean);
+  private static void method_72714(java.lang.Boolean);
+  private static net.minecraft.network.chat.Component method_42491(net.minecraft.network.chat.Component, java.lang.Boolean);
+  private static void method_42520(java.lang.Boolean);
+  private static net.minecraft.network.chat.Component method_42506(net.minecraft.network.chat.Component, java.lang.Boolean);
+  private void method_42513(java.lang.Boolean);
+  private static void method_42500(java.lang.Boolean);
+  private static net.minecraft.network.chat.Component method_42525(net.minecraft.network.chat.Component, java.lang.Boolean);
+  private static void method_42530(java.lang.Boolean);
+  private static net.minecraft.client.gui.components.Tooltip method_47398(java.lang.Boolean);
+  private void method_45575(net.minecraft.sounds.SoundSource, java.lang.Double);
+  private net.minecraft.client.OptionInstance method_66524(net.minecraft.sounds.SoundSource);
+  private static void method_72717(java.lang.Boolean);
+  private static void method_42535(java.lang.Boolean);
+  private static void method_57022(java.lang.Boolean);
+  private static void method_42537(java.lang.Boolean);
+  private void method_75336(java.lang.Boolean);
+  private static void method_42538(java.lang.Boolean);
+  private static void method_74035(java.lang.Boolean);
+  private static void method_41777(java.lang.Boolean);
+  private static void method_41778(java.lang.Double);
+  private static net.minecraft.network.chat.Component method_41788(net.minecraft.network.chat.Component, java.lang.Double);
+  private void method_76782(java.lang.Integer);
+  private static net.minecraft.network.chat.Component method_41800(net.minecraft.network.chat.Component, java.lang.Integer);
+  private static void method_42458(net.minecraft.client.AttackIndicatorStatus);
+  private static net.minecraft.network.chat.Component method_76530(net.minecraft.network.chat.Component, net.minecraft.client.AttackIndicatorStatus);
+  private void method_76777(net.minecraft.client.TextureFilteringMethod);
+  private static net.minecraft.network.chat.Component method_76749(net.minecraft.network.chat.Component, net.minecraft.client.TextureFilteringMethod);
+  private static net.minecraft.client.gui.components.Tooltip method_76750(net.minecraft.client.TextureFilteringMethod);
+  private void method_76783(java.lang.Integer);
+  private static net.minecraft.network.chat.Component method_76250(net.minecraft.network.chat.Component, java.lang.Integer);
+  private void method_75327(java.lang.Integer);
+  private static net.minecraft.network.chat.Component method_42545(net.minecraft.network.chat.Component, java.lang.Integer);
+  private static void method_48188(java.lang.Double);
+  private static int method_48190(java.lang.Double);
+  private static java.lang.Double method_48187(int);
+  private static net.minecraft.network.chat.Component method_48189(net.minecraft.network.chat.Component, java.lang.Double);
+  private static void method_42540(java.lang.Double);
+  private static int method_42544(java.lang.Double);
+  private static java.lang.Double method_42504(int);
+  private static net.minecraft.network.chat.Component method_42548(net.minecraft.network.chat.Component, java.lang.Double);
+  private static void method_41796(java.lang.Double);
+  private static net.minecraft.network.chat.Component method_41799(net.minecraft.network.chat.Component, java.lang.Double);
+  private static void method_41802(java.lang.Double);
+  private static net.minecraft.network.chat.Component method_41804(net.minecraft.network.chat.Component, java.lang.Double);
+  private static void method_42558(java.lang.Double);
+  private static net.minecraft.network.chat.Component method_42560(net.minecraft.network.chat.Component, java.lang.Double);
+  private static void method_42562(java.lang.Double);
+  private static net.minecraft.network.chat.Component method_42564(net.minecraft.network.chat.Component, java.lang.Double);
+  private static void method_42455(net.minecraft.world.entity.HumanoidArm);
+  private static net.minecraft.network.chat.Component method_76528(net.minecraft.network.chat.Component, net.minecraft.world.entity.HumanoidArm);
+  private void method_49599(java.lang.Boolean);
+  private static void method_45580(java.lang.Double);
+  private static void method_42566(java.lang.Double);
+  private void method_75330(java.lang.Integer);
+  private static void method_42568(java.lang.Double);
+  private static void method_42424(java.lang.Double);
+  private static net.minecraft.network.chat.Component method_42432(net.minecraft.network.chat.Component, java.lang.Double);
+  private static void method_42456(net.minecraft.world.entity.player.ChatVisiblity);
+  private static net.minecraft.network.chat.Component method_76529(net.minecraft.network.chat.Component, net.minecraft.world.entity.player.ChatVisiblity);
+  private void method_75318(net.minecraft.client.PrioritizeChunkUpdates);
+  private static net.minecraft.network.chat.Component method_76533(net.minecraft.network.chat.Component, net.minecraft.client.PrioritizeChunkUpdates);
+  private static net.minecraft.client.gui.components.Tooltip method_47396(net.minecraft.client.PrioritizeChunkUpdates);
+  private static void method_76254(java.lang.Double);
+  private static int method_76255(java.lang.Double);
+  private static java.lang.Double method_76249(int);
+  private static net.minecraft.network.chat.Component method_76252(net.minecraft.network.chat.Component, java.lang.Double);
+  private void method_76785(java.lang.Boolean);
+  private void method_76786(java.lang.Boolean);
+  private void method_76787(java.lang.Boolean);
+  private void method_75331(java.lang.Integer);
+  private static net.minecraft.network.chat.Component method_75328(net.minecraft.network.chat.Component, java.lang.Integer);
+  private void method_76784(java.lang.Integer);
+  private static void method_76778(net.minecraft.client.renderer.LevelRenderer);
+  private static net.minecraft.network.chat.Component method_71268(net.minecraft.network.chat.Component, java.lang.Integer);
+  private void method_75316(net.minecraft.client.CloudStatus);
+  private static net.minecraft.client.CloudStatus method_52704(java.lang.Boolean);
+  private static net.minecraft.network.chat.Component method_76531(net.minecraft.network.chat.Component, net.minecraft.client.CloudStatus);
+  private static void method_61968(net.minecraft.client.InactivityFpsLimit);
+  private static net.minecraft.network.chat.Component method_76532(net.minecraft.network.chat.Component, net.minecraft.client.InactivityFpsLimit);
+  private static net.minecraft.client.gui.components.Tooltip method_61969(net.minecraft.client.InactivityFpsLimit);
+  private static net.minecraft.network.chat.Component method_75320(net.minecraft.network.chat.Component, net.minecraft.client.GraphicsPreset);
+  private static void method_42555(java.lang.Integer);
+  private static int method_42557(java.lang.Integer);
+  private static java.lang.Integer method_42511(int);
+  private static net.minecraft.network.chat.Component method_42559(net.minecraft.network.chat.Component, java.lang.Integer);
+  private void method_75341(java.lang.Double);
+  private static int method_42430(java.lang.Double);
+  private static java.lang.Double method_42518(int);
+  private static void method_42434(java.lang.Double);
+  private static net.minecraft.network.chat.Component method_42436(net.minecraft.network.chat.Component, java.lang.Double);
   static {};
 }
 
@@ -1137,562 +1123,336 @@ public class net.minecraft.client.gui.Font {
   private float method_27516(int, net.minecraft.network.chat.Style);
 }
 
-=== net.minecraft.client.gui.Gui   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "Gui.java"
-public class net.minecraft.client.gui.Gui {
-  private static final net.minecraft.resources.Identifier CROSSHAIR_SPRITE;
-  private static final net.minecraft.resources.Identifier CROSSHAIR_ATTACK_INDICATOR_FULL_SPRITE;
-  private static final net.minecraft.resources.Identifier CROSSHAIR_ATTACK_INDICATOR_BACKGROUND_SPRITE;
-  private static final net.minecraft.resources.Identifier CROSSHAIR_ATTACK_INDICATOR_PROGRESS_SPRITE;
-  private static final net.minecraft.resources.Identifier EFFECT_BACKGROUND_AMBIENT_SPRITE;
-  private static final net.minecraft.resources.Identifier EFFECT_BACKGROUND_SPRITE;
-  private static final net.minecraft.resources.Identifier HOTBAR_SPRITE;
-  private static final net.minecraft.resources.Identifier HOTBAR_SELECTION_SPRITE;
-  private static final net.minecraft.resources.Identifier HOTBAR_OFFHAND_LEFT_SPRITE;
-  private static final net.minecraft.resources.Identifier HOTBAR_OFFHAND_RIGHT_SPRITE;
-  private static final net.minecraft.resources.Identifier HOTBAR_ATTACK_INDICATOR_BACKGROUND_SPRITE;
-  private static final net.minecraft.resources.Identifier HOTBAR_ATTACK_INDICATOR_PROGRESS_SPRITE;
-  private static final net.minecraft.resources.Identifier ARMOR_EMPTY_SPRITE;
-  private static final net.minecraft.resources.Identifier ARMOR_HALF_SPRITE;
-  private static final net.minecraft.resources.Identifier ARMOR_FULL_SPRITE;
-  private static final net.minecraft.resources.Identifier FOOD_EMPTY_HUNGER_SPRITE;
-  private static final net.minecraft.resources.Identifier FOOD_HALF_HUNGER_SPRITE;
-  private static final net.minecraft.resources.Identifier FOOD_FULL_HUNGER_SPRITE;
-  private static final net.minecraft.resources.Identifier FOOD_EMPTY_SPRITE;
-  private static final net.minecraft.resources.Identifier FOOD_HALF_SPRITE;
-  private static final net.minecraft.resources.Identifier FOOD_FULL_SPRITE;
-  private static final net.minecraft.resources.Identifier AIR_SPRITE;
-  private static final net.minecraft.resources.Identifier AIR_POPPING_SPRITE;
-  private static final net.minecraft.resources.Identifier AIR_EMPTY_SPRITE;
-  private static final net.minecraft.resources.Identifier HEART_VEHICLE_CONTAINER_SPRITE;
-  private static final net.minecraft.resources.Identifier HEART_VEHICLE_FULL_SPRITE;
-  private static final net.minecraft.resources.Identifier HEART_VEHICLE_HALF_SPRITE;
-  private static final net.minecraft.resources.Identifier VIGNETTE_LOCATION;
-  public static final net.minecraft.resources.Identifier NAUSEA_LOCATION;
-  private static final net.minecraft.resources.Identifier SPYGLASS_SCOPE_LOCATION;
-  private static final net.minecraft.resources.Identifier POWDER_SNOW_OUTLINE_LOCATION;
-  private static final java.util.Comparator<net.minecraft.world.scores.PlayerScoreEntry> SCORE_DISPLAY_ORDER;
-  private static final net.minecraft.network.chat.Component DEMO_EXPIRED_TEXT;
-  private static final net.minecraft.network.chat.Component SAVING_TEXT;
-  private static final float MIN_CROSSHAIR_ATTACK_SPEED;
-  private static final int EXPERIENCE_BAR_DISPLAY_TICKS;
-  private static final int NUM_HEARTS_PER_ROW;
-  private static final int LINE_HEIGHT;
-  private static final java.lang.String SPACER;
-  private static final float PORTAL_OVERLAY_ALPHA_MIN;
-  private static final int HEART_SIZE;
-  private static final int HEART_SEPARATION;
-  private static final int NUM_AIR_BUBBLES;
-  private static final int AIR_BUBBLE_SIZE;
-  private static final int AIR_BUBBLE_SEPERATION;
-  private static final int AIR_BUBBLE_POPPING_DURATION;
-  private static final int EMPTY_AIR_BUBBLE_DELAY_DURATION;
-  private static final float AIR_BUBBLE_POP_SOUND_VOLUME_BASE;
-  private static final float AIR_BUBBLE_POP_SOUND_VOLUME_INCREMENT;
-  private static final float AIR_BUBBLE_POP_SOUND_PITCH_BASE;
-  private static final float AIR_BUBBLE_POP_SOUND_PITCH_INCREMENT;
-  private static final int NUM_AIR_BUBBLE_POPPED_BEFORE_SOUND_VOLUME_INCREASE;
-  private static final int NUM_AIR_BUBBLE_POPPED_BEFORE_SOUND_PITCH_INCREASE;
-  private static final float AUTOSAVE_FADE_SPEED_FACTOR;
-  private static final int SAVING_INDICATOR_WIDTH_PADDING_RIGHT;
-  private static final int SAVING_INDICATOR_HEIGHT_PADDING_BOTTOM;
-  private final net.minecraft.util.RandomSource random;
-  private final net.minecraft.client.Minecraft minecraft;
-  private final net.minecraft.client.gui.components.ChatComponent chat;
-  private int tickCount;
-  private net.minecraft.network.chat.Component overlayMessageString;
-  private int overlayMessageTime;
-  private boolean animateOverlayMessageColor;
-  private boolean chatDisabledByPlayerShown;
-  public float vignetteBrightness;
-  private int toolHighlightTimer;
-  private net.minecraft.world.item.ItemStack lastToolHighlight;
-  private final net.minecraft.client.gui.components.DebugScreenOverlay debugOverlay;
-  private final net.minecraft.client.gui.components.SubtitleOverlay subtitleOverlay;
-  private final net.minecraft.client.gui.components.spectator.SpectatorGui spectatorGui;
-  private final net.minecraft.client.gui.components.PlayerTabOverlay tabList;
-  private final net.minecraft.client.gui.components.BossHealthOverlay bossOverlay;
-  private int titleTime;
-  private net.minecraft.network.chat.Component title;
-  private net.minecraft.network.chat.Component subtitle;
-  private int titleFadeInTime;
-  private int titleStayTime;
-  private int titleFadeOutTime;
-  private int lastHealth;
-  private int displayHealth;
-  private long lastHealthTime;
-  private long healthBlinkTime;
-  private int lastBubblePopSoundPlayed;
-  private java.lang.Runnable deferredSubtitles;
-  private float autosaveIndicatorValue;
-  private float lastAutosaveIndicatorValue;
-  private org.apache.commons.lang3.tuple.Pair<net.minecraft.client.gui.Gui$ContextualInfo, net.minecraft.client.gui.contextualbar.ContextualBarRenderer> contextualInfoBar;
-  private final java.util.Map<net.minecraft.client.gui.Gui$ContextualInfo, java.util.function.Supplier<net.minecraft.client.gui.contextualbar.ContextualBarRenderer>> contextualInfoBarRenderers;
-  private float scopeScale;
-  public net.minecraft.client.gui.Gui(net.minecraft.client.Minecraft);
-  public void resetTitleTimes();
-  public void render(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private void renderBossOverlay(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  public void renderDebugOverlay(net.minecraft.client.gui.GuiGraphics);
-  private void renderSubtitleOverlay(net.minecraft.client.gui.GuiGraphics, boolean);
-  public void renderDeferredSubtitles();
-  private void renderCameraOverlays(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private void renderSleepOverlay(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private void renderOverlayMessage(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private void renderTitle(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private void renderChat(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private void renderScoreboardSidebar(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private void renderTabList(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private void renderCrosshair(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private boolean canRenderCrosshairForSpectator(net.minecraft.world.phys.HitResult);
-  private void renderEffects(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  public static net.minecraft.resources.Identifier getMobEffectSprite(net.minecraft.core.Holder<net.minecraft.world.effect.MobEffect>);
-  private void renderHotbarAndDecorations(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private void renderItemHotbar(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private void renderSelectedItemName(net.minecraft.client.gui.GuiGraphics);
-  private void renderDemoOverlay(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private void displayScoreboardSidebar(net.minecraft.client.gui.GuiGraphics, net.minecraft.world.scores.Objective);
-  private net.minecraft.world.entity.player.Player getCameraPlayer();
-  private net.minecraft.world.entity.LivingEntity getPlayerVehicleWithHealth();
-  private int getVehicleMaxHearts(net.minecraft.world.entity.LivingEntity);
-  private int getVisibleVehicleHeartRows(int);
-  private void renderPlayerHealth(net.minecraft.client.gui.GuiGraphics);
-  private static void renderArmor(net.minecraft.client.gui.GuiGraphics, net.minecraft.world.entity.player.Player, int, int, int, int);
-  private void renderHearts(net.minecraft.client.gui.GuiGraphics, net.minecraft.world.entity.player.Player, int, int, int, int, float, int, int, int, boolean);
-  private void renderHeart(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.gui.Gui$HeartType, int, int, boolean, boolean, boolean);
-  private void renderAirBubbles(net.minecraft.client.gui.GuiGraphics, net.minecraft.world.entity.player.Player, int, int, int);
-  private int getAirBubbleYLine(int, int);
-  private static int getCurrentAirSupplyBubble(int, int, int);
-  private static int getEmptyBubbleDelayDuration(int, boolean);
-  private void playAirBubblePoppedSound(int, net.minecraft.world.entity.player.Player, int);
-  private void renderFood(net.minecraft.client.gui.GuiGraphics, net.minecraft.world.entity.player.Player, int, int);
-  private void renderVehicleHealth(net.minecraft.client.gui.GuiGraphics);
-  private void renderTextureOverlay(net.minecraft.client.gui.GuiGraphics, net.minecraft.resources.Identifier, float);
-  private void renderSpyglassOverlay(net.minecraft.client.gui.GuiGraphics, float);
-  private void updateVignetteBrightness(net.minecraft.world.entity.Entity);
-  private void renderVignette(net.minecraft.client.gui.GuiGraphics, net.minecraft.world.entity.Entity);
-  private void renderPortalOverlay(net.minecraft.client.gui.GuiGraphics, float);
-  private void renderConfusionOverlay(net.minecraft.client.gui.GuiGraphics, float);
-  private void renderSlot(net.minecraft.client.gui.GuiGraphics, int, int, net.minecraft.client.DeltaTracker, net.minecraft.world.entity.player.Player, net.minecraft.world.item.ItemStack, int);
-  public void tick(boolean);
-  private void tick();
-  private void tickAutosaveIndicator();
-  public void setNowPlaying(net.minecraft.network.chat.Component);
-  public void setOverlayMessage(net.minecraft.network.chat.Component, boolean);
-  public void setChatDisabledByPlayerShown(boolean);
-  public boolean isShowingChatDisabledByPlayer();
-  public void setTimes(int, int, int);
-  public void setSubtitle(net.minecraft.network.chat.Component);
-  public void setTitle(net.minecraft.network.chat.Component);
-  public void clearTitles();
-  public net.minecraft.client.gui.components.ChatComponent getChat();
-  public int getGuiTicks();
-  public net.minecraft.client.gui.Font getFont();
-  public net.minecraft.client.gui.components.spectator.SpectatorGui getSpectatorGui();
-  public net.minecraft.client.gui.components.PlayerTabOverlay getTabList();
-  public void onDisconnected();
-  public net.minecraft.client.gui.components.BossHealthOverlay getBossOverlay();
-  public net.minecraft.client.gui.components.DebugScreenOverlay getDebugOverlay();
-  public void clearCache();
-  public void renderSavingIndicator(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.DeltaTracker);
-  private boolean willPrioritizeExperienceInfo();
-  private boolean willPrioritizeJumpInfo();
-  private net.minecraft.client.gui.Gui$ContextualInfo nextContextualInfoState();
-  private static net.minecraft.client.gui.Gui$1DisplayEntry[] method_55441(int);
-  private net.minecraft.client.gui.Gui$1DisplayEntry method_55439(net.minecraft.world.scores.Scoreboard, net.minecraft.network.chat.numbers.NumberFormat, net.minecraft.world.scores.PlayerScoreEntry);
-  private static boolean method_1751(net.minecraft.world.scores.PlayerScoreEntry);
-  private static net.minecraft.resources.Identifier method_71643(net.minecraft.resources.Identifier);
-  private static java.lang.String method_65023(java.lang.String);
-  private void method_72739(net.minecraft.client.gui.GuiGraphics);
-  private static net.minecraft.client.gui.contextualbar.ContextualBarRenderer method_70832(net.minecraft.client.Minecraft);
-  private static net.minecraft.client.gui.contextualbar.ContextualBarRenderer method_70835(net.minecraft.client.Minecraft);
-  private static net.minecraft.client.gui.contextualbar.ContextualBarRenderer method_70836(net.minecraft.client.Minecraft);
-  private static net.minecraft.client.gui.contextualbar.ContextualBarRenderer method_70843();
-  static {};
-}
-
-=== net.minecraft.client.gui.GuiGraphics   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "GuiGraphics.java"
-public class net.minecraft.client.gui.GuiGraphics {
-  private static final int EXTRA_SPACE_AFTER_FIRST_TOOLTIP_LINE;
+=== net.minecraft.client.gui.components.ChatComponent   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "ChatComponent.java"
+public class net.minecraft.client.gui.components.ChatComponent {
+  private static final org.slf4j.Logger LOGGER;
+  private static final int MAX_CHAT_HISTORY;
+  private static final int MESSAGE_INDENT;
+  private static final int BOTTOM_MARGIN;
+  private static final int TOOLTIP_MAX_WIDTH;
+  private static final int TIME_BEFORE_MESSAGE_DELETION;
+  private static final net.minecraft.network.chat.Component DELETED_CHAT_MESSAGE;
+  public static final int MESSAGE_BOTTOM_TO_MESSAGE_TOP;
+  public static final net.minecraft.resources.Identifier QUEUE_EXPAND_ID;
+  private static final net.minecraft.network.chat.Style QUEUE_EXPAND_TEXT_STYLE;
   final net.minecraft.client.Minecraft minecraft;
-  private final org.joml.Matrix3x2fStack pose;
-  public final net.minecraft.client.gui.GuiGraphics$ScissorStack scissorStack;
-  private final net.minecraft.client.resources.model.MaterialSet materials;
-  private final net.minecraft.client.renderer.texture.TextureAtlas guiSprites;
-  public final net.minecraft.client.gui.render.state.GuiRenderState guiRenderState;
-  private com.mojang.blaze3d.platform.cursor.CursorType pendingCursor;
-  final int mouseX;
-  final int mouseY;
-  private java.lang.Runnable deferredTooltip;
-  net.minecraft.network.chat.Style hoveredTextStyle;
-  net.minecraft.network.chat.Style clickableTextStyle;
-  private net.minecraft.client.gui.GuiGraphics(net.minecraft.client.Minecraft, org.joml.Matrix3x2fStack, net.minecraft.client.gui.render.state.GuiRenderState, int, int);
-  public net.minecraft.client.gui.GuiGraphics(net.minecraft.client.Minecraft, net.minecraft.client.gui.render.state.GuiRenderState, int, int);
-  public void requestCursor(com.mojang.blaze3d.platform.cursor.CursorType);
-  public void applyCursor(com.mojang.blaze3d.platform.Window);
-  public int guiWidth();
-  public int guiHeight();
-  public void nextStratum();
-  public void blurBeforeThisStratum();
-  public org.joml.Matrix3x2fStack pose();
-  public void hLine(int, int, int, int);
-  public void vLine(int, int, int, int);
-  public void enableScissor(int, int, int, int);
-  public void disableScissor();
-  public boolean containsPointInScissor(int, int);
-  public void fill(int, int, int, int, int);
-  public void fill(com.mojang.blaze3d.pipeline.RenderPipeline, int, int, int, int, int);
-  public void fillGradient(int, int, int, int, int, int);
-  public void fill(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.client.gui.render.TextureSetup, int, int, int, int);
-  private void submitColoredRectangle(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.client.gui.render.TextureSetup, int, int, int, int, int, java.lang.Integer);
-  public void textHighlight(int, int, int, int, boolean);
-  public void drawCenteredString(net.minecraft.client.gui.Font, java.lang.String, int, int, int);
-  public void drawCenteredString(net.minecraft.client.gui.Font, net.minecraft.network.chat.Component, int, int, int);
-  public void drawCenteredString(net.minecraft.client.gui.Font, net.minecraft.util.FormattedCharSequence, int, int, int);
-  public void drawString(net.minecraft.client.gui.Font, java.lang.String, int, int, int);
-  public void drawString(net.minecraft.client.gui.Font, java.lang.String, int, int, int, boolean);
-  public void drawString(net.minecraft.client.gui.Font, net.minecraft.util.FormattedCharSequence, int, int, int);
-  public void drawString(net.minecraft.client.gui.Font, net.minecraft.util.FormattedCharSequence, int, int, int, boolean);
-  public void drawString(net.minecraft.client.gui.Font, net.minecraft.network.chat.Component, int, int, int);
-  public void drawString(net.minecraft.client.gui.Font, net.minecraft.network.chat.Component, int, int, int, boolean);
-  public void drawWordWrap(net.minecraft.client.gui.Font, net.minecraft.network.chat.FormattedText, int, int, int, int);
-  public void drawWordWrap(net.minecraft.client.gui.Font, net.minecraft.network.chat.FormattedText, int, int, int, int, boolean);
-  public void drawStringWithBackdrop(net.minecraft.client.gui.Font, net.minecraft.network.chat.Component, int, int, int, int);
-  public void renderOutline(int, int, int, int, int);
-  public void blitSprite(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, int, int);
-  public void blitSprite(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, int, int, float);
-  private static net.minecraft.client.resources.metadata.gui.GuiSpriteScaling getSpriteScaling(net.minecraft.client.renderer.texture.TextureAtlasSprite);
-  public void blitSprite(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, int, int, int);
-  public void blitSprite(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, int, int, int, int, int, int);
-  public void blitSprite(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, int, int, int, int, int, int, int);
-  public void blitSprite(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.client.renderer.texture.TextureAtlasSprite, int, int, int, int);
-  public void blitSprite(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.client.renderer.texture.TextureAtlasSprite, int, int, int, int, int);
-  private void blitSprite(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.client.renderer.texture.TextureAtlasSprite, int, int, int, int, int, int, int, int, int);
-  private void blitNineSlicedSprite(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.client.renderer.texture.TextureAtlasSprite, net.minecraft.client.resources.metadata.gui.GuiSpriteScaling$NineSlice, int, int, int, int, int);
-  private void blitNineSliceInnerSegment(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.client.resources.metadata.gui.GuiSpriteScaling$NineSlice, net.minecraft.client.renderer.texture.TextureAtlasSprite, int, int, int, int, int, int, int, int, int, int, int);
-  private void blitTiledSprite(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.client.renderer.texture.TextureAtlasSprite, int, int, int, int, int, int, int, int, int, int, int);
-  public void blit(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, float, float, int, int, int, int, int);
-  public void blit(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, float, float, int, int, int, int);
-  public void blit(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, float, float, int, int, int, int, int, int);
-  public void blit(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, float, float, int, int, int, int, int, int, int);
-  public void blit(net.minecraft.resources.Identifier, int, int, int, int, float, float, float, float);
-  private void innerBlit(com.mojang.blaze3d.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, int, int, float, float, float, float, int);
-  private void submitBlit(com.mojang.blaze3d.pipeline.RenderPipeline, com.mojang.blaze3d.textures.GpuTextureView, com.mojang.blaze3d.textures.GpuSampler, int, int, int, int, float, float, float, float, int);
-  private void submitTiledBlit(com.mojang.blaze3d.pipeline.RenderPipeline, com.mojang.blaze3d.textures.GpuTextureView, com.mojang.blaze3d.textures.GpuSampler, int, int, int, int, int, int, float, float, float, float, int);
-  public void renderItem(net.minecraft.world.item.ItemStack, int, int);
-  public void renderItem(net.minecraft.world.item.ItemStack, int, int, int);
-  public void renderFakeItem(net.minecraft.world.item.ItemStack, int, int);
-  public void renderFakeItem(net.minecraft.world.item.ItemStack, int, int, int);
-  public void renderItem(net.minecraft.world.entity.LivingEntity, net.minecraft.world.item.ItemStack, int, int, int);
-  private void renderItem(net.minecraft.world.entity.LivingEntity, net.minecraft.world.level.Level, net.minecraft.world.item.ItemStack, int, int, int);
-  public void renderItemDecorations(net.minecraft.client.gui.Font, net.minecraft.world.item.ItemStack, int, int);
-  public void renderItemDecorations(net.minecraft.client.gui.Font, net.minecraft.world.item.ItemStack, int, int, java.lang.String);
-  public void setTooltipForNextFrame(net.minecraft.network.chat.Component, int, int);
-  public void setTooltipForNextFrame(java.util.List<net.minecraft.util.FormattedCharSequence>, int, int);
-  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, net.minecraft.world.item.ItemStack, int, int);
-  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.network.chat.Component>, java.util.Optional<net.minecraft.world.inventory.tooltip.TooltipComponent>, int, int);
-  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.network.chat.Component>, java.util.Optional<net.minecraft.world.inventory.tooltip.TooltipComponent>, int, int, net.minecraft.resources.Identifier);
-  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, net.minecraft.network.chat.Component, int, int);
-  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, net.minecraft.network.chat.Component, int, int, net.minecraft.resources.Identifier);
-  public void setComponentTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.network.chat.Component>, int, int);
-  public void setComponentTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.network.chat.Component>, int, int, net.minecraft.resources.Identifier);
-  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<? extends net.minecraft.util.FormattedCharSequence>, int, int);
-  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<? extends net.minecraft.util.FormattedCharSequence>, int, int, net.minecraft.resources.Identifier);
-  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.util.FormattedCharSequence>, net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner, int, int, boolean);
-  private void setTooltipForNextFrameInternal(net.minecraft.client.gui.Font, java.util.List<net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent>, int, int, net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner, net.minecraft.resources.Identifier, boolean);
-  public void renderTooltip(net.minecraft.client.gui.Font, java.util.List<net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent>, int, int, net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner, net.minecraft.resources.Identifier);
-  public void renderDeferredElements();
-  private void renderItemBar(net.minecraft.world.item.ItemStack, int, int);
-  private void renderItemCount(net.minecraft.client.gui.Font, net.minecraft.world.item.ItemStack, int, int, java.lang.String);
-  private void renderItemCooldown(net.minecraft.world.item.ItemStack, int, int);
-  public void renderComponentHoverEffect(net.minecraft.client.gui.Font, net.minecraft.network.chat.Style, int, int);
-  public void submitMapRenderState(net.minecraft.client.renderer.state.MapRenderState);
-  public void submitEntityRenderState(net.minecraft.client.renderer.entity.state.EntityRenderState, float, org.joml.Vector3f, org.joml.Quaternionf, org.joml.Quaternionf, int, int, int, int);
-  public void submitSkinRenderState(net.minecraft.client.model.player.PlayerModel, net.minecraft.resources.Identifier, float, float, float, float, int, int, int, int);
-  public void submitBookModelRenderState(net.minecraft.client.model.object.book.BookModel, net.minecraft.resources.Identifier, float, float, float, int, int, int, int);
-  public void submitBannerPatternRenderState(net.minecraft.client.model.object.banner.BannerFlagModel, net.minecraft.world.item.DyeColor, net.minecraft.world.level.block.entity.BannerPatternLayers, int, int, int, int);
-  public void submitSignRenderState(net.minecraft.client.model.Model$Simple, float, net.minecraft.world.level.block.state.properties.WoodType, int, int, int, int);
-  public void submitProfilerChartRenderState(java.util.List<net.minecraft.util.profiling.ResultField>, int, int, int, int);
-  public net.minecraft.client.renderer.texture.TextureAtlasSprite getSprite(net.minecraft.client.resources.model.Material);
-  public net.minecraft.client.gui.ActiveTextCollector textRendererForWidget(net.minecraft.client.gui.components.AbstractWidget, net.minecraft.client.gui.GuiGraphics$HoveredTextEffects);
-  public net.minecraft.client.gui.ActiveTextCollector textRenderer();
-  public net.minecraft.client.gui.ActiveTextCollector textRenderer(net.minecraft.client.gui.GuiGraphics$HoveredTextEffects);
-  public net.minecraft.client.gui.ActiveTextCollector textRenderer(net.minecraft.client.gui.GuiGraphics$HoveredTextEffects, java.util.function.Consumer<net.minecraft.network.chat.Style>);
-  private net.minecraft.client.gui.ActiveTextCollector$Parameters createDefaultTextParameters(float);
-  private void method_71277(net.minecraft.client.gui.Font, java.util.List, int, int, net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner, net.minecraft.resources.Identifier);
-  private static void method_71275(java.util.List, net.minecraft.world.inventory.tooltip.TooltipComponent);
-  private static java.lang.String method_57708(net.minecraft.world.item.ItemStack) throws java.lang.Exception;
-  private static java.lang.String method_51449(net.minecraft.world.item.ItemStack) throws java.lang.Exception;
-  private static java.lang.String method_51451(net.minecraft.world.item.ItemStack) throws java.lang.Exception;
-}
-
-=== net.minecraft.client.gui.screens.Screen   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "Screen.java"
-public abstract class net.minecraft.client.gui.screens.Screen extends net.minecraft.client.gui.components.events.AbstractContainerEventHandler implements net.minecraft.client.gui.components.Renderable {
-  private static final org.slf4j.Logger LOGGER;
-  private static final net.minecraft.network.chat.Component USAGE_NARRATION;
-  public static final net.minecraft.resources.Identifier MENU_BACKGROUND;
-  public static final net.minecraft.resources.Identifier HEADER_SEPARATOR;
-  public static final net.minecraft.resources.Identifier FOOTER_SEPARATOR;
-  private static final net.minecraft.resources.Identifier INWORLD_MENU_BACKGROUND;
-  public static final net.minecraft.resources.Identifier INWORLD_HEADER_SEPARATOR;
-  public static final net.minecraft.resources.Identifier INWORLD_FOOTER_SEPARATOR;
-  protected static final float FADE_IN_TIME;
-  protected final net.minecraft.network.chat.Component title;
-  private final java.util.List<net.minecraft.client.gui.components.events.GuiEventListener> children;
-  private final java.util.List<net.minecraft.client.gui.narration.NarratableEntry> narratables;
-  protected final net.minecraft.client.Minecraft minecraft;
-  private boolean initialized;
-  public int width;
-  public int height;
-  private final java.util.List<net.minecraft.client.gui.components.Renderable> renderables;
-  protected final net.minecraft.client.gui.Font font;
-  private static final long NARRATE_SUPPRESS_AFTER_INIT_TIME;
-  private static final long NARRATE_DELAY_NARRATOR_ENABLED;
-  private static final long NARRATE_DELAY_MOUSE_MOVE;
-  private static final long NARRATE_DELAY_MOUSE_ACTION;
-  private static final long NARRATE_DELAY_KEYBOARD_ACTION;
-  private final net.minecraft.client.gui.narration.ScreenNarrationCollector narrationState;
-  private long narrationSuppressTime;
-  private long nextNarrationTime;
-  protected net.minecraft.client.gui.components.CycleButton<net.minecraft.client.NarratorStatus> narratorButton;
-  private net.minecraft.client.gui.narration.NarratableEntry lastNarratable;
-  protected final java.util.concurrent.Executor screenExecutor;
-  protected net.minecraft.client.gui.screens.Screen(net.minecraft.network.chat.Component);
-  protected net.minecraft.client.gui.screens.Screen(net.minecraft.client.Minecraft, net.minecraft.client.gui.Font, net.minecraft.network.chat.Component);
-  public net.minecraft.network.chat.Component getTitle();
-  public net.minecraft.network.chat.Component getNarrationMessage();
-  public final void renderWithTooltipAndSubtitles(net.minecraft.client.gui.GuiGraphics, int, int, float);
-  public void render(net.minecraft.client.gui.GuiGraphics, int, int, float);
-  public boolean keyPressed(net.minecraft.client.input.KeyEvent);
-  private net.minecraft.client.gui.navigation.FocusNavigationEvent$TabNavigation createTabEvent(boolean);
-  private net.minecraft.client.gui.navigation.FocusNavigationEvent$ArrowNavigation createArrowEvent(net.minecraft.client.gui.navigation.ScreenDirection);
-  protected void setInitialFocus();
-  protected void setInitialFocus(net.minecraft.client.gui.components.events.GuiEventListener);
-  public void clearFocus();
-  protected void changeFocus(net.minecraft.client.gui.ComponentPath);
-  public boolean shouldCloseOnEsc();
-  public void onClose();
-  protected <T extends net.minecraft.client.gui.components.events.GuiEventListener & net.minecraft.client.gui.components.Renderable & net.minecraft.client.gui.narration.NarratableEntry> T addRenderableWidget(T);
-  protected <T extends net.minecraft.client.gui.components.Renderable> T addRenderableOnly(T);
-  protected <T extends net.minecraft.client.gui.components.events.GuiEventListener & net.minecraft.client.gui.narration.NarratableEntry> T addWidget(T);
-  protected void removeWidget(net.minecraft.client.gui.components.events.GuiEventListener);
-  protected void clearWidgets();
-  public static java.util.List<net.minecraft.network.chat.Component> getTooltipFromItem(net.minecraft.client.Minecraft, net.minecraft.world.item.ItemStack);
-  protected void insertText(java.lang.String, boolean);
-  protected static void defaultHandleGameClickEvent(net.minecraft.network.chat.ClickEvent, net.minecraft.client.Minecraft, net.minecraft.client.gui.screens.Screen);
-  protected static void defaultHandleClickEvent(net.minecraft.network.chat.ClickEvent, net.minecraft.client.Minecraft, net.minecraft.client.gui.screens.Screen);
-  protected static boolean clickUrlAction(net.minecraft.client.Minecraft, net.minecraft.client.gui.screens.Screen, java.net.URI);
-  protected static void clickCommandAction(net.minecraft.client.player.LocalPlayer, java.lang.String, net.minecraft.client.gui.screens.Screen);
-  public final void init(int, int);
-  protected void rebuildWidgets();
-  protected void fadeWidgets(float);
-  public java.util.List<? extends net.minecraft.client.gui.components.events.GuiEventListener> children();
-  protected void init();
+  private final net.minecraft.util.ArrayListDeque<java.lang.String> recentChat;
+  private final java.util.List<net.minecraft.client.GuiMessage> allMessages;
+  private final java.util.List<net.minecraft.client.GuiMessage$Line> trimmedMessages;
+  private int chatScrollbarPos;
+  private boolean newMessageSinceScroll;
+  private net.minecraft.client.gui.components.ChatComponent$Draft latestDraft;
+  private net.minecraft.client.gui.screens.ChatScreen preservedScreen;
+  private final java.util.List<net.minecraft.client.gui.components.ChatComponent$DelayedMessageDeletion> messageDeletionQueue;
+  public net.minecraft.client.gui.components.ChatComponent(net.minecraft.client.Minecraft);
   public void tick();
-  public void removed();
-  public void added();
-  public void renderBackground(net.minecraft.client.gui.GuiGraphics, int, int, float);
-  protected void renderBlurredBackground(net.minecraft.client.gui.GuiGraphics);
-  protected void renderPanorama(net.minecraft.client.gui.GuiGraphics, float);
-  protected void renderMenuBackground(net.minecraft.client.gui.GuiGraphics);
-  protected void renderMenuBackground(net.minecraft.client.gui.GuiGraphics, int, int, int, int);
-  public static void renderMenuBackgroundTexture(net.minecraft.client.gui.GuiGraphics, net.minecraft.resources.Identifier, int, int, float, float, int, int);
-  public void renderTransparentBackground(net.minecraft.client.gui.GuiGraphics);
-  public boolean isPauseScreen();
-  public boolean isInGameUi();
-  protected boolean panoramaShouldSpin();
-  public boolean isAllowedInPortal();
-  protected void repositionElements();
-  public void resize(int, int);
-  public void fillCrashDetails(net.minecraft.CrashReport);
-  protected boolean isValidCharacterForName(java.lang.String, int, int);
-  public boolean isMouseOver(double, double);
-  public void onFilesDrop(java.util.List<java.nio.file.Path>);
-  private void scheduleNarration(long, boolean);
-  private void suppressNarration(long);
-  private void setNarrationSuppressTime(long);
-  public void afterMouseMove();
-  public void afterMouseAction();
-  public void afterKeyboardAction();
-  private boolean shouldRunNarration();
-  public void handleDelayedNarration();
-  public void triggerImmediateNarration(boolean);
-  private void runNarration(boolean);
-  protected boolean shouldNarrateNavigation();
-  protected void updateNarrationState(net.minecraft.client.gui.narration.NarrationElementOutput);
-  protected void updateNarratedWidget(net.minecraft.client.gui.narration.NarrationElementOutput);
-  protected net.minecraft.network.chat.Component getUsageNarration();
-  public static net.minecraft.client.gui.screens.Screen$NarratableSearchResult findNarratableWidget(java.util.List<? extends net.minecraft.client.gui.narration.NarratableEntry>, net.minecraft.client.gui.narration.NarratableEntry);
-  public void updateNarratorStatus(boolean);
-  public net.minecraft.client.gui.Font getFont();
-  public boolean showsActiveEffects();
-  public boolean canInterruptWithAnotherScreen();
-  public net.minecraft.client.gui.navigation.ScreenRectangle getRectangle();
-  public net.minecraft.sounds.Music getBackgroundMusic();
-  private static java.util.stream.Stream method_65517(net.minecraft.client.gui.narration.NarratableEntry);
-  private java.lang.String method_65026() throws java.lang.Exception;
-  private static void method_71845(java.net.URI, net.minecraft.client.Minecraft, net.minecraft.client.gui.screens.Screen, boolean);
-  private void method_75366(net.minecraft.client.Minecraft, java.lang.Runnable);
-  private void method_75367(net.minecraft.client.Minecraft, java.lang.Runnable);
+  private int forEachLine(net.minecraft.client.gui.components.ChatComponent$AlphaCalculator, net.minecraft.client.gui.components.ChatComponent$LineConsumer);
+  public void render(net.minecraft.client.gui.GuiGraphics, net.minecraft.client.gui.Font, int, int, int, boolean, boolean);
+  public void captureClickableText(net.minecraft.client.gui.ActiveTextCollector, int, int, boolean);
+  private void render(net.minecraft.client.gui.components.ChatComponent$ChatGraphicsAccess, int, int, boolean);
+  private boolean isChatHidden();
+  public void clearMessages(boolean);
+  public void addMessage(net.minecraft.network.chat.Component);
+  public void addMessage(net.minecraft.network.chat.Component, net.minecraft.network.chat.MessageSignature, net.minecraft.client.GuiMessageTag);
+  private void logChatMessage(net.minecraft.client.GuiMessage);
+  private void addMessageToDisplayQueue(net.minecraft.client.GuiMessage);
+  private void addMessageToQueue(net.minecraft.client.GuiMessage);
+  private void processMessageDeletionQueue();
+  public void deleteMessage(net.minecraft.network.chat.MessageSignature);
+  private net.minecraft.client.gui.components.ChatComponent$DelayedMessageDeletion deleteMessageOrDelay(net.minecraft.network.chat.MessageSignature);
+  private net.minecraft.client.GuiMessage createDeletedMarker(net.minecraft.client.GuiMessage);
+  public void rescaleChat();
+  private void refreshTrimmedMessages();
+  public net.minecraft.util.ArrayListDeque<java.lang.String> getRecentChat();
+  public void addRecentChat(java.lang.String);
+  public void resetChatScroll();
+  public void scrollChat(int);
+  public boolean isChatFocused();
+  private int getWidth();
+  private int getHeight();
+  private double getScale();
+  public static int getWidth(double);
+  public static int getHeight(double);
+  public static double defaultUnfocusedPct();
+  public int getLinesPerPage();
+  private int getLineHeight();
+  public void saveAsDraft(java.lang.String);
+  public void discardDraft();
+  public <T extends net.minecraft.client.gui.screens.ChatScreen> T createScreen(net.minecraft.client.gui.components.ChatComponent$ChatMethod, net.minecraft.client.gui.screens.ChatScreen$ChatConstructor<T>);
+  public void openScreen(net.minecraft.client.gui.components.ChatComponent$ChatMethod, net.minecraft.client.gui.screens.ChatScreen$ChatConstructor<?>);
+  public void preserveCurrentChatScreen();
+  public net.minecraft.client.gui.screens.ChatScreen restoreChatScreen();
+  public net.minecraft.client.gui.components.ChatComponent$State storeState();
+  public void restoreState(net.minecraft.client.gui.components.ChatComponent$State);
+  private boolean method_45585(int, net.minecraft.client.gui.components.ChatComponent$DelayedMessageDeletion);
+  private static void method_75802(int, int, net.minecraft.client.gui.components.ChatComponent$ChatGraphicsAccess, int, float, net.minecraft.client.GuiMessage$Line, int, float);
+  private static void method_75801(float, org.joml.Matrix3x2f);
   static {};
 }
 
-=== net.minecraft.client.renderer.RenderPipelines   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "RenderPipelines.java"
-public class net.minecraft.client.renderer.RenderPipelines {
-  private static final java.util.Map<net.minecraft.resources.Identifier, com.mojang.blaze3d.pipeline.RenderPipeline> PIPELINES_BY_LOCATION;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet MATRICES_PROJECTION_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet FOG_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet GLOBALS_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet MATRICES_FOG_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet MATRICES_FOG_LIGHT_DIR_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet GENERIC_BLOCKS_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet TERRAIN_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet BLOCK_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet ENTITY_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet ENTITY_EMISSIVE_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet BEACON_BEAM_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet TEXT_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet END_PORTAL_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet CLOUDS_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet LINES_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet DEBUG_FILLED_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet PARTICLE_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet WEATHER_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet GUI_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet GUI_TEXTURED_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet GUI_TEXT_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet OUTLINE_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet POST_PROCESSING_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline SOLID_BLOCK;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline SOLID_TERRAIN;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline WIREFRAME;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline CUTOUT_BLOCK;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline CUTOUT_TERRAIN;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TRANSLUCENT_TERRAIN;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TRIPWIRE_BLOCK;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TRIPWIRE_TERRAIN;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TRANSLUCENT_MOVING_BLOCK;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ARMOR_CUTOUT_NO_CULL;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ARMOR_DECAL_CUTOUT_NO_CULL;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ARMOR_TRANSLUCENT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENTITY_SOLID;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENTITY_SOLID_Z_OFFSET_FORWARD;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENTITY_CUTOUT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENTITY_CUTOUT_NO_CULL;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENTITY_CUTOUT_NO_CULL_Z_OFFSET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENTITY_TRANSLUCENT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENTITY_TRANSLUCENT_EMISSIVE;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENTITY_SMOOTH_CUTOUT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENTITY_NO_OUTLINE;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline BREEZE_WIND;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENERGY_SWIRL;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline EYES;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENTITY_DECAL;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENTITY_SHADOW;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ITEM_ENTITY_TRANSLUCENT_CULL;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline BEACON_BEAM_OPAQUE;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline BEACON_BEAM_TRANSLUCENT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline DRAGON_EXPLOSION_ALPHA;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline LEASH;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline WATER_MASK;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline GLINT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline CRUMBLING;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TEXT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline GUI_TEXT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TEXT_BACKGROUND;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TEXT_INTENSITY;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline GUI_TEXT_INTENSITY;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TEXT_POLYGON_OFFSET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TEXT_SEE_THROUGH;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TEXT_BACKGROUND_SEE_THROUGH;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TEXT_INTENSITY_SEE_THROUGH;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline LIGHTNING;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline DRAGON_RAYS;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline DRAGON_RAYS_DEPTH;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline END_PORTAL;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline END_GATEWAY;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline FLAT_CLOUDS;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline CLOUDS;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline LINES;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline LINES_TRANSLUCENT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline SECONDARY_BLOCK_OUTLINE;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline DEBUG_POINTS;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline DEBUG_FILLED_BOX;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline DEBUG_QUADS;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline DEBUG_TRIANGLE_FAN;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline WORLD_BORDER;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline OPAQUE_PARTICLE;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TRANSLUCENT_PARTICLE;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline WEATHER_DEPTH_WRITE;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline WEATHER_NO_DEPTH_WRITE;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline SKY;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline END_SKY;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline SUNRISE_SUNSET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline STARS;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline CELESTIAL;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline GUI;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline GUI_INVERT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline GUI_TEXT_HIGHLIGHT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline GUI_TEXTURED;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline GUI_TEXTURED_PREMULTIPLIED_ALPHA;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline BLOCK_SCREEN_EFFECT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline FIRE_SCREEN_EFFECT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline GUI_OPAQUE_TEXTURED_BACKGROUND;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline GUI_NAUSEA_OVERLAY;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline VIGNETTE;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline CROSSHAIR;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline MOJANG_LOGO;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ENTITY_OUTLINE_BLIT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline TRACY_BLIT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline PANORAMA;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline OUTLINE_CULL;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline OUTLINE_NO_CULL;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline LIGHTMAP;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline$Snippet ANIMATE_SPRITE_SNIPPET;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ANIMATE_SPRITE_BLIT;
-  public static final com.mojang.blaze3d.pipeline.RenderPipeline ANIMATE_SPRITE_INTERPOLATE;
-  public net.minecraft.client.renderer.RenderPipelines();
-  public static com.mojang.blaze3d.pipeline.RenderPipeline register(com.mojang.blaze3d.pipeline.RenderPipeline);
-  public static java.util.List<com.mojang.blaze3d.pipeline.RenderPipeline> getStaticPipelines();
-  static {};
+=== net.minecraft.client.gui.components.events.GuiEventListener   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "GuiEventListener.java"
+public interface net.minecraft.client.gui.components.events.GuiEventListener extends net.minecraft.client.gui.components.TabOrderedElement {
+  public default void mouseMoved(double, double);
+  public default boolean mouseClicked(net.minecraft.client.input.MouseButtonEvent, boolean);
+  public default boolean mouseReleased(net.minecraft.client.input.MouseButtonEvent);
+  public default boolean mouseDragged(net.minecraft.client.input.MouseButtonEvent, double, double);
+  public default boolean mouseScrolled(double, double, double, double);
+  public default boolean keyPressed(net.minecraft.client.input.KeyEvent);
+  public default boolean keyReleased(net.minecraft.client.input.KeyEvent);
+  public default boolean charTyped(net.minecraft.client.input.CharacterEvent);
+  public default net.minecraft.client.gui.ComponentPath nextFocusPath(net.minecraft.client.gui.navigation.FocusNavigationEvent);
+  public default boolean isMouseOver(double, double);
+  public abstract void setFocused(boolean);
+  public abstract boolean isFocused();
+  public default boolean shouldTakeFocusAfterInteraction();
+  public default net.minecraft.client.gui.ComponentPath getCurrentFocusPath();
+  public default net.minecraft.client.gui.navigation.ScreenRectangle getRectangle();
+  public default net.minecraft.client.gui.navigation.ScreenRectangle getBorderForArrowNavigation(net.minecraft.client.gui.navigation.ScreenDirection);
 }
 
-=== net.minecraft.client.renderer.texture.DynamicTexture   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "DynamicTexture.java"
-public class net.minecraft.client.renderer.texture.DynamicTexture extends net.minecraft.client.renderer.texture.AbstractTexture implements net.minecraft.client.renderer.texture.Dumpable {
+=== net.minecraft.client.input.CharacterEvent   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "CharacterEvent.java"
+public final class net.minecraft.client.input.CharacterEvent extends java.lang.Record {
+  private final int codepoint;
+  private final int modifiers;
+  public net.minecraft.client.input.CharacterEvent(int, int);
+  public java.lang.String codepointAsString();
+  public boolean isAllowedChatCharacter();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public int codepoint();
+  public int modifiers();
+}
+
+=== net.minecraft.client.input.KeyEvent   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "KeyEvent.java"
+public final class net.minecraft.client.input.KeyEvent extends java.lang.Record implements net.minecraft.client.input.InputWithModifiers {
+  private final int key;
+  private final int scancode;
+  private final int modifiers;
+  public net.minecraft.client.input.KeyEvent(int, int, int);
+  public int input();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public int key();
+  public int scancode();
+  public int modifiers();
+}
+
+=== net.minecraft.client.input.MouseButtonEvent   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "MouseButtonEvent.java"
+public final class net.minecraft.client.input.MouseButtonEvent extends java.lang.Record implements net.minecraft.client.input.InputWithModifiers {
+  private final double x;
+  private final double y;
+  private final net.minecraft.client.input.MouseButtonInfo buttonInfo;
+  public net.minecraft.client.input.MouseButtonEvent(double, double, net.minecraft.client.input.MouseButtonInfo);
+  public int input();
+  public int button();
+  public int modifiers();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public double x();
+  public double y();
+  public net.minecraft.client.input.MouseButtonInfo buttonInfo();
+}
+
+=== net.minecraft.client.input.MouseButtonInfo   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "MouseButtonInfo.java"
+public final class net.minecraft.client.input.MouseButtonInfo extends java.lang.Record implements net.minecraft.client.input.InputWithModifiers {
+  private final int button;
+  private final int modifiers;
+  public net.minecraft.client.input.MouseButtonInfo(int, int);
+  public int input();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public int button();
+  public int modifiers();
+}
+
+=== net.minecraft.client.renderer.texture.TextureManager   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "TextureManager.java"
+public class net.minecraft.client.renderer.texture.TextureManager implements net.minecraft.server.packs.resources.PreparableReloadListener,java.lang.AutoCloseable {
   private static final org.slf4j.Logger LOGGER;
-  private com.mojang.blaze3d.platform.NativeImage pixels;
-  public net.minecraft.client.renderer.texture.DynamicTexture(java.util.function.Supplier<java.lang.String>, com.mojang.blaze3d.platform.NativeImage);
-  public net.minecraft.client.renderer.texture.DynamicTexture(java.lang.String, int, int, boolean);
-  public net.minecraft.client.renderer.texture.DynamicTexture(java.util.function.Supplier<java.lang.String>, int, int, boolean);
-  private void createTexture(java.util.function.Supplier<java.lang.String>);
-  private void createTexture(java.lang.String);
-  public void upload();
-  public com.mojang.blaze3d.platform.NativeImage getPixels();
-  public void setPixels(com.mojang.blaze3d.platform.NativeImage);
+  public static final net.minecraft.resources.Identifier INTENTIONAL_MISSING_TEXTURE;
+  private final java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.AbstractTexture> byPath;
+  private final java.util.Set<net.minecraft.client.renderer.texture.TickableTexture> tickableTextures;
+  private final net.minecraft.server.packs.resources.ResourceManager resourceManager;
+  public net.minecraft.client.renderer.texture.TextureManager(net.minecraft.server.packs.resources.ResourceManager);
+  public void registerAndLoad(net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.ReloadableTexture);
+  private net.minecraft.client.renderer.texture.TextureContents loadContentsSafe(net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.ReloadableTexture);
+  public void registerForNextReload(net.minecraft.resources.Identifier);
+  public void register(net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.AbstractTexture);
+  private void safeClose(net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.AbstractTexture);
+  public net.minecraft.client.renderer.texture.AbstractTexture getTexture(net.minecraft.resources.Identifier);
+  public void tick();
+  public void release(net.minecraft.resources.Identifier);
   public void close();
-  public void dumpContents(net.minecraft.resources.Identifier, java.nio.file.Path) throws java.io.IOException;
+  public java.util.concurrent.CompletableFuture<java.lang.Void> reload(net.minecraft.server.packs.resources.PreparableReloadListener$SharedState, java.util.concurrent.Executor, net.minecraft.server.packs.resources.PreparableReloadListener$PreparationBarrier, java.util.concurrent.Executor);
+  public void dumpAllSheets(java.nio.file.Path);
+  private static net.minecraft.client.renderer.texture.TextureContents loadContents(net.minecraft.server.packs.resources.ResourceManager, net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.ReloadableTexture) throws java.io.IOException;
+  private static net.minecraft.client.renderer.texture.TextureManager$PendingReload scheduleLoad(net.minecraft.server.packs.resources.ResourceManager, net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.ReloadableTexture, java.util.concurrent.Executor);
+  private static net.minecraft.client.renderer.texture.TextureContents method_65881(net.minecraft.server.packs.resources.ResourceManager, net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.ReloadableTexture);
+  private static void method_49718(java.nio.file.Path, net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.AbstractTexture);
+  private void method_65880(java.util.List, java.lang.Void);
+  private static java.util.concurrent.CompletableFuture[] method_65874(int);
+  private static void method_65879(java.util.List, net.minecraft.server.packs.resources.ResourceManager, java.util.concurrent.Executor, net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.AbstractTexture);
+  private static java.lang.String method_68006();
   static {};
 }
 
-=== net.minecraft.client.resources.sounds.SimpleSoundInstance   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "SimpleSoundInstance.java"
-public class net.minecraft.client.resources.sounds.SimpleSoundInstance extends net.minecraft.client.resources.sounds.AbstractSoundInstance {
-  public net.minecraft.client.resources.sounds.SimpleSoundInstance(net.minecraft.sounds.SoundEvent, net.minecraft.sounds.SoundSource, float, float, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
-  public static net.minecraft.client.resources.sounds.SimpleSoundInstance forUI(net.minecraft.sounds.SoundEvent, float);
-  public static net.minecraft.client.resources.sounds.SimpleSoundInstance forUI(net.minecraft.core.Holder<net.minecraft.sounds.SoundEvent>, float);
-  public static net.minecraft.client.resources.sounds.SimpleSoundInstance forUI(net.minecraft.sounds.SoundEvent, float, float);
-  public static net.minecraft.client.resources.sounds.SimpleSoundInstance forMusic(net.minecraft.sounds.SoundEvent);
-  public static net.minecraft.client.resources.sounds.SimpleSoundInstance forJukeboxSong(net.minecraft.sounds.SoundEvent, net.minecraft.world.phys.Vec3);
-  public static net.minecraft.client.resources.sounds.SimpleSoundInstance forLocalAmbience(net.minecraft.sounds.SoundEvent, float, float);
-  public static net.minecraft.client.resources.sounds.SimpleSoundInstance forAmbientAddition(net.minecraft.sounds.SoundEvent);
-  public static net.minecraft.client.resources.sounds.SimpleSoundInstance forAmbientMood(net.minecraft.sounds.SoundEvent, net.minecraft.util.RandomSource, double, double, double);
-  public net.minecraft.client.resources.sounds.SimpleSoundInstance(net.minecraft.sounds.SoundEvent, net.minecraft.sounds.SoundSource, float, float, net.minecraft.util.RandomSource, double, double, double);
-  private net.minecraft.client.resources.sounds.SimpleSoundInstance(net.minecraft.sounds.SoundEvent, net.minecraft.sounds.SoundSource, float, float, net.minecraft.util.RandomSource, boolean, int, net.minecraft.client.resources.sounds.SoundInstance$Attenuation, double, double, double);
-  public net.minecraft.client.resources.sounds.SimpleSoundInstance(net.minecraft.resources.Identifier, net.minecraft.sounds.SoundSource, float, float, net.minecraft.util.RandomSource, boolean, int, net.minecraft.client.resources.sounds.SoundInstance$Attenuation, double, double, double, boolean);
+=== net.minecraft.network.chat.Component   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "Component.java"
+public interface net.minecraft.network.chat.Component extends com.mojang.brigadier.Message,net.minecraft.network.chat.FormattedText {
+  public abstract net.minecraft.network.chat.Style getStyle();
+  public abstract net.minecraft.network.chat.ComponentContents getContents();
+  public default java.lang.String getString();
+  public default java.lang.String getString(int);
+  public abstract java.util.List<net.minecraft.network.chat.Component> getSiblings();
+  public default java.lang.String tryCollapseToString();
+  public default net.minecraft.network.chat.MutableComponent plainCopy();
+  public default net.minecraft.network.chat.MutableComponent copy();
+  public abstract net.minecraft.util.FormattedCharSequence getVisualOrderText();
+  public default <T> java.util.Optional<T> visit(net.minecraft.network.chat.FormattedText$StyledContentConsumer<T>, net.minecraft.network.chat.Style);
+  public default <T> java.util.Optional<T> visit(net.minecraft.network.chat.FormattedText$ContentConsumer<T>);
+  public default java.util.List<net.minecraft.network.chat.Component> toFlatList();
+  public default java.util.List<net.minecraft.network.chat.Component> toFlatList(net.minecraft.network.chat.Style);
+  public default boolean contains(net.minecraft.network.chat.Component);
+  public static net.minecraft.network.chat.Component nullToEmpty(java.lang.String);
+  public static net.minecraft.network.chat.MutableComponent literal(java.lang.String);
+  public static net.minecraft.network.chat.MutableComponent translatable(java.lang.String);
+  public static net.minecraft.network.chat.MutableComponent translatable(java.lang.String, java.lang.Object...);
+  public static net.minecraft.network.chat.MutableComponent translatableEscape(java.lang.String, java.lang.Object...);
+  public static net.minecraft.network.chat.MutableComponent translatableWithFallback(java.lang.String, java.lang.String);
+  public static net.minecraft.network.chat.MutableComponent translatableWithFallback(java.lang.String, java.lang.String, java.lang.Object...);
+  public static net.minecraft.network.chat.MutableComponent empty();
+  public static net.minecraft.network.chat.MutableComponent keybind(java.lang.String);
+  public static net.minecraft.network.chat.MutableComponent nbt(java.lang.String, boolean, java.util.Optional<net.minecraft.network.chat.Component>, net.minecraft.network.chat.contents.data.DataSource);
+  public static net.minecraft.network.chat.MutableComponent score(net.minecraft.commands.arguments.selector.SelectorPattern, java.lang.String);
+  public static net.minecraft.network.chat.MutableComponent score(java.lang.String, java.lang.String);
+  public static net.minecraft.network.chat.MutableComponent selector(net.minecraft.commands.arguments.selector.SelectorPattern, java.util.Optional<net.minecraft.network.chat.Component>);
+  public static net.minecraft.network.chat.MutableComponent object(net.minecraft.network.chat.contents.objects.ObjectInfo);
+  public static net.minecraft.network.chat.Component translationArg(java.util.Date);
+  public static net.minecraft.network.chat.Component translationArg(com.mojang.brigadier.Message);
+  public static net.minecraft.network.chat.Component translationArg(java.util.UUID);
+  public static net.minecraft.network.chat.Component translationArg(net.minecraft.resources.Identifier);
+  public static net.minecraft.network.chat.Component translationArg(net.minecraft.world.level.ChunkPos);
+  public static net.minecraft.network.chat.Component translationArg(java.net.URI);
+  private static java.util.Optional method_36135(java.util.List, net.minecraft.network.chat.Style, java.lang.String);
+  private static java.util.Optional method_27655(int, java.lang.StringBuilder, java.lang.String);
+}
+
+=== net.minecraft.network.chat.Style   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "Style.java"
+public final class net.minecraft.network.chat.Style {
+  public static final net.minecraft.network.chat.Style EMPTY;
+  public static final int NO_SHADOW;
+  final net.minecraft.network.chat.TextColor color;
+  final java.lang.Integer shadowColor;
+  final java.lang.Boolean bold;
+  final java.lang.Boolean italic;
+  final java.lang.Boolean underlined;
+  final java.lang.Boolean strikethrough;
+  final java.lang.Boolean obfuscated;
+  final net.minecraft.network.chat.ClickEvent clickEvent;
+  final net.minecraft.network.chat.HoverEvent hoverEvent;
+  final java.lang.String insertion;
+  final net.minecraft.network.chat.FontDescription font;
+  private static net.minecraft.network.chat.Style create(java.util.Optional<net.minecraft.network.chat.TextColor>, java.util.Optional<java.lang.Integer>, java.util.Optional<java.lang.Boolean>, java.util.Optional<java.lang.Boolean>, java.util.Optional<java.lang.Boolean>, java.util.Optional<java.lang.Boolean>, java.util.Optional<java.lang.Boolean>, java.util.Optional<net.minecraft.network.chat.ClickEvent>, java.util.Optional<net.minecraft.network.chat.HoverEvent>, java.util.Optional<java.lang.String>, java.util.Optional<net.minecraft.network.chat.FontDescription>);
+  private net.minecraft.network.chat.Style(net.minecraft.network.chat.TextColor, java.lang.Integer, java.lang.Boolean, java.lang.Boolean, java.lang.Boolean, java.lang.Boolean, java.lang.Boolean, net.minecraft.network.chat.ClickEvent, net.minecraft.network.chat.HoverEvent, java.lang.String, net.minecraft.network.chat.FontDescription);
+  public net.minecraft.network.chat.TextColor getColor();
+  public java.lang.Integer getShadowColor();
+  public boolean isBold();
+  public boolean isItalic();
+  public boolean isStrikethrough();
+  public boolean isUnderlined();
+  public boolean isObfuscated();
+  public boolean isEmpty();
+  public net.minecraft.network.chat.ClickEvent getClickEvent();
+  public net.minecraft.network.chat.HoverEvent getHoverEvent();
+  public java.lang.String getInsertion();
+  public net.minecraft.network.chat.FontDescription getFont();
+  private static <T> net.minecraft.network.chat.Style checkEmptyAfterChange(net.minecraft.network.chat.Style, T, T);
+  public net.minecraft.network.chat.Style withColor(net.minecraft.network.chat.TextColor);
+  public net.minecraft.network.chat.Style withColor(net.minecraft.ChatFormatting);
+  public net.minecraft.network.chat.Style withColor(int);
+  public net.minecraft.network.chat.Style withShadowColor(int);
+  public net.minecraft.network.chat.Style withoutShadow();
+  public net.minecraft.network.chat.Style withBold(java.lang.Boolean);
+  public net.minecraft.network.chat.Style withItalic(java.lang.Boolean);
+  public net.minecraft.network.chat.Style withUnderlined(java.lang.Boolean);
+  public net.minecraft.network.chat.Style withStrikethrough(java.lang.Boolean);
+  public net.minecraft.network.chat.Style withObfuscated(java.lang.Boolean);
+  public net.minecraft.network.chat.Style withClickEvent(net.minecraft.network.chat.ClickEvent);
+  public net.minecraft.network.chat.Style withHoverEvent(net.minecraft.network.chat.HoverEvent);
+  public net.minecraft.network.chat.Style withInsertion(java.lang.String);
+  public net.minecraft.network.chat.Style withFont(net.minecraft.network.chat.FontDescription);
+  public net.minecraft.network.chat.Style applyFormat(net.minecraft.ChatFormatting);
+  public net.minecraft.network.chat.Style applyLegacyFormat(net.minecraft.ChatFormatting);
+  public net.minecraft.network.chat.Style applyFormats(net.minecraft.ChatFormatting...);
+  public net.minecraft.network.chat.Style applyTo(net.minecraft.network.chat.Style);
+  public java.lang.String toString();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  static {};
+}
+
+=== net.minecraft.resources.Identifier   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "Identifier.java"
+public final class net.minecraft.resources.Identifier implements java.lang.Comparable<net.minecraft.resources.Identifier> {
+  public static final com.mojang.serialization.Codec<net.minecraft.resources.Identifier> CODEC;
+  public static final net.minecraft.network.codec.StreamCodec<io.netty.buffer.ByteBuf, net.minecraft.resources.Identifier> STREAM_CODEC;
+  public static final com.mojang.brigadier.exceptions.SimpleCommandExceptionType ERROR_INVALID;
+  public static final char NAMESPACE_SEPARATOR;
+  public static final java.lang.String DEFAULT_NAMESPACE;
+  public static final java.lang.String REALMS_NAMESPACE;
+  private final java.lang.String namespace;
+  private final java.lang.String path;
+  static final boolean $assertionsDisabled;
+  private net.minecraft.resources.Identifier(java.lang.String, java.lang.String);
+  private static net.minecraft.resources.Identifier createUntrusted(java.lang.String, java.lang.String);
+  public static net.minecraft.resources.Identifier fromNamespaceAndPath(java.lang.String, java.lang.String);
+  public static net.minecraft.resources.Identifier parse(java.lang.String);
+  public static net.minecraft.resources.Identifier withDefaultNamespace(java.lang.String);
+  public static net.minecraft.resources.Identifier tryParse(java.lang.String);
+  public static net.minecraft.resources.Identifier tryBuild(java.lang.String, java.lang.String);
+  public static net.minecraft.resources.Identifier bySeparator(java.lang.String, char);
+  public static net.minecraft.resources.Identifier tryBySeparator(java.lang.String, char);
+  public static com.mojang.serialization.DataResult<net.minecraft.resources.Identifier> read(java.lang.String);
+  public java.lang.String getPath();
+  public java.lang.String getNamespace();
+  public net.minecraft.resources.Identifier withPath(java.lang.String);
+  public net.minecraft.resources.Identifier withPath(java.util.function.UnaryOperator<java.lang.String>);
+  public net.minecraft.resources.Identifier withPrefix(java.lang.String);
+  public net.minecraft.resources.Identifier withSuffix(java.lang.String);
+  public java.lang.String toString();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public int compareTo(net.minecraft.resources.Identifier);
+  public java.lang.String toDebugFileName();
+  public java.lang.String toLanguageKey();
+  public java.lang.String toShortLanguageKey();
+  public java.lang.String toShortString();
+  public java.lang.String toLanguageKey(java.lang.String);
+  public java.lang.String toLanguageKey(java.lang.String, java.lang.String);
+  private static java.lang.String readGreedy(com.mojang.brigadier.StringReader);
+  public static net.minecraft.resources.Identifier read(com.mojang.brigadier.StringReader) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+  public static net.minecraft.resources.Identifier readNonEmpty(com.mojang.brigadier.StringReader) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+  public static boolean isAllowedInIdentifier(char);
+  public static boolean isValidPath(java.lang.String);
+  public static boolean isValidNamespace(java.lang.String);
+  private static java.lang.String assertValidNamespace(java.lang.String, java.lang.String);
+  public static boolean validPathChar(char);
+  private static boolean validNamespaceChar(char);
+  private static java.lang.String assertValidPath(java.lang.String, java.lang.String);
+  public int compareTo(java.lang.Object);
+  private static java.lang.String method_49418(java.lang.String, net.minecraft.IdentifierException);
+  static {};
 }
 ```
 
@@ -1704,8 +1464,8 @@ public class net.minecraft.client.resources.sounds.SimpleSoundInstance extends n
 Fabric Loom: 1.14.10
 
 > Task :probeApi
-Wrote /home/runner/work/F1Client/F1Client/build/probe-api.txt (154780 bytes; 498 classes matched)
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1794643690288.json
+Wrote /home/runner/work/F1Client/F1Client/build/probe-api.txt (137305 bytes; 498 classes matched)
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1794644156257.json
 
 [Incubating] Problems report is available at: file:///home/runner/work/F1Client/F1Client/build/reports/problems/problems-report.html
 
@@ -1715,811 +1475,275 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 7s
+BUILD SUCCESSFUL in 9s
 1 actionable task: 1 executed
 ```
 
 ## Compile errors, with the symbol and location lines javac prints under each
 
 ```
-15:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/util/UiSounds.java:6: error: cannot find symbol
-16-import net.minecraft.resources.ResourceLocation;
-17-                              ^
-18-  symbol:   class ResourceLocation
-19-  location: package net.minecraft.resources
-20:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:13: error: cannot find symbol
-21-import net.minecraft.client.input.CharInput;
-22-                                 ^
-23-  symbol:   class CharInput
-24-  location: package net.minecraft.client.input
-25:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:14: error: cannot find symbol
-26-import net.minecraft.client.input.KeyInput;
-27-                                 ^
-28-  symbol:   class KeyInput
-29-  location: package net.minecraft.client.input
-30:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:8: error: cannot find symbol
-31-import net.minecraft.client.input.CharInput;
-32-                                 ^
-33-  symbol:   class CharInput
-34-  location: package net.minecraft.client.input
-35:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:9: error: cannot find symbol
-36-import net.minecraft.client.input.KeyInput;
-37-                                 ^
-38-  symbol:   class KeyInput
-39-  location: package net.minecraft.client.input
-40:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:209: error: cannot find symbol
-41-	public boolean keyPressed(KeyInput input) {
-42-	                          ^
-43-  symbol:   class KeyInput
-44-  location: class SettingList
-45:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:228: error: cannot find symbol
-46-	public boolean charTyped(CharInput input) {
-47-	                         ^
-48-  symbol:   class CharInput
-49-  location: class SettingList
-50:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:91: error: cannot find symbol
-51-	public boolean keyPressed(KeyInput input) {
-52-	                          ^
-53-  symbol:   class KeyInput
-54-  location: class SettingControl<S>
+15:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:225: error: incompatible types: Double cannot be converted to float
+16-		float width = (float) lineWidth.get();
+17-		                                   ^
+18:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:435: error: incompatible types: Double cannot be converted to float
+19-		float width = (float) lineWidth.get();
+20-		                                   ^
+21:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:203: error: cannot find symbol
+22-		if (!focused || !input.isValidChar()) {
+23-		                      ^
+24-  symbol:   method isValidChar()
+25-  location: variable input of type CharacterEvent
+26:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:206: error: cannot find symbol
+27-		insert(input.asString());
+28-		            ^
+29-  symbol:   method asString()
+30-  location: variable input of type CharacterEvent
+31:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/hud/HudRenderer.java:140: error: cannot find symbol
+32-		String dimensionName = mc.level.dimension().location().getPath();
+33-		                                           ^
+34-  symbol:   method location()
+35-  location: class ResourceKey<Level>
+36:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:68: error: incompatible types: Identifier cannot be converted to FontDescription
+37-			styles[i] = Style.EMPTY.withFont(fontIds[i]);
+38-			                                        ^
+39-Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+40-6 errors
 --
-57:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:96: error: cannot find symbol
-58-	public boolean charTyped(CharInput input) {
-59-	                         ^
-60-  symbol:   class CharInput
-61-  location: class SettingControl<S>
+52:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:225: error: incompatible types: Double cannot be converted to float
+53-  		float width = (float) lineWidth.get();
+54-  		                                   ^
+55:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:435: error: incompatible types: Double cannot be converted to float
+56-  		float width = (float) lineWidth.get();
+57-  		                                   ^
+58:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:68: error: incompatible types: Identifier cannot be converted to FontDescription
+59-  			styles[i] = Style.EMPTY.withFont(fontIds[i]);
+60-  			                                        ^
+61-  Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+62:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:203: error: cannot find symbol
+63-  		if (!focused || !input.isValidChar()) {
+64-  		                      ^
+65-    symbol:   method isValidChar()
+66-    location: variable input of type CharacterEvent
+67:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:206: error: cannot find symbol
+68-  		insert(input.asString());
+69-  		            ^
+70-    symbol:   method asString()
+71-    location: variable input of type CharacterEvent
+72:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/hud/HudRenderer.java:140: error: cannot find symbol
+73-  		String dimensionName = mc.level.dimension().location().getPath();
+74-  		                                           ^
+75-    symbol:   method location()
+76-    location: class ResourceKey<Level>
 --
-64:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:21: error: cannot find symbol
-65-import net.minecraft.client.input.CharInput;
-66-                                 ^
-67-  symbol:   class CharInput
-68-  location: package net.minecraft.client.input
-69:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:22: error: cannot find symbol
-70-import net.minecraft.client.input.KeyInput;
-71-                                 ^
-72-  symbol:   class KeyInput
-73-  location: package net.minecraft.client.input
-74:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:10: error: cannot find symbol
-75-import net.minecraft.client.gui.Click;
-76-                               ^
-77-  symbol:   class Click
-78-  location: package net.minecraft.client.gui
-79:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:13: error: cannot find symbol
-80-import net.minecraft.client.input.CharInput;
-81-                                 ^
-82-  symbol:   class CharInput
-83-  location: package net.minecraft.client.input
-84:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:14: error: cannot find symbol
-85-import net.minecraft.client.input.KeyInput;
-86-                                 ^
-87-  symbol:   class KeyInput
-88-  location: package net.minecraft.client.input
-89:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:8: error: cannot find symbol
-90-import net.minecraft.client.input.CharInput;
-91-                                 ^
-92-  symbol:   class CharInput
-93-  location: package net.minecraft.client.input
-94:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:9: error: cannot find symbol
-95-import net.minecraft.client.input.KeyInput;
-96-                                 ^
-97-  symbol:   class KeyInput
-98-  location: package net.minecraft.client.input
-99:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:5: error: cannot find symbol
-100-import net.minecraft.resources.ResourceLocation;
-101-                              ^
-102-  symbol:   class ResourceLocation
-103-  location: package net.minecraft.resources
-104:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:790: error: cannot find symbol
-105-	protected boolean onKey(KeyInput input) {
-106-	                        ^
-107-  symbol:   class KeyInput
-108-  location: class ClickGuiScreen
-109:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:816: error: cannot find symbol
-110-	protected boolean onChar(CharInput input) {
-111-	                         ^
-112-  symbol:   class CharInput
-113-  location: class ClickGuiScreen
-114:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:64: error: cannot find symbol
-115-	private final ResourceLocation texture;
-116-	              ^
-117-  symbol:   class ResourceLocation
-118-  location: class Icons
-119:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:71: error: cannot find symbol
-120-	public ResourceLocation texture() {
-121-	       ^
-122-  symbol:   class ResourceLocation
-123-  location: class Icons
-124:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:150: error: cannot find symbol
-125-	public boolean keyPressed(KeyInput input) {
-126-	                          ^
-127-  symbol:   class KeyInput
-128-  location: class TextBox
-129:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:202: error: cannot find symbol
-130-	public boolean charTyped(CharInput input) {
-131-	                         ^
-132-  symbol:   class CharInput
-133-  location: class TextBox
-134:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:74: error: cannot find symbol
-135-	protected boolean onKey(KeyInput input) {
-136-	                        ^
-137-  symbol:   class KeyInput
-138-  location: class UiScreen
-139:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:78: error: cannot find symbol
-140-	protected boolean onChar(CharInput input) {
-141-	                         ^
-142-  symbol:   class CharInput
-143-  location: class UiScreen
-144:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:148: error: cannot find symbol
-145-	public boolean mouseClicked(Click click, boolean doubled) {
-146-	                            ^
-147-  symbol:   class Click
-148-  location: class UiScreen
-149:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:153: error: cannot find symbol
-150-	public boolean mouseReleased(Click click) {
-151-	                             ^
-152-  symbol:   class Click
-153-  location: class UiScreen
-154:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:159: error: cannot find symbol
-155-	public boolean mouseDragged(Click click, double deltaX, double deltaY) {
-156-	                            ^
-157-  symbol:   class Click
-158-  location: class UiScreen
-159:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:171: error: cannot find symbol
-160-	public boolean keyPressed(KeyInput input) {
-161-	                          ^
-162-  symbol:   class KeyInput
-163-  location: class UiScreen
-164:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:185: error: cannot find symbol
-165-	public boolean charTyped(CharInput input) {
-166-	                         ^
-167-  symbol:   class CharInput
-168-  location: class UiScreen
-169:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/KeybindControl.java:8: error: cannot find symbol
-170-import net.minecraft.client.input.KeyInput;
-171-                                 ^
-172-  symbol:   class KeyInput
-173-  location: package net.minecraft.client.input
-174:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/KeybindControl.java:54: error: cannot find symbol
-175-	public boolean keyPressed(KeyInput input) {
-176-	                          ^
-177-  symbol:   class KeyInput
-178-  location: class KeybindControl
-179:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:6: error: cannot find symbol
-180-import net.minecraft.client.input.CharInput;
-181-                                 ^
-182-  symbol:   class CharInput
-183-  location: package net.minecraft.client.input
-184:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:7: error: cannot find symbol
-185-import net.minecraft.client.input.KeyInput;
-186-                                 ^
-187-  symbol:   class KeyInput
-188-  location: package net.minecraft.client.input
-189:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:53: error: cannot find symbol
-190-	public boolean keyPressed(KeyInput input) {
-191-	                          ^
-192-  symbol:   class KeyInput
-193-  location: class StringControl
-194:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:58: error: cannot find symbol
-195-	public boolean charTyped(CharInput input) {
-196-	                         ^
-197-  symbol:   class CharInput
-198-  location: class StringControl
-199:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:9: error: cannot find symbol
-200-import net.minecraft.resources.ResourceLocation;
-201-                              ^
-202-  symbol:   class ResourceLocation
-203-  location: package net.minecraft.resources
-204:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:35: error: cannot find symbol
-205-	private static final Int2ObjectOpenHashMap<ResourceLocation> CACHE = new Int2ObjectOpenHashMap<>();
-206-	                                           ^
-207-  symbol:   class ResourceLocation
-208-  location: class RoundedRenderer
-209:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:216: error: cannot find symbol
-210-	private static void quad(GuiGraphics context, ResourceLocation id, int x, int y, int u, int v, int width,
-211-	                                              ^
-212-  symbol:   class ResourceLocation
-213-  location: class RoundedRenderer
-214:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:222: error: cannot find symbol
-215-	private static void stretched(GuiGraphics context, ResourceLocation id, int x, int y, int width, int height,
-216-	                                                   ^
-217-  symbol:   class ResourceLocation
-218-  location: class RoundedRenderer
-219:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:232: error: cannot find symbol
-220-	private static ResourceLocation texture(int kind, int radiusUnits, int spreadUnits) {
-221-	               ^
-222-  symbol:   class ResourceLocation
-223-  location: class RoundedRenderer
-224:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:11: error: cannot find symbol
-225-import net.minecraft.resources.ResourceLocation;
-226-                              ^
-227-  symbol:   class ResourceLocation
-228-  location: package net.minecraft.resources
-229:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:59: error: cannot find symbol
-230-	private final ResourceLocation[] fontIds = new ResourceLocation[Density.VALUES.length];
-231-	              ^
-232-  symbol:   class ResourceLocation
-233-  location: class Fonts
-234:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:96: error: cannot find symbol
-235-	public ResourceLocation fontId() {
-236-	       ^
-237-  symbol:   class ResourceLocation
-238-  location: class Fonts
---
-251:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/util/UiSounds.java:6: error: cannot find symbol
-252-  import net.minecraft.resources.ResourceLocation;
-253-                                ^
-254-    symbol:   class ResourceLocation
-255-    location: package net.minecraft.resources
-256:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:13: error: cannot find symbol
-257-  import net.minecraft.client.input.CharInput;
-258-                                   ^
-259-    symbol:   class CharInput
-260-    location: package net.minecraft.client.input
-261:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:14: error: cannot find symbol
-262-  import net.minecraft.client.input.KeyInput;
-263-                                   ^
-264-    symbol:   class KeyInput
-265-    location: package net.minecraft.client.input
-266:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:8: error: cannot find symbol
-267-  import net.minecraft.client.input.CharInput;
-268-                                   ^
-269-    symbol:   class CharInput
-270-    location: package net.minecraft.client.input
-271:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:9: error: cannot find symbol
-272-  import net.minecraft.client.input.KeyInput;
-273-                                   ^
-274-    symbol:   class KeyInput
-275-    location: package net.minecraft.client.input
-276:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:209: error: cannot find symbol
-277-  	public boolean keyPressed(KeyInput input) {
-278-  	                          ^
-279-    symbol:   class KeyInput
-280-    location: class SettingList
-281:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:228: error: cannot find symbol
-282-  	public boolean charTyped(CharInput input) {
-283-  	                         ^
-284-    symbol:   class CharInput
-285-    location: class SettingList
-286:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:91: error: cannot find symbol
-287-  	public boolean keyPressed(KeyInput input) {
-288-  	                          ^
-289-    symbol:   class KeyInput
-290-    location: class SettingControl<S>
---
-293:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:96: error: cannot find symbol
-294-  	public boolean charTyped(CharInput input) {
-295-  	                         ^
-296-    symbol:   class CharInput
-297-    location: class SettingControl<S>
---
-300:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:21: error: cannot find symbol
-301-  import net.minecraft.client.input.CharInput;
-302-                                   ^
-303-    symbol:   class CharInput
-304-    location: package net.minecraft.client.input
-305:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:22: error: cannot find symbol
-306-  import net.minecraft.client.input.KeyInput;
-307-                                   ^
-308-    symbol:   class KeyInput
-309-    location: package net.minecraft.client.input
-310:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:10: error: cannot find symbol
-311-  import net.minecraft.client.gui.Click;
-312-                                 ^
-313-    symbol:   class Click
-314-    location: package net.minecraft.client.gui
-315:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:13: error: cannot find symbol
-316-  import net.minecraft.client.input.CharInput;
-317-                                   ^
-318-    symbol:   class CharInput
-319-    location: package net.minecraft.client.input
-320:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:14: error: cannot find symbol
-321-  import net.minecraft.client.input.KeyInput;
-322-                                   ^
-323-    symbol:   class KeyInput
-324-    location: package net.minecraft.client.input
-325:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:8: error: cannot find symbol
-326-  import net.minecraft.client.input.CharInput;
-327-                                   ^
-328-    symbol:   class CharInput
-329-    location: package net.minecraft.client.input
-330:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:9: error: cannot find symbol
-331-  import net.minecraft.client.input.KeyInput;
-332-                                   ^
-333-    symbol:   class KeyInput
-334-    location: package net.minecraft.client.input
-335:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:5: error: cannot find symbol
-336-  import net.minecraft.resources.ResourceLocation;
-337-                                ^
-338-    symbol:   class ResourceLocation
-339-    location: package net.minecraft.resources
-340:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:790: error: cannot find symbol
-341-  	protected boolean onKey(KeyInput input) {
-342-  	                        ^
-343-    symbol:   class KeyInput
-344-    location: class ClickGuiScreen
-345:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:816: error: cannot find symbol
-346-  	protected boolean onChar(CharInput input) {
-347-  	                         ^
-348-    symbol:   class CharInput
-349-    location: class ClickGuiScreen
-350:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:64: error: cannot find symbol
-351-  	private final ResourceLocation texture;
-352-  	              ^
-353-    symbol:   class ResourceLocation
-354-    location: class Icons
-355:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:71: error: cannot find symbol
-356-  	public ResourceLocation texture() {
-357-  	       ^
-358-    symbol:   class ResourceLocation
-359-    location: class Icons
-360:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:150: error: cannot find symbol
-361-  	public boolean keyPressed(KeyInput input) {
-362-  	                          ^
-363-    symbol:   class KeyInput
-364-    location: class TextBox
-365:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:202: error: cannot find symbol
-366-  	public boolean charTyped(CharInput input) {
-367-  	                         ^
-368-    symbol:   class CharInput
-369-    location: class TextBox
-370:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:74: error: cannot find symbol
-371-  	protected boolean onKey(KeyInput input) {
-372-  	                        ^
-373-    symbol:   class KeyInput
-374-    location: class UiScreen
-375:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:78: error: cannot find symbol
-376-  	protected boolean onChar(CharInput input) {
-377-  	                         ^
-378-    symbol:   class CharInput
-379-    location: class UiScreen
-380:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:148: error: cannot find symbol
-381-  	public boolean mouseClicked(Click click, boolean doubled) {
-382-  	                            ^
-383-    symbol:   class Click
-384-    location: class UiScreen
-385:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:153: error: cannot find symbol
-386-  	public boolean mouseReleased(Click click) {
-387-  	                             ^
-388-    symbol:   class Click
-389-    location: class UiScreen
-390:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:159: error: cannot find symbol
-391-  	public boolean mouseDragged(Click click, double deltaX, double deltaY) {
-392-  	                            ^
-393-    symbol:   class Click
-394-    location: class UiScreen
-395:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:171: error: cannot find symbol
-396-  	public boolean keyPressed(KeyInput input) {
-397-  	                          ^
-398-    symbol:   class KeyInput
-399-    location: class UiScreen
-400:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:185: error: cannot find symbol
-401-  	public boolean charTyped(CharInput input) {
-402-  	                         ^
-403-    symbol:   class CharInput
-404-    location: class UiScreen
-405:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/KeybindControl.java:8: error: cannot find symbol
-406-  import net.minecraft.client.input.KeyInput;
-407-                                   ^
-408-    symbol:   class KeyInput
-409-    location: package net.minecraft.client.input
-410:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/KeybindControl.java:54: error: cannot find symbol
-411-  	public boolean keyPressed(KeyInput input) {
-412-  	                          ^
-413-    symbol:   class KeyInput
-414-    location: class KeybindControl
-415:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:6: error: cannot find symbol
-416-  import net.minecraft.client.input.CharInput;
-417-                                   ^
-418-    symbol:   class CharInput
-419-    location: package net.minecraft.client.input
-420:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:7: error: cannot find symbol
-421-  import net.minecraft.client.input.KeyInput;
-422-                                   ^
-423-    symbol:   class KeyInput
-424-    location: package net.minecraft.client.input
-425:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:53: error: cannot find symbol
-426-  	public boolean keyPressed(KeyInput input) {
-427-  	                          ^
-428-    symbol:   class KeyInput
-429-    location: class StringControl
-430:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:58: error: cannot find symbol
-431-  	public boolean charTyped(CharInput input) {
-432-  	                         ^
-433-    symbol:   class CharInput
-434-    location: class StringControl
-435:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:9: error: cannot find symbol
-436-  import net.minecraft.resources.ResourceLocation;
-437-                                ^
-438-    symbol:   class ResourceLocation
-439-    location: package net.minecraft.resources
-440:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:35: error: cannot find symbol
-441-  	private static final Int2ObjectOpenHashMap<ResourceLocation> CACHE = new Int2ObjectOpenHashMap<>();
-442-  	                                           ^
-443-    symbol:   class ResourceLocation
-444-    location: class RoundedRenderer
-445:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:216: error: cannot find symbol
-446-  	private static void quad(GuiGraphics context, ResourceLocation id, int x, int y, int u, int v, int width,
-447-  	                                              ^
-448-    symbol:   class ResourceLocation
-449-    location: class RoundedRenderer
-450:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:222: error: cannot find symbol
-451-  	private static void stretched(GuiGraphics context, ResourceLocation id, int x, int y, int width, int height,
-452-  	                                                   ^
-453-    symbol:   class ResourceLocation
-454-    location: class RoundedRenderer
-455:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:232: error: cannot find symbol
-456-  	private static ResourceLocation texture(int kind, int radiusUnits, int spreadUnits) {
-457-  	               ^
-458-    symbol:   class ResourceLocation
-459-    location: class RoundedRenderer
-460:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:11: error: cannot find symbol
-461-  import net.minecraft.resources.ResourceLocation;
-462-                                ^
-463-    symbol:   class ResourceLocation
-464-    location: package net.minecraft.resources
-465:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:59: error: cannot find symbol
-466-  	private final ResourceLocation[] fontIds = new ResourceLocation[Density.VALUES.length];
-467-  	              ^
-468-    symbol:   class ResourceLocation
-469-    location: class Fonts
-470:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:96: error: cannot find symbol
-471-  	public ResourceLocation fontId() {
-472-  	       ^
-473-    symbol:   class ResourceLocation
-474-    location: class Fonts
---
-517:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/util/UiSounds.java:6: error: cannot find symbol
-518-import net.minecraft.resources.ResourceLocation;
-519-                              ^
-520-  symbol:   class ResourceLocation
-521-  location: package net.minecraft.resources
-522:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:13: error: cannot find symbol
-523-import net.minecraft.client.input.CharInput;
-524-                                 ^
-525-  symbol:   class CharInput
-526-  location: package net.minecraft.client.input
-527:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:14: error: cannot find symbol
-528-import net.minecraft.client.input.KeyInput;
-529-                                 ^
-530-  symbol:   class KeyInput
-531-  location: package net.minecraft.client.input
-532:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:8: error: cannot find symbol
-533-import net.minecraft.client.input.CharInput;
-534-                                 ^
-535-  symbol:   class CharInput
-536-  location: package net.minecraft.client.input
-537:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:9: error: cannot find symbol
-538-import net.minecraft.client.input.KeyInput;
-539-                                 ^
-540-  symbol:   class KeyInput
-541-  location: package net.minecraft.client.input
-542:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:209: error: cannot find symbol
-543-	public boolean keyPressed(KeyInput input) {
-544-	                          ^
-545-  symbol:   class KeyInput
-546-  location: class SettingList
-547:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:228: error: cannot find symbol
-548-	public boolean charTyped(CharInput input) {
-549-	                         ^
-550-  symbol:   class CharInput
-551-  location: class SettingList
-552:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:91: error: cannot find symbol
-553-	public boolean keyPressed(KeyInput input) {
-554-	                          ^
-555-  symbol:   class KeyInput
-556-  location: class SettingControl<S>
---
-559:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:96: error: cannot find symbol
-560-	public boolean charTyped(CharInput input) {
-561-	                         ^
-562-  symbol:   class CharInput
-563-  location: class SettingControl<S>
---
-566:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:21: error: cannot find symbol
-567-import net.minecraft.client.input.CharInput;
-568-                                 ^
-569-  symbol:   class CharInput
-570-  location: package net.minecraft.client.input
-571:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:22: error: cannot find symbol
-572-import net.minecraft.client.input.KeyInput;
+119:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:225: error: incompatible types: Double cannot be converted to float
+120-		float width = (float) lineWidth.get();
+121-		                                   ^
+122:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:435: error: incompatible types: Double cannot be converted to float
+123-		float width = (float) lineWidth.get();
+124-		                                   ^
+125:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:68: error: incompatible types: Identifier cannot be converted to FontDescription
+126-			styles[i] = Style.EMPTY.withFont(fontIds[i]);
+127-			                                        ^
+128-Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+129:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:203: error: cannot find symbol
+130-		if (!focused || !input.isValidChar()) {
+131-		                      ^
+132-  symbol:   method isValidChar()
+133-  location: variable input of type CharacterEvent
+134:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:206: error: cannot find symbol
+135-		insert(input.asString());
+136-		            ^
+137-  symbol:   method asString()
+138-  location: variable input of type CharacterEvent
+139:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/hud/HudRenderer.java:140: error: cannot find symbol
+140-		String dimensionName = mc.level.dimension().location().getPath();
+141-		                                           ^
+142-  symbol:   method location()
+143-  location: class ResourceKey<Level>
 ```
 
 ## Gradle output (filtered)
 
 ```
 14:> Task :compileJava
-15:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/util/UiSounds.java:6: error: cannot find symbol
-20:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:13: error: cannot find symbol
-25:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:14: error: cannot find symbol
-30:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:8: error: cannot find symbol
-35:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:9: error: cannot find symbol
-40:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:209: error: cannot find symbol
-45:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:228: error: cannot find symbol
-50:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:91: error: cannot find symbol
-57:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:96: error: cannot find symbol
-64:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:21: error: cannot find symbol
-69:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:22: error: cannot find symbol
-74:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:10: error: cannot find symbol
-79:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:13: error: cannot find symbol
-84:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:14: error: cannot find symbol
-89:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:8: error: cannot find symbol
-94:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:9: error: cannot find symbol
-99:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:5: error: cannot find symbol
-104:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:790: error: cannot find symbol
-109:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:816: error: cannot find symbol
-114:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:64: error: cannot find symbol
-119:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:71: error: cannot find symbol
-124:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:150: error: cannot find symbol
-129:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:202: error: cannot find symbol
-134:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:74: error: cannot find symbol
-139:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:78: error: cannot find symbol
-144:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:148: error: cannot find symbol
-149:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:153: error: cannot find symbol
-154:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:159: error: cannot find symbol
-159:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:171: error: cannot find symbol
-164:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:185: error: cannot find symbol
-169:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/KeybindControl.java:8: error: cannot find symbol
-174:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/KeybindControl.java:54: error: cannot find symbol
-179:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:6: error: cannot find symbol
-184:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:7: error: cannot find symbol
-189:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:53: error: cannot find symbol
-194:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:58: error: cannot find symbol
-199:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:9: error: cannot find symbol
-204:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:35: error: cannot find symbol
-209:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:216: error: cannot find symbol
-214:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:222: error: cannot find symbol
-219:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:232: error: cannot find symbol
-224:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:11: error: cannot find symbol
-229:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:59: error: cannot find symbol
-234:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:96: error: cannot find symbol
-241:> Task :compileJava FAILED
-246:FAILURE: Build failed with an exception.
-248:* What went wrong:
-249:Execution failed for task ':compileJava'.
-251:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/util/UiSounds.java:6: error: cannot find symbol
-256:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:13: error: cannot find symbol
-261:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:14: error: cannot find symbol
-266:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:8: error: cannot find symbol
-271:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:9: error: cannot find symbol
-276:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:209: error: cannot find symbol
-281:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:228: error: cannot find symbol
-286:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:91: error: cannot find symbol
-293:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:96: error: cannot find symbol
-300:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:21: error: cannot find symbol
-305:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:22: error: cannot find symbol
-310:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:10: error: cannot find symbol
-315:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:13: error: cannot find symbol
-320:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:14: error: cannot find symbol
-325:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:8: error: cannot find symbol
-330:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:9: error: cannot find symbol
-335:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:5: error: cannot find symbol
-340:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:790: error: cannot find symbol
-345:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:816: error: cannot find symbol
-350:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:64: error: cannot find symbol
-355:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:71: error: cannot find symbol
-360:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:150: error: cannot find symbol
-365:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:202: error: cannot find symbol
-370:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:74: error: cannot find symbol
-375:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:78: error: cannot find symbol
-380:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:148: error: cannot find symbol
-385:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:153: error: cannot find symbol
-390:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:159: error: cannot find symbol
-395:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:171: error: cannot find symbol
-400:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:185: error: cannot find symbol
-405:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/KeybindControl.java:8: error: cannot find symbol
-410:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/KeybindControl.java:54: error: cannot find symbol
-415:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:6: error: cannot find symbol
-420:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:7: error: cannot find symbol
-425:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:53: error: cannot find symbol
-430:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:58: error: cannot find symbol
-435:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:9: error: cannot find symbol
-440:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:35: error: cannot find symbol
-445:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:216: error: cannot find symbol
-450:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:222: error: cannot find symbol
-455:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:232: error: cannot find symbol
-460:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:11: error: cannot find symbol
-465:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:59: error: cannot find symbol
-470:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:96: error: cannot find symbol
-482:org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compileJava'.
-483:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:135)
-484:	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:288)
-485:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:133)
-486:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:121)
-487:	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
-488:	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
-489:	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
-490:	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
-491:	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
-492:	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
-493:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
-494:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
-495:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
-496:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-497:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-498:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-499:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-500:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-501:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-502:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-503:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
-504:	at org.gradle.execution.plan.DefaultNodeExecutor.executeLocalTaskNode(DefaultNodeExecutor.java:55)
-505:	at org.gradle.execution.plan.DefaultNodeExecutor.execute(DefaultNodeExecutor.java:34)
-506:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:355)
-507:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:343)
-508:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:339)
-509:	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
-510:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:339)
-511:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:328)
-512:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
-513:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
-514:	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-515:	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
-516:Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-517:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/util/UiSounds.java:6: error: cannot find symbol
-522:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:13: error: cannot find symbol
-527:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:14: error: cannot find symbol
-532:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:8: error: cannot find symbol
-537:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:9: error: cannot find symbol
-542:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:209: error: cannot find symbol
-547:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/SettingList.java:228: error: cannot find symbol
-552:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:91: error: cannot find symbol
-559:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/SettingControl.java:96: error: cannot find symbol
-566:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:21: error: cannot find symbol
-571:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:22: error: cannot find symbol
-576:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:10: error: cannot find symbol
-581:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:13: error: cannot find symbol
-586:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:14: error: cannot find symbol
-591:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:8: error: cannot find symbol
-596:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:9: error: cannot find symbol
-601:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:5: error: cannot find symbol
-606:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:790: error: cannot find symbol
-611:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/ClickGuiScreen.java:816: error: cannot find symbol
-616:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:64: error: cannot find symbol
-621:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Icons.java:71: error: cannot find symbol
-626:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:150: error: cannot find symbol
-631:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:202: error: cannot find symbol
-636:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:74: error: cannot find symbol
-641:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:78: error: cannot find symbol
-646:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:148: error: cannot find symbol
-651:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:153: error: cannot find symbol
-656:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:159: error: cannot find symbol
-661:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:171: error: cannot find symbol
-666:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/UiScreen.java:185: error: cannot find symbol
-671:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/KeybindControl.java:8: error: cannot find symbol
-676:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/KeybindControl.java:54: error: cannot find symbol
-681:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:6: error: cannot find symbol
-686:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:7: error: cannot find symbol
-691:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:53: error: cannot find symbol
-696:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:58: error: cannot find symbol
-701:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:9: error: cannot find symbol
-706:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:35: error: cannot find symbol
-711:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:216: error: cannot find symbol
-716:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:222: error: cannot find symbol
-721:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/RoundedRenderer.java:232: error: cannot find symbol
-726:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:11: error: cannot find symbol
-731:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:59: error: cannot find symbol
-736:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:96: error: cannot find symbol
-742:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
-743:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
-744:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
-745:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
-746:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
-747:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
-748:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
-749:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
-750:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
-751:	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
-752:	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:206)
-753:	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
-754:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:55)
-755:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
-756:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
-757:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
-758:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
-759:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
-760:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
-761:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-762:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-763:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-764:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-765:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-766:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-767:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-768:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
-769:	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:224)
-770:	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
-771:	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:150)
-772:	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
-773:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
-774:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
-775:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
-776:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
-777:	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
-778:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
-779:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
-780:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-781:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-782:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-783:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-784:	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
-785:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:237)
-786:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:220)
-787:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:203)
-788:	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:170)
-789:	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
-790:	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
-791:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
-792:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
-793:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-794:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-795:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-796:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-797:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-798:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-799:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-800:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
-801:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
-802:	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
-803:	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
-804:	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
-805:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
-806:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
-807:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:68)
-808:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:38)
-809:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
-810:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
-811:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
-812:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
-813:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:39)
-814:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:28)
-815:	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
-816:	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
-817:	at org.gradle.internal.Either$Right.fold(Either.java:176)
-818:	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
-819:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
-820:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
-821:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
-822:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
-823:	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
-824:	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
-825:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
-826:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
-827:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
-828:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
-829:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
-830:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
-831:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
-832:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
-833:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:64)
-834:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:35)
-835:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:62)
-836:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:40)
-837:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:76)
-838:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:45)
-839:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:136)
-840:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:66)
-841:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:38)
-842:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
-843:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
-844:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
-845:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
-846:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
-847:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
-848:	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:297)
-849:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
-850:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
-851:	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
-852:	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
-853:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
-854:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
-855:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
-856:	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
-857:	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
-858:	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
-859:	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:31)
-860:	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
-861:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:132)
-871:BUILD FAILED in 33s
+15:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:225: error: incompatible types: Double cannot be converted to float
+18:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:435: error: incompatible types: Double cannot be converted to float
+21:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:203: error: cannot find symbol
+26:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:206: error: cannot find symbol
+31:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/hud/HudRenderer.java:140: error: cannot find symbol
+36:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:68: error: incompatible types: Identifier cannot be converted to FontDescription
+42:> Task :compileJava FAILED
+47:FAILURE: Build failed with an exception.
+49:* What went wrong:
+50:Execution failed for task ':compileJava'.
+52:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:225: error: incompatible types: Double cannot be converted to float
+55:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:435: error: incompatible types: Double cannot be converted to float
+58:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:68: error: incompatible types: Identifier cannot be converted to FontDescription
+62:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:203: error: cannot find symbol
+67:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:206: error: cannot find symbol
+72:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/hud/HudRenderer.java:140: error: cannot find symbol
+84:org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compileJava'.
+85:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:135)
+86:	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:288)
+87:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:133)
+88:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:121)
+89:	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+90:	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+91:	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+92:	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+93:	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+94:	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+95:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+96:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+97:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+98:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+99:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+100:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+101:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+102:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+103:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+104:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+105:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+106:	at org.gradle.execution.plan.DefaultNodeExecutor.executeLocalTaskNode(DefaultNodeExecutor.java:55)
+107:	at org.gradle.execution.plan.DefaultNodeExecutor.execute(DefaultNodeExecutor.java:34)
+108:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:355)
+109:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:343)
+110:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:339)
+111:	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
+112:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:339)
+113:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:328)
+114:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+115:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+116:	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+117:	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+118:Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
+119:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:225: error: incompatible types: Double cannot be converted to float
+122:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:435: error: incompatible types: Double cannot be converted to float
+125:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:68: error: incompatible types: Identifier cannot be converted to FontDescription
+129:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:203: error: cannot find symbol
+134:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:206: error: cannot find symbol
+139:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/hud/HudRenderer.java:140: error: cannot find symbol
+145:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
+146:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
+147:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
+148:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
+149:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
+150:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
+151:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
+152:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
+153:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
+154:	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
+155:	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:206)
+156:	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
+157:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:55)
+158:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
+159:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
+160:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
+161:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
+162:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
+163:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
+164:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+165:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+166:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+167:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+168:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+169:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+170:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+171:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
+172:	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:224)
+173:	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
+174:	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:150)
+175:	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+176:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
+177:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+178:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
+179:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+180:	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
+181:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+182:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+183:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+184:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+185:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+186:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+187:	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+188:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:237)
+189:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:220)
+190:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:203)
+191:	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:170)
+192:	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+193:	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+194:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+195:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+196:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+197:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+198:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+199:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+200:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+201:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+202:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+203:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+204:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+205:	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+206:	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+207:	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+208:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+209:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+210:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:68)
+211:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:38)
+212:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+213:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+214:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+215:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+216:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:39)
+217:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:28)
+218:	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+219:	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
+220:	at org.gradle.internal.Either$Right.fold(Either.java:176)
+221:	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+222:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+223:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+224:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+225:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+226:	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+227:	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+228:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+229:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+230:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+231:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+232:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+233:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+234:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+235:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+236:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:64)
+237:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:35)
+238:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:62)
+239:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:40)
+240:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:76)
+241:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:45)
+242:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:136)
+243:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:66)
+244:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:38)
+245:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+246:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+247:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+248:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+249:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+250:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+251:	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:297)
+252:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+253:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+254:	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+255:	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+256:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+257:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+258:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+259:	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+260:	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+261:	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
+262:	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:31)
+263:	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
+264:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:132)
+274:BUILD FAILED in 36s
 ```
 
 ## Gradle output (tail)
@@ -2643,6 +1867,6 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 33s
+BUILD FAILED in 36s
 1 actionable task: 1 executed
 ```
