@@ -1,8 +1,8 @@
 # Last build
 
-Run: https://github.com/sysnaxscripts/F1Client/actions/runs/43574905211
-Commit under test: b83c4055b99126ed71022247fd9d762e4cdcb648
-Generated on: 2026-11-14T08:16:05Z
+Run: https://github.com/sysnaxscripts/F1Client/actions/runs/43575363083
+Commit under test: e219c25439a615a6fa9b78b1fdfc602073f87b41
+Generated on: 2026-11-14T08:21:23Z
 
 ## build/libs
 
@@ -19,7 +19,7 @@ compile classpath entries: 111
   big/minecraft: fastutil-8.5.18.jar (23965563 bytes)
   big/minecraft: minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar (33694734 bytes)
 
-packages containing a match (62):
+packages containing a match (69):
   com.mojang.authlib.minecraft.client
   com.mojang.blaze3d.platform
   com.mojang.blaze3d.platform.cursor
@@ -75,6 +75,7 @@ packages containing a match (62):
   net.fabricmc.fabric.mixin.resource.client
   net.minecraft.client
   net.minecraft.client.gui
+  net.minecraft.client.gui.font
   net.minecraft.client.gui.screens
   net.minecraft.client.input
   net.minecraft.client.renderer
@@ -82,8 +83,14 @@ packages containing a match (62):
   net.minecraft.client.renderer.texture.atlas
   net.minecraft.client.renderer.texture.atlas.sources
   net.minecraft.client.resources.sounds
+  net.minecraft.network.chat
+  net.minecraft.network.chat.contents
+  net.minecraft.network.chat.contents.data
+  net.minecraft.network.chat.contents.objects
+  net.minecraft.network.chat.numbers
+  net.minecraft.resources
 
-matching classes (498):
+matching classes (623):
   com.mojang.authlib.minecraft.client.MinecraftClient   [authlib-7.0.61.jar]
   com.mojang.authlib.minecraft.client.ObjectMapper   [authlib-7.0.61.jar]
   com.mojang.blaze3d.platform.ClientShutdownWatchdog   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
@@ -489,6 +496,14 @@ matching classes (498):
   net.minecraft.client.gui.GuiGraphics   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
   net.minecraft.client.gui.ItemSlotMouseAction   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
   net.minecraft.client.gui.TextAlignment   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.client.gui.font.FontManager   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.client.gui.font.FontManager$BuilderId   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.client.gui.font.FontManager$BuilderResult   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.client.gui.font.FontManager$CachedFontProvider   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.client.gui.font.FontManager$CachedFontProvider$CachedEntry   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.client.gui.font.FontManager$FontDefinitionFile   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.client.gui.font.FontManager$Preparation   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.client.gui.font.FontManager$UnresolvedBuilderBundle   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
   net.minecraft.client.gui.screens.Screen   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
   net.minecraft.client.gui.screens.Screen$NarratableSearchResult   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
   net.minecraft.client.input.CharacterEvent   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
@@ -582,8 +597,125 @@ matching classes (498):
   net.minecraft.client.resources.sounds.UnderwaterAmbientSoundInstances$SubSound   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
   net.minecraft.client.resources.sounds.UnderwaterAmbientSoundInstances$UnderwaterAmbientSoundInstance   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
   net.minecraft.client.resources.sounds.package-info   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ChatDecorator   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ChatType   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ChatType$Bound   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ChatTypeDecoration   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ChatTypeDecoration$Parameter   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ChatTypeDecoration$Parameter$Selector   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ClickEvent   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ClickEvent$Action   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ClickEvent$ChangePage   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ClickEvent$CopyToClipboard   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ClickEvent$Custom   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ClickEvent$OpenFile   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ClickEvent$OpenUrl   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ClickEvent$RunCommand   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ClickEvent$ShowDialog   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ClickEvent$SuggestCommand   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.CommonComponents   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.Component   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ComponentContents   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ComponentSerialization   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ComponentSerialization$1   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ComponentSerialization$FuzzyCodec   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ComponentSerialization$StrictEither   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ComponentUtils   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FilterMask   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FilterMask$Type   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FontDescription   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FontDescription$AtlasSprite   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FontDescription$PlayerSprite   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FontDescription$Resource   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FormattedText   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FormattedText$1   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FormattedText$2   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FormattedText$3   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FormattedText$4   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FormattedText$ContentConsumer   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.FormattedText$StyledContentConsumer   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.HoverEvent   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.HoverEvent$Action   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.HoverEvent$EntityTooltipInfo   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.HoverEvent$ShowEntity   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.HoverEvent$ShowItem   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.HoverEvent$ShowText   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.LastSeenMessages   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.LastSeenMessages$Packed   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.LastSeenMessages$Update   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.LastSeenMessagesTracker   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.LastSeenMessagesTracker$Update   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.LastSeenMessagesValidator   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.LastSeenMessagesValidator$ValidationException   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.LastSeenTrackedEntry   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.LocalChatSession   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.MessageSignature   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.MessageSignature$Packed   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.MessageSignatureCache   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.MutableComponent   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.OutgoingChatMessage   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.OutgoingChatMessage$Disguised   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.OutgoingChatMessage$Player   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.PlayerChatMessage   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.RemoteChatSession   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.RemoteChatSession$Data   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SignableCommand   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SignableCommand$Argument   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SignedMessageBody   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SignedMessageBody$Packed   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SignedMessageChain   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SignedMessageChain$1   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SignedMessageChain$DecodeException   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SignedMessageChain$Decoder   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SignedMessageChain$Encoder   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SignedMessageLink   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SignedMessageValidator   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SignedMessageValidator$KeyBased   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.Style   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.Style$1   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.Style$1Collector   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.Style$Serializer   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.SubStringSource   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.TextColor   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.ThrowingComponent   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.KeybindContents   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.KeybindResolver   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.NbtContents   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.ObjectContents   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.PlainTextContents   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.PlainTextContents$1   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.PlainTextContents$LiteralContents   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.ScoreContents   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.SelectorContents   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.TranslatableContents   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.TranslatableFormatException   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.data.BlockDataSource   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.data.DataSource   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.data.DataSources   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.data.EntityDataSource   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.data.StorageDataSource   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.data.package-info   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.objects.AtlasSprite   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.objects.ObjectInfo   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.objects.ObjectInfos   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.objects.PlayerSprite   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.objects.package-info   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.contents.package-info   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.numbers.BlankFormat   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.numbers.BlankFormat$1   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.numbers.FixedFormat   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.numbers.FixedFormat$1   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.numbers.NumberFormat   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.numbers.NumberFormatType   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.numbers.NumberFormatTypes   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.numbers.StyledFormat   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.numbers.StyledFormat$1   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.numbers.package-info   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.network.chat.package-info   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.resources.ResourceKey   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
+  net.minecraft.resources.ResourceKey$InternKey   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar]
 
-signatures of the first 12 dump matches:
+signatures of the first 14 dump matches:
 
 === net.minecraft.client.Options   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
 Compiled from "Options.java"
@@ -1087,42 +1219,6 @@ public class net.minecraft.client.Options {
   static {};
 }
 
-=== net.minecraft.client.gui.Font   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
-Compiled from "Font.java"
-public class net.minecraft.client.gui.Font {
-  private static final float EFFECT_DEPTH;
-  private static final float OVER_EFFECT_DEPTH;
-  private static final float UNDER_EFFECT_DEPTH;
-  public static final float SHADOW_DEPTH;
-  public final int lineHeight;
-  private final net.minecraft.util.RandomSource random;
-  final net.minecraft.client.gui.Font$Provider provider;
-  private final net.minecraft.client.StringSplitter splitter;
-  public net.minecraft.client.gui.Font(net.minecraft.client.gui.Font$Provider);
-  private net.minecraft.client.gui.GlyphSource getGlyphSource(net.minecraft.network.chat.FontDescription);
-  public java.lang.String bidirectionalShaping(java.lang.String);
-  public void drawInBatch(java.lang.String, float, float, int, boolean, org.joml.Matrix4f, net.minecraft.client.renderer.MultiBufferSource, net.minecraft.client.gui.Font$DisplayMode, int, int);
-  public void drawInBatch(net.minecraft.network.chat.Component, float, float, int, boolean, org.joml.Matrix4f, net.minecraft.client.renderer.MultiBufferSource, net.minecraft.client.gui.Font$DisplayMode, int, int);
-  public void drawInBatch(net.minecraft.util.FormattedCharSequence, float, float, int, boolean, org.joml.Matrix4f, net.minecraft.client.renderer.MultiBufferSource, net.minecraft.client.gui.Font$DisplayMode, int, int);
-  public void drawInBatch8xOutline(net.minecraft.util.FormattedCharSequence, float, float, int, int, org.joml.Matrix4f, net.minecraft.client.renderer.MultiBufferSource, int);
-  net.minecraft.client.gui.font.glyphs.BakedGlyph getGlyph(int, net.minecraft.network.chat.Style);
-  public net.minecraft.client.gui.Font$PreparedText prepareText(java.lang.String, float, float, int, boolean, int);
-  public net.minecraft.client.gui.Font$PreparedText prepareText(net.minecraft.util.FormattedCharSequence, float, float, int, boolean, boolean, int);
-  public int width(java.lang.String);
-  public int width(net.minecraft.network.chat.FormattedText);
-  public int width(net.minecraft.util.FormattedCharSequence);
-  public java.lang.String plainSubstrByWidth(java.lang.String, int, boolean);
-  public java.lang.String plainSubstrByWidth(java.lang.String, int);
-  public net.minecraft.network.chat.FormattedText substrByWidth(net.minecraft.network.chat.FormattedText, int);
-  public int wordWrapHeight(net.minecraft.network.chat.FormattedText, int);
-  public java.util.List<net.minecraft.util.FormattedCharSequence> split(net.minecraft.network.chat.FormattedText, int);
-  public java.util.List<net.minecraft.network.chat.FormattedText> splitIgnoringLanguage(net.minecraft.network.chat.FormattedText, int);
-  public boolean isBidirectional();
-  public net.minecraft.client.StringSplitter getSplitter();
-  private boolean method_37297(net.minecraft.client.gui.Font$PreparedTextBuilder, float[], int, float, int, int, int, net.minecraft.network.chat.Style, int);
-  private float method_27516(int, net.minecraft.network.chat.Style);
-}
-
 === net.minecraft.client.gui.components.ChatComponent   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
 Compiled from "ChatComponent.java"
 public class net.minecraft.client.gui.components.ChatComponent {
@@ -1210,6 +1306,60 @@ public interface net.minecraft.client.gui.components.events.GuiEventListener ext
   public default net.minecraft.client.gui.ComponentPath getCurrentFocusPath();
   public default net.minecraft.client.gui.navigation.ScreenRectangle getRectangle();
   public default net.minecraft.client.gui.navigation.ScreenRectangle getBorderForArrowNavigation(net.minecraft.client.gui.navigation.ScreenDirection);
+}
+
+=== net.minecraft.client.gui.font.FontManager   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "FontManager.java"
+public class net.minecraft.client.gui.font.FontManager implements net.minecraft.server.packs.resources.PreparableReloadListener,java.lang.AutoCloseable {
+  static final org.slf4j.Logger LOGGER;
+  private static final java.lang.String FONTS_PATH;
+  public static final net.minecraft.resources.Identifier MISSING_FONT;
+  private static final net.minecraft.resources.FileToIdConverter FONT_DEFINITIONS;
+  private static final com.google.gson.Gson GSON;
+  final net.minecraft.client.gui.font.FontSet missingFontSet;
+  private final java.util.List<com.mojang.blaze3d.font.GlyphProvider> providersToClose;
+  private final java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.gui.font.FontSet> fontSets;
+  private final net.minecraft.client.renderer.texture.TextureManager textureManager;
+  private final net.minecraft.client.gui.font.FontManager$CachedFontProvider anyGlyphs;
+  private final net.minecraft.client.gui.font.FontManager$CachedFontProvider nonFishyGlyphs;
+  private final net.minecraft.client.resources.model.AtlasManager atlasManager;
+  private final java.util.Map<net.minecraft.resources.Identifier, net.minecraft.client.gui.font.AtlasGlyphProvider> atlasProviders;
+  final net.minecraft.client.gui.font.PlayerGlyphProvider playerProvider;
+  public net.minecraft.client.gui.font.FontManager(net.minecraft.client.renderer.texture.TextureManager, net.minecraft.client.resources.model.AtlasManager, net.minecraft.client.renderer.PlayerSkinRenderCache);
+  private net.minecraft.client.gui.font.FontSet createFontSet(net.minecraft.resources.Identifier, java.util.List<com.mojang.blaze3d.font.GlyphProvider$Conditional>, java.util.Set<net.minecraft.client.gui.font.FontOption>);
+  private static com.mojang.blaze3d.font.GlyphProvider$Conditional createFallbackProvider();
+  public java.util.concurrent.CompletableFuture<java.lang.Void> reload(net.minecraft.server.packs.resources.PreparableReloadListener$SharedState, java.util.concurrent.Executor, net.minecraft.server.packs.resources.PreparableReloadListener$PreparationBarrier, java.util.concurrent.Executor);
+  private java.util.concurrent.CompletableFuture<net.minecraft.client.gui.font.FontManager$Preparation> prepare(net.minecraft.server.packs.resources.ResourceManager, java.util.concurrent.Executor);
+  private java.util.concurrent.CompletableFuture<java.util.Optional<com.mojang.blaze3d.font.GlyphProvider>> safeLoad(net.minecraft.client.gui.font.FontManager$BuilderId, net.minecraft.client.gui.font.providers.GlyphProviderDefinition$Loader, net.minecraft.server.packs.resources.ResourceManager, java.util.concurrent.Executor);
+  private java.util.Map<net.minecraft.resources.Identifier, java.util.List<com.mojang.blaze3d.font.GlyphProvider$Conditional>> resolveProviders(java.util.List<net.minecraft.client.gui.font.FontManager$UnresolvedBuilderBundle>);
+  private void finalizeProviderLoading(java.util.List<com.mojang.blaze3d.font.GlyphProvider$Conditional>, com.mojang.blaze3d.font.GlyphProvider$Conditional);
+  private static java.util.Set<net.minecraft.client.gui.font.FontOption> getFontOptions(net.minecraft.client.Options);
+  private void apply(net.minecraft.client.gui.font.FontManager$Preparation, net.minecraft.util.profiling.ProfilerFiller);
+  public void updateOptions(net.minecraft.client.Options);
+  private static java.util.List<com.mojang.datafixers.util.Pair<net.minecraft.client.gui.font.FontManager$BuilderId, net.minecraft.client.gui.font.providers.GlyphProviderDefinition$Conditional>> loadResourceStack(java.util.List<net.minecraft.server.packs.resources.Resource>, net.minecraft.resources.Identifier);
+  public net.minecraft.client.gui.Font createFont();
+  public net.minecraft.client.gui.Font createFontFilterFishy();
+  net.minecraft.client.gui.font.FontSet getFontSetRaw(net.minecraft.resources.Identifier);
+  net.minecraft.client.gui.GlyphSource getSpriteFont(net.minecraft.network.chat.FontDescription$AtlasSprite);
+  public void close();
+  private void method_73147(net.minecraft.resources.Identifier, net.minecraft.client.renderer.texture.TextureAtlas);
+  private void method_51607(java.util.Set, net.minecraft.resources.Identifier, java.util.List);
+  private static void method_51618(java.util.List, int);
+  private static void method_51624(java.util.Map, net.minecraft.resources.Identifier, net.minecraft.client.gui.font.FontManager$UnresolvedBuilderBundle);
+  private static void method_51625(java.util.Map, net.minecraft.resources.Identifier, java.util.List);
+  private static void method_51609(net.minecraft.util.DependencySorter, net.minecraft.client.gui.font.FontManager$UnresolvedBuilderBundle);
+  private static java.util.Optional method_51616(net.minecraft.client.gui.font.providers.GlyphProviderDefinition$Loader, net.minecraft.server.packs.resources.ResourceManager, net.minecraft.client.gui.font.FontManager$BuilderId);
+  private java.util.concurrent.CompletionStage method_51626(java.util.concurrent.Executor, java.util.List);
+  private java.util.concurrent.CompletionStage method_51621(java.util.List, com.mojang.blaze3d.font.GlyphProvider$Conditional, java.util.concurrent.Executor, java.util.List);
+  private static net.minecraft.client.gui.font.FontManager$Preparation method_51622(java.util.List, java.util.Map, java.lang.Void);
+  private static java.util.concurrent.CompletableFuture[] method_51605(int);
+  private java.util.concurrent.CompletableFuture method_51611(com.mojang.blaze3d.font.GlyphProvider$Conditional, java.util.concurrent.Executor, java.util.List);
+  private void method_51627(java.util.List, com.mojang.blaze3d.font.GlyphProvider$Conditional);
+  private net.minecraft.client.gui.font.FontManager$UnresolvedBuilderBundle method_51623(java.util.Map$Entry, net.minecraft.resources.Identifier, net.minecraft.server.packs.resources.ResourceManager, java.util.concurrent.Executor);
+  private static void method_51615(net.minecraft.client.gui.font.FontManager$UnresolvedBuilderBundle, net.minecraft.client.gui.font.FontManager$BuilderId, net.minecraft.client.gui.font.FontOption$Filter, net.minecraft.client.gui.font.providers.GlyphProviderDefinition$Reference);
+  private void method_51612(net.minecraft.client.gui.font.FontManager$BuilderId, net.minecraft.server.packs.resources.ResourceManager, java.util.concurrent.Executor, net.minecraft.client.gui.font.FontManager$UnresolvedBuilderBundle, net.minecraft.client.gui.font.FontOption$Filter, net.minecraft.client.gui.font.providers.GlyphProviderDefinition$Loader);
+  private void method_51610(net.minecraft.client.gui.font.FontManager$Preparation);
+  static {};
 }
 
 === net.minecraft.client.input.CharacterEvent   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
@@ -1347,6 +1497,16 @@ public interface net.minecraft.network.chat.Component extends com.mojang.brigadi
   private static java.util.Optional method_27655(int, java.lang.StringBuilder, java.lang.String);
 }
 
+=== net.minecraft.network.chat.FontDescription   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "FontDescription.java"
+public interface net.minecraft.network.chat.FontDescription {
+  public static final com.mojang.serialization.Codec<net.minecraft.network.chat.FontDescription> CODEC;
+  public static final net.minecraft.network.chat.FontDescription$Resource DEFAULT;
+  private static com.mojang.serialization.DataResult method_73172(net.minecraft.network.chat.FontDescription);
+  private static java.lang.String method_73173(net.minecraft.network.chat.FontDescription);
+  static {};
+}
+
 === net.minecraft.network.chat.Style   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
 Compiled from "Style.java"
 public final class net.minecraft.network.chat.Style {
@@ -1454,6 +1614,30 @@ public final class net.minecraft.resources.Identifier implements java.lang.Compa
   private static java.lang.String method_49418(java.lang.String, net.minecraft.IdentifierException);
   static {};
 }
+
+=== net.minecraft.resources.ResourceKey   [minecraft-merged-2ae02fda0f-1.21.11-loom.mappings.1_21_11.layered+hash.2198-v2.jar] ===
+Compiled from "ResourceKey.java"
+public class net.minecraft.resources.ResourceKey<T> {
+  private static final java.util.concurrent.ConcurrentMap<net.minecraft.resources.ResourceKey$InternKey, net.minecraft.resources.ResourceKey<?>> VALUES;
+  private final net.minecraft.resources.Identifier registryName;
+  private final net.minecraft.resources.Identifier identifier;
+  public static <T> com.mojang.serialization.Codec<net.minecraft.resources.ResourceKey<T>> codec(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>);
+  public static <T> net.minecraft.network.codec.StreamCodec<io.netty.buffer.ByteBuf, net.minecraft.resources.ResourceKey<T>> streamCodec(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>);
+  public static <T> net.minecraft.resources.ResourceKey<T> create(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>, net.minecraft.resources.Identifier);
+  public static <T> net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>> createRegistryKey(net.minecraft.resources.Identifier);
+  private static <T> net.minecraft.resources.ResourceKey<T> create(net.minecraft.resources.Identifier, net.minecraft.resources.Identifier);
+  private net.minecraft.resources.ResourceKey(net.minecraft.resources.Identifier, net.minecraft.resources.Identifier);
+  public java.lang.String toString();
+  public boolean isFor(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<?>>);
+  public <E> java.util.Optional<net.minecraft.resources.ResourceKey<E>> cast(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<E>>);
+  public net.minecraft.resources.Identifier identifier();
+  public net.minecraft.resources.Identifier registry();
+  public net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>> registryKey();
+  private static net.minecraft.resources.ResourceKey method_29182(net.minecraft.resources.ResourceKey$InternKey);
+  private static net.minecraft.resources.ResourceKey method_56039(net.minecraft.resources.ResourceKey, net.minecraft.resources.Identifier);
+  private static net.minecraft.resources.ResourceKey method_39155(net.minecraft.resources.ResourceKey, net.minecraft.resources.Identifier);
+  static {};
+}
 ```
 
 ## Probe task log
@@ -1464,8 +1648,8 @@ public final class net.minecraft.resources.Identifier implements java.lang.Compa
 Fabric Loom: 1.14.10
 
 > Task :probeApi
-Wrote /home/runner/work/F1Client/F1Client/build/probe-api.txt (137305 bytes; 498 classes matched)
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1794644156257.json
+Wrote /home/runner/work/F1Client/F1Client/build/probe-api.txt (161621 bytes; 623 classes matched)
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_2-1794644475561.json
 
 [Incubating] Problems report is available at: file:///home/runner/work/F1Client/F1Client/build/reports/problems/problems-report.html
 
@@ -1475,275 +1659,211 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 9s
+BUILD SUCCESSFUL in 8s
 1 actionable task: 1 executed
 ```
 
 ## Compile errors, with the symbol and location lines javac prints under each
 
 ```
-15:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:225: error: incompatible types: Double cannot be converted to float
-16-		float width = (float) lineWidth.get();
-17-		                                   ^
-18:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:435: error: incompatible types: Double cannot be converted to float
-19-		float width = (float) lineWidth.get();
-20-		                                   ^
-21:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:203: error: cannot find symbol
-22-		if (!focused || !input.isValidChar()) {
-23-		                      ^
-24-  symbol:   method isValidChar()
-25-  location: variable input of type CharacterEvent
-26:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:206: error: cannot find symbol
-27-		insert(input.asString());
-28-		            ^
-29-  symbol:   method asString()
-30-  location: variable input of type CharacterEvent
-31:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/hud/HudRenderer.java:140: error: cannot find symbol
-32-		String dimensionName = mc.level.dimension().location().getPath();
-33-		                                           ^
-34-  symbol:   method location()
-35-  location: class ResourceKey<Level>
-36:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:68: error: incompatible types: Identifier cannot be converted to FontDescription
-37-			styles[i] = Style.EMPTY.withFont(fontIds[i]);
-38-			                                        ^
-39-Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-40-6 errors
+15:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:17: error: variable field might not have been initialized
+16-				.onChange(() -> setting.set(field.text()));
+17-				                            ^
+18:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:70: error: FontDescription is abstract; cannot be instantiated
+19-			styles[i] = Style.EMPTY.withFont(new FontDescription(fontIds[i], Optional.empty()));
+20-			                                 ^
+21-2 errors
+22-
 --
-52:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:225: error: incompatible types: Double cannot be converted to float
-53-  		float width = (float) lineWidth.get();
-54-  		                                   ^
-55:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:435: error: incompatible types: Double cannot be converted to float
-56-  		float width = (float) lineWidth.get();
-57-  		                                   ^
-58:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:68: error: incompatible types: Identifier cannot be converted to FontDescription
-59-  			styles[i] = Style.EMPTY.withFont(fontIds[i]);
-60-  			                                        ^
-61-  Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-62:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:203: error: cannot find symbol
-63-  		if (!focused || !input.isValidChar()) {
-64-  		                      ^
-65-    symbol:   method isValidChar()
-66-    location: variable input of type CharacterEvent
-67:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:206: error: cannot find symbol
-68-  		insert(input.asString());
-69-  		            ^
-70-    symbol:   method asString()
-71-    location: variable input of type CharacterEvent
-72:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/hud/HudRenderer.java:140: error: cannot find symbol
-73-  		String dimensionName = mc.level.dimension().location().getPath();
-74-  		                                           ^
-75-    symbol:   method location()
-76-    location: class ResourceKey<Level>
+33:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:17: error: variable field might not have been initialized
+34-  				.onChange(() -> setting.set(field.text()));
+35-  				                            ^
+36:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:70: error: FontDescription is abstract; cannot be instantiated
+37-  			styles[i] = Style.EMPTY.withFont(new FontDescription(fontIds[i], Optional.empty()));
+38-  			                                 ^
+39-  2 errors
+40-
 --
-119:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:225: error: incompatible types: Double cannot be converted to float
-120-		float width = (float) lineWidth.get();
-121-		                                   ^
-122:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:435: error: incompatible types: Double cannot be converted to float
-123-		float width = (float) lineWidth.get();
-124-		                                   ^
-125:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:68: error: incompatible types: Identifier cannot be converted to FontDescription
-126-			styles[i] = Style.EMPTY.withFont(fontIds[i]);
-127-			                                        ^
-128-Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-129:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:203: error: cannot find symbol
-130-		if (!focused || !input.isValidChar()) {
-131-		                      ^
-132-  symbol:   method isValidChar()
-133-  location: variable input of type CharacterEvent
-134:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:206: error: cannot find symbol
-135-		insert(input.asString());
-136-		            ^
-137-  symbol:   method asString()
-138-  location: variable input of type CharacterEvent
-139:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/hud/HudRenderer.java:140: error: cannot find symbol
-140-		String dimensionName = mc.level.dimension().location().getPath();
-141-		                                           ^
-142-  symbol:   method location()
-143-  location: class ResourceKey<Level>
+81:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:17: error: variable field might not have been initialized
+82-				.onChange(() -> setting.set(field.text()));
+83-				                            ^
+84:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:70: error: FontDescription is abstract; cannot be instantiated
+85-			styles[i] = Style.EMPTY.withFont(new FontDescription(fontIds[i], Optional.empty()));
+86-			                                 ^
+87-2 errors
+88-	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
 ```
 
 ## Gradle output (filtered)
 
 ```
 14:> Task :compileJava
-15:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:225: error: incompatible types: Double cannot be converted to float
-18:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:435: error: incompatible types: Double cannot be converted to float
-21:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:203: error: cannot find symbol
-26:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:206: error: cannot find symbol
-31:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/hud/HudRenderer.java:140: error: cannot find symbol
-36:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:68: error: incompatible types: Identifier cannot be converted to FontDescription
-42:> Task :compileJava FAILED
-47:FAILURE: Build failed with an exception.
-49:* What went wrong:
-50:Execution failed for task ':compileJava'.
-52:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:225: error: incompatible types: Double cannot be converted to float
-55:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:435: error: incompatible types: Double cannot be converted to float
-58:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:68: error: incompatible types: Identifier cannot be converted to FontDescription
-62:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:203: error: cannot find symbol
-67:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:206: error: cannot find symbol
-72:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/hud/HudRenderer.java:140: error: cannot find symbol
-84:org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compileJava'.
-85:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:135)
-86:	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:288)
-87:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:133)
-88:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:121)
-89:	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
-90:	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
-91:	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
-92:	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
-93:	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
-94:	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
-95:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
-96:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
-97:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
-98:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-99:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-100:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-101:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-102:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-103:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-104:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-105:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
-106:	at org.gradle.execution.plan.DefaultNodeExecutor.executeLocalTaskNode(DefaultNodeExecutor.java:55)
-107:	at org.gradle.execution.plan.DefaultNodeExecutor.execute(DefaultNodeExecutor.java:34)
-108:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:355)
-109:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:343)
-110:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:339)
-111:	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
-112:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:339)
-113:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:328)
-114:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
-115:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
-116:	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-117:	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
-118:Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-119:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/OreESP.java:225: error: incompatible types: Double cannot be converted to float
-122:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/modules/SoundESP.java:435: error: incompatible types: Double cannot be converted to float
-125:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:68: error: incompatible types: Identifier cannot be converted to FontDescription
-129:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:203: error: cannot find symbol
-134:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/widget/TextBox.java:206: error: cannot find symbol
-139:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/hud/HudRenderer.java:140: error: cannot find symbol
-145:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
-146:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
-147:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
-148:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
-149:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
-150:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
-151:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
-152:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
-153:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
-154:	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
-155:	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:206)
-156:	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
-157:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:55)
-158:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
-159:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
-160:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
-161:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
-162:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
-163:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
-164:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-165:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-166:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-167:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-168:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-169:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-170:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-171:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
-172:	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:224)
-173:	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
-174:	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:150)
-175:	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
-176:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
-177:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
-178:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
-179:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
-180:	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
-181:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
-182:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
-183:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-184:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-185:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-186:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-187:	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
-188:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:237)
-189:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:220)
-190:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:203)
-191:	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:170)
-192:	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
-193:	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
-194:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
-195:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
-196:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
-197:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
-198:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
-199:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
-200:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
-201:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
-202:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
-203:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
-204:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
-205:	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
-206:	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
-207:	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
-208:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
-209:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
-210:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:68)
-211:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:38)
-212:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
-213:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
-214:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
-215:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
-216:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:39)
-217:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:28)
-218:	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
-219:	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
-220:	at org.gradle.internal.Either$Right.fold(Either.java:176)
-221:	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
-222:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
-223:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
-224:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
-225:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
-226:	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
-227:	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
-228:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
-229:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
-230:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
-231:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
-232:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
-233:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
-234:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
-235:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
-236:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:64)
-237:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:35)
-238:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:62)
-239:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:40)
-240:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:76)
-241:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:45)
-242:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:136)
-243:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:66)
-244:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:38)
-245:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
-246:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
-247:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
-248:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
-249:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
-250:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
-251:	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:297)
-252:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
-253:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
-254:	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
-255:	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
-256:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
-257:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
-258:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
-259:	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
-260:	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
-261:	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
-262:	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:31)
-263:	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
-264:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:132)
-274:BUILD FAILED in 36s
+15:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:17: error: variable field might not have been initialized
+18:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:70: error: FontDescription is abstract; cannot be instantiated
+23:> Task :compileJava FAILED
+28:FAILURE: Build failed with an exception.
+30:* What went wrong:
+31:Execution failed for task ':compileJava'.
+33:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:17: error: variable field might not have been initialized
+36:  /home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:70: error: FontDescription is abstract; cannot be instantiated
+46:org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compileJava'.
+47:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:135)
+48:	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:288)
+49:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:133)
+50:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:121)
+51:	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:41)
+52:	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+53:	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+54:	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+55:	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+56:	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+57:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+58:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+59:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+60:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+61:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+62:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+63:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+64:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+65:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+66:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+67:	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+68:	at org.gradle.execution.plan.DefaultNodeExecutor.executeLocalTaskNode(DefaultNodeExecutor.java:55)
+69:	at org.gradle.execution.plan.DefaultNodeExecutor.execute(DefaultNodeExecutor.java:34)
+70:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:355)
+71:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:343)
+72:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:339)
+73:	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
+74:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:339)
+75:	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:328)
+76:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+77:	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+78:	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+79:	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
+80:Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
+81:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/gui/control/StringControl.java:17: error: variable field might not have been initialized
+84:/home/runner/work/F1Client/F1Client/src/main/java/com/example/f1/render/Fonts.java:70: error: FontDescription is abstract; cannot be instantiated
+88:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
+89:	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
+90:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
+91:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
+92:	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
+93:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
+94:	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
+95:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
+96:	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
+97:	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
+98:	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:206)
+99:	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
+100:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:55)
+101:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
+102:	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
+103:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
+104:	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
+105:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
+106:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
+107:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+108:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+109:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+110:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+111:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+112:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+113:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+114:	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
+115:	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:224)
+116:	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:165)
+117:	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:150)
+118:	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+119:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
+120:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+121:	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
+122:	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+123:	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
+124:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+125:	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+126:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+127:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+128:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+129:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+130:	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+131:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:237)
+132:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:220)
+133:	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:203)
+134:	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:170)
+135:	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+136:	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+137:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+138:	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+139:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+140:	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+141:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+142:	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+143:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+144:	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+145:	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+146:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+147:	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+148:	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+149:	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+150:	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+151:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+152:	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+153:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:68)
+154:	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:38)
+155:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+156:	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+157:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+158:	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+159:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:39)
+160:	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:28)
+161:	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+162:	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
+163:	at org.gradle.internal.Either$Right.fold(Either.java:176)
+164:	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+165:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+166:	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+167:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+168:	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+169:	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+170:	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+171:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+172:	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+173:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+174:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+175:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+176:	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+177:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+178:	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+179:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:64)
+180:	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:35)
+181:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:62)
+182:	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:40)
+183:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:76)
+184:	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:45)
+185:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:136)
+186:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:66)
+187:	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:38)
+188:	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+189:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+190:	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+191:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+192:	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+193:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+194:	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:297)
+195:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+196:	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+197:	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+198:	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+199:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+200:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+201:	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+202:	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+203:	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+204:	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
+205:	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:31)
+206:	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
+207:	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:132)
+217:BUILD FAILED in 29s
 ```
 
 ## Gradle output (tail)
@@ -1867,6 +1987,6 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 36s
+BUILD FAILED in 29s
 1 actionable task: 1 executed
 ```
