@@ -75,11 +75,11 @@ jar {
 // is broken.
 tasks.register("probeApi") {
 	def listPattern = (project.findProperty("probePattern")
-			?: 'client\\.gui\\.[A-Z][A-Za-z]*$|client\\.[A-Z][A-Za-z]*$|client\\.input|client\\.gui\\.screens\\.Screen|blaze3d\\.platform|renderer\\.texture\\.[A-Z]|renderer\\.RenderPipeline|resources\\.sounds|fabric\\.api\\.client').toString()
+			?: 'client\\.gui\\.[A-Z][A-Za-z]*$|client\\.[A-Z][A-Za-z]*$|client\\.input|client\\.gui\\.screens\\.Screen|blaze3d\\.platform|renderer\\.texture\\.[A-Z]|renderer\\.RenderPipeline|resources\\.sounds|network\\.chat|resources\\.ResourceKey|client\\.gui\\.font\\.FontManager|fabric\\.api\\.client').toString()
 	// Dumping is limited to a narrow pattern: javap output for every rendering class would
 	// be megabytes.
 	def dumpPattern = (project.findProperty("probeDumpPattern")
-			?: 'resources\\.Identifier$|client\\.Options$|renderer\\.texture\\.TextureManager$|network\\.chat\\.Style$|network\\.chat\\.Component$|gui\\.components\\.events\\.GuiEventListener$|gui\\.components\\.ChatComponent$|client\\.input\\.KeyEvent$|client\\.input\\.CharacterEvent$|client\\.input\\.MouseButtonEvent$|client\\.input\\.MouseButtonInfo$|client\\.gui\\.Font$').toString()
+			?: 'network\\.chat\\.FontDescription$|resources\\.ResourceKey$|client\\.gui\\.font\\.FontManager$|resources\\.Identifier$|client\\.Options$|renderer\\.texture\\.TextureManager$|network\\.chat\\.Style$|network\\.chat\\.Component$|gui\\.components\\.events\\.GuiEventListener$|gui\\.components\\.ChatComponent$|client\\.input\\.KeyEvent$|client\\.input\\.CharacterEvent$|client\\.input\\.MouseButtonEvent$|client\\.input\\.MouseButtonInfo$').toString()
 	outputs.upToDateWhen { false }
 	doLast {
 		def out = layout.buildDirectory.file("probe-api.txt").get().asFile

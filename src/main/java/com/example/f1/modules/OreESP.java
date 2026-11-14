@@ -222,7 +222,7 @@ public final class OreESP extends Module {
 		Vec3 eye = mc.player.getEyePosition();
 		int maxRange = range.get();
 		double maxDistanceSq = (double) maxRange * maxRange;
-		float width = (float) lineWidth.get();
+		float width = lineWidth.get().floatValue();
 		boolean fadeWithDistance = fade.get();
 		// Without fading the style depends on the ore alone, so one per type is reused for
 		// every block of that ore instead of being rebuilt per block.

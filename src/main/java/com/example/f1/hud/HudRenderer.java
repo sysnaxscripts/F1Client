@@ -137,7 +137,7 @@ public final class HudRenderer {
 		Minecraft mc = Minecraft.getInstance();
 		Vec3 pos = mc.player.position();
 		BlockPos block = mc.player.blockPosition();
-		String dimensionName = mc.level.dimension().location().getPath();
+		String dimensionName = mc.level.dimension().identifier().getPath();
 		if (!block.equals(lastCoordinatePos) || !dimensionName.equals(lastDimension)) {
 			lastCoordinatePos = block;
 			lastDimension = dimensionName;

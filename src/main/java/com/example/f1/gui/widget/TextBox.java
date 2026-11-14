@@ -200,10 +200,10 @@ public final class TextBox {
 	 * @return whether the character was used
 	 */
 	public boolean charTyped(CharacterEvent input) {
-		if (!focused || !input.isValidChar()) {
+		if (!focused || !input.isAllowedChatCharacter()) {
 			return false;
 		}
-		insert(input.asString());
+		insert(input.codepointAsString());
 		return true;
 	}
 

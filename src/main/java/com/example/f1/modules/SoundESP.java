@@ -432,7 +432,7 @@ public final class SoundESP extends Module {
 		}
 		long now = System.currentTimeMillis();
 		int life = lifetime.get();
-		float width = (float) lineWidth.get();
+		float width = lineWidth.get().floatValue();
 		for (int i = 0; i < count; i++) {
 			Marker marker = markers[i];
 			if (marker == null) {

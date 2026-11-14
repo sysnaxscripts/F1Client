@@ -3,10 +3,12 @@ package com.example.f1.render;
 import com.mojang.blaze3d.platform.Window;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.FontDescription;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.FormattedCharSequence;
@@ -65,7 +67,7 @@ public enum Fonts {
 		for (int i = 0; i < Density.VALUES.length; i++) {
 			fontIds[i] = Identifier.fromNamespaceAndPath(com.example.f1.F1Client.ID,
 					name + "_" + Math.round(Density.VALUES[i] * 100));
-			styles[i] = Style.EMPTY.withFont(fontIds[i]);
+			styles[i] = Style.EMPTY.withFont(new FontDescription(fontIds[i], Optional.empty()));
 			caches[i] = new HashMap<>();
 		}
 		this.size = size;
