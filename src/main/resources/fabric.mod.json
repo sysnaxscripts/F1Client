@@ -1,23 +1,23 @@
 {
 	"schemaVersion": 1,
-	"id": "f1client",
+	"id": "f1",
 	"version": "${version}",
-	"name": "F1Client",
-	"description": "Account-gated utility client for DonutSMP: Freecam, OreDetection and SoundDetection behind a themed ClickGUI.",
+	"name": "F1 Client",
+	"description": "Standalone client-side mod for Minecraft 1.21.11 (Mojang mappings): a glass ClickGUI on Right Shift, a HUD, per-profile configs and a settings system around OreESP (F7), SoundESP (F8), Freecam (F6) and the HUD. Reads only what the client already has; never touches a packet.",
 	"authors": [
-		"F1Client"
+		"F1 Client"
 	],
-	"license": "All-Rights-Reserved",
-	"icon": "assets/f1client/icon.png",
+	"icon": "assets/f1/icon.png",
+	"license": "MIT",
 	"environment": "client",
 	"entrypoints": {
 		"client": [
-			"dev.f1client.F1Client"
+			"com.example.f1.F1Client"
 		]
 	},
 	"mixins": [
 		{
-			"config": "f1client.mixins.json",
+			"config": "f1.mixins.json",
 			"environment": "client"
 		}
 	],
