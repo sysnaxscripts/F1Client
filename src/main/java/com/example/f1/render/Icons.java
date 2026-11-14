@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 
 /**
- * White line icons bundled under {@code assets/f1client/textures/gui/}, tinted when drawn.
+ * White line icons bundled under {@code assets/f1/textures/gui/}, tinted when drawn.
  *
  * <p>Every icon is a single-colour mask, so one texture serves any accent: the colour is
  * passed to the draw call and multiplies the mask. The whole texture is stretched into the

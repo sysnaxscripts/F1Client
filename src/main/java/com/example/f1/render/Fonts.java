@@ -16,7 +16,7 @@ import org.joml.Matrix3x2fStack;
 /**
  * Text drawing with the bundled Inter typeface instead of the vanilla bitmap font.
  *
- * <p>The TTF files live in {@code assets/f1client/font/}. Each role (regular, bold, small,
+ * <p>The TTF files live in {@code assets/f1/font/}. Each role (regular, bold, small,
  * title) exists as several font definitions that differ only in rasterisation density:
  * {@code <role>_<density*100>.json}. The game samples glyph textures without filtering, so
  * glyphs must be rasterised at the size they appear on screen or thin strokes drop out;

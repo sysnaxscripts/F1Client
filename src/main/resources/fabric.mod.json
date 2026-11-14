@@ -3,7 +3,7 @@
 	"id": "f1",
 	"version": "${version}",
 	"name": "F1 Client",
-	"description": "Standalone client-side mod for Minecraft 1.21.11 (Mojang mappings): a ClickGUI, a glass HUD, per-profile configs and a settings system around OreESP (F7), SoundESP (F8), Freecam (F6) and the HUD (F5). Reads only what the client already has; never touches a packet.",
+	"description": "Standalone client-side mod for Minecraft 1.21.11 (Mojang mappings): a glass ClickGUI on Right Shift, a HUD, per-profile configs and a settings system around OreESP (F7), SoundESP (F8), Freecam (F6) and the HUD. Reads only what the client already has; never touches a packet.",
 	"authors": [
 		"F1 Client"
 	],

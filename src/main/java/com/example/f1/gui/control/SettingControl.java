@@ -61,7 +61,8 @@ public abstract class SettingControl<S extends Setting<?>> {
 		if (!contains(mouseX, mouseY)) {
 			return onClickOutside();
 		}
-		if (button == 1) {
+		// GLFW counts 0 = left, 1 = middle, 2 = right.
+		if (button == 2) {
 			setting.reset();
 			onReset();
 			return true;

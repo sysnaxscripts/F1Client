@@ -596,11 +596,13 @@ public final class ClickGuiScreen extends UiScreen {
 				F1Client.LOGGER.info("{} {}", module.getName(), enabled ? "enabled" : "disabled");
 				F1Client.get().config().markDirty();
 				hint = module.getName() + (enabled ? " enabled" : " disabled");
-			} else if (button == 1) {
+			} else if (button == 2) {
+				// GLFW counts 0 = left, 1 = middle, 2 = right: the right button opens the
+				// settings, the middle one pins, exactly as the hint bar says.
 				select(module);
 				UiSounds.click();
 				hint = module.getName() + " settings";
-			} else if (button == 2) {
+			} else if (button == 1) {
 				module.setFavourite(!module.isFavourite());
 				UiSounds.click();
 				F1Client.get().config().markDirty();
